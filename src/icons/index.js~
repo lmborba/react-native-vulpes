@@ -1,0 +1,61 @@
+export const Icons = {
+  assets/icons/arrow_down.svg
+  assets/icons/checkin.svg
+  assets/icons/compress_video.svg
+  assets/icons/favorite.svg
+  assets/icons/long_arrow_1.png        assets/icons/notification.svg
+  assets/icons/search.svg
+  assets/icons/arrow_right.svg
+  assets/icons/check.svg
+  assets/icons/content.svg
+  assets/icons/filter.svg
+  assets/icons/long_arrow_left.svg
+  assets/icons/options.svg
+  assets/icons/send.svg
+  assets/icons/arrow_up.svg
+  assets/icons/chevron_down.svg
+  assets/icons/context_menu.svg
+  assets/icons/help.svg
+  assets/icons/long_arrow.png          assets/icons/order.svg
+  assets/icons/spinner.svg
+  assets/icons/bookmark_empty.svg
+  assets/icons/chevron_left.svg
+  assets/icons/download.svg
+  assets/icons/home.svg
+  assets/icons/long_arrow_right.svg
+  assets/icons/photo.svg
+  assets/icons/streaming.svg
+  assets/icons/bookmark.svg
+  assets/icons/chevron_right.svg
+  assets/icons/edit.svg
+  assets/icons/info.svg
+  assets/icons/menu.svg
+  assets/icons/pin.svg
+  assets/icons/ticket.svg
+  assets/icons/calendar_alert.svg
+  assets/icons/chevron_up.svg
+  assets/icons/exclamation.svg
+  assets/icons/like_empty.svg
+  assets/icons/notification_1.svg
+  assets/icons/plan.svg
+  assets/icons/trash.svg
+  assets/icons/calendar.svg
+  assets/icons/clock.svg
+  assets/icons/expand_video.svg
+  assets/icons/like.png        assets/icons/notification_2.svg
+  assets/icons/play_video.svg
+  assets/icons/unlock.svg
+  assets/icons/chat_notification.svg
+  assets/icons/close.svg
+  assets/icons/external_link.svg
+  assets/icons/like.svg
+  assets/icons/notification_alert.svg
+  assets/icons/plus.svg
+  assets/icons/user.svg
+  assets/icons/chat.svg
+  assets/icons/community.svg
+  assets/icons/favorite_empty.svg
+  assets/icons/lock.svg
+  assets/icons/notification_empty.png  assets/icons/qr_code.svg
+  assets/icons/volume.svg
+}

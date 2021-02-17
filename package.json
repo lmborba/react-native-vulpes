@@ -69,7 +69,9 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-linear-gradient": "^2.5.6",
+    "react-native-svg": "^12.1.0"
   },
   "jest": {
     "preset": "react-native",
@@ -149,5 +151,9 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "gradient-parser": "^1.0.0",
+    "react-native-icomoon": "^0.1.1"
   }
 }

@@ -9,6 +9,7 @@ module.exports = {
       {
         alias: {
           [pak.name]: path.join(__dirname, '..', pak.source),
+          assets: path.join(__dirname, '..', 'assets'),
         },
       },
     ],
