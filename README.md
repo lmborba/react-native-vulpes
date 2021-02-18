@@ -5,17 +5,17 @@ React Native implementation of the Vulpes design system
 ## Installation
 
 ```sh
-npm install react-native-vulpes
+yarn add react-native-vulpes react-native-linear-gradient
 ```
 
 ## Usage
 
 ```js
-import Vulpes from "react-native-vulpes";
+import {H1} from "react-native-vulpes";
 
 // ...
 
-const result = await Vulpes.multiply(3, 7);
+<H1 color="light_success">
 ```
 
 ## Contributing
