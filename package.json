@@ -24,7 +24,7 @@
   "scripts": {
     "test": "jest",
     "typescript": "tsc --noEmit",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint \"{src,example/src}/**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
@@ -83,7 +83,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint && yarn typescript"
+      "pre-commit": "yarn lint"
     }
   },
   "commitlint": {
@@ -143,17 +143,17 @@
     "output": "lib",
     "targets": [
       "commonjs",
-      "module",
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json"
-        }
-      ]
+      "module"
     ]
   },
   "dependencies": {
+    "core-js": "^3.9.0",
     "gradient-parser": "^1.0.0",
-    "react-native-icomoon": "^0.1.1"
+    "react-native-icomoon": "^0.1.1",
+    "react-native-linear-gradient": "^2.5.6",
+    "react-native-svg": "^12.1.0",
+    "react-native-svg-web": "^1.0.9",
+    "react-native-web": "^0.15.0",
+    "react-native-web-linear-gradient": "^1.1.1"
   }
 }

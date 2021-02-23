@@ -1,5 +1,6 @@
 import { NativeModules } from 'react-native';
 import { Colors } from './colors';
+import { Button } from './components/button';
 import { GradientView } from './components/gradient_view';
 import { Icon } from './components/icon';
 import { Text } from './components/text';
@@ -39,6 +40,7 @@ export {
   Small2,
   SmallBold,
   Icon,
+  Button,
 };
 
 const { Vulpes } = NativeModules;

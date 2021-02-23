@@ -3,6 +3,7 @@ import { ScrollView, View } from 'react-native';
 import {
   BodyLarge,
   BodyLargeBold,
+  Button,
   GradientView,
   H1,
   H2,
@@ -24,6 +25,11 @@ const flexedDiv = { flex: 1 };
 const gradientsContainer = {
   paddingLeft: 20,
   paddingRight: 20,
+  flexDirection: 'row',
+};
+
+const buttonsContainer = {
+  padding: 10,
   flexDirection: 'row',
 };
 const gradientBox = {
@@ -203,6 +209,115 @@ export default (props) => {
           <Icon style={iconSpacing} name="user" />
           <Icon style={iconSpacing} name="volume" />
         </Text>
+
+        <H1>Buttons</H1>
+        <View style={buttonsContainer}>
+          <Button>
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button>
+            <Icon name="like_empty" />
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button>
+            <Text>Primary button</Text>
+            <Icon name="like_empty" />
+          </Button>
+        </View>
+
+        <View style={buttonsContainer}>
+          <Button outline>
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button outline>
+            <Icon name="like_empty" />
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button outline>
+            <Text>Primary button</Text>
+            <Icon name="like_empty" />
+          </Button>
+        </View>
+
+        <View style={buttonsContainer}>
+          <Button ghost>
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button ghost>
+            <Icon name="like_empty" />
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button ghost>
+            <Text>Primary button</Text>
+            <Icon name="like_empty" />
+          </Button>
+        </View>
+
+        <View style={buttonsContainer}>
+          <Button color="blue">
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button color="success" textColor="dark_success">
+            <Icon name="like_empty" />
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button color="red">
+            <Text>Primary button</Text>
+            <Icon name="like_empty" />
+          </Button>
+        </View>
+
+        <View style={buttonsContainer}>
+          <Button outline color="purple">
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button outline color="light_purple">
+            <Icon name="like_empty" />
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button outline color="light_gray">
+            <Text>Primary button</Text>
+            <Icon name="like_empty" />
+          </Button>
+        </View>
+
+        <View style={buttonsContainer}>
+          <Button ghost color="orange">
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button ghost color="green">
+            <Icon name="like_empty" />
+            <Text>Primary button</Text>
+          </Button>
+        </View>
+        <View style={buttonsContainer}>
+          <Button ghost color="alert">
+            <Text>Primary button</Text>
+            <Icon name="like_empty" />
+          </Button>
+        </View>
       </ScrollView>
     </View>
   );
