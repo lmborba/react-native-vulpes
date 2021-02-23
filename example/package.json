@@ -11,7 +11,7 @@
     "storybook:build": "ln -s ../@storybook/react/bin/build.js storybookweb && mv storybookweb node_modules/.bin && storybookweb --config-dir storybook-web",
     "storybook": "start-storybook -p 6006",
     "start-storybook-web": "./node_modules/@storybook/react/bin/index.js -c .storybook",
-    "build-storybook-web": "./node_modules/@storybook/react/bin/build.js",
+    "build-storybook": "ln -s ../@storybook/react/bin/index.js storybookweb && mv storybookweb node_modules/.bin && storybookweb -p 6006 --config-dir storybook-web",
     "storybook-web": "NODE_PATH=src yarn run start-storybook-web",
     "prestorybook": "rnstl",
     "deploy-storybook": "storybook-to-ghpages"
