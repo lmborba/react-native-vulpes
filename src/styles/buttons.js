@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import { Colors } from '../colors';
 
 const buttonHeight = 44;
@@ -12,7 +13,7 @@ const buttonStyle = {
   paddingRight: paddingHorizontal,
   height: buttonHeight,
   flex: null,
-  width: null,
+  width: Platform.OS === 'web' ? 'fit-content' : null,
   alignSelf: 'flex-start',
   flexDirection: 'row',
 };
