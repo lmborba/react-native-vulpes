@@ -10,8 +10,17 @@ const colorList = () => {
 };
 
 export default {
-  title: 'Example/Colors',
+  title: 'Example/TextColor',
   component: Text,
+  argTypes: {
+    color: {
+      description: 'color for the text',
+      control: {
+        type: 'select',
+        options: colorList(),
+      },
+    },
+  },
 };
 
 const TemplateTextColor = ({ color = 'red', ...rest }) => (
@@ -20,8 +29,8 @@ const TemplateTextColor = ({ color = 'red', ...rest }) => (
   </Text>
 );
 
-export const TextColor = TemplateTextColor.bind({});
-TextColor.argTypes = {
+export const Example = TemplateTextColor.bind({});
+Example.argTypes = {
   color: {
     description: 'color for the text',
     control: {
@@ -30,11 +39,9 @@ TextColor.argTypes = {
     },
   },
 };
-TextColor.args = {
+Example.args = {
   color: 'blue',
 };
-
-const ret = { TextColor };
 
 if (Platform.OS === 'android') {
   const fillStories = storiesOf('Color', module).addDecorator((Story) => (
@@ -43,7 +50,5 @@ if (Platform.OS === 'android') {
     </View>
   ));
 
-  for (var k in ret) {
-    fillStories.add('' + k, TemplateTextColor, TextColor.args);
-  }
+  fillStories.add('TextColor', TemplateTextColor, Example.args);
 }

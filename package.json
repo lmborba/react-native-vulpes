@@ -29,7 +29,8 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "bootstrap": "yarn example && yarn && yarn pods",
+    "deploy-storybook": "storybook-to-ghpages --remote gh --branch main --existing-output-dir=example/storybook-static/"
   },
   "keywords": [
     "react-native",
@@ -50,6 +51,7 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@release-it/conventional-changelog": "^2.0.0",
+    "@storybook/storybook-deployer": "^2.8.7",
     "@types/jest": "^26.0.0",
     "@types/react": "^16.9.19",
     "@types/react-native": "0.62.13",
@@ -145,6 +147,11 @@
       "commonjs",
       "module"
     ]
+  },
+  "storybook-deployer": {
+    "gitUsername": "GoGood",
+    "gitEmail": "borba@gogood.com.br",
+    "commitMessage": "docs: deploying storybook [skip ci]"
   },
   "dependencies": {
     "core-js": "^3.9.0",
