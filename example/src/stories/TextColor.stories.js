@@ -5,7 +5,11 @@ import { Colors, Text } from 'react-native-vulpes';
 
 const colorList = () => {
   var keys = [];
-  for (var k in Colors) keys.push(k);
+  for (var k in Colors) {
+    if (k.substring(0, 8) !== 'gradient') {
+      keys.push(k);
+    }
+  }
   return keys;
 };
 
@@ -39,6 +43,7 @@ Example.argTypes = {
     },
   },
 };
+
 Example.args = {
   color: 'blue',
 };
