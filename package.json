@@ -30,7 +30,7 @@
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods",
-    "deploy-storybook": "storybook-to-ghpages --remote gh --branch main --existing-output-dir=example/storybook-static/"
+    "deploy-storybook": "storybook-to-ghpages --remote gh --existing-output-dir=example/storybook-static/"
   },
   "keywords": [
     "react-native",
