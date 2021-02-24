@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   stories: ['../src/stories/**/*.stories.js'],
   addons: [
@@ -15,11 +17,13 @@ module.exports = {
       '@storybook/react-native$': '@storybook/react',
     };
     config.resolve.extensions = ['.web.js', '.js', '.json'];
-    // mutate babel-loader
     config.module.rules[0].use[0].options.plugins.push([
-      'react-native-web',
-      { commonjs: true },
+      'babel-plugin-react-native-web',
+      {commonjs: true },
     ]);
+    config.module.rules[0].include.push(
+      path.resolve('../src/')
+    );
     return config;
   },
 };
