@@ -76,7 +76,7 @@ export const Fonts = {
   },
   placeholderBold: {
     fontSize: 14,
-    color: Colors.dark_gray,
+    color: Colors.light_gray,
     letterSpacing: 0,
     fontStyle: 'italic',
     fontFamily: 'OpenSans-Bold, Open Sans',
@@ -98,6 +98,7 @@ export const Fonts = {
     fontFamily: 'OpenSans-Bold, Open Sans',
     fontWeight: '700',
     textAlign: 'left',
+    fontStyle: 'normal',
   },
   small: {
     fontSize: 12,

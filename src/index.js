@@ -20,6 +20,8 @@ import {
   SmallBold,
 } from './components/typos';
 import { Fonts } from './fonts';
+import { TextInput } from './components/text_input';
+import { SelectInput, SelectItem } from './components/select_input';
 
 export {
   Colors,
@@ -41,6 +43,9 @@ export {
   SmallBold,
   Icon,
   Button,
+  TextInput,
+  SelectInput,
+  SelectItem,
 };
 
 const { Vulpes } = NativeModules;

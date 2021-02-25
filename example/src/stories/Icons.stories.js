@@ -35,9 +35,9 @@ export default {
   },
 };
 
-const TemplateIcons = ({ color = undefined, icon = 'menu', ...rest }) => (
-  <Icon name={icon} color={color} {...rest} />
-);
+const TemplateIcons = ({ color = undefined, icon = 'menu', name, ...rest }) => {
+  return <Icon name={icon} color={color} {...rest} />;
+};
 
 export const Example = TemplateIcons.bind({});
 Example.argTypes = {
@@ -62,5 +62,5 @@ if (Platform.OS === 'android') {
     </View>
   ));
 
-  fillStories.add('Icons', TemplateIcons, Example.args);
+  fillStories.add('Icon', Example);
 }

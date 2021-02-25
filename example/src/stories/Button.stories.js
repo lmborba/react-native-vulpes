@@ -72,6 +72,9 @@ const TemplateButton = ({
       <Text>Enviar</Text>
       <Icon name={icon} />
     </Button>
+    <Button color={color} outline={outline} ghost={ghost}>
+      <Icon name={icon} />
+    </Button>
   </>
 );
 
