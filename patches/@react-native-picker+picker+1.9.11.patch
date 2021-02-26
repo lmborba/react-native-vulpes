@@ -1,0 +1,44 @@
+diff --git a/node_modules/@react-native-picker/picker/js/PickerIOS.web.js b/node_modules/@react-native-picker/picker/js/PickerIOS.web.js
+index 44a192f..911b660 100644
+--- a/node_modules/@react-native-picker/picker/js/PickerIOS.web.js
++++ b/node_modules/@react-native-picker/picker/js/PickerIOS.web.js
+@@ -3,15 +3,13 @@
+  */
+ 
+ import * as React from 'react';
+-import UnimplementedView from 'react-native-web/src/modules/UnimplementedView';
+ 
+ function PickerIOS(): React.Node {
+-  return <UnimplementedView />;
++  return null;
+ }
+ 
+ /**
+  * Fallback for other platforms
+  */
+-PickerIOS.Item = UnimplementedView;
+ 
+ export default PickerIOS;
+diff --git a/node_modules/@react-native-picker/picker/js/PickerIOS.web.js~ b/node_modules/@react-native-picker/picker/js/PickerIOS.web.js~
+new file mode 100644
+index 0000000..44a192f
+--- /dev/null
++++ b/node_modules/@react-native-picker/picker/js/PickerIOS.web.js~
+@@ -0,0 +1,17 @@
++/**
++ * @flow
++ */
++
++import * as React from 'react';
++import UnimplementedView from 'react-native-web/src/modules/UnimplementedView';
++
++function PickerIOS(): React.Node {
++  return <UnimplementedView />;
++}
++
++/**
++ * Fallback for other platforms
++ */
++PickerIOS.Item = UnimplementedView;
++
++export default PickerIOS;

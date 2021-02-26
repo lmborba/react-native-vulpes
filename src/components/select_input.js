@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
 import { Colors } from '../colors';
 import { Fonts } from '../fonts';
+import { Text } from './text';
+import { Icon } from './icon';
 import { Regular, Small } from './typos';
 
 export const SelectItem = (props) => {
@@ -19,7 +21,18 @@ export class SelectInput extends Component {
     };
   }
 
+  inputBorders() {
+    return {
+      borderTopWidth: 0,
+      borderLeftWidth: 0,
+      borderRightWidth: 0,
+      borderBottomColor: this.colorOutline(),
+      borderBottomWidth: 1,
+    };
+  }
+
   handleChange(value) {
+    console.log('Holding', value);
     this.setState({
       placeholder: !value || value.length === 0,
       value: value,
@@ -37,7 +50,39 @@ export class SelectInput extends Component {
     this.props.onBlur && this.props.onBlur();
   }
 
+  iconStyle() {
+    return {
+      marginTop: 13,
+      position: 'absolute',
+      right: 0,
+    };
+  }
+
   render() {
+    const { error, style, label, labelStyle } = this.props;
+    return (
+      <View style={style}>
+        <Regular style={labelStyle}>{label}</Regular>
+        <View style={this.inputBorders()}>
+          <Icon
+            size={16}
+            name={'chevron_down'}
+            style={this.iconStyle()}
+            color="dark_gray"
+          />
+          <Text style={this.textStyle()}>{this.selectedLabel()}</Text>
+          {this.drawPicker()}
+        </View>
+        {error && (
+          <Small style={this.errorStyle()} color={'error'}>
+            {error}
+          </Small>
+        )}
+      </View>
+    );
+  }
+
+  cleanPropsForPicker() {
     const {
       error,
       style,
@@ -53,28 +98,25 @@ export class SelectInput extends Component {
       children,
       ...rest
     } = this.props;
+    return rest;
+  }
+
+  drawPicker() {
+    const { placeholder, children } = this.props;
     return (
-      <View style={style}>
-        <Regular style={labelStyle}>{label}</Regular>
-        <Picker
-          note
-          mode="dropdown"
-          selectedValue={this.state.value}
-          onValueChange={this.handleChange.bind(this)}
-          placeholder={placeholder}
-          onFocus={this.handleFocus.bind(this)}
-          onBlur={this.handleBlur.bind(this)}
-          {...rest}
-          style={this.completeStyle()}
-        >
-          {children}
-        </Picker>
-        {error && (
-          <Small style={this.errorStyle()} color={'error'}>
-            {error}
-          </Small>
-        )}
-      </View>
+      <Picker
+        note
+        mode="dropdown"
+        selectedValue={this.state.value}
+        onValueChange={this.handleChange.bind(this)}
+        placeholder={placeholder}
+        onFocus={this.handleFocus.bind(this)}
+        onBlur={this.handleBlur.bind(this)}
+        {...this.cleanPropsForPicker()}
+        style={this.completeStyle()}
+      >
+        {children}
+      </Picker>
     );
   }
 
@@ -91,15 +133,35 @@ export class SelectInput extends Component {
     };
   }
 
+  selectedLabel() {
+    const mapping = React.Children.map(this.props.children, (item) => {
+      return item.props;
+    });
+    const selected = mapping.find((item) => item.value === this.state.value);
+    if (!selected) return this.props.placeholder;
+    return selected.label;
+  }
+
+  textStyle() {
+    return {
+      ...this.fontStyle(),
+      position: 'absolute',
+      backgroundColor: 'transparent',
+      height: 37,
+      lineHeight: 37,
+      marginTop: 2,
+    };
+  }
+
   completeStyle() {
     const { inputStyle } = this.props;
 
     return {
-      ...this.fontStyle(),
-      borderBottomColor: this.colorOutline(),
-      borderBottomWidth: 1,
-      height: 38,
+      backgroundColor: 'transparent',
+      height: 37,
       marginTop: 2,
+      opacity: 0,
+      border: 0,
       ...this.systemOutline(),
       ...inputStyle,
     };

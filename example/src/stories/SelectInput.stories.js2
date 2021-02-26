@@ -42,16 +42,11 @@ export default {
   },
 };
 
-const TemplateSelectInput = ({ error, ...rest }) => (
-  <SelectInput
-    label={'Field label'}
-    placeholder={'Placeholder'}
-    error={error}
-    {...rest}
-  >
+const TemplateSelectInput = ({ ...rest }) => (
+  <SelectInput label={'Field label'} placeholder={'Placeholder'} {...rest}>
     <SelectItem label="Item 1" value="item_1" />
-    <SelectItem label="Item 2" value="item_2" />
-    <SelectItem label="Item 3" value="item_3" />
+    <SelectItem label="Item 1" value="item_2" />
+    <SelectItem label="Item 1" value="item_3" />
   </SelectInput>
 );
 
@@ -64,7 +59,7 @@ Example.args = {
   labelStyle: undefined,
   inputStyle: undefined,
   value: undefined,
-  onChangeValue: undefined,
+  onChangeText: undefined,
 };
 
 if (Platform.OS === 'android') {

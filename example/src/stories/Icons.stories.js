@@ -32,6 +32,12 @@ export default {
         options: listOfIcons(),
       },
     },
+    size: {
+      description: 'size of the icon in pixels',
+      control: {
+        type: 'number',
+      },
+    },
   },
 };
 
@@ -53,6 +59,7 @@ Example.argTypes = {
 Example.args = {
   color: undefined,
   icon: 'menu',
+  size: undefined,
 };
 
 if (Platform.OS === 'android') {
