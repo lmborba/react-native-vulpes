@@ -2,8 +2,12 @@ import { NativeModules } from 'react-native';
 import { Colors } from './colors';
 import { Button } from './components/button';
 import { GradientView } from './components/gradient_view';
+import { Header } from './components/header';
 import { Icon } from './components/icon';
+import { Content, Page } from './components/page_content';
+import { SelectInput, SelectItem } from './components/select_input';
 import { Text } from './components/text';
+import { TextInput } from './components/text_input';
 import {
   BodyLarge,
   BodyLargeBold,
@@ -20,8 +24,6 @@ import {
   SmallBold,
 } from './components/typos';
 import { Fonts } from './fonts';
-import { TextInput } from './components/text_input';
-import { SelectInput, SelectItem } from './components/select_input';
 
 export {
   Colors,
@@ -46,6 +48,9 @@ export {
   TextInput,
   SelectInput,
   SelectItem,
+  Header,
+  Page,
+  Content,
 };
 
 const { Vulpes } = NativeModules;

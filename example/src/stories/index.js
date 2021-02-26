@@ -5,3 +5,5 @@ import './Icons.stories';
 import './Button.stories';
 import './TextInput.stories';
 import './SelectInput.stories';
+import './Header.stories';
+import './PageContent.stories';

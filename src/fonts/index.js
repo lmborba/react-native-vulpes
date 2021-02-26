@@ -50,7 +50,7 @@ export const Fonts = {
     textAlign: 'left',
   },
   menuTextBold: {
-    fontSize: 10,
+    fontSize: 8,
     color: Colors.dark_gray,
     letterSpacing: 0,
     textAlign: 'center',
@@ -58,8 +58,8 @@ export const Fonts = {
     fontWeight: '700',
   },
   menuText: {
-    fontSize: 10,
-    color: '#919191',
+    fontSize: 8,
+    color: Colors.dark_gray,
     letterSpacing: 0,
     textAlign: 'center',
     fontFamily: 'OpenSans-Regular, Open Sans',
