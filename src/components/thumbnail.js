@@ -1,0 +1,27 @@
+import React from 'react';
+import { Image } from 'react-native';
+import { Colors } from '../colors';
+
+const smallSize = 48;
+const mediumSize = 64;
+const largeSize = 80;
+
+const convertToStyle = (size) => {
+  return {
+    width: size,
+    height: size,
+    borderRadius: size / 2,
+    borderWidth: 2,
+    borderColor: Colors.white,
+  };
+};
+
+const sizesStyle = {
+  small: convertToStyle(smallSize),
+  medium: convertToStyle(mediumSize),
+  large: convertToStyle(largeSize),
+};
+
+export const Thumbnail = ({ source, size, ...restProps }) => {
+  return <Image source={source} style={sizesStyle[size]} />;
+};

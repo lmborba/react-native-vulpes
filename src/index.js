@@ -1,6 +1,8 @@
 import { NativeModules } from 'react-native';
 import { Colors } from './colors';
 import { Button } from './components/button';
+import { Card, TicketCard } from './components/card';
+import { Carousel } from './components/carousel';
 import { GradientView } from './components/gradient_view';
 import { Header } from './components/header';
 import { Icon } from './components/icon';
@@ -8,6 +10,7 @@ import { Content, Page } from './components/page_content';
 import { SelectInput, SelectItem } from './components/select_input';
 import { Text } from './components/text';
 import { TextInput } from './components/text_input';
+import { Thumbnail } from './components/thumbnail';
 import {
   BodyLarge,
   BodyLargeBold,
@@ -51,6 +54,10 @@ export {
   Header,
   Page,
   Content,
+  Card,
+  Thumbnail,
+  TicketCard,
+  Carousel,
 };
 
 const { Vulpes } = NativeModules;

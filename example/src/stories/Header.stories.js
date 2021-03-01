@@ -3,7 +3,6 @@ import React from 'react';
 import { Platform, View } from 'react-native';
 import { Header } from 'react-native-vulpes';
 
-const mobileStyleWidget = { maxWidth: 320 };
 export default {
   title: 'Example/Header',
   component: Header,
@@ -13,13 +12,6 @@ export default {
       control: 'fn',
     },
   },
-  decorators: [
-    (Story) => (
-      <View style={mobileStyleWidget}>
-        <Story />
-      </View>
-    ),
-  ],
 };
 
 const backActionExample = () => {

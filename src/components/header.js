@@ -47,3 +47,4 @@ export class Header extends Component {
     backAction && backAction();
   }
 }
+Header.displayName = 'Header';

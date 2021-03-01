@@ -1,9 +1,8 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Page, Content, Header, H4 } from 'react-native-vulpes';
+import { Content, H4, Header, Page } from 'react-native-vulpes';
 
-const mobileStyleWidget = { maxWidth: 320 };
 export default {
   title: 'Example/PageContent',
   component: Page,
@@ -13,13 +12,6 @@ export default {
       control: 'fn',
     },
   },
-  decorators: [
-    (Story) => (
-      <View style={mobileStyleWidget}>
-        <Story />
-      </View>
-    ),
-  ],
 };
 
 const backActionExample = () => {
