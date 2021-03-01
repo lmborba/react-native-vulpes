@@ -45,7 +45,7 @@ Example.args = {
 
 if (Platform.OS === 'android') {
   const fillStories = storiesOf('Color', module).addDecorator((Story) => (
-    <View style={{ margin: 10 }}>
+    <View>
       <Story />
     </View>
   ));
