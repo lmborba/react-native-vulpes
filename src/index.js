@@ -11,6 +11,7 @@ import { SelectInput, SelectItem } from './components/select_input';
 import { Text } from './components/text';
 import { TextInput } from './components/text_input';
 import { Thumbnail } from './components/thumbnail';
+import { List, ListItem } from './components/list';
 import {
   BodyLarge,
   BodyLargeBold,
@@ -58,6 +59,8 @@ export {
   Thumbnail,
   TicketCard,
   Carousel,
+  List,
+  ListItem,
 };
 
 const { Vulpes } = NativeModules;
