@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { Image, View } from 'react-native';
 import { Colors } from '../colors';
 import { Button } from './button';
 import { Icon } from './icon';
@@ -15,6 +15,26 @@ const CloseModal = (props) => {
   );
 };
 
+const modalContainer = {
+  borderWidth: 1,
+  borderColor: Colors.light_gray,
+  borderTopLeftRadius: 20,
+  borderTopRightRadius: 20,
+};
+const modalContent = {
+  marginLeft: 16,
+  marginRight: 16,
+  marginTop: 12,
+  marginBottom: 16,
+};
+const modalImage = {
+  marginTop: 27,
+  marginBottom: 25,
+  height: 120,
+  width: '100%',
+  alignSelf: 'center',
+  resizeMode: 'contain',
+};
 export class Modal extends Component {
   populateChildren() {
     const { children } = this.props;
@@ -29,37 +49,13 @@ export class Modal extends Component {
   }
 
   render() {
-    const { onClose, onGoto, gotoText, title, image, children } = this.props;
+    const { onClose, onGoto, gotoText, title, image } = this.props;
     return (
-      <View
-        style={{
-          borderWidth: 1,
-          borderColor: Colors.light_gray,
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
-        }}
-      >
+      <View style={modalContainer}>
         <CloseModal onClose={onClose} />
-        <View
-          style={{
-            marginLeft: 16,
-            marginRight: 16,
-            marginTop: 12,
-            marginBottom: 16,
-          }}
-        >
+        <View style={modalContent}>
           <H4>{title}</H4>
-          <Image
-            source={image}
-            style={{
-              marginTop: 27,
-              marginBottom: 25,
-              height: 120,
-              width: '100%',
-              alignSelf: 'center',
-              resizeMode: 'contain',
-            }}
-          />
+          <Image source={image} style={modalImage} />
           {this.populateChildren()}
           <Button onPress={onGoto}>
             <Text>{gotoText}</Text>
