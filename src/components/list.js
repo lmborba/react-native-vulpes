@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Colors } from '../colors';
+import { Icon } from './icon';
 import { Regular } from './typos';
 
 const listContainer = { marginTop: 8 };
@@ -10,14 +11,39 @@ const listItem = {
   borderBottomWidth: 1,
 };
 
+const checkedListItem = {
+  padding: 6,
+  flexDirection: 'row',
+};
+
+const checkedIcon = {
+  marginTop: 5,
+  marginRight: 8,
+};
+
 export const List = (props) => {
-  return <View style={listContainer}>{props.children}</View>;
+  return (
+    <View style={listContainer}>
+      {React.Children.map(props.children, (child, i) => {
+        return React.cloneElement(child, { checked: props.checked });
+      })}
+    </View>
+  );
 };
 
 export const ListItem = (props) => {
-  return (
-    <View style={listItem}>
-      <Regular>{props.children}</Regular>
-    </View>
-  );
+  if (props.checked) {
+    return (
+      <View style={checkedListItem}>
+        <Icon size={12} name={'check'} style={checkedIcon} />
+        <Regular>{props.children}</Regular>
+      </View>
+    );
+  } else {
+    return (
+      <View style={listItem}>
+        <Regular>{props.children}</Regular>
+      </View>
+    );
+  }
 };

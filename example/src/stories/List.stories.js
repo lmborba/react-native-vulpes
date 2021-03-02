@@ -10,12 +10,20 @@ export default {
 };
 
 const TemplateList = ({ ...rest }) => (
-  <List>
-    <ListItem>Item 1</ListItem>
-    <ListItem>Item 2</ListItem>
-    <ListItem>Item 3</ListItem>
-    <ListItem>Item 4</ListItem>
-  </List>
+  <>
+    <List>
+      <ListItem>Item 1</ListItem>
+      <ListItem>Item 2</ListItem>
+      <ListItem>Item 3</ListItem>
+      <ListItem>Item 4</ListItem>
+    </List>
+    <List checked>
+      <ListItem>Item 1</ListItem>
+      <ListItem>Item 2</ListItem>
+      <ListItem>Item 3</ListItem>
+      <ListItem>Item 4</ListItem>
+    </List>
+  </>
 );
 
 export const Example = TemplateList.bind({});

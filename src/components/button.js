@@ -17,7 +17,10 @@ class Button extends Component {
         return React.cloneElement(child, {
           color: this.textColor(),
           fontStyle: Fonts.regularBold,
-          style: this.textStyle({ isFirst: i === 0 }),
+          style: this.textStyle({
+            isFirst: i === 0,
+            isIcon: child.type.displayName === 'Icon',
+          }),
         });
       }
       return child;
@@ -36,11 +39,16 @@ class Button extends Component {
     return 'white';
   }
 
-  textStyle({ isFirst }) {
-    return {
+  textStyle({ isFirst, isIcon }) {
+    const ret = {
       ...this.props.textStyle,
       marginLeft: isFirst ? undefined : 8,
     };
+    if (isIcon) {
+      ret.marginTop = 'auto';
+      ret.marginBottom = 'auto';
+    }
+    return ret;
   }
 
   backgroundColor() {

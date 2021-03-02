@@ -12,6 +12,7 @@ import { Text } from './components/text';
 import { TextInput } from './components/text_input';
 import { Thumbnail } from './components/thumbnail';
 import { List, ListItem } from './components/list';
+import { Modal } from './components/modal';
 import {
   BodyLarge,
   BodyLargeBold,
@@ -59,6 +60,7 @@ export {
   Thumbnail,
   TicketCard,
   Carousel,
+  Modal,
   List,
   ListItem,
 };
