@@ -4,7 +4,7 @@ import { Colors } from '../colors';
 
 const Text = ({ style, title, fontStyle, color, ...props }) => {
   const colorStyle = { color: Colors[color] };
-  const titleStyle = title ? { marginBottom: 32 } : {};
+  const titleStyle = title ? { marginBottom: 32 } : {}
   const textStyle = {
     ...fontStyle,
     ...colorStyle,

@@ -9,15 +9,9 @@ function capitalize(s) {
 export const generateTypography = function (definedStyle) {
   const fontStyle = Fonts[definedStyle];
 
-  let component = ({ style, children, color, title, ...props }) => {
+  let component = ({ style, children, color, ...props }) => {
     return (
-      <Text
-        color={color}
-        fontStyle={fontStyle}
-        title={title}
-        style={style}
-        {...props}
-      >
+      <Text color={color} fontStyle={fontStyle} style={style} {...props}>
         {children}
       </Text>
     );
