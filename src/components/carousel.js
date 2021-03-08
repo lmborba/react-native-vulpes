@@ -22,13 +22,13 @@ export class Carousel extends Component {
 
   componentExtraStyle(active) {
     const ret = {
-      margin: 4,
-      width: this.componentWidth() - 8,
+      margin: 8,
+      width: this.componentWidth() - 16,
     };
     if (!active) {
       ret.transform = [
         {
-          scale: 0.85,
+          scale: 1,
         },
       ];
     }
