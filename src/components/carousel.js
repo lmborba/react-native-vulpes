@@ -8,7 +8,7 @@ export class Carousel extends Component {
     this.state = {
       width: 320,
       height: 200,
-      currentIndex: 0,
+      currentIndex: props.firstIndex ? props.firstIndex : 0,
     };
   }
 
