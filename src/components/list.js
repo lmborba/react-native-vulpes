@@ -6,7 +6,10 @@ import { Regular } from './typos';
 
 const listContainer = { marginTop: 8 };
 const listItem = {
-  padding: 16,
+  paddingTop: 16,
+  paddingBottom: 16,
+  paddingLeft: 0,
+  paddingRight: 0,
   borderBottomColor: Colors.light_gray,
   borderBottomWidth: 1,
 };
