@@ -22,6 +22,14 @@ const sizesStyle = {
   large: convertToStyle(largeSize),
 };
 
-export const Thumbnail = ({ source, size, ...restProps }) => {
-  return <Image source={source} style={sizesStyle[size]} />;
+export const Thumbnail = ({ source, size, style, ...restProps }) => {
+  return (
+    <Image
+      source={source}
+      style={{
+        ...sizesStyle[size],
+        ...style,
+      }}
+    />
+  );
 };
