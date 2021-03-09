@@ -3,16 +3,17 @@ import { Colors } from './colors';
 import { Button } from './components/button';
 import { Card, TicketCard } from './components/card';
 import { Carousel } from './components/carousel';
+import { Divider } from './components/divider';
 import { GradientView } from './components/gradient_view';
 import { Header } from './components/header';
 import { Icon } from './components/icon';
+import { List, ListItem } from './components/list';
+import { Modal } from './components/modal';
 import { Content, Page } from './components/page_content';
 import { SelectInput, SelectItem } from './components/select_input';
 import { Text } from './components/text';
 import { TextInput } from './components/text_input';
 import { Thumbnail } from './components/thumbnail';
-import { List, ListItem } from './components/list';
-import { Modal } from './components/modal';
 import {
   BodyLarge,
   BodyLargeBold,
@@ -39,6 +40,7 @@ export {
   H2,
   H3,
   H4,
+  Divider,
   BodyLarge,
   BodyLargeBold,
   Placeholder,
