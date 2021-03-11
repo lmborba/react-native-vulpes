@@ -6,8 +6,14 @@ export const Page = (props) => (
   <View style={style.pageContainer}>{props.children}</View>
 );
 
-export const Content = (props) => {
-  return (
-    <ScrollView style={style.contentContainer}>{props.children}</ScrollView>
-  );
+export const Content = ({ noPadding, style: customStyle, ...props }) => {
+  let completeStyle = style.contentContainer;
+  if (noPadding) {
+    completeStyle = {
+      ...completeStyle,
+      ...style.noPadding,
+    };
+  }
+  completeStyle = { ...completeStyle, ...customStyle };
+  return <ScrollView style={completeStyle}>{props.children}</ScrollView>;
 };
