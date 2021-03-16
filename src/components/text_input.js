@@ -11,6 +11,15 @@ export class TextInput extends Component {
       placeholder: !props.value || props.value.length === 0,
       focused: false,
     };
+    this.field = null;
+  }
+
+  focus() {
+    this.field && this.field.focus();
+  }
+
+  handleReference(field) {
+    this.field = field;
   }
 
   handleChange(text) {
@@ -49,6 +58,7 @@ export class TextInput extends Component {
       <View style={style}>
         <Regular style={labelStyle}>{label}</Regular>
         <Input
+          ref={this.handleReference}
           placeholder={placeholder}
           placeholderTextColor={this.fontStyle().color}
           onFocus={this.handleFocus.bind(this)}

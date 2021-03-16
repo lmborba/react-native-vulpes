@@ -19,6 +19,15 @@ export class SelectInput extends Component {
       focused: false,
       value: props.value,
     };
+    this.field = null;
+  }
+
+  focus() {
+    this.field && this.field.focus();
+  }
+
+  handleReference(field) {
+    this.field = field;
   }
 
   inputBorders() {
