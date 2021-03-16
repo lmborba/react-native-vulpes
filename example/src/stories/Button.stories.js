@@ -5,7 +5,7 @@ import { Button as B, Colors, Icon, Text } from 'react-native-vulpes';
 import { listOfIcons } from '../../../src/components/icon';
 
 const colorList = () => {
-  var keys = [];
+  var keys = [undefined];
   for (var k in Colors) {
     if (k.substring(0, 8) !== 'gradient') {
       keys.push(k);
@@ -37,6 +37,12 @@ export default {
         type: 'boolean',
       },
     },
+    disabled: {
+      description: 'disables the button',
+      control: {
+        type: 'boolean',
+      },
+    },
     icon: {
       description: 'icon to be used',
       control: {
@@ -54,25 +60,26 @@ const Button = (props) => {
 };
 
 const TemplateButton = ({
-  color = 'red',
+  color = undefined,
   outline = undefined,
   ghost = undefined,
+  disabled = undefined,
   icon = 'like_empty',
   ...rest
 }) => (
   <>
-    <Button color={color} outline={outline} ghost={ghost}>
+    <Button color={color} outline={outline} ghost={ghost} disabled={disabled}>
       <Text>Enviar</Text>
     </Button>
-    <Button color={color} outline={outline} ghost={ghost}>
+    <Button color={color} outline={outline} ghost={ghost} disabled={disabled}>
       <Icon name={icon} />
       <Text>Enviar</Text>
     </Button>
-    <Button color={color} outline={outline} ghost={ghost}>
+    <Button color={color} outline={outline} ghost={ghost} disabled={disabled}>
       <Text>Enviar</Text>
       <Icon name={icon} />
     </Button>
-    <Button color={color} outline={outline} ghost={ghost}>
+    <Button color={color} outline={outline} ghost={ghost} disabled={disabled}>
       <Icon name={icon} />
     </Button>
   </>
@@ -90,9 +97,10 @@ Example.argTypes = {
 };
 
 Example.args = {
-  color: 'blue',
+  color: undefined,
   outline: false,
   ghost: false,
+  disabled: false,
   icon: 'like_empty',
 };
 

@@ -29,6 +29,7 @@ class Button extends Component {
 
   primaryColor() {
     if (this.props.color) return this.props.color;
+    if (this.props.disabled) return 'light_gray';
     return 'dark_gray';
   }
 
@@ -80,10 +81,14 @@ class Button extends Component {
   }
 
   render() {
-    const { onPress } = this.props;
+    const { onPress, disabled } = this.props;
 
     return (
-      <TouchableOpacity onPress={onPress} style={this.buttonStyle()}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={this.buttonStyle()}
+        disabled={disabled}
+      >
         {this.renderField()}
       </TouchableOpacity>
     );
