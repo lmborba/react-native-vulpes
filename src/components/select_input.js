@@ -104,6 +104,7 @@ export class SelectInput extends Component {
       onFocus,
       value,
       children,
+      ref,
       ...rest
     } = this.props;
     return rest;
@@ -113,6 +114,7 @@ export class SelectInput extends Component {
     const { placeholder, children } = this.props;
     return (
       <Picker
+        ref={this.handleReference.bind(this)}
         prompt={placeholder}
         note
         mode="dropdown"

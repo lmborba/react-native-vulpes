@@ -50,6 +50,7 @@ export class TextInput extends Component {
       inputStyle,
       onPress,
       onBlur,
+      ref,
       onFocus,
       value,
       ...rest
@@ -58,7 +59,7 @@ export class TextInput extends Component {
       <View style={style}>
         <Regular style={labelStyle}>{label}</Regular>
         <Input
-          ref={this.handleReference}
+          ref={this.handleReference.bind(this)}
           placeholder={placeholder}
           placeholderTextColor={this.fontStyle().color}
           onFocus={this.handleFocus.bind(this)}
