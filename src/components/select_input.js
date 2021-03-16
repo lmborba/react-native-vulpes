@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
 import { Colors } from '../colors';
 import { Fonts } from '../fonts';
-import { Text } from './text';
 import { Icon } from './icon';
+import { Text } from './text';
 import { Regular, Small } from './typos';
 
 export const SelectItem = (props) => {
@@ -32,7 +32,6 @@ export class SelectInput extends Component {
   }
 
   handleChange(value) {
-    console.log('Holding', value);
     this.setState({
       placeholder: !value || value.length === 0,
       value: value,
@@ -88,7 +87,7 @@ export class SelectInput extends Component {
       style,
       label,
       placeholder,
-      onChangeText,
+      onValueChange,
       labelStyle,
       inputStyle,
       onPress,
@@ -105,6 +104,7 @@ export class SelectInput extends Component {
     const { placeholder, children } = this.props;
     return (
       <Picker
+        prompt={placeholder}
         note
         mode="dropdown"
         selectedValue={this.state.value}
@@ -115,6 +115,7 @@ export class SelectInput extends Component {
         {...this.cleanPropsForPicker()}
         style={this.completeStyle()}
       >
+        {placeholder ? <Picker.Item label={placeholder} value={null} /> : null}
         {children}
       </Picker>
     );
