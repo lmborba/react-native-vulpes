@@ -115,7 +115,9 @@ export class SelectInput extends Component {
         {...this.cleanPropsForPicker()}
         style={this.completeStyle()}
       >
-        {placeholder ? <Picker.Item label={placeholder} value={null} /> : null}
+        {placeholder ? (
+          <Picker.Item label={placeholder} value={null} color={Colors.gray} />
+        ) : null}
         {children}
       </Picker>
     );
