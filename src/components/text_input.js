@@ -10,14 +10,12 @@ export class TextInput extends Component {
     this.state = {
       placeholder: !props.value || props.value.length === 0,
       focused: false,
-      value: props.value,
     };
   }
 
   handleChange(text) {
     this.setState({
       placeholder: text.length === 0,
-      value: text,
     });
     this.props.onChangeText && this.props.onChangeText(text);
   }
@@ -57,7 +55,7 @@ export class TextInput extends Component {
           onBlur={this.handleBlur.bind(this)}
           {...rest}
           style={this.completeStyle()}
-          value={this.state.value}
+          value={this.props.value}
           onChangeText={this.handleChange.bind(this)}
         />
         {error && (
