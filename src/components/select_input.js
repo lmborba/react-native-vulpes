@@ -22,6 +22,15 @@ export class SelectInput extends Component {
     this.field = null;
   }
 
+  componentDidUpdate() {
+    const { value } = this.props;
+    this.onUpdate(() => {
+      this.setState({
+        value: value,
+      });
+    });
+  }
+
   focus() {
     this.field && this.field.focus();
   }
