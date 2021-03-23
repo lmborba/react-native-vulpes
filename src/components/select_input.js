@@ -17,18 +17,8 @@ export class SelectInput extends Component {
     this.state = {
       placeholder: !props.value || props.value.length === 0,
       focused: false,
-      value: props.value,
     };
     this.field = null;
-  }
-
-  componentDidUpdate() {
-    const { value } = this.props;
-    this.onUpdate(() => {
-      this.setState({
-        value: value,
-      });
-    });
   }
 
   focus() {
@@ -52,7 +42,6 @@ export class SelectInput extends Component {
   handleChange(value) {
     this.setState({
       placeholder: !value || value.length === 0,
-      value: value,
     });
     this.props.onChangeValue && this.props.onChangeValue(value);
   }
@@ -127,7 +116,7 @@ export class SelectInput extends Component {
         prompt={placeholder}
         note
         mode="dropdown"
-        selectedValue={this.state.value}
+        selectedValue={this.props.value}
         onValueChange={this.handleChange.bind(this)}
         placeholder={placeholder}
         onFocus={this.handleFocus.bind(this)}
@@ -160,7 +149,7 @@ export class SelectInput extends Component {
     const mapping = React.Children.map(this.props.children, (item) => {
       return item.props;
     });
-    const selected = mapping.find((item) => item.value === this.state.value);
+    const selected = mapping.find((item) => item.value === this.props.value);
     if (!selected) return this.props.placeholder;
     return selected.label;
   }
