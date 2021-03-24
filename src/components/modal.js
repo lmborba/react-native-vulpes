@@ -20,6 +20,7 @@ const modalContainer = {
   borderColor: Colors.light_gray,
   borderTopLeftRadius: 20,
   borderTopRightRadius: 20,
+  backgroundColor: Colors.white,
 };
 const modalContent = {
   marginLeft: 16,
