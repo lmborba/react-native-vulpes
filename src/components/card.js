@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Colors } from '../colors';
 import style from '../styles/card';
 import { Dash } from './dash';
+import { Thumbnail } from './thumbnail';
 
 export class Card extends Component {
   changedColor() {
@@ -15,12 +16,12 @@ export class Card extends Component {
   }
   render() {
     return (
-      <>
+      <View>
         <View style={style.cardContainer}>{this.props.children}</View>
         <View style={style.outerCardBorder}>
           <View style={{ ...style.cardTopBorder, ...this.changedColor() }} />
         </View>
-      </>
+      </View>
     );
   }
 }
@@ -53,8 +54,41 @@ export class TicketCard extends Component {
   }
   render() {
     return (
-      <Card>
+      <Card {...this.props}>
         <TicketCardSeparator />
+        {this.props.children}
+      </Card>
+    );
+  }
+}
+
+const ProfileCardSeparator = (props) => {
+  return (
+    <View style={style.profileCardDividerContainer}>
+      <View style={style.profileCardDividerContent}>
+        <View style={style.profileCardDivider} />
+      </View>
+
+      <View style={style.profileCardImgContent}>
+        <Thumbnail size="medium" source="static/media/thumb.5ebfbd91.png" />
+      </View>
+    </View>
+  );
+};
+
+export class ProfileCard extends Component {
+  changedColor() {
+    const { color } = this.props;
+    const data = {};
+    if (color) {
+      data.backgroundColor = Colors[color];
+    }
+    return data;
+  }
+  render() {
+    return (
+      <Card {...this.props}>
+        <ProfileCardSeparator />
         {this.props.children}
       </Card>
     );

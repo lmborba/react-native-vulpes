@@ -10,4 +10,6 @@ import './TextColor.stories';
 import './TextInput.stories';
 import './Thumbnail.stories';
 import './TicketCard.stories';
+import './ProfileCard.stories';
 import './Typography.stories';
+import './Tag.stories';

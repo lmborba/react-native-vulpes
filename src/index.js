@@ -1,7 +1,7 @@
 import { NativeModules } from 'react-native';
 import { Colors } from './colors';
 import { Button } from './components/button';
-import { Card, TicketCard } from './components/card';
+import { Card, ProfileCard, TicketCard } from './components/card';
 import { Carousel } from './components/carousel';
 import { Divider } from './components/divider';
 import { GradientView } from './components/gradient_view';
@@ -11,6 +11,7 @@ import { List, ListItem } from './components/list';
 import { Modal } from './components/modal';
 import { Content, Page } from './components/page_content';
 import { SelectInput, SelectItem } from './components/select_input';
+import { Tag } from './components/tag';
 import { Text } from './components/text';
 import { TextInput } from './components/text_input';
 import { Thumbnail } from './components/thumbnail';
@@ -61,10 +62,12 @@ export {
   Card,
   Thumbnail,
   TicketCard,
+  ProfileCard,
   Carousel,
   Modal,
   List,
   ListItem,
+  Tag,
 };
 
 const { Vulpes } = NativeModules;
