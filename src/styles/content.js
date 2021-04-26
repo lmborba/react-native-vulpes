@@ -20,4 +20,7 @@ export default {
     height: windowHeight,
     flexDirection: 'column',
   },
+  dummyView: {
+    height: 32,
+  },
 };
