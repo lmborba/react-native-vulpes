@@ -6,15 +6,6 @@ import { Icon } from './icon';
 import { Text } from './text';
 import { H4 } from './typos';
 
-const CloseModal = (props) => {
-  return (
-    <Button ghost onPress={props.onClose}>
-      <Icon size={12} name="close" />
-      <Text>Fechar</Text>
-    </Button>
-  );
-};
-
 const modalContainer = {
   borderWidth: 1,
   borderColor: Colors.light_gray,
@@ -22,12 +13,14 @@ const modalContainer = {
   borderTopRightRadius: 20,
   backgroundColor: Colors.white,
 };
+
 const modalContent = {
   marginLeft: 16,
   marginRight: 16,
   marginTop: 12,
   marginBottom: 16,
 };
+
 const modalImage = {
   marginTop: 27,
   marginBottom: 25,
@@ -36,6 +29,20 @@ const modalImage = {
   alignSelf: 'center',
   resizeMode: 'contain',
 };
+
+const closeModalIcon = {
+  marginTop: 4,
+};
+
+const CloseModal = (props) => {
+  return (
+    <Button ghost onPress={props.onClose}>
+      <Icon size={12} name="close" style={closeModalIcon} />
+      <Text>Fechar</Text>
+    </Button>
+  );
+};
+
 export class Modal extends Component {
   populateChildren() {
     const { children } = this.props;

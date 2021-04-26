@@ -71,5 +71,6 @@ export default {
     paddingLeft: 16,
     paddingRight: 16,
     paddingBottom: 20,
+    backgroundColor: Colors.white,
   },
 };

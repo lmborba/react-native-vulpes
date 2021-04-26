@@ -43,14 +43,6 @@ const TicketCardSeparator = (props) => {
 };
 
 export class TicketCard extends Component {
-  changedColor() {
-    const { color } = this.props;
-    const data = {};
-    if (color) {
-      data.backgroundColor = Colors[color];
-    }
-    return data;
-  }
   render() {
     return (
       <Card>

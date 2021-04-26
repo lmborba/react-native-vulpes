@@ -17,10 +17,13 @@ class Button extends Component {
         return React.cloneElement(child, {
           color: this.textColor(),
           fontStyle: Fonts.regularBold,
-          style: this.textStyle({
-            isFirst: i === 0,
-            isIcon: child.type.displayName === 'Icon',
-          }),
+          style: {
+            ...this.textStyle({
+              isFirst: i === 0,
+              isIcon: child.type.displayName === 'Icon',
+            }),
+            ...child.props.style,
+          },
         });
       }
       return child;
