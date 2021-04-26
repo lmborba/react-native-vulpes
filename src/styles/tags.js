@@ -1,0 +1,40 @@
+import { Platform } from 'react-native';
+import { Colors } from '../colors';
+
+const buttonHeight = 24;
+const paddingHorizontal = 16;
+const paddingVertical = 0;
+
+const buttonStyle = {
+  borderRadius: buttonHeight / 2,
+  paddingTop: paddingVertical,
+  paddingBottom: paddingVertical,
+  paddingLeft: paddingHorizontal,
+  paddingRight: paddingHorizontal,
+  height: buttonHeight,
+  flex: null,
+  width: Platform.OS === 'web' ? 'fit-content' : null,
+  alignItems: 'center',
+  alignSelf: 'flex-start',
+  flexDirection: 'row',
+};
+
+export default {
+  defaultStyle: {
+    ...buttonStyle,
+    backgroundColor: Colors.dark_gray,
+    borderColor: null,
+    borderWidth: 0,
+  },
+  outlineStyle: {
+    ...buttonStyle,
+    borderColor: Colors.dark_gray,
+    borderWidth: 1,
+  },
+  ghostStyle: {
+    ...buttonStyle,
+    backgroundColor: null,
+    borderColor: null,
+    borderWidth: 0,
+  },
+};

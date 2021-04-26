@@ -1,6 +1,6 @@
 {
   "name": "react-native-vulpes",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "React Native implementation of the Vulpes design system",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -49,6 +49,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.13.16",
     "@babel/preset-typescript": "^7.13.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
@@ -159,10 +160,10 @@
     "commitMessage": "docs: deploying storybook [skip ci]"
   },
   "dependencies": {
-    "patch-package": "^6.1.0-0",
     "@react-native-picker/picker": "^1.9.11",
     "core-js": "^3.9.0",
     "gradient-parser": "^1.0.0",
+    "patch-package": "^6.1.0-0",
     "react-native-dash": "^0.0.11",
     "react-native-device-info": "^8.0.2",
     "react-native-icomoon": "^0.1.1",

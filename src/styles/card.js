@@ -2,7 +2,8 @@ import { Colors } from '../colors';
 
 const radius = 10;
 const borderTopHeight = 4;
-const reaminingBorderHeight = 1;
+const remainingBorderHeight = 1;
+const cardPadding = 16;
 
 export default {
   outerCardBorder: {
@@ -66,11 +67,33 @@ export default {
   cardContainer: {
     borderRadius: radius,
     borderColor: Colors.light_gray,
-    borderWidth: reaminingBorderHeight,
+    borderWidth: remainingBorderHeight,
     paddingTop: 20,
-    paddingLeft: 16,
-    paddingRight: 16,
+    paddingLeft: cardPadding,
+    paddingRight: cardPadding,
     paddingBottom: 20,
     backgroundColor: Colors.white,
+  },
+
+  profileCardDivider: {
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.light_gray,
+  },
+  profileCardDividerContainer: {
+    marginLeft: -cardPadding,
+    marginRight: -cardPadding,
+    marginBottom: 8,
+  },
+
+  profileCardDividerContent: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
+  },
+
+  profileCardImgContent: {
+    paddingLeft: cardPadding,
+    paddingRight: cardPadding,
   },
 };

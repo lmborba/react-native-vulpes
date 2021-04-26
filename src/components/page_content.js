@@ -15,5 +15,10 @@ export const Content = ({ noPadding, style: customStyle, ...props }) => {
     };
   }
   completeStyle = { ...completeStyle, ...customStyle };
-  return <ScrollView style={completeStyle}>{props.children}</ScrollView>;
+  return (
+    <ScrollView style={completeStyle}>
+      <View style={style.dummyView} />
+      {props.children}
+    </ScrollView>
+  );
 };
