@@ -13,6 +13,13 @@ const colorList = () => {
   return keys;
 };
 
+const imageList = () => {
+  return [
+    'static/media/thumb.5ebfbd91.png',
+    'https://is2-ssl.mzstatic.com/image/thumb/Purple114/v4/26/44/72/2644724f-d58e-3097-9f6c-da427946c99e/source/60x60bb.jpg',
+  ];
+};
+
 const mobileStyleWidget = { maxWidth: 320 };
 export default {
   title: 'Example/ProfileCard',
@@ -24,6 +31,13 @@ export default {
       control: {
         type: 'select',
         options: colorList(),
+      },
+      source: {
+        description: 'source for profile image',
+        control: {
+          type: 'select',
+          options: imageList(),
+        },
       },
     },
   },
@@ -39,8 +53,18 @@ const TemplateGradientView = ({ ...rest }) => {
 };
 
 export const Example = TemplateGradientView.bind({});
+Example.argTypes = {
+  source: {
+    description: 'source for profile image',
+    control: {
+      type: 'select',
+      options: imageList(),
+    },
+  },
+};
 Example.args = {
   color: 'cyan',
+  source: 'static/media/thumb.5ebfbd91.png',
 };
 
 if (Platform.OS === 'android') {

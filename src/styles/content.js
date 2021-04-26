@@ -8,7 +8,6 @@ export default {
     borderTopRightRadius: 20,
     backgroundColor: Colors.white,
     marginTop: -24,
-    paddingTop: 32,
     paddingLeft: 16,
     paddingRight: 16,
     flex: 1,

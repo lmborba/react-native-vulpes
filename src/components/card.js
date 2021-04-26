@@ -70,7 +70,7 @@ const ProfileCardSeparator = (props) => {
       </View>
 
       <View style={style.profileCardImgContent}>
-        <Thumbnail size="medium" source="static/media/thumb.5ebfbd91.png" />
+        <Thumbnail size="medium" source={props.source} />
       </View>
     </View>
   );
@@ -88,7 +88,7 @@ export class ProfileCard extends Component {
   render() {
     return (
       <Card {...this.props}>
-        <ProfileCardSeparator />
+        <ProfileCardSeparator source={this.props.source} />
         {this.props.children}
       </Card>
     );
