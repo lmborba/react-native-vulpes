@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { List, ListItem, Sepata } from 'react-native-vulpes';
+import { List, ListItem } from 'react-native-vulpes';
 
 export default {
   title: 'Example/List',
