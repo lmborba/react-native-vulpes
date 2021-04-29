@@ -3,9 +3,11 @@ import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import image from '../../assets/images/header.png';
 import { Icon } from './icon';
+import { H2 } from './typos';
 
 export class Header extends Component {
   render() {
+    console.log(this.props);
     const { backAction } = this.props;
     return (
       <View>
@@ -18,14 +20,26 @@ export class Header extends Component {
               <Icon name="long_arrow_left" color="white" size={18} />
             </TouchableOpacity>
           )}
+          {this.mainTitle(this.props.title)}
         </ImageBackground>
       </View>
     );
   }
 
+  mainTitle(title) {
+    if (!title) return null;
+    const style = { marginTop: 24 };
+    return (
+      <H2 style={style} color={'white'}>
+        {title}
+      </H2>
+    );
+  }
+
   backButtonStyle() {
     return {
-      width: 18,
+      padding: 3,
+      width: 28,
     };
   }
 
@@ -34,9 +48,14 @@ export class Header extends Component {
     return 0;
   }
 
+  titleDiference() {
+    if (!this.props.title) return 0;
+    return 16 + 16 + 33;
+  }
+
   headerStyle() {
     return {
-      height: 90 + this.notchDifference(),
+      height: 90 + this.notchDifference() + this.titleDiference(),
       paddingTop: 24 + this.notchDifference(),
       paddingLeft: 16,
       paddingRight: 16,

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { List, ListItem } from 'react-native-vulpes';
+import { List, ListItem, Sepata } from 'react-native-vulpes';
 
 export default {
   title: 'Example/List',
@@ -9,15 +9,20 @@ export default {
   argTypes: {},
 };
 
+const press = () => {
+  console.log('PRESS');
+};
+
 const TemplateList = ({ ...rest }) => (
   <>
-    <List>
+    <List title={'Titulo 1'}>
       <ListItem>Item 1</ListItem>
       <ListItem>Item 2</ListItem>
       <ListItem>Item 3</ListItem>
-      <ListItem>Item 4</ListItem>
+      <ListItem onPress={press}>Item 4</ListItem>
     </List>
-    <List checked>
+
+    <List checked title={'Titulo 2'}>
       <ListItem>Item 1</ListItem>
       <ListItem>Item 2</ListItem>
       <ListItem>Item 3</ListItem>

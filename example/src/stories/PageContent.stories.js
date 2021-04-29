@@ -27,9 +27,25 @@ const TemplatePageContent = ({ backAction = backActionExample, ...rest }) => (
   </Page>
 );
 
+const TemplatePageContentTitle = ({
+  backAction = backActionExample,
+  ...rest
+}) => (
+  <Page>
+    <Header backAction={backAction} {...rest} title={'Título principal'} />
+    <Content />
+  </Page>
+);
+
 export const Example = TemplatePageContent.bind({});
 Example.args = {
   backAction: backActionExample,
+};
+
+export const Example2 = TemplatePageContentTitle.bind({});
+Example2.args = {
+  backAction: backActionExample,
+  title: 'Titulo principal',
 };
 
 if (Platform.OS === 'android') {
@@ -40,4 +56,5 @@ if (Platform.OS === 'android') {
   ));
 
   fillStories.add('PageContent', TemplatePageContent, Example.args);
+  fillStories.add('PageContent', TemplatePageContentTitle, Example2.args);
 }

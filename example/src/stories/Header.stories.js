@@ -18,13 +18,23 @@ const backActionExample = () => {
   console.warn('BACK ACTION');
 };
 
-const TemplateGradientView = ({ backAction = backActionExample, ...rest }) => (
+const HeaderExample = ({ backAction = backActionExample, ...rest }) => (
   <Header backAction={backAction} {...rest} />
 );
 
-export const Example = TemplateGradientView.bind({});
-Example.args = {
+const HeaderExampleTitle = ({ backAction = backActionExample, ...rest }) => (
+  <Header backAction={backAction} title={'Titulo no header'} {...rest} />
+);
+
+export const Example1 = HeaderExample.bind({});
+Example1.args = {
   backAction: backActionExample,
+};
+
+export const Example2 = HeaderExample.bind({});
+Example2.args = {
+  backAction: backActionExample,
+  title: 'Titulo no header',
 };
 
 if (Platform.OS === 'android') {
@@ -34,5 +44,6 @@ if (Platform.OS === 'android') {
     </View>
   ));
 
-  fillStories.add('Header', TemplateGradientView, Example.args);
+  fillStories.add('Header', HeaderExample, Example1.args);
+  fillStories.add('Header', HeaderExampleTitle, Example2.args);
 }
