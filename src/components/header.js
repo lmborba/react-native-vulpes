@@ -7,7 +7,6 @@ import { H2 } from './typos';
 
 export class Header extends Component {
   render() {
-    console.log(this.props);
     const { backAction } = this.props;
     return (
       <View>
