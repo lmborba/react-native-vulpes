@@ -181,7 +181,8 @@ export class SelectInput extends Component {
 
   fontStyle() {
     let font = Fonts.regularBold;
-    if (this.state.placeholder) font = Fonts.placeholderBold;
+    if (this.state.placeholder && !this.props.value)
+      font = Fonts.placeholderBold;
     if (this.props.error) font = { ...font, color: Colors.error };
     return font;
   }
