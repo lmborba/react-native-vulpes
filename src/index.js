@@ -9,7 +9,7 @@ import { Header } from './components/header';
 import { Icon } from './components/icon';
 import { List, ListItem } from './components/list';
 import { Modal } from './components/modal';
-import { Content, Page } from './components/page_content';
+import { Content, ContentList, Page } from './components/page_content';
 import { SelectInput, SelectItem } from './components/select_input';
 import { Tag } from './components/tag';
 import { Text } from './components/text';
@@ -59,6 +59,7 @@ export {
   Header,
   Page,
   Content,
+  ContentList,
   Card,
   Thumbnail,
   TicketCard,

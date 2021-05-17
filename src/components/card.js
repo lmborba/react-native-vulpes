@@ -16,7 +16,7 @@ export class Card extends Component {
   }
   render() {
     return (
-      <View>
+      <View style={this.props.style}>
         <View style={style.cardContainer}>{this.props.children}</View>
         <View style={style.outerCardBorder}>
           <View style={{ ...style.cardTopBorder, ...this.changedColor() }} />

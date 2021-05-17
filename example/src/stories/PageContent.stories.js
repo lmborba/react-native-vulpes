@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Content, H4, Header, Page } from 'react-native-vulpes';
+import { Content, ContentList, Header, Page } from 'react-native-vulpes';
+import { Regular } from '../../../src/components/typos';
 
 export default {
   title: 'Example/PageContent',
@@ -18,34 +19,38 @@ const backActionExample = () => {
   console.warn('BACK ACTION');
 };
 
-const TemplatePageContent = ({ backAction = backActionExample, ...rest }) => (
+// example 1
+const TemplatePageContent = (props) => (
   <Page>
-    <Header backAction={backAction} {...rest} />
-    <Content>
-      <H4>Página de teste</H4>
+    <Header backAction={backActionExample} title={'Titulo principal'} />
+    <Content {...props}>
+      <Regular>Texto interno ao content</Regular>
     </Content>
   </Page>
 );
+export const Example = TemplatePageContent.bind({});
+Example.args = {
+  title: 'Titulo interno',
+};
 
-const TemplatePageContentTitle = ({
-  backAction = backActionExample,
-  ...rest
-}) => (
+// example 2
+const TemplatePageContentList = (props) => (
   <Page>
-    <Header backAction={backAction} {...rest} title={'Título principal'} />
-    <Content />
+    <Header backAction={backActionExample} title={'Content com lista'} />
+    <ContentList {...props} />
   </Page>
 );
 
-export const Example = TemplatePageContent.bind({});
-Example.args = {
-  backAction: backActionExample,
-};
-
-export const Example2 = TemplatePageContentTitle.bind({});
+export const Example2 = TemplatePageContentList.bind({});
 Example2.args = {
-  backAction: backActionExample,
-  title: 'Titulo principal',
+  title: 'Titulo interno para content com lista',
+  data: [
+    { id: 1, value: 'Item 1' },
+    { id: 2, value: 'Item 2' },
+  ],
+  renderItem: (item) => {
+    return <Regular>{item.item.value}</Regular>;
+  },
 };
 
 if (Platform.OS === 'android') {
@@ -56,5 +61,5 @@ if (Platform.OS === 'android') {
   ));
 
   fillStories.add('PageContent', TemplatePageContent, Example.args);
-  fillStories.add('PageContent', TemplatePageContentTitle, Example2.args);
+  fillStories.add('PageContent', TemplatePageContentList, Example2.args);
 }
