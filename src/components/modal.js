@@ -15,10 +15,10 @@ const modalContainer = {
 };
 
 const modalContent = {
-  marginLeft: 16,
-  marginRight: 16,
+  marginLeft: 24,
+  marginRight: 24,
   marginTop: 12,
-  marginBottom: 16,
+  marginBottom: 40,
 };
 
 const modalImage = {
@@ -32,6 +32,10 @@ const modalImage = {
 
 const closeModalIcon = {
   marginTop: 4,
+};
+
+const btnStyle = {
+  alignSelf: 'center',
 };
 
 const CloseModal = (props) => {
@@ -65,7 +69,7 @@ export class Modal extends Component {
           <H4>{title}</H4>
           <Image source={image} style={modalImage} />
           {this.populateChildren()}
-          <Button onPress={onGoto}>
+          <Button onPress={onGoto} style={btnStyle}>
             <Text>{gotoText}</Text>
           </Button>
         </View>

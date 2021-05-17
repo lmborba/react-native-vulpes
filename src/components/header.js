@@ -38,7 +38,8 @@ export class Header extends Component {
   backButtonStyle() {
     return {
       padding: 3,
-      width: 28,
+      paddingLeft: 0,
+      width: 36,
     };
   }
 

@@ -57,7 +57,7 @@ export const List = (props) => {
   const itemCount = (props.children && props.children.length) || 0;
 
   return (
-    <View style={listContainer}>
+    <View style={[listContainer, props.style]}>
       <Title title={props.title} />
       {React.Children.map(props.children, (child, i) => {
         const last = i === itemCount - 1;
