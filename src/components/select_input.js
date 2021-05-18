@@ -1,24 +1,76 @@
-import { Picker } from '@react-native-picker/picker';
 import React, { Component } from 'react';
-import { Platform, View } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { Colors } from '../colors';
 import { Fonts } from '../fonts';
 import { Icon } from './icon';
+import { ModalPicker } from './modal_picker';
 import { Text } from './text';
-import { Regular, Small } from './typos';
+import { Regular, RegularBold, Small } from './typos';
+
+const itemStyleContainer = {
+  width: '100%',
+  flex: 1,
+  borderBottomColor: '#c1c1c1',
+  borderBottomWidth: 0.25,
+  alignItems: 'center',
+  alignContent: 'center',
+};
+
+const itemStyle = {
+  flex: 1,
+  textAlign: 'center',
+};
+
+const itemTouchStyle = {
+  flex: 1,
+  padding: 8,
+  width: '100%',
+  alignContent: 'center',
+};
 
 export const SelectItem = (props) => {
-  return <Picker.Item {...props} />;
+  let lastStyle = props.last ? { borderBottomWidth: 0 } : {};
+  let TextComponent =
+    props.currentValue === props.value ? RegularBold : Regular;
+
+  return (
+    <View style={[itemStyleContainer, lastStyle]}>
+      <TouchableOpacity
+        onPress={() => props.onSelect(props.value, props.label)}
+        style={itemTouchStyle}
+      >
+        <TextComponent style={itemStyle}>{props.label}</TextComponent>
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 export class SelectInput extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       placeholder: !props.value || props.value.length === 0,
-      focused: false,
+      modalShow: true,
+      selectedLabel: null,
+      selectedValue: null,
     };
+    const selected = this.loadSelected();
+    if (selected) {
+      this.state.selectedLabel = selected.label;
+      this.state.selectedValue = selected.value;
+    }
+
     this.field = null;
+  }
+
+  loadSelected() {
+    const mapping = React.Children.map(this.props.children, (item) => {
+      return item.props;
+    });
+    if (!mapping || mapping.length === 0) return null;
+
+    return mapping.find((item) => item.value === this.props.value);
   }
 
   focus() {
@@ -39,21 +91,15 @@ export class SelectInput extends Component {
     };
   }
 
-  handleChange(value) {
+  onSelect(value, label) {
     this.setState({
+      selectedLabel: label,
+      selectedValue: value,
       placeholder: !value || value.length === 0,
+      modalShow: false,
     });
+
     this.props.onChangeValue && this.props.onChangeValue(value);
-  }
-
-  handleFocus() {
-    this.setState({ focused: true });
-    this.props.onFocus && this.props.onFocus();
-  }
-
-  handleBlur() {
-    this.setState({ focused: false });
-    this.props.onBlur && this.props.onBlur();
   }
 
   iconStyle() {
@@ -64,12 +110,24 @@ export class SelectInput extends Component {
     };
   }
 
+  loadModalPicker() {
+    this.setState({ modalShow: true });
+  }
+  closeModal() {
+    this.setState({ modalShow: false });
+  }
+
   render() {
+    console.log(this.props.value);
     const { error, style, label, labelStyle } = this.props;
+
     return (
       <View style={style}>
         <Regular style={labelStyle}>{label}</Regular>
-        <View style={this.inputBorders()}>
+        <TouchableOpacity
+          style={this.inputBorders()}
+          onPress={this.loadModalPicker.bind(this)}
+        >
           <Icon
             size={16}
             name={'chevron_down'}
@@ -77,58 +135,39 @@ export class SelectInput extends Component {
             color="dark_gray"
           />
           <Text style={this.textStyle()}>{this.selectedLabel()}</Text>
-          {this.drawPicker()}
-        </View>
+        </TouchableOpacity>
         {error && (
           <Small style={this.errorStyle()} color={'error'}>
             {error}
           </Small>
         )}
+
+        <ModalPicker
+          visible={this.state.modalShow}
+          onClose={this.closeModal.bind(this)}
+          headerText={'Selecione'}
+        >
+          {this.drawPicker()}
+        </ModalPicker>
       </View>
     );
   }
 
-  cleanPropsForPicker() {
-    const {
-      error,
-      style,
-      label,
-      placeholder,
-      onValueChange,
-      labelStyle,
-      inputStyle,
-      onPress,
-      onBlur,
-      onFocus,
-      value,
-      children,
-      ref,
-      ...rest
-    } = this.props;
-    return rest;
-  }
-
   drawPicker() {
-    const { placeholder, children } = this.props;
+    const { children } = this.props;
+    const itemCount = (children && children.length) || 0;
+
     return (
-      <Picker
-        ref={this.handleReference.bind(this)}
-        prompt={placeholder}
-        note
-        mode="dropdown"
-        selectedValue={this.props.value}
-        onValueChange={this.handleChange.bind(this)}
-        placeholder={placeholder}
-        onFocus={this.handleFocus.bind(this)}
-        onBlur={this.handleBlur.bind(this)}
-        {...this.cleanPropsForPicker()}
-        style={this.completeStyle()}
-      >
-        {placeholder ? (
-          <Picker.Item label={placeholder} value={null} color={Colors.gray} />
-        ) : null}
-        {children}
-      </Picker>
+      <ScrollView style={this.scrollViewContainer()}>
+        {React.Children.map(children, (child, i) => {
+          const last = i === itemCount - 1;
+          return React.cloneElement(child, {
+            onSelect: this.onSelect.bind(this),
+            last: last,
+            currentValue: this.state.selectedValue,
+          });
+        })}
+      </ScrollView>
     );
   }
 
@@ -138,44 +177,23 @@ export class SelectInput extends Component {
     };
   }
 
-  systemOutline() {
-    if (Platform.OS !== 'web') return {};
-    return {
-      outline: 'none',
-    };
-  }
-
   selectedLabel() {
-    const mapping = React.Children.map(this.props.children, (item) => {
-      return item.props;
-    });
-    const selected = mapping.find((item) => item.value === this.props.value);
-    if (!selected) return this.props.placeholder;
-    return selected.label;
+    const label = this.state.selectedLabel;
+
+    if (!label) return this.props.placeholder;
+    return label;
   }
 
+  scrollViewContainer() {
+    return { width: '100%', flexGrow: 0 };
+  }
   textStyle() {
     return {
       ...this.fontStyle(),
-      position: 'absolute',
       backgroundColor: 'transparent',
       height: 37,
       lineHeight: 37,
       marginTop: 2,
-    };
-  }
-
-  completeStyle() {
-    const { inputStyle } = this.props;
-
-    return {
-      backgroundColor: 'transparent',
-      height: 37,
-      marginTop: 2,
-      opacity: 0,
-      border: 0,
-      ...this.systemOutline(),
-      ...inputStyle,
     };
   }
 

@@ -52,6 +52,19 @@ const TemplateSelectInput = ({ error, ...rest }) => (
     <SelectItem label="Item 1" value="item_1" />
     <SelectItem label="Item 2" value="item_2" />
     <SelectItem label="Item 3" value="item_3" />
+    <SelectItem label="Item 4" value="item_4" />
+    <SelectItem label="Item 5" value="item_5" />
+    <SelectItem label="Item 6" value="item_6" />
+    <SelectItem label="Item 7" value="item_7" />
+    <SelectItem label="Item 8" value="item_8" />
+    <SelectItem label="Item 9" value="item_9" />
+    <SelectItem label="Item 10" value="item_10" />
+    <SelectItem label="Item 11" value="item_11" />
+    <SelectItem label="Item 12" value="item_12" />
+    <SelectItem label="Item 13" value="item_13" />
+    <SelectItem label="Item 14" value="item_14" />
+    <SelectItem label="Item 15" value="item_15" />
+    <SelectItem label="Item 16" value="item_16" />
   </SelectInput>
 );
 
@@ -63,7 +76,7 @@ Example.args = {
   placeholder: 'Placeholder',
   labelStyle: undefined,
   inputStyle: undefined,
-  value: undefined,
+  value: 'item_3',
   onChangeValue: undefined,
 };
 
