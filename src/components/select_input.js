@@ -51,7 +51,7 @@ export class SelectInput extends Component {
 
     this.state = {
       placeholder: !props.value || props.value.length === 0,
-      modalShow: true,
+      modalShow: false,
       selectedLabel: null,
       selectedValue: null,
     };
