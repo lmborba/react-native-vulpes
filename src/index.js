@@ -1,7 +1,12 @@
 import { NativeModules } from 'react-native';
 import { Colors } from './colors';
 import { Button } from './components/button';
-import { Card, ProfileCard, TicketCard } from './components/card';
+import {
+  Card,
+  MiniProfileCard,
+  ProfileCard,
+  TicketCard,
+} from './components/card';
 import { Carousel } from './components/carousel';
 import { Divider } from './components/divider';
 import { GradientView } from './components/gradient_view';
@@ -14,6 +19,7 @@ import { SelectInput, SelectItem } from './components/select_input';
 import { Tag } from './components/tag';
 import { Text } from './components/text';
 import { TextInput } from './components/text_input';
+import { SearchInput } from './components/search_input';
 import { Thumbnail } from './components/thumbnail';
 import {
   BodyLarge,
@@ -54,11 +60,13 @@ export {
   Icon,
   Button,
   TextInput,
+  SearchInput,
   SelectInput,
   SelectItem,
   Header,
   Page,
   Content,
+  MiniProfileCard,
   ContentList,
   Card,
   Thumbnail,

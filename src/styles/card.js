@@ -75,6 +75,11 @@ export default {
     backgroundColor: Colors.white,
   },
 
+  miniCardContainer: {
+    paddingTop: cardPadding,
+    paddingBottom: cardPadding,
+  },
+
   profileCardDivider: {
     borderBottomWidth: 1,
     borderBottomColor: Colors.light_gray,

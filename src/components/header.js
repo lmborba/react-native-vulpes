@@ -3,7 +3,7 @@ import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import image from '../../assets/images/header.png';
 import { Icon } from './icon';
-import { H2 } from './typos';
+import { H2, Regular } from './typos';
 
 export class Header extends Component {
   render() {
@@ -20,6 +20,7 @@ export class Header extends Component {
             </TouchableOpacity>
           )}
           {this.mainTitle(this.props.title)}
+          {this.mainSubtitle(this.props.subtitle)}
         </ImageBackground>
       </View>
     );
@@ -33,6 +34,11 @@ export class Header extends Component {
         {title}
       </H2>
     );
+  }
+
+  mainSubtitle(title) {
+    if (!title) return null;
+    return <Regular color={'white'}>{title}</Regular>;
   }
 
   backButtonStyle() {

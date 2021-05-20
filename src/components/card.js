@@ -15,9 +15,13 @@ export class Card extends Component {
     return data;
   }
   render() {
+    let { cardContainer } = style;
+
+    cardContainer = { ...cardContainer, ...this.props.cardContainer };
+
     return (
       <View style={this.props.style}>
-        <View style={style.cardContainer}>{this.props.children}</View>
+        <View style={cardContainer}>{this.props.children}</View>
         <View style={style.outerCardBorder}>
           <View style={{ ...style.cardTopBorder, ...this.changedColor() }} />
         </View>
@@ -82,6 +86,29 @@ export class ProfileCard extends Component {
       <Card {...this.props}>
         <ProfileCardSeparator source={this.props.source} />
         {this.props.children}
+      </Card>
+    );
+  }
+}
+
+export class MiniProfileCard extends Component {
+  changedColor() {
+    const { color } = this.props;
+    const data = {};
+    if (color) {
+      data.backgroundColor = Colors[color];
+    }
+    return data;
+  }
+  render() {
+    return (
+      <Card cardContainer={style.miniCardContainer} {...this.props}>
+        <View style={{ flexDirection: 'row' }}>
+          <Thumbnail source={this.props.source} size={'small'} />
+          <View style={{ flex: 1, paddingLeft: 8, paddingTop: 4 }}>
+            {this.props.children}
+          </View>
+        </View>
       </Card>
     );
   }

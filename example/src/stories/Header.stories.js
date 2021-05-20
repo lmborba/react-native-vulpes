@@ -23,7 +23,12 @@ const HeaderExample = ({ backAction = backActionExample, ...rest }) => (
 );
 
 const HeaderExampleTitle = ({ backAction = backActionExample, ...rest }) => (
-  <Header backAction={backAction} title={'Titulo no header'} {...rest} />
+  <Header
+    backAction={backAction}
+    title={'Titulo no header'}
+    subtitle={'Escolha ou pesquise um local para fazer check-in'}
+    {...rest}
+  />
 );
 
 export const Example1 = HeaderExample.bind({});
@@ -35,6 +40,7 @@ export const Example2 = HeaderExample.bind({});
 Example2.args = {
   backAction: backActionExample,
   title: 'Titulo no header',
+  subtitle: 'Escolha ou pesquise um local para fazer check-in',
 };
 
 if (Platform.OS === 'android') {
