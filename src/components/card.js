@@ -5,6 +5,9 @@ import style from '../styles/card';
 import { Dash } from './dash';
 import { Thumbnail } from './thumbnail';
 
+const outerMiniCardStyle = { flexDirection: 'row' };
+const miniCardContentStyle = { flex: 1, paddingLeft: 8, paddingTop: 4 };
+
 export class Card extends Component {
   changedColor() {
     const { color } = this.props;
@@ -103,11 +106,9 @@ export class MiniProfileCard extends Component {
   render() {
     return (
       <Card cardContainer={style.miniCardContainer} {...this.props}>
-        <View style={{ flexDirection: 'row' }}>
+        <View style={outerMiniCardStyle}>
           <Thumbnail source={this.props.source} size={'small'} />
-          <View style={{ flex: 1, paddingLeft: 8, paddingTop: 4 }}>
-            {this.props.children}
-          </View>
+          <View style={miniCardContentStyle}>{this.props.children}</View>
         </View>
       </Card>
     );
