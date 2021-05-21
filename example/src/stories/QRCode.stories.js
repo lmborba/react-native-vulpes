@@ -39,6 +39,7 @@ export default {
   },
 };
 
+const qrCodeSize = { width: 400, height: 400 };
 const TemplateQRCodes = ({
   color = undefined,
   code = 'menu',
@@ -46,7 +47,7 @@ const TemplateQRCodes = ({
   ...rest
 }) => {
   return (
-    <View style={{ width: 400, height: 400 }}>
+    <View style={qrCodeSize}>
       <QRCodeShow code={code} color={color} used={used} {...rest} />
     </View>
   );

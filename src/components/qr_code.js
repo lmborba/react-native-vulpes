@@ -3,6 +3,8 @@ import { Image, View } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import { Colors } from '../colors';
 
+const qrCodeContainer = { flexDirection: 'column', flex: 1 };
+const qrCodeInnerContainer = { flex: 1, flexDirection: 'row' };
 export class QRCodeValid extends Component {
   constructor(props) {
     super(props);
@@ -17,30 +19,31 @@ export class QRCodeValid extends Component {
     const { width, height } = this.state;
 
     const defSize = Math.min(width, height);
-    const logoSize = (56 * defSize) / 100;
-    const marginSize = (22 * defSize) / 100;
 
     return (
-      <View style={{ flexDirection: 'column', flex: 1 }}>
+      <View style={qrCodeContainer}>
         <View
-          style={{ flex: 1, flexDirection: 'row' }}
+          style={qrCodeInnerContainer}
           onLayout={this.layoutHandler.bind(this)}
         >
           <QRCode value={code} color={Colors[color]} size={defSize} />
         </View>
         {image && (
-          <Image
-            source={image}
-            style={{
-              position: 'absolute',
-              width: logoSize,
-              height: logoSize,
-              margin: marginSize,
-            }}
-          />
+          <Image source={image} style={this.qrCodeUsedImage(defSize)} />
         )}
       </View>
     );
+  }
+
+  qrCodeUsedImage(defSize) {
+    const logoSize = (56 * defSize) / 100;
+    const marginSize = (22 * defSize) / 100;
+    return {
+      position: 'absolute',
+      width: logoSize,
+      height: logoSize,
+      margin: marginSize,
+    };
   }
 
   layoutHandler(event) {
