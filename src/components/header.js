@@ -5,6 +5,8 @@ import image from '../../assets/images/header.png';
 import { Icon } from './icon';
 import { H2, Regular } from './typos';
 
+const headerSubtitleStyle = { marginBottom: 52 };
+
 export class Header extends Component {
   render() {
     const { backAction } = this.props;
@@ -38,7 +40,11 @@ export class Header extends Component {
 
   mainSubtitle(title) {
     if (!title) return null;
-    return <Regular color={'white'}>{title}</Regular>;
+    return (
+      <Regular color={'white'} style={headerSubtitleStyle}>
+        {title}
+      </Regular>
+    );
   }
 
   backButtonStyle() {
@@ -61,7 +67,7 @@ export class Header extends Component {
 
   headerStyle() {
     return {
-      height: 90 + this.notchDifference() + this.titleDiference(),
+      minHeight: 90 + this.notchDifference() + this.titleDiference(),
       paddingTop: 24 + this.notchDifference(),
       paddingLeft: 16,
       paddingRight: 16,

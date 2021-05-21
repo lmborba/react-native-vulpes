@@ -36,7 +36,11 @@ Example.args = {
 // example 2
 const TemplatePageContentList = (props) => (
   <Page>
-    <Header backAction={backActionExample} title={'Content com lista'} />
+    <Header
+      backAction={backActionExample}
+      title={'Content com lista'}
+      subtitle={'Escolha ou pesquise um local para fazer check-in'}
+    />
     <ContentList {...props} />
   </Page>
 );
