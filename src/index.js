@@ -6,6 +6,7 @@ import {
   MiniProfileCard,
   ProfileCard,
   TicketCard,
+  TicketProfileCard,
 } from './components/card';
 import { Carousel } from './components/carousel';
 import { Divider } from './components/divider';
@@ -15,11 +16,12 @@ import { Icon } from './components/icon';
 import { List, ListItem } from './components/list';
 import { Modal } from './components/modal';
 import { Content, ContentList, Page } from './components/page_content';
+import { QRCodeShow } from './components/qr_code';
+import { SearchInput } from './components/search_input';
 import { SelectInput, SelectItem } from './components/select_input';
 import { Tag } from './components/tag';
 import { Text } from './components/text';
 import { TextInput } from './components/text_input';
-import { SearchInput } from './components/search_input';
 import { Thumbnail } from './components/thumbnail';
 import {
   BodyLarge,
@@ -55,10 +57,12 @@ export {
   Regular,
   RegularBold,
   Small,
+  QRCodeShow,
   Small2,
   SmallBold,
   Icon,
   Button,
+  TicketProfileCard,
   TextInput,
   SearchInput,
   SelectInput,

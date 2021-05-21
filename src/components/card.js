@@ -61,6 +61,30 @@ export class TicketCard extends Component {
   }
 }
 
+const TicketProfileCardSeparator = (props) => {
+  return (
+    <View style={style.ticketProfileCardDividerContainer}>
+      <View style={style.profileCardDividerContent}>
+        <View style={style.cardSeparator}>
+          <View style={style.cardSeparatorLeft} />
+          <Dash
+            style={style.dashContainer}
+            dashColor={Colors.lightGray}
+            dashThickness={0}
+            dashGap={7}
+            dashLength={7}
+            dashStyle={style.dashStyle}
+          />
+          <View style={style.cardSeparatorRight} />
+        </View>
+      </View>
+      <View style={style.ticketProfileCardImgContent}>
+        <Thumbnail size="medium" source={props.source} />
+      </View>
+    </View>
+  );
+};
+
 const ProfileCardSeparator = (props) => {
   return (
     <View style={style.profileCardDividerContainer}>
@@ -74,6 +98,25 @@ const ProfileCardSeparator = (props) => {
     </View>
   );
 };
+
+export class TicketProfileCard extends Component {
+  changedColor() {
+    const { color } = this.props;
+    const data = {};
+    if (color) {
+      data.backgroundColor = Colors[color];
+    }
+    return data;
+  }
+  render() {
+    return (
+      <Card {...this.props}>
+        <TicketProfileCardSeparator source={this.props.source} />
+        {this.props.children}
+      </Card>
+    );
+  }
+}
 
 export class ProfileCard extends Component {
   changedColor() {

@@ -90,6 +90,12 @@ export default {
     marginBottom: 8,
   },
 
+  ticketProfileCardDividerContainer: {
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 10,
+  },
+
   profileCardDividerContent: {
     position: 'absolute',
     height: '100%',
@@ -100,5 +106,10 @@ export default {
   profileCardImgContent: {
     paddingLeft: cardPadding,
     paddingRight: cardPadding,
+  },
+
+  ticketProfileCardImgContent: {
+    paddingLeft: cardPadding - 10,
+    paddingRight: cardPadding - 10,
   },
 };
