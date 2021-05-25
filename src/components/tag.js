@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Colors } from '../colors';
-import { RegularBold } from '../components/typos';
 import { Text } from '../components/text';
+import { RegularBold } from '../components/typos';
 import { Fonts } from '../fonts';
 import styles from '../styles/tags';
 
@@ -74,10 +74,12 @@ class Tag extends Component {
   }
 
   completeStyle() {
-    const { ghost, outline } = this.props;
-    if (outline) return styles.outlineStyle;
-    if (ghost) return styles.ghostStyle;
-    return styles.defaultStyle;
+    const { ghost, outline, size } = this.props;
+    let toRet = {};
+    if (size === 'medium') toRet = styles.mediumMargin;
+    if (outline) return { ...styles.outlineStyle, ...toRet };
+    if (ghost) return { ...styles.ghostStyle, ...toRet };
+    return { ...styles.defaultStyle, ...toRet };
   }
 
   tagStyle() {

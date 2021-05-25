@@ -44,6 +44,7 @@ export class Carousel extends Component {
   }
 
   render() {
+    const { noOffset } = this.props;
     const componentWidth = this.componentWidth();
     const { width } = this.state;
     const mapped = this.mapChildren();
@@ -57,7 +58,7 @@ export class Carousel extends Component {
           itemWidth={componentWidth}
           style={{ width }}
           data={mapped}
-          contentOffset={contentOffset}
+          contentOffset={noOffset ? 0 : contentOffset}
           onIndexChange={(index) =>
             this.setState(() => ({ currentIndex: index }))
           }

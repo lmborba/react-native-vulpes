@@ -1,17 +1,19 @@
 import { Platform } from 'react-native';
 import { Colors } from '../colors';
 
-const buttonHeight = 24;
+const tagHeight = 24;
+const tagMediumHeight = 32;
 const paddingHorizontal = 16;
 const paddingVertical = 0;
+const paddingMediumVertical = 6;
 
-const buttonStyle = {
-  borderRadius: buttonHeight / 2,
+const tagStyle = {
+  borderRadius: tagHeight / 2,
   paddingTop: paddingVertical,
   paddingBottom: paddingVertical,
   paddingLeft: paddingHorizontal,
   paddingRight: paddingHorizontal,
-  height: buttonHeight,
+  height: tagHeight,
   flex: null,
   width: Platform.OS === 'web' ? 'fit-content' : null,
   alignItems: 'center',
@@ -21,18 +23,23 @@ const buttonStyle = {
 
 export default {
   defaultStyle: {
-    ...buttonStyle,
+    ...tagStyle,
     backgroundColor: Colors.dark_gray,
     borderColor: null,
     borderWidth: 0,
   },
+  mediumMargin: {
+    paddingTop: paddingMediumVertical,
+    paddingBottom: paddingMediumVertical,
+    height: tagMediumHeight,
+  },
   outlineStyle: {
-    ...buttonStyle,
+    ...tagStyle,
     borderColor: Colors.dark_gray,
     borderWidth: 1,
   },
   ghostStyle: {
-    ...buttonStyle,
+    ...tagStyle,
     backgroundColor: null,
     borderColor: null,
     borderWidth: 0,

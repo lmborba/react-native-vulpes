@@ -61,18 +61,30 @@ export class Modal extends Component {
   }
 
   render() {
-    const { onClose, onGoto, gotoText, title, image } = this.props;
+    const {
+      onClose,
+      clearModal,
+      onGoto,
+      children,
+      gotoText,
+      title,
+      image,
+    } = this.props;
     return (
       <View style={modalContainer}>
         <CloseModal onClose={onClose} />
-        <View style={modalContent}>
-          <H4>{title}</H4>
-          <Image source={image} style={modalImage} />
-          {this.populateChildren()}
-          <Button onPress={onGoto} style={btnStyle}>
-            <Text>{gotoText}</Text>
-          </Button>
-        </View>
+        {clearModal ? (
+          children
+        ) : (
+          <View style={modalContent}>
+            <H4>{title}</H4>
+            <Image source={image} style={modalImage} />
+            {this.populateChildren()}
+            <Button onPress={onGoto} style={btnStyle}>
+              <Text>{gotoText}</Text>
+            </Button>
+          </View>
+        )}
       </View>
     );
   }
