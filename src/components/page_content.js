@@ -28,6 +28,11 @@ export const Content = ({ noPadding, style: customStyle, ...props }) => {
   );
 };
 
+const SepItemDefault = () => {
+  const sepStyle = { height: 16 };
+  return <View style={sepStyle} />;
+};
+
 export const ContentList = ({ noPadding, style: customStyle, ...props }) => {
   let completeStyle = style.contentContainer;
   if (noPadding) {
@@ -39,16 +44,21 @@ export const ContentList = ({ noPadding, style: customStyle, ...props }) => {
   completeStyle = { ...completeStyle, ...customStyle };
 
   let header = () => {
-    if (!props.title) return null;
-    return <H4 style={style.contentTitle}>{props.title}</H4>;
+    return (
+      <View>
+        {props.title && <H4 style={style.contentTitle}>{props.title}</H4>}
+        {props.ListHeaderComponent()}
+      </View>
+    );
   };
 
   return (
     <FlatList
       contentContainerStyle={style.contentContainerList}
       style={completeStyle}
-      ListHeaderComponent={header.bind(this)}
+      ItemSeparatorComponent={SepItemDefault}
       {...props}
+      ListHeaderComponent={header.bind(this)}
     >
       {props.children}
     </FlatList>

@@ -52,6 +52,7 @@ Example2.args = {
     { id: 1, value: 'Item 1' },
     { id: 2, value: 'Item 2' },
   ],
+  ListHeaderComponent: <Regular>List header</Regular>,
   renderItem: (item) => {
     return <Regular>{item.item.value}</Regular>;
   },

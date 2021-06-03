@@ -118,7 +118,6 @@ export class SelectInput extends Component {
   }
 
   render() {
-    console.log(this.props.value);
     const { error, style, label, labelStyle } = this.props;
 
     return (
