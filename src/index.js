@@ -15,6 +15,7 @@ import { Header } from './components/header';
 import { Icon } from './components/icon';
 import { List, ListItem } from './components/list';
 import { Modal } from './components/modal';
+import { ModalContainer } from './components/modal_container';
 import { Content, ContentList, Page } from './components/page_content';
 import { QRCodeShow } from './components/qr_code';
 import { SearchInput } from './components/search_input';
@@ -78,6 +79,7 @@ export {
   ProfileCard,
   Carousel,
   Modal,
+  ModalContainer,
   List,
   ListItem,
   Tag,

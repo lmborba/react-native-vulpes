@@ -47,7 +47,7 @@ export const ContentList = ({ noPadding, style: customStyle, ...props }) => {
     return (
       <View>
         {props.title && <H4 style={style.contentTitle}>{props.title}</H4>}
-        {props.ListHeaderComponent()}
+        {props.ListHeaderComponent}
       </View>
     );
   };

@@ -1,6 +1,6 @@
 {
   "name": "react-native-vulpes",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "React Native implementation of the Vulpes design system",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -79,7 +79,7 @@
     "react": "*",
     "react-native": "*",
     "react-native-linear-gradient": "^2.5.6",
-    "react-native-svg": "^12.1.0"
+    "react-native-svg": "^12.1.1"
   },
   "jest": {
     "preset": "react-native",

@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { Modal, Platform, TouchableOpacity, View } from 'react-native';
+import { Platform, TouchableOpacity, View } from 'react-native';
+import { ModalContainer } from './modal_container';
 import { RegularBold } from './typos';
 
 const containerStyle = {
-  flex: 1,
-  backgroundColor: 'rgba(52, 52, 52, 0.6)',
   padding: 8,
   paddingBottom: Platform.OS === 'ios' ? 40 : 8,
 };
-const modalDismissStyle = { flex: 1 };
 const seletorStyle = {
   borderRadius: 8,
   backgroundColor: 'white',
@@ -34,34 +32,20 @@ const cancelBtnStyle = {
 
 export class ModalPicker extends Component {
   render() {
-    const { children, onClose, visible, headerText } = this.props;
-
+    const { children, onClose, headerText } = this.props;
     return (
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={visible}
-        onRequestClose={onClose}
-      >
-        <View style={containerStyle}>
-          <TouchableOpacity
-            style={modalDismissStyle}
-            onPress={onClose}
-            activeOpacity={1}
-          />
-
-          <View style={seletorStyle}>
-            <View style={headerContainerStyle}>
-              <RegularBold>{headerText}</RegularBold>
-            </View>
-            {children}
+      <ModalContainer {...this.props} style={[containerStyle]}>
+        <View style={seletorStyle}>
+          <View style={headerContainerStyle}>
+            <RegularBold>{headerText}</RegularBold>
           </View>
-
-          <TouchableOpacity onPress={onClose} style={cancelBtnStyle}>
-            <RegularBold>Cancelar</RegularBold>
-          </TouchableOpacity>
+          {children}
         </View>
-      </Modal>
+
+        <TouchableOpacity onPress={onClose} style={cancelBtnStyle}>
+          <RegularBold>Cancelar</RegularBold>
+        </TouchableOpacity>
+      </ModalContainer>
     );
   }
 }
