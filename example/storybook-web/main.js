@@ -19,12 +19,10 @@ module.exports = {
     config.resolve.extensions = ['.web.js', '.js', '.json'];
     config.module.rules[0].use[0].options.plugins.push([
       'babel-plugin-react-native-web',
-      {commonjs: true },
+      { commonjs: true },
     ]);
-    config.module.rules[0].include.push(
-      path.resolve('../src/')
-    );
-    config.module.rules[1].include = /[\\/]node_modules[\\/](@storybook\/node-logger|react-native-dash|@react-native-picker\/picker|react-native-sideswipe|react-native-qrcode-svg|are-you-es5|better-opn|boxen|chalk|commander|find-cache-dir|find-up|fs-extra|json5|node-fetch|pkg-dir|resolve-from|semver)/
+    config.module.rules[0].include.push(path.resolve('../src/'));
+    config.module.rules[1].include = /[\\/]node_modules[\\/](@storybook\/node-logger|react-native-dash|react-native-sideswipe|react-native-qrcode-svg|are-you-es5|better-opn|boxen|chalk|commander|find-cache-dir|find-up|fs-extra|json5|node-fetch|pkg-dir|resolve-from|semver)/;
     return config;
   },
 };
