@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, ScrollView, View } from 'react-native';
+import { FlatList, ScrollView, View, RefreshControl } from 'react-native';
 import style from '../styles/content';
 import { H4 } from './typos';
 
@@ -15,11 +15,19 @@ export const Content = ({ noPadding, style: customStyle, ...props }) => {
       ...style.noPadding,
     };
   }
+  let refreshControl = () => {
+    let { onRefresh, refreshing } = props;
+    if (!onRefresh) return null;
+    return (
+      <RefreshControl refreshing={refreshing || false} onRefresh={onRefresh} />
+    );
+  };
   completeStyle = { ...completeStyle, ...customStyle };
   return (
     <ScrollView
       style={completeStyle}
       disableScrollViewPanResponder={props.disableScrollViewPanResponder}
+      refreshControl={refreshControl()}
     >
       <View style={style.dummyView} />
       {props.title && <H4 style={style.contentTitle}>{props.title}</H4>}

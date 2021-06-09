@@ -137,6 +137,7 @@ export class SearchInput extends Component {
     let font = Fonts.regularBold;
     if (this.state.placeholder && !this.props.value) font = Fonts.regular;
     if (this.props.error) font = { ...font, color: Colors.error };
+    if (this.props.noResult) font = { ...font, color: Colors.error };
     return font;
   }
 

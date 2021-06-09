@@ -49,7 +49,10 @@ export class Header extends Component {
 
   backButtonStyle() {
     return {
-      padding: 3,
+      marginTop: -7,
+      marginBottom: -7,
+      height: 36,
+      justifyContent: 'center',
       paddingLeft: 0,
       width: 36,
     };

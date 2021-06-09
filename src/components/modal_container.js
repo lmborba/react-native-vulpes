@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Animated, Modal, TouchableOpacity } from 'react-native';
+import {
+  Animated,
+  Modal,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+} from 'react-native';
 
 const containerStyle = {
   flex: 1,
-  backgroundColor: 'rgba(52, 52, 52, 0.6)',
+  backgroundColor: 'rgba(52, 52, 52, 0.7)',
 };
 const modalDismissStyle = { flex: 1 };
 const defaultTransparency = 0.7;
@@ -79,8 +84,9 @@ export class ModalContainer extends Component {
             onPress={onClose}
             activeOpacity={1}
           />
-
-          {children}
+          <KeyboardAvoidingView behavior={'padding'}>
+            {children}
+          </KeyboardAvoidingView>
         </Animated.View>
       </Modal>
     );

@@ -13,25 +13,19 @@ export class Carousel extends Component {
   }
 
   _renderItem({ item, itemIndex, currentIndex }) {
-    return (
-      <View style={this.componentExtraStyle(itemIndex === currentIndex)}>
-        {item}
-      </View>
-    );
+    const style = this.componentExtraStyle(itemIndex === currentIndex);
+    const { leftMargin } = this.props;
+    if (leftMargin !== undefined) style.marginLeft = leftMargin;
+    return <View style={style}>{item}</View>;
   }
 
   componentExtraStyle(active) {
     const ret = {
       margin: 8,
+      marginLeft: 16,
       width: this.componentWidth() - 16,
     };
-    if (!active) {
-      ret.transform = [
-        {
-          scale: 1,
-        },
-      ];
-    }
+    if (!active) ret.transform = [{ scale: 1 }];
     return ret;
   }
 
@@ -44,7 +38,7 @@ export class Carousel extends Component {
   }
 
   render() {
-    const { noOffset } = this.props;
+    const { noOffset, containerStyle } = this.props;
     const componentWidth = this.componentWidth();
     const { width } = this.state;
     const mapped = this.mapChildren();
@@ -52,7 +46,7 @@ export class Carousel extends Component {
     const contentOffset = (width - componentWidth) / 2;
 
     return (
-      <View onLayout={this.handleLayout.bind(this)}>
+      <View onLayout={this.handleLayout.bind(this)} style={containerStyle}>
         <SideSwipe
           index={this.state.currentIndex}
           itemWidth={componentWidth}
