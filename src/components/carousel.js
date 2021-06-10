@@ -45,7 +45,7 @@ export class Carousel extends Component {
 
   offset() {
     const { noOffset, contentOffset } = this.props;
-    if (noOffset != undefined) return -this.itemSep;
+    if (noOffset !== undefined) return -this.itemSep;
     if (contentOffset) return contentOffset - this.itemSep / 2;
 
     return Math.round((this.carouselWidth - this.componentWidth) / 2);
