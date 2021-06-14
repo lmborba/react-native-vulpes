@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import image from '../../assets/images/header.png';
-import { FillSpace } from './FillSpace';
+import { FillSpace } from './fill_space';
 import { Icon } from './icon';
 import { NotificationMenu } from './notification_menu';
 import { H2, Regular } from './typos';
