@@ -4,9 +4,13 @@ import { iconList } from 'react-native-icomoon';
 import json from '../../assets/icons/selection.json';
 import { NotificationIcon } from './notification_icon';
 
+const notificationMenuSeparationSpace = { marginLeft: 22 };
 export const NotificationMenuItem = ({ item, color, markerColor, size }) => {
   return (
-    <TouchableOpacity onPress={() => item.action()} style={{ marginLeft: 22 }}>
+    <TouchableOpacity
+      onPress={() => item.action()}
+      style={notificationMenuSeparationSpace}
+    >
       <NotificationIcon
         name={item.icon}
         showMarker={item.showMarker}
@@ -26,8 +30,9 @@ export const NotificationMenu = ({
   style,
   ...restProps
 }) => {
+  const notificationMenuCompleteStyle = { ...style, flexDirection: 'row' };
   return (
-    <View {...restProps} style={{ ...style, flexDirection: 'row' }}>
+    <View {...restProps} style={notificationMenuCompleteStyle}>
       {menuList.map((item) => {
         return (
           <NotificationMenuItem
