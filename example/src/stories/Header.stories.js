@@ -31,6 +31,24 @@ const HeaderExampleTitle = ({ backAction = backActionExample, ...rest }) => (
   />
 );
 
+const list = [
+  {
+    action: () => {},
+    icon: 'chat',
+    showMarker: true,
+  },
+  {
+    action: () => {},
+    icon: 'notification_empty',
+    showMarker: true,
+  },
+  {
+    action: () => {},
+    icon: 'calendar',
+    showMarker: true,
+  },
+];
+
 export const Example1 = HeaderExample.bind({});
 Example1.args = {
   backAction: backActionExample,
@@ -41,6 +59,13 @@ Example2.args = {
   backAction: backActionExample,
   title: 'Titulo no header',
   subtitle: 'Escolha ou pesquise um local para fazer check-in',
+};
+
+export const Example3 = HeaderExample.bind({});
+Example3.args = {
+  backAction: backActionExample,
+  title: 'Titulo no header',
+  menuList: list,
 };
 
 if (Platform.OS === 'android') {

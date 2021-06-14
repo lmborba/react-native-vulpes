@@ -2,25 +2,32 @@ import React, { Component } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import image from '../../assets/images/header.png';
+import { FillSpace } from './FillSpace';
 import { Icon } from './icon';
+import { NotificationMenu } from './notification_menu';
 import { H2, Regular } from './typos';
 
 const headerSubtitleStyle = { marginBottom: 52 };
 
+const topHeaderContainer = { flexDirection: 'row' };
 export class Header extends Component {
   render() {
-    const { backAction } = this.props;
+    const { backAction, menuList } = this.props;
     return (
       <View>
         <ImageBackground source={image} style={this.headerStyle()}>
-          {backAction && (
-            <TouchableOpacity
-              onPress={this.handleBackButton.bind(this)}
-              style={this.backButtonStyle()}
-            >
-              <Icon name="long_arrow_left" color="white" size={18} />
-            </TouchableOpacity>
-          )}
+          <View style={topHeaderContainer}>
+            {backAction && (
+              <TouchableOpacity
+                onPress={this.handleBackButton.bind(this)}
+                style={this.backButtonStyle()}
+              >
+                <Icon name="long_arrow_left" color="white" size={18} />
+              </TouchableOpacity>
+            )}
+            <FillSpace />
+            {menuList && <NotificationMenu menuList={menuList} />}
+          </View>
           {this.mainTitle(this.props.title)}
           {this.mainSubtitle(this.props.subtitle)}
         </ImageBackground>

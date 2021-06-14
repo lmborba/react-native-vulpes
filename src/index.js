@@ -16,6 +16,8 @@ import { Icon } from './components/icon';
 import { List, ListItem } from './components/list';
 import { Modal } from './components/modal';
 import { ModalContainer } from './components/modal_container';
+import { NotificationIcon } from './components/notification_icon';
+import { NotificationMenu } from './components/notification_menu';
 import { Content, ContentList, Page } from './components/page_content';
 import { QRCodeShow } from './components/qr_code';
 import { SearchInput } from './components/search_input';
@@ -64,6 +66,7 @@ export {
   Icon,
   Button,
   TicketProfileCard,
+  NotificationMenu,
   TextInput,
   SearchInput,
   SelectInput,
@@ -75,6 +78,7 @@ export {
   ContentList,
   Card,
   Thumbnail,
+  NotificationIcon,
   TicketCard,
   ProfileCard,
   Carousel,
