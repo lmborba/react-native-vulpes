@@ -41,6 +41,7 @@ import {
   Small2,
   SmallBold,
 } from './components/typos';
+import { FillSpace, PaddedView } from './components/utils';
 import { Fonts } from './fonts';
 
 export {
@@ -53,11 +54,13 @@ export {
   H3,
   H4,
   Divider,
+  PaddedView,
   BodyLarge,
   BodyLargeBold,
   Placeholder,
   PlaceholderBold,
   Regular,
+  FillSpace,
   RegularBold,
   Small,
   QRCodeShow,
