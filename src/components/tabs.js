@@ -14,11 +14,13 @@ const tabsDefaultStyle = {
 
 const TabButton = ({ focus, title, onSelect }) => {
   let TextComponent = Regular;
-  let tabsStyle = tabsDefaultStyle;
+  let tabsStyle = { ...tabsDefaultStyle };
   if (focus) {
     TextComponent = RegularBold;
     tabsStyle.borderBottomWidth = 2;
   }
+
+  console.log(tabsStyle);
 
   return (
     <TouchableOpacity onPress={onSelect} style={tabsStyle}>
