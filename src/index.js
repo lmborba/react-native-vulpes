@@ -22,6 +22,7 @@ import { Content, ContentList, Page } from './components/page_content';
 import { QRCodeShow } from './components/qr_code';
 import { SearchInput } from './components/search_input';
 import { SelectInput, SelectItem } from './components/select_input';
+import { Tab, Tabs } from './components/tabs';
 import { Tag } from './components/tag';
 import { Text } from './components/text';
 import { TextInput } from './components/text_input';
@@ -70,6 +71,8 @@ export {
   Button,
   TicketProfileCard,
   NotificationMenu,
+  Tabs,
+  Tab,
   TextInput,
   SearchInput,
   SelectInput,
