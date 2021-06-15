@@ -12,20 +12,16 @@ const tabsDefaultStyle = {
   marginBottom: -1,
 };
 
-function tabsStyle(focus) {
-  const style = tabsDefaultStyle;
-
-  if (focus) style.borderBottomWidth = 2;
-
-  return style;
-}
-
 const TabButton = ({ focus, title, onSelect }) => {
   let TextComponent = Regular;
-  if (focus) TextComponent = RegularBold;
+  let tabsStyle = tabsDefaultStyle;
+  if (focus) {
+    TextComponent = RegularBold;
+    tabsStyle.borderBottomWidth = 2;
+  }
 
   return (
-    <TouchableOpacity onPress={onSelect} style={tabsStyle(focus)}>
+    <TouchableOpacity onPress={onSelect} style={tabsStyle}>
       <TextComponent color="dark_gray">{title}</TextComponent>
     </TouchableOpacity>
   );
@@ -68,7 +64,7 @@ export class Tabs extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, ...rest } = this.props;
     const { selected } = this.state;
 
     const titles = children
@@ -78,7 +74,7 @@ export class Tabs extends Component {
       })
       .filter((item) => item != null);
     return (
-      <View>
+      <View {...rest}>
         <ListOfTabs
           titles={titles}
           selected={selected}
