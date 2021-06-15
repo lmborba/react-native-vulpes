@@ -3,37 +3,43 @@ import { TouchableOpacity, View } from 'react-native';
 import { Colors } from '../colors';
 import { Regular, RegularBold } from './typos';
 
+const tabsDefaultStyle = {
+  paddingBottom: 10,
+  paddingTop: 10,
+  marginRight: 32,
+  borderBottomWidth: 0,
+  borderBottomColor: Colors.dark_gray,
+  marginBottom: -1,
+};
+
+function tabsStyle(focus) {
+  const style = tabsDefaultStyle;
+
+  if (focus) style.borderBottomWidth = 2;
+
+  return style;
+}
+
 const TabButton = ({ focus, title, onSelect }) => {
   let TextComponent = Regular;
   if (focus) TextComponent = RegularBold;
 
   return (
-    <TouchableOpacity
-      onPress={onSelect}
-      style={{
-        paddingBottom: 10,
-        paddingTop: 10,
-        marginRight: 32,
-        borderBottomWidth: focus ? 2 : 0,
-        borderBottomColor: Colors.dark_gray,
-        marginBottom: -1,
-      }}
-    >
+    <TouchableOpacity onPress={onSelect} style={tabsStyle(focus)}>
       <TextComponent color="dark_gray">{title}</TextComponent>
     </TouchableOpacity>
   );
 };
 
+const tabsContainerStyle = {
+  marginRight: 5,
+  borderBottomWidth: 1,
+  borderBottomColor: Colors.light_gray,
+  flexDirection: 'row',
+};
 const ListOfTabs = ({ titles, selected, onChange }) => {
   return (
-    <View
-      style={{
-        marginRight: 5,
-        borderBottomWidth: 1,
-        borderBottomColor: Colors.light_gray,
-        flexDirection: 'row',
-      }}
-    >
+    <View style={tabsContainerStyle}>
       {titles.map((title, i) => {
         return (
           <TabButton
