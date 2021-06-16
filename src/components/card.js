@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 import { Colors } from '../colors';
 import style from '../styles/card';
 import { Dash } from './dash';
 import { Thumbnail } from './thumbnail';
 
 const outerMiniCardStyle = { flexDirection: 'row' };
-const miniCardContentStyle = { flex: 1, paddingLeft: 8, paddingTop: 4 };
 
 export class Card extends Component {
   changedColor() {
@@ -151,7 +150,30 @@ export class MiniProfileCard extends Component {
       <Card cardContainer={style.miniCardContainer} {...this.props}>
         <View style={outerMiniCardStyle}>
           <Thumbnail source={this.props.source} size={'small'} />
-          <View style={miniCardContentStyle}>{this.props.children}</View>
+          <View style={style.miniCardContentStyle}>{this.props.children}</View>
+        </View>
+      </Card>
+    );
+  }
+}
+
+const IllustrationOnCard = (props) => {
+  return <Image source={props.source} style={style.illustrationOnCard} />;
+};
+
+export class IllustrationMiniCard extends Component {
+  render() {
+    return (
+      <Card
+        cardContainer={style.illustrationCardContainer}
+        color={'transparent'}
+        {...this.props}
+      >
+        <View style={outerMiniCardStyle}>
+          <IllustrationOnCard source={this.props.source} />
+          <View style={style.illustrationCardOuterStyle}>
+            {this.props.children}
+          </View>
         </View>
       </Card>
     );

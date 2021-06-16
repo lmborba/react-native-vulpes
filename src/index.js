@@ -3,6 +3,7 @@ import { Colors } from './colors';
 import { Button } from './components/button';
 import {
   Card,
+  IllustrationMiniCard,
   MiniProfileCard,
   ProfileCard,
   TicketCard,
@@ -90,6 +91,7 @@ export {
   Carousel,
   Modal,
   ModalContainer,
+  IllustrationMiniCard,
   List,
   ListItem,
   Tag,

@@ -75,6 +75,25 @@ export default {
     backgroundColor: Colors.white,
   },
 
+  illustrationOnCard: {
+    width: 80,
+    height: 90,
+    margin: -1,
+    borderTopLeftRadius: radius,
+    borderBottomLeftRadius: radius,
+  },
+
+  illustrationCardContainer: {
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+
+  illustrationCardOuterStyle: {
+    margin: 16,
+  },
+
   miniCardContainer: {
     paddingTop: cardPadding,
     paddingBottom: cardPadding,
@@ -111,5 +130,11 @@ export default {
   ticketProfileCardImgContent: {
     paddingLeft: cardPadding - 10,
     paddingRight: cardPadding - 10,
+  },
+
+  miniCardContentStyle: {
+    flex: 1,
+    paddingLeft: 8,
+    paddingTop: 4,
   },
 };
