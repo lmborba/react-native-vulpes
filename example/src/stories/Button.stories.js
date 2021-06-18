@@ -102,7 +102,6 @@ class TemplateButton extends Component {
       icon = 'like_empty',
       onIcon = 'like',
       offIcon = 'like_empty',
-      ...rest
     } = this.props;
 
     const { value } = this.state;
