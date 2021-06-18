@@ -2,6 +2,7 @@ import { NativeModules } from 'react-native';
 import { Colors } from './colors';
 import { Button } from './components/button';
 import {
+  BannerCard,
   Card,
   IllustrationMiniCard,
   MiniProfileCard,
@@ -47,6 +48,7 @@ import { FillSpace, PaddedView } from './components/utils';
 import { Fonts } from './fonts';
 
 export {
+  BannerCard,
   Colors,
   Text,
   Fonts,

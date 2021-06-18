@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Image, View } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import { Colors } from '../colors';
 import style from '../styles/card';
+import { Button } from './button';
 import { Dash } from './dash';
+import { GradientView } from './gradient_view';
+import { Icon } from './icon';
+import { Text } from './text';
 import { Thumbnail } from './thumbnail';
+import { Regular, RegularBold } from './typos';
 
 const outerMiniCardStyle = { flexDirection: 'row' };
 
@@ -179,3 +184,32 @@ export class IllustrationMiniCard extends Component {
     );
   }
 }
+
+export const BannerCard = ({
+  title,
+  description,
+  linkText,
+  source,
+  color,
+  onPress,
+}) => {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <GradientView color={color} style={style.bannerCardGradient}>
+        <View style={style.outerViewBannerCard}>
+          <View style={style.textsViewBannerCard}>
+            <RegularBold color="white" style={style.titleTextBannerCard}>
+              {title}
+            </RegularBold>
+            <Regular color="white">{description}</Regular>
+            <Button color="white" ghost style={style.buttonTextBannerCard}>
+              <Text>{linkText}</Text>
+              <Icon name="long_arrow_right" />
+            </Button>
+          </View>
+          <Image source={source} style={style.imageInBannerCard} />
+        </View>
+      </GradientView>
+    </TouchableOpacity>
+  );
+};

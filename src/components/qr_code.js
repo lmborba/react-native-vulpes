@@ -48,7 +48,6 @@ export class QRCodeValid extends Component {
 
   layoutHandler(event) {
     var { width, height } = event.nativeEvent.layout;
-    console.log(width, height);
     this.setState({ width: width, height: height });
   }
 }

@@ -20,8 +20,6 @@ const TabButton = ({ focus, title, onSelect }) => {
     tabsStyle.borderBottomWidth = 2;
   }
 
-  console.log(tabsStyle);
-
   return (
     <TouchableOpacity onPress={onSelect} style={tabsStyle}>
       <TextComponent color="dark_gray">{title}</TextComponent>
