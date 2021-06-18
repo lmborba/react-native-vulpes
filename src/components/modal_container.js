@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Animated,
-  Modal,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-} from 'react-native';
+import { Animated, Modal, TouchableOpacity } from 'react-native';
 
 const containerStyle = {
   flex: 1,
@@ -84,9 +79,7 @@ export class ModalContainer extends Component {
             onPress={onClose}
             activeOpacity={1}
           />
-          <KeyboardAvoidingView behavior={'padding'}>
-            {children}
-          </KeyboardAvoidingView>
+          {children}
         </Animated.View>
       </Modal>
     );
