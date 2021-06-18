@@ -1,9 +1,10 @@
 import { NativeModules } from 'react-native';
 import { Colors } from './colors';
-import { Button } from './components/button';
+import { Button, ToggleButton } from './components/button';
 import {
   BannerCard,
   Card,
+  CardActions,
   IllustrationMiniCard,
   MiniProfileCard,
   ProfileCard,
@@ -86,6 +87,7 @@ export {
   MiniProfileCard,
   ContentList,
   Card,
+  CardActions,
   Thumbnail,
   NotificationIcon,
   TicketCard,
@@ -97,6 +99,7 @@ export {
   List,
   ListItem,
   Tag,
+  ToggleButton,
 };
 
 const { Vulpes } = NativeModules;

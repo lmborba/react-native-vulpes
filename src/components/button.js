@@ -4,6 +4,7 @@ import { Colors } from '../colors';
 import { RegularBold } from '../components/typos';
 import { Fonts } from '../fonts';
 import styles from '../styles/buttons';
+import { Icon } from './icon';
 
 class Button extends Component {
   renderField() {
@@ -98,4 +99,29 @@ class Button extends Component {
   }
 }
 
-export { Button };
+class ToggleButton extends Component {
+  handleClick() {
+    return this.props.onPress && this.props.onPress();
+  }
+
+  color() {
+    const { color } = this.props;
+    if (!color) return 'dark_gray';
+    return color;
+  }
+
+  render() {
+    const { value, onIcon, offIcon } = this.props;
+    return (
+      <TouchableOpacity onPress={this.handleClick.bind(this)}>
+        {value ? (
+          <Icon name={onIcon} size={18} color={this.color()} />
+        ) : (
+          <Icon name={offIcon} size={18} color={this.color()} />
+        )}
+      </TouchableOpacity>
+    );
+  }
+}
+
+export { Button, ToggleButton };

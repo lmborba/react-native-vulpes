@@ -1,7 +1,15 @@
 import { storiesOf } from '@storybook/react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { Platform, View } from 'react-native';
-import { Colors, H4, Text, ProfileCard } from 'react-native-vulpes';
+import {
+  CardActions,
+  Colors,
+  H4,
+  ProfileCard,
+  Text,
+} from 'react-native-vulpes';
+import { ToggleButton } from '../../../src';
+import { listOfIcons } from '../../../src/components/icon';
 
 const colorList = () => {
   var keys = [];
@@ -20,6 +28,10 @@ const imageList = () => {
   ];
 };
 
+const coverList = () => {
+  return [require('../images/banner.png')];
+};
+
 const mobileStyleWidget = { maxWidth: 320 };
 export default {
   title: 'Example/ProfileCard',
@@ -32,20 +44,57 @@ export default {
         type: 'select',
         options: colorList(),
       },
-      source: {
-        description: 'source for profile image',
-        control: {
-          type: 'select',
-          options: imageList(),
-        },
+    },
+    cover: {
+      description: 'source for cover image',
+      control: {
+        type: 'select',
+        options: coverList(),
+      },
+    },
+    source: {
+      description: 'source for profile image',
+      control: {
+        type: 'select',
+        options: imageList(),
+      },
+    },
+    tagIcon: {
+      description: 'icon to be used as tag',
+      control: {
+        type: 'select',
+        options: listOfIcons(),
+      },
+    },
+    tagText: {
+      description: 'text to be used as tag',
+      control: {
+        type: 'text',
+      },
+    },
+    tagColor: {
+      description: 'color to be used as tag',
+      control: {
+        type: 'select',
+        options: colorList(),
       },
     },
   },
 };
 
 const TemplateGradientView = ({ ...rest }) => {
+  const [checked, setChecked] = useState(false);
+  const toggleChecked = () => setChecked((value) => !value);
   return (
     <ProfileCard {...rest}>
+      <CardActions>
+        <ToggleButton
+          onIcon={'like'}
+          offIcon={'like_empty'}
+          value={checked}
+          onPress={toggleChecked}
+        />
+      </CardActions>
       <H4>Fulano de tal</H4>
       <Text>Plano de academias</Text>
     </ProfileCard>
@@ -64,7 +113,11 @@ Example.argTypes = {
 };
 Example.args = {
   color: 'cyan',
-  source: 'static/media/thumb.5ebfbd91.png',
+  source: imageList()[0],
+  cover: undefined,
+  tagIcon: 'unlock',
+  tagColor: 'dark_gray',
+  tagText: 'Tag text',
 };
 
 if (Platform.OS === 'android') {

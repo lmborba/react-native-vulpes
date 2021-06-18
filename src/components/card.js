@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Image, ImageBackground, TouchableOpacity, View } from 'react-native';
 import { Colors } from '../colors';
 import style from '../styles/card';
 import { Button } from './button';
 import { Dash } from './dash';
 import { GradientView } from './gradient_view';
 import { Icon } from './icon';
+import { Tag } from './tag';
 import { Text } from './text';
 import { Thumbnail } from './thumbnail';
 import { Regular, RegularBold } from './typos';
+import { FillSpace } from './utils';
 
 const outerMiniCardStyle = { flexDirection: 'row' };
 
@@ -122,20 +124,40 @@ export class TicketProfileCard extends Component {
   }
 }
 
+const CardTag = ({ icon, color, text }) => {
+  return (
+    <Tag color={color}>
+      <Icon name={icon} size={12} />
+      <Text>{text}</Text>
+    </Tag>
+  );
+};
+
+const CardCover = ({ tagText, tagIcon, tagColor, source }) => {
+  return (
+    <View style={style.cardCoverContainer}>
+      <ImageBackground
+        source={source}
+        style={style.cardContainerCoverBackground}
+        imageStyle={style.cardContainerCoverImage}
+      >
+        {(tagText || tagIcon) && (
+          <CardTag color={tagColor} text={tagText} icon={tagIcon} />
+        )}
+      </ImageBackground>
+    </View>
+  );
+};
+
 export class ProfileCard extends Component {
-  changedColor() {
-    const { color } = this.props;
-    const data = {};
-    if (color) {
-      data.backgroundColor = Colors[color];
-    }
-    return data;
-  }
   render() {
+    const { cover, color, source, children, ...rest } = this.props;
+
     return (
-      <Card {...this.props}>
-        <ProfileCardSeparator source={this.props.source} />
-        {this.props.children}
+      <Card {...this.props} color={cover ? 'transparent' : color}>
+        {cover && <CardCover source={cover} {...rest} />}
+        <ProfileCardSeparator source={source} />
+        {children}
       </Card>
     );
   }
@@ -211,5 +233,14 @@ export const BannerCard = ({
         </View>
       </GradientView>
     </TouchableOpacity>
+  );
+};
+
+export const CardActions = ({ children }) => {
+  return (
+    <View style={style.cardActionsContainer}>
+      <FillSpace />
+      <View>{children}</View>
+    </View>
   );
 };

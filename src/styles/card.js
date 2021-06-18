@@ -127,6 +127,12 @@ export default {
     paddingRight: cardPadding,
   },
 
+  cardActionsContainer: {
+    flexDirection: 'row',
+    marginTop: -28,
+    marginBottom: 8,
+  },
+
   ticketProfileCardImgContent: {
     paddingLeft: cardPadding - 10,
     paddingRight: cardPadding - 10,
@@ -145,6 +151,25 @@ export default {
     padding: 16,
     paddingRight: 10,
   },
+
+  cardCoverContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 130,
+    margin: -17,
+    marginTop: -21,
+    marginBottom: -32,
+  },
+  cardContainerCoverBackground: {
+    flex: 1,
+    height: 130,
+    padding: 16,
+  },
+  cardContainerCoverImage: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+
   titleTextBannerCard: { marginBottom: 8 },
   buttonTextBannerCard: { paddingLeft: 0, marginTop: 12 },
   imageInBannerCard: { alignSelf: 'center', width: 91, height: 129 },
