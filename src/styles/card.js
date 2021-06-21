@@ -92,6 +92,7 @@ export default {
 
   illustrationCardOuterStyle: {
     margin: 16,
+    flex: 1,
   },
 
   miniCardContainer: {
