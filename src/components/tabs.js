@@ -37,6 +37,7 @@ const ListOfTabs = ({ titles, selected, onChange }) => {
   return (
     <View style={tabsContainerStyle}>
       {titles.map((title, i) => {
+        if (!title) return;
         return (
           <TabButton
             title={title}
@@ -63,16 +64,32 @@ export class Tabs extends Component {
     });
   }
 
+  tabTitles(children) {
+    try {
+      if (!children) return [];
+
+      if (!Array.isArray(children)) {
+        let title = children.props.title;
+        if (!title) return [];
+        return [title];
+      }
+
+      return children.map((item) => {
+        if (!item || !item.type) return null;
+        if (item.type.name !== 'Tab') return null;
+        return item.props.title;
+      });
+    } catch (error) {
+      return [];
+    }
+  }
+
   render() {
     const { children, ...rest } = this.props;
     const { selected } = this.state;
 
-    const titles = children
-      .map((item) => {
-        if (item.type.name !== 'Tab') return null;
-        return item.props.title;
-      })
-      .filter((item) => item != null);
+    if (!children || children.length === 0) return;
+    const titles = this.tabTitles(children);
     return (
       <View {...rest}>
         <ListOfTabs
