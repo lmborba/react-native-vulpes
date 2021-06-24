@@ -28,13 +28,15 @@ export class Card extends Component {
 
     cardContainer = { ...cardContainer, ...this.props.cardContainer };
 
+    const MainComponent = this.props.onPress ? TouchableOpacity : View;
+
     return (
-      <View style={this.props.style}>
+      <MainComponent onPress={this.props.onPress} style={this.props.style}>
         <View style={cardContainer}>{this.props.children}</View>
         <View style={style.outerCardBorder}>
           <View style={{ ...style.cardTopBorder, ...this.changedColor() }} />
         </View>
-      </View>
+      </MainComponent>
     );
   }
 }
@@ -92,12 +94,18 @@ const TicketProfileCardSeparator = (props) => {
 };
 
 const ProfileCardSeparator = (props) => {
-  return (
-    <View style={style.profileCardDividerContainer}>
-      <View style={style.profileCardDividerContent}>
+  if (!props.source) {
+    const sMargin = { marginBottom: 16 };
+    return (
+      <View style={[style.profileCardDividerContainer, sMargin]}>
         <View style={style.profileCardDivider} />
       </View>
+    );
+  }
 
+  return (
+    <View style={style.profileCardDividerContainer}>
+      <View style={style.profileCardDivider} />
       <View style={style.profileCardImgContent}>
         <Thumbnail size="medium" source={props.source} />
       </View>
@@ -134,6 +142,10 @@ const CardTag = ({ icon, color, text }) => {
 };
 
 const CardCover = ({ tagText, tagIcon, tagColor, source }) => {
+  if (!source) {
+    const dummyStyle = { height: 32 };
+    return <View style={dummyStyle} />;
+  }
   return (
     <View style={style.cardCoverContainer}>
       <ImageBackground
@@ -155,9 +167,11 @@ export class ProfileCard extends Component {
 
     return (
       <Card {...this.props} color={cover ? 'transparent' : color}>
-        {cover && <CardCover source={cover} {...rest} />}
-        <ProfileCardSeparator source={source} />
-        {children}
+        <CardCover source={cover} {...rest} />
+        <View>
+          <ProfileCardSeparator source={source} />
+          {children}
+        </View>
       </Card>
     );
   }
@@ -236,9 +250,9 @@ export const BannerCard = ({
   );
 };
 
-export const CardActions = ({ children }) => {
+export const CardActions = ({ children, style: pStyle }) => {
   return (
-    <View style={style.cardActionsContainer}>
+    <View style={[style.cardActionsContainer, pStyle]}>
       <FillSpace />
       <View>{children}</View>
     </View>

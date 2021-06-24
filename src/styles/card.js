@@ -106,7 +106,7 @@ export default {
   profileCardDividerContainer: {
     marginLeft: -cardPadding,
     marginRight: -cardPadding,
-    marginBottom: 8,
+    marginBottom: 32,
   },
 
   ticketProfileCardDividerContainer: {
@@ -125,12 +125,17 @@ export default {
   profileCardImgContent: {
     paddingLeft: cardPadding,
     paddingRight: cardPadding,
+    position: 'absolute',
+    marginTop: -32,
   },
 
   cardActionsContainer: {
     flexDirection: 'row',
-    marginTop: -28,
-    marginBottom: 8,
+    alignSelf: 'flex-end',
+    marginTop: 16,
+    position: 'absolute',
+    zIndex: 99,
+    elevation: 99,
   },
 
   ticketProfileCardImgContent: {
@@ -156,9 +161,9 @@ export default {
     flex: 1,
     flexDirection: 'row',
     height: 130,
-    margin: -17,
+    marginLeft: -17,
+    marginRight: -17,
     marginTop: -21,
-    marginBottom: -32,
   },
   cardContainerCoverBackground: {
     flex: 1,
