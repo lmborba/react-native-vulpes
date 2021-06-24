@@ -109,15 +109,18 @@ class ToggleButton extends Component {
     if (!color) return 'dark_gray';
     return color;
   }
+  size() {
+    return this.props.size || 18;
+  }
 
   render() {
-    const { value, onIcon, offIcon } = this.props;
+    const { value, onIcon, offIcon, style } = this.props;
     return (
-      <TouchableOpacity onPress={this.handleClick.bind(this)}>
+      <TouchableOpacity onPress={this.handleClick.bind(this)} style={style}>
         {value ? (
-          <Icon name={onIcon} size={18} color={this.color()} />
+          <Icon name={onIcon} size={this.size()} color={this.color()} />
         ) : (
-          <Icon name={offIcon} size={18} color={this.color()} />
+          <Icon name={offIcon} size={this.size()} color={this.color()} />
         )}
       </TouchableOpacity>
     );

@@ -101,6 +101,11 @@ const CheckedIcon = (props) => {
   return <Icon size={12} name={'check'} style={checkedIcon} />;
 };
 
+const Children = ({ children }) => {
+  if (typeof children !== 'string') return children;
+  return <Regular style={listItemText}>{children}</Regular>;
+};
+
 export const ListItem = (props) => {
   const params = listProps(props);
   return (
@@ -111,7 +116,7 @@ export const ListItem = (props) => {
         style={touchStyle}
       >
         <CheckedIcon show={props.checked} />
-        <Regular style={listItemText}>{props.children}</Regular>
+        <Children children={props.children} />
         <NavIcon show={props.onPress} />
       </TouchableOpacity>
     </View>
