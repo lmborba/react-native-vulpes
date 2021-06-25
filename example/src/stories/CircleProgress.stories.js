@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { CashbackProgress } from '../../../src/components/cashback_progress';
+import { CashbackProgress } from 'react-native-vulpes';
 
 export default {
   title: 'Example/CashbackProgress',
