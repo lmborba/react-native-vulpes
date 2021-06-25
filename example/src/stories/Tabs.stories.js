@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react-native';
-import React from 'react';
-import { Platform, View } from 'react-native';
+import React, { useState } from 'react';
+import { Platform, TouchableOpacity, View } from 'react-native';
 import { Colors, H1, Tab, Tabs } from 'react-native-vulpes';
 
 const colorList = () => {
@@ -24,16 +24,23 @@ const TemplateTab = ({
   light = undefined,
   icon = 'like_empty',
   ...rest
-}) => (
-  <Tabs>
-    <Tab title="Todos">
-      <H1>Aba 1</H1>
-    </Tab>
-    <Tab title="Inclusos no plano">
-      <H1>Aba 2</H1>
-    </Tab>
-  </Tabs>
-);
+}) => {
+  const [current, setTab] = useState(0);
+  const defineTab = (newLevel) => setTab(() => newLevel);
+  return (
+    <Tabs onChangeTab={defineTab} current={current}>
+      <Tab title="Todos">
+        <H1>Aba 1</H1>
+      </Tab>
+      <Tab title="Inclusos no plano">
+        <H1>Aba 2</H1>
+        <TouchableOpacity onPress={() => defineTab(0)}>
+          Testando
+        </TouchableOpacity>
+      </Tab>
+    </Tabs>
+  );
+};
 
 export const Example = TemplateTab.bind({});
 Example.argTypes = {

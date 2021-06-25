@@ -54,14 +54,19 @@ export class Tabs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 0,
+      selected: props.current ? props.current : 0,
     };
   }
 
   handleChange(newIndex) {
-    this.setState({
-      selected: newIndex,
-    });
+    this.setState(
+      {
+        selected: newIndex,
+      },
+      () => {
+        this.props.onChangeTab && this.props.onChangeTab(newIndex);
+      }
+    );
   }
 
   tabTitles(children) {
@@ -85,8 +90,10 @@ export class Tabs extends Component {
   }
 
   render() {
-    const { children, ...rest } = this.props;
+    const { children, current, ...rest } = this.props;
     const { selected } = this.state;
+
+    let currentTab = current === undefined ? selected : current;
 
     if (!children || children.length === 0) return;
     const titles = this.tabTitles(children);
@@ -94,10 +101,10 @@ export class Tabs extends Component {
       <View {...rest}>
         <ListOfTabs
           titles={titles}
-          selected={selected}
+          selected={currentTab}
           onChange={this.handleChange.bind(this)}
         />
-        <View>{children[selected]}</View>
+        <View>{children[currentTab]}</View>
       </View>
     );
   }
