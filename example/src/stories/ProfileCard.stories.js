@@ -80,6 +80,13 @@ export default {
         options: colorList(),
       },
     },
+    tagTextColor: {
+      description: 'color to be used for text of the tag',
+      control: {
+        type: 'select',
+        options: colorList(),
+      },
+    },
   },
 };
 
@@ -119,6 +126,7 @@ Example.args = {
   tagIcon: 'unlock',
   tagColor: 'dark_gray',
   tagText: 'Tag text',
+  tagTextColor: undefined,
 };
 
 if (Platform.OS === 'android') {
