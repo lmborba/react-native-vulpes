@@ -25,11 +25,12 @@ const imageList = () => {
   return [
     'static/media/thumb.5ebfbd91.png',
     'https://is2-ssl.mzstatic.com/image/thumb/Purple114/v4/26/44/72/2644724f-d58e-3097-9f6c-da427946c99e/source/60x60bb.jpg',
+    undefined,
   ];
 };
 
 const coverList = () => {
-  return [require('../images/banner.png')];
+  return [require('../images/banner.png'), undefined];
 };
 
 const mobileStyleWidget = { maxWidth: 320 };
