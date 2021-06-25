@@ -132,16 +132,16 @@ export class TicketProfileCard extends Component {
   }
 }
 
-const CardTag = ({ icon, color, text }) => {
+const CardTag = ({ icon, color, text, textColor }) => {
   return (
-    <Tag color={color}>
+    <Tag textColor={textColor || 'white'} color={color || 'dark_gray'}>
       <Icon name={icon} size={12} />
       <Text>{text}</Text>
     </Tag>
   );
 };
 
-const CardCover = ({ tagText, tagIcon, tagColor, source }) => {
+const CardCover = ({ tagText, tagIcon, tagColor, tagTextColor, source }) => {
   if (!source) {
     const dummyStyle = { height: 32 };
     return <View style={dummyStyle} />;
@@ -154,7 +154,12 @@ const CardCover = ({ tagText, tagIcon, tagColor, source }) => {
         imageStyle={style.cardContainerCoverImage}
       >
         {(tagText || tagIcon) && (
-          <CardTag color={tagColor} text={tagText} icon={tagIcon} />
+          <CardTag
+            textColor={tagTextColor}
+            color={tagColor}
+            text={tagText}
+            icon={tagIcon}
+          />
         )}
       </ImageBackground>
     </View>
