@@ -14,7 +14,9 @@ const Gradient = () => (
 
 export default class CircularProgress extends React.PureComponent {
   polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-    var angleInRadians = ((angleInDegrees + 180) * Math.PI) / 180.0;
+    const circleRotation = this.props.circleRotation || 0;
+    var angleInRadians =
+      ((angleInDegrees + 90 + circleRotation) * Math.PI) / 180.0;
     return {
       x: centerX + radius * Math.cos(angleInRadians),
       y: centerY + radius * Math.sin(angleInRadians),

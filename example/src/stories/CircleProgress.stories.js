@@ -10,7 +10,7 @@ export default {
 const containerStyle = { borderWidth: 1, alignItems: 'center' };
 const TemplateTag = (props) => (
   <View style={containerStyle}>
-    <CashbackProgress {...props} />
+    <CashbackProgress {...props} circleRotation={90} />
   </View>
 );
 
