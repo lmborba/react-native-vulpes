@@ -12,6 +12,7 @@ import {
   TicketProfileCard,
 } from './components/card';
 import { Carousel } from './components/carousel';
+import { CashbackProgress } from './components/cashback_progress';
 import { Divider } from './components/divider';
 import { GradientView } from './components/gradient_view';
 import { Header } from './components/header';
@@ -78,8 +79,8 @@ export {
   Tabs,
   Tab,
   TextInput,
-  SearchInput,
   SelectInput,
+  SearchInput,
   SelectItem,
   Header,
   Page,
@@ -100,6 +101,7 @@ export {
   ListItem,
   Tag,
   ToggleButton,
+  CashbackProgress,
 };
 
 const { Vulpes } = NativeModules;
