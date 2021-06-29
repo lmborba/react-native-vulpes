@@ -155,7 +155,7 @@ export default {
     flex: 1,
     flexDirection: 'column',
     padding: 16,
-    paddingRight: 10,
+    paddingRight: 90,
   },
 
   cardCoverContainer: {
@@ -178,5 +178,5 @@ export default {
 
   titleTextBannerCard: { marginBottom: 8 },
   buttonTextBannerCard: { paddingLeft: 0, marginTop: 12 },
-  imageInBannerCard: { width: 90, alignItems: 'flex-end', zIndex: -1 },
+  imageInBannerCard: { position: 'absolute', right: 0 },
 };

@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Image, ImageBackground, TouchableOpacity, View } from 'react-native';
 import { Colors } from '../colors';
 import style from '../styles/card';
@@ -250,17 +250,17 @@ export const BannerCard = ({
   onPress,
   height,
 }) => {
-  const [width, setWidth] = useState(0);
   const OuterComp = onPress ? TouchableOpacity : View;
 
   const cardHeight = height || 162;
-  const imageStyle = { height: cardHeight, width: width };
+  let width = 90;
 
-  Image.getSize(source, (w, h) => {
+  if (Image.resolveAssetSource) {
+    const { width: w, height: h } = Image.resolveAssetSource(source);
     const ratio = w / h;
-    const nw = cardHeight * ratio;
-    setWidth(nw);
-  });
+    width = Math.round(cardHeight * ratio);
+  }
+  let imageStyle = { height: cardHeight, width: width };
 
   return (
     <OuterComp onPress={onPress}>
@@ -269,6 +269,10 @@ export const BannerCard = ({
         style={[style.bannerCardGradient, { height: cardHeight }]}
       >
         <View style={style.outerViewBannerCard}>
+          <View style={style.imageInBannerCard}>
+            <Image source={source} style={imageStyle} />
+          </View>
+
           <View style={style.textsViewBannerCard}>
             <RegularBold color="white" style={style.titleTextBannerCard}>
               {title}
@@ -280,10 +284,6 @@ export const BannerCard = ({
                 <Icon name="long_arrow_right" />
               </Button>
             )}
-          </View>
-
-          <View style={style.imageInBannerCard}>
-            <Image source={source} style={imageStyle} />
           </View>
         </View>
       </GradientView>
