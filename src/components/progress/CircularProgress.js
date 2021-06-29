@@ -5,7 +5,7 @@ import { Svg, Path, G, LinearGradient, Stop, Defs } from 'react-native-svg';
 
 const Gradient = () => (
   <Defs key={'gradient'}>
-    <LinearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <LinearGradient id="gradient" x1="0%" y1="100%" x2="100%" y2="0%">
       <Stop offset="0%" stopColor="#01C6E1" />
       <Stop offset="100%" stopColor="#0092D9" />
     </LinearGradient>

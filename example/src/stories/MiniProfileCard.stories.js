@@ -44,7 +44,7 @@ export default {
   },
 };
 
-const TemplateGradientView = ({ ...rest }) => {
+const Template = ({ ...rest }) => {
   return (
     <MiniProfileCard {...rest}>
       <RegularBold>Fulano de tal</RegularBold>
@@ -53,7 +53,8 @@ const TemplateGradientView = ({ ...rest }) => {
   );
 };
 
-export const Example = TemplateGradientView.bind({});
+// -- example 1-----
+export const Example = Template.bind({});
 Example.argTypes = {
   source: {
     description: 'source for profile image',
@@ -68,6 +69,25 @@ Example.args = {
   source: 'static/media/thumb.5ebfbd91.png',
 };
 
+// -- example 2-----
+export const MiniCardWithTag = Template.bind({});
+Example.argTypes = {
+  source: {
+    description: 'source for profile image',
+    control: {
+      type: 'select',
+      options: imageList(),
+    },
+  },
+};
+
+MiniCardWithTag.args = {
+  color: 'cyan',
+  source: 'static/media/thumb.5ebfbd91.png',
+  tagText: 'hello',
+  tagIcon: 'lock',
+};
+
 if (Platform.OS === 'android') {
   const fillStories = storiesOf('Color', module).addDecorator((Story) => (
     <View>
@@ -75,5 +95,5 @@ if (Platform.OS === 'android') {
     </View>
   ));
 
-  fillStories.add('MiniProfileCard', TemplateGradientView, Example.args);
+  fillStories.add('MiniProfileCard', Template, Example.args);
 }
