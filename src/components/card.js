@@ -249,6 +249,7 @@ export const BannerCard = ({
   color,
   onPress,
   height,
+  style: bStyle,
 }) => {
   const OuterComp = onPress ? TouchableOpacity : View;
 
@@ -263,7 +264,7 @@ export const BannerCard = ({
   let imageStyle = { height: cardHeight, width: width };
 
   return (
-    <OuterComp onPress={onPress}>
+    <OuterComp onPress={onPress} style={bStyle}>
       <GradientView
         color={color}
         style={[style.bannerCardGradient, { height: cardHeight }]}
