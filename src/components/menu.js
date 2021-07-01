@@ -4,7 +4,7 @@ import { Colors } from '../colors';
 import { Fonts } from '../fonts';
 
 const generalMenuStyle = {
-  flexDirection: 'Row',
+  flexDirection: 'row',
   borderTopWidth: 1,
   backgroundColor: Colors.white,
   borderTopColor: Colors.light_gray,
