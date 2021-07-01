@@ -73,6 +73,7 @@ export default {
     paddingRight: cardPadding,
     paddingBottom: 20,
     backgroundColor: Colors.white,
+    overflow: 'hidden',
   },
 
   illustrationOnCard: {

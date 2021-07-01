@@ -183,7 +183,7 @@ CircularProgress.propTypes = {
   rotation: PropTypes.number,
   lineCap: PropTypes.string,
   arcSweepAngle: PropTypes.number,
-  children: PropTypes.func,
+  children: PropTypes.object,
   childrenContainerStyle: PropTypes.object,
   padding: PropTypes.number,
   containerWidth: PropTypes.number,

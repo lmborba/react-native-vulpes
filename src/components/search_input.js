@@ -51,7 +51,6 @@ export class SearchInput extends Component {
       inputStyle,
       onPress,
       onBlur,
-      ref,
       onFocus,
       value,
       ...rest

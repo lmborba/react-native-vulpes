@@ -33,9 +33,10 @@ export const NotificationMenu = ({
   const notificationMenuCompleteStyle = { ...style, flexDirection: 'row' };
   return (
     <View {...restProps} style={notificationMenuCompleteStyle}>
-      {menuList.map((item) => {
+      {menuList.map((item, index) => {
         return (
           <NotificationMenuItem
+            key={'mItem' + index}
             item={item}
             size={size}
             color={color}
