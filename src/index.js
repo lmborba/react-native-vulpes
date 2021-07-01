@@ -17,6 +17,7 @@ import { GradientView } from './components/gradient_view';
 import { Header } from './components/header';
 import { Icon } from './components/icon';
 import { List, ListItem } from './components/list';
+import { Menu, MenuItem } from './components/menu';
 import { Modal } from './components/modal';
 import { ModalContainer } from './components/modal_container';
 import { NotificationIcon } from './components/notification_icon';
@@ -49,6 +50,8 @@ import { FillSpace, PaddedView } from './components/utils';
 import { Fonts } from './fonts';
 
 export {
+  Menu,
+  MenuItem,
   BannerCard,
   Colors,
   Text,
