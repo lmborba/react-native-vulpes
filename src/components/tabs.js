@@ -40,6 +40,7 @@ const ListOfTabs = ({ titles, selected, onChange }) => {
         if (!title) return;
         return (
           <TabButton
+            key={'tb' + i}
             title={title}
             focus={selected === i}
             onSelect={() => onChange(i)}
@@ -72,17 +73,15 @@ export class Tabs extends Component {
   tabTitles(children) {
     try {
       if (!children) return [];
+      return React.Children.toArray(children).map((child, i) => {
+        if (!child) return null;
+        let { title, visible } = child.props;
+        if (!title || visible === false) return null;
 
-      if (!Array.isArray(children)) {
-        let title = children.props.title;
-        if (!title) return [];
-        return [title];
-      }
+        let { type } = child;
+        if (!type || type.name !== 'Tab') return null;
 
-      return children.map((item) => {
-        if (!item || !item.type) return null;
-        if (item.type.name !== 'Tab') return null;
-        return item.props.title;
+        return child.props.title;
       });
     } catch (error) {
       return [];
