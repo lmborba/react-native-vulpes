@@ -13,7 +13,7 @@ class Tag extends Component {
   }
 
   renderChildren() {
-    return React.Children.map(this.props.children, (child, i) => {
+    return React.Children.toArray(this.props.children).map((child, i) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
           color: this.textColor(),

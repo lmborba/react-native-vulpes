@@ -149,13 +149,13 @@ export default {
     paddingLeft: 8,
     paddingTop: 4,
   },
-  bannerCardGradient: { height: 162, borderRadius: 10 },
-  outerViewBannerCard: { flexDirection: 'row', height: 162 },
+  bannerCardGradient: { height: 162, borderRadius: 10, overflow: 'hidden' },
+  outerViewBannerCard: { flexDirection: 'row', height: '100%' },
   textsViewBannerCard: {
     flex: 1,
     flexDirection: 'column',
     padding: 16,
-    paddingRight: 10,
+    paddingRight: 90,
   },
 
   cardCoverContainer: {
@@ -178,5 +178,5 @@ export default {
 
   titleTextBannerCard: { marginBottom: 8 },
   buttonTextBannerCard: { paddingLeft: 0, marginTop: 12 },
-  imageInBannerCard: { alignSelf: 'center', width: 91, height: 129 },
+  imageInBannerCard: { position: 'absolute', right: 0 },
 };

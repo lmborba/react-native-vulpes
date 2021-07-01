@@ -132,10 +132,15 @@ export class TicketProfileCard extends Component {
   }
 }
 
-const CardTag = ({ icon, color, text, textColor }) => {
+const CardTag = ({ icon, color, text, textColor, marginBottom }) => {
+  const mgBottom = marginBottom ? { marginBottom: 8 } : {};
   return (
-    <Tag textColor={textColor || 'white'} color={color || 'dark_gray'}>
-      <Icon name={icon} size={12} />
+    <Tag
+      textColor={textColor || 'white'}
+      color={color || 'dark_gray'}
+      style={mgBottom}
+    >
+      {icon && <Icon name={icon} size={12} />}
       <Text>{text}</Text>
     </Tag>
   );
@@ -192,8 +197,18 @@ export class MiniProfileCard extends Component {
     return data;
   }
   render() {
+    const { tagTextColor, tagColor, tagText, tagIcon } = this.props;
     return (
       <Card cardContainer={style.miniCardContainer} {...this.props}>
+        {(tagText || tagIcon) && (
+          <CardTag
+            textColor={tagTextColor}
+            color={tagColor}
+            text={tagText}
+            icon={tagIcon}
+            marginBottom={true}
+          />
+        )}
         <View style={outerMiniCardStyle}>
           <Thumbnail source={this.props.source} size={'small'} />
           <View style={style.miniCardContentStyle}>{this.props.children}</View>
@@ -233,26 +248,44 @@ export const BannerCard = ({
   source,
   color,
   onPress,
+  height,
+  style: bStyle,
 }) => {
-  let OuterComp = View;
-  if (onPress) {
-    OuterComp = TouchableOpacity;
+  const OuterComp = onPress ? TouchableOpacity : View;
+
+  const cardHeight = height || 162;
+  let width = 90;
+
+  if (Image.resolveAssetSource) {
+    const { width: w, height: h } = Image.resolveAssetSource(source);
+    const ratio = w / h;
+    width = Math.round(cardHeight * ratio);
   }
+  let imageStyle = { height: cardHeight, width: width };
+
   return (
-    <OuterComp onPress={onPress}>
-      <GradientView color={color} style={style.bannerCardGradient}>
+    <OuterComp onPress={onPress} style={bStyle}>
+      <GradientView
+        color={color}
+        style={[style.bannerCardGradient, { height: cardHeight }]}
+      >
         <View style={style.outerViewBannerCard}>
+          <View style={style.imageInBannerCard}>
+            <Image source={source} style={imageStyle} />
+          </View>
+
           <View style={style.textsViewBannerCard}>
             <RegularBold color="white" style={style.titleTextBannerCard}>
               {title}
             </RegularBold>
             <Regular color="white">{description}</Regular>
-            <Button color="white" ghost style={style.buttonTextBannerCard}>
-              <Text>{linkText}</Text>
-              <Icon name="long_arrow_right" />
-            </Button>
+            {linkText && (
+              <Button color="white" ghost style={style.buttonTextBannerCard}>
+                <Text>{linkText}</Text>
+                <Icon name="long_arrow_right" />
+              </Button>
+            )}
           </View>
-          <Image source={source} style={style.imageInBannerCard} />
         </View>
       </GradientView>
     </OuterComp>
