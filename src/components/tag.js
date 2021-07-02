@@ -27,7 +27,11 @@ class Tag extends Component {
 
       if (typeof child === 'string') {
         return (
-          <Text color={this.textColor()} fontStyle={Fonts.smallBold}>
+          <Text
+            key={'.' + i}
+            color={this.textColor()}
+            fontStyle={Fonts.smallBold}
+          >
             {child}
           </Text>
         );

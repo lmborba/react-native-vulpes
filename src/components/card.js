@@ -61,7 +61,7 @@ const TicketCardSeparator = (props) => {
 export class TicketCard extends Component {
   render() {
     return (
-      <Card {...this.props}>
+      <Card cardContainer={{ overflow: null }} {...this.props}>
         <TicketCardSeparator />
         {this.props.children}
       </Card>

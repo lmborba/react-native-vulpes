@@ -18,6 +18,11 @@ export default {
   component: Tab,
 };
 
+const Teste = () => {
+  console.log('rendering...');
+  return <H1>ok</H1>;
+};
+
 const TemplateTab = ({
   color = undefined,
   outline = undefined,
@@ -32,10 +37,14 @@ const TemplateTab = ({
       <Tab title="Todos">
         <H1>Aba 1</H1>
       </Tab>
+      <Tab title="Vazio" visible={true}>
+        <H1>Aba oculta</H1>
+        <Teste />
+      </Tab>
       <Tab title="Inclusos no plano">
         <H1>Aba 2</H1>
         <TouchableOpacity onPress={() => defineTab(0)}>
-          Testando
+          <H1>Testando</H1>
         </TouchableOpacity>
       </Tab>
     </Tabs>
