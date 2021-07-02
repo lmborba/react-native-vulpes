@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Animated, View } from 'react-native';
-import { Svg, Path, G, LinearGradient, Stop, Defs } from 'react-native-svg';
+import { Defs, G, LinearGradient, Path, Stop, Svg } from 'react-native-svg';
 
 const Gradient = () => (
   <Defs key={'gradient'}>
@@ -43,7 +43,9 @@ export default class CircularProgress extends React.PureComponent {
     return d.join(' ');
   }
 
-  clampFill = (fill) => Math.min(100, Math.max(0, fill));
+  clampFill = (fill) => {
+    return Math.min(100, Math.max(0.01, fill));
+  };
 
   render() {
     const {
@@ -58,7 +60,6 @@ export default class CircularProgress extends React.PureComponent {
       lineCap,
       fillLineCap = lineCap,
       arcSweepAngle,
-      fill,
       children,
       childrenContainerStyle,
       padding,
@@ -67,6 +68,7 @@ export default class CircularProgress extends React.PureComponent {
       containerHeight,
       containerWidth,
     } = this.props;
+    let { fill } = this.props;
 
     const maxWidthCircle = backgroundWidth
       ? Math.max(width, backgroundWidth)
@@ -75,6 +77,7 @@ export default class CircularProgress extends React.PureComponent {
     const radius = size / 2 - maxWidthCircle / 2 - padding / 2;
 
     const currentFillAngle = (arcSweepAngle * this.clampFill(fill)) / 100;
+
     const backgroundPath = this.circlePath(
       sizeWithPadding,
       sizeWithPadding,
@@ -147,17 +150,15 @@ export default class CircularProgress extends React.PureComponent {
                 fill="transparent"
               />
             )}
-            {fill > 0 && (
-              <Path
-                d={circlePath}
-                stroke={tintColor || 'url(#gradient)'}
-                strokeWidth={width}
-                strokeLinecap={fillLineCap}
-                strokeDasharray={strokeDasharrayTint}
-                fill="transparent"
-              />
-            )}
-            {cap}
+            <Path
+              d={circlePath}
+              stroke={tintColor || 'url(#gradient)'}
+              strokeWidth={width}
+              strokeLinecap={fillLineCap}
+              strokeDasharray={strokeDasharrayTint}
+              fill="transparent"
+            />
+            ){cap}
           </G>
         </Svg>
         {children && (

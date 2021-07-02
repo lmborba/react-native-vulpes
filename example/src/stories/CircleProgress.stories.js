@@ -1,16 +1,16 @@
 import React from 'react';
 import { View } from 'react-native';
-import { CashbackProgress } from 'react-native-vulpes';
+import { CircularProgress } from 'react-native-vulpes';
 
 export default {
   title: 'Example/CashbackProgress',
-  component: CashbackProgress,
+  component: CircularProgress,
 };
 
 const containerStyle = { borderWidth: 1, alignItems: 'center' };
 const TemplateTag = (props) => (
   <View style={containerStyle}>
-    <CashbackProgress {...props} circleRotation={90} />
+    <CircularProgress {...props} circleRotation={90} />
   </View>
 );
 
