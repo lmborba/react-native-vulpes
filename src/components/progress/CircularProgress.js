@@ -158,7 +158,7 @@ export default class CircularProgress extends React.PureComponent {
               strokeDasharray={strokeDasharrayTint}
               fill="transparent"
             />
-            ){cap}
+            {cap}
           </G>
         </Svg>
         {children && (
