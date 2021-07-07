@@ -78,7 +78,7 @@ export default {
 
   illustrationOnCard: {
     width: 80,
-    height: 90,
+    height: 91,
     margin: -1,
     borderTopLeftRadius: radius,
     borderBottomLeftRadius: radius,
