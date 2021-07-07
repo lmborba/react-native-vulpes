@@ -124,7 +124,7 @@ export class TicketProfileCard extends Component {
   }
   render() {
     return (
-      <Card {...this.props}>
+      <Card {...this.props} cardContainer={{ overflow: null }}>
         <TicketProfileCardSeparator source={this.props.source} />
         {this.props.children}
       </Card>
