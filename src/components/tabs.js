@@ -81,9 +81,10 @@ export class Tabs extends Component {
         let { type } = child;
         if (!type || type.name !== 'Tab') return null;
 
-        return child.props.title;
+        return title;
       });
     } catch (error) {
+      console.warn('TAB ERROR: ', error);
       return [];
     }
   }
