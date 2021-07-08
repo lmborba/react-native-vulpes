@@ -71,11 +71,12 @@ export class Tabs extends Component {
   }
 
   tabTitles(children) {
-    console.warn('CHILDREN: ', children);
     try {
       if (!children) return [];
       return React.Children.toArray(children).map((child, i) => {
         if (!child) return null;
+        if (!React.isValidElement(child)) return null;
+
         let { title, visible } = child.props;
         if (!title || visible === false) return null;
 
@@ -85,7 +86,6 @@ export class Tabs extends Component {
         return title;
       });
     } catch (error) {
-      console.warn('TAB ERROR: ', error);
       return [];
     }
   }
