@@ -71,6 +71,7 @@ export class Tabs extends Component {
   }
 
   tabTitles(children) {
+    console.warn('CHILDREN: ', children);
     try {
       if (!children) return [];
       return React.Children.toArray(children).map((child, i) => {
