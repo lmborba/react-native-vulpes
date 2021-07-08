@@ -75,14 +75,8 @@ export class Tabs extends Component {
       if (!children) return [];
       return React.Children.toArray(children).map((child, i) => {
         if (!child) return null;
-        if (!React.isValidElement(child)) return null;
-
         let { title, visible } = child.props;
         if (!title || visible === false) return null;
-
-        let { type } = child;
-        if (!type || type.name !== 'Tab') return null;
-
         return title;
       });
     } catch (error) {
