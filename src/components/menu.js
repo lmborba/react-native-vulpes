@@ -8,13 +8,18 @@ const generalMenuStyle = {
   borderTopWidth: 1,
   backgroundColor: Colors.white,
   borderTopColor: Colors.light_gray,
-  paddingBottom: 9,
 };
 export const Menu = (props) => {
   return <View style={generalMenuStyle}>{props.children}</View>;
 };
 
-const generalMenuItemStyle = { flex: 1, padding: 15 };
+const generalMenuItemStyle = {
+  flex: 1,
+  padding: 15,
+  paddingLeft: 10,
+  paddingRight: 10,
+  borderWidth: 1,
+};
 
 export const MenuItem = ({ children, selected, onPress }) => {
   return (
