@@ -55,6 +55,7 @@ export class Carousel extends Component {
     const { containerStyle, firstIndex } = this.props;
 
     const mapped = this.mapChildren();
+    const threshold = Math.round(Math.max(this.componentWidth / 2 - 5), 0);
     return (
       <View onLayout={this.handleLayout.bind(this)} style={containerStyle}>
         <SideSwipe
@@ -64,6 +65,7 @@ export class Carousel extends Component {
           data={mapped}
           contentOffset={this.offset()}
           renderItem={this._renderItem.bind(this)}
+          threshold={threshold}
         />
       </View>
     );

@@ -11,8 +11,9 @@ const convertToStyle = (size) => {
     width: size,
     height: size,
     borderRadius: size / 2,
-    borderWidth: 2,
-    borderColor: Colors.white,
+    borderWidth: 1,
+    borderColor: Colors.light_gray,
+    backgroundColor: Colors.white,
   };
 };
 
