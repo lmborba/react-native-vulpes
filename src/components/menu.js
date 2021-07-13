@@ -18,7 +18,6 @@ const generalMenuItemStyle = {
   padding: 15,
   paddingLeft: 10,
   paddingRight: 10,
-  borderWidth: 1,
 };
 
 export const MenuItem = ({ children, selected, onPress }) => {
