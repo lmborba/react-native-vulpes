@@ -54,12 +54,15 @@ const Title = (props) => {
 };
 
 export const List = (props) => {
-  const itemCount = (props.children && props.children.length) || 0;
+  const cItens = React.Children.toArray(props.children).filter(
+    (c) => c.props.visible !== false
+  );
 
+  const itemCount = cItens.length;
   return (
     <View style={[listContainer, props.style]}>
       <Title title={props.title} />
-      {React.Children.map(props.children, (child, i) => {
+      {cItens.map((child, i) => {
         const last = i === itemCount - 1;
         return React.cloneElement(child, {
           checked: props.checked,
