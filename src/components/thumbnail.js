@@ -23,12 +23,21 @@ const sizesStyle = {
   large: convertToStyle(largeSize),
 };
 
+const transparentStyle = (status) => {
+  if (status) return {};
+  return {
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+  };
+};
+
 export const Thumbnail = ({ source, size, style, ...restProps }) => {
   return (
     <Image
       source={source}
       style={{
         ...sizesStyle[size],
+        ...transparentStyle(source),
         ...style,
       }}
     />
