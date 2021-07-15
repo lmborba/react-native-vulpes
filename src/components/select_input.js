@@ -52,8 +52,9 @@ export class SelectInput extends Component {
     this.state = {
       placeholder: !props.value || props.value.length === 0,
       modalShow: false,
-      selectedLabel: null,
-      selectedValue: null,
+      selectedLabel: undefined,
+      selectedValue: undefined,
+      itens: this.loadItens(),
     };
     const selected = this.loadSelected();
     if (selected) {
@@ -64,10 +65,27 @@ export class SelectInput extends Component {
     this.field = null;
   }
 
-  loadSelected() {
-    const mapping = React.Children.map(this.props.children, (item) => {
+  static getDerivedStateFromProps(props, state) {
+    if (props.value !== state.selectedValue) {
+      const selected = state.itens.find((i) => i.value === props.value);
+      if (selected) {
+        return {
+          selectedLabel: selected.label,
+          selectedValue: selected.value,
+        };
+      }
+    }
+    return null;
+  }
+
+  loadItens() {
+    return React.Children.toArray(this.props.children).map((item) => {
       return item.props;
     });
+  }
+
+  loadSelected() {
+    const mapping = this.loadItens();
     if (!mapping || mapping.length === 0) return null;
 
     return mapping.find((item) => item.value === this.props.value);
