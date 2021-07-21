@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Dimensions } from 'react-native';
-import SideSwipe from 'react-native-sideswipe';
+import { View, Dimensions, FlatList } from 'react-native';
 
 export class Carousel extends Component {
   constructor(props) {
@@ -17,55 +16,59 @@ export class Carousel extends Component {
     };
   }
 
-  _renderItem({ item, itemIndex, currentIndex }) {
-    return (
-      <View style={this.componentExtraStyle(itemIndex === currentIndex)}>
-        {item}
-      </View>
-    );
-  }
-
-  componentExtraStyle(active) {
-    const ret = {
-      marginLeft: this.itemSep / 2,
-      marginRight: this.itemSep / 2,
+  componentExtraStyle() {
+    return {
       width: this.itemWidth,
     };
-    if (!active) {
-      ret.transform = [{ scale: 1 }];
-    }
-    return ret;
+  }
+  _renderItem({ item, itemIndex, currentIndex }) {
+    return <View style={this.componentExtraStyle()}>{item}</View>;
   }
 
-  handleLayout(event) {
-    const { width } = event.nativeEvent.layout;
-    this.carouselWidth = width;
-    this.forceUpdate();
+  _itemSeparator() {
+    return <View style={{ width: this.itemSep }} />;
   }
 
-  offset() {
-    const { noOffset, contentOffset } = this.props;
-    if (noOffset !== undefined) return -this.itemSep;
-    if (contentOffset) return contentOffset - this.itemSep / 2;
-
-    return Math.round((this.carouselWidth - this.componentWidth) / 2);
+  flatContainerStyle(offset) {
+    return {
+      paddingLeft: offset,
+      paddingRight: offset,
+    };
   }
 
   render() {
-    const { containerStyle, firstIndex } = this.props;
+    const {
+      containerStyle,
+      firstIndex,
+      contentContainerStyle,
+      contentOffset: offset,
+    } = this.props;
 
     const mapped = this.mapChildren();
-    const threshold = Math.round(Math.max(this.componentWidth / 2 - 5), 0);
     return (
-      <View onLayout={this.handleLayout.bind(this)} style={containerStyle}>
-        <SideSwipe
+      <View style={containerStyle}>
+        <FlatList
           {...this.props}
-          index={firstIndex}
-          itemWidth={this.componentWidth}
+          width={null}
+          contentOffset={null}
+          initialNumToRender={3}
+          getItemLayout={(data, index) => ({
+            length: this.componentWidth,
+            offset: this.componentWidth * index,
+            index,
+          })}
+          initialScrollIndex={firstIndex}
+          contentContainerStyle={[
+            this.flatContainerStyle(offset),
+            { ...contentContainerStyle },
+          ]}
+          horizontal={true}
+          ItemSeparatorComponent={() => this._itemSeparator()}
+          directionalLockEnabled={true}
+          decelerationRate={'fast'}
           data={mapped}
-          contentOffset={this.offset()}
           renderItem={this._renderItem.bind(this)}
-          threshold={threshold}
+          showsHorizontalScrollIndicator={false}
         />
       </View>
     );
@@ -73,11 +76,10 @@ export class Carousel extends Component {
 
   mapChildren() {
     const { children } = this.props;
-    const mapped = React.Children.map(children, (child, i) => {
+    return React.Children.toArray(children).map((child, i) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child);
       }
     });
-    return mapped;
   }
 }

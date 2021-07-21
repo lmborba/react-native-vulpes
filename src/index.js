@@ -12,6 +12,7 @@ import {
   TicketProfileCard,
 } from './components/card';
 import { Carousel } from './components/carousel';
+import { SnapCarousel } from './components/snap_carousel';
 import { CircularProgress } from './components/circular_progress';
 import { Divider } from './components/divider';
 import { GradientView } from './components/gradient_view';
@@ -97,6 +98,7 @@ export {
   TicketCard,
   ProfileCard,
   Carousel,
+  SnapCarousel,
   Modal,
   ModalContainer,
   IllustrationMiniCard,

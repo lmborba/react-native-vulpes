@@ -1,7 +1,7 @@
-import { storiesOf } from '@storybook/react-native';
 import React from 'react';
-import { Platform, View } from 'react-native';
-import { Card, Carousel, Colors, H1 } from 'react-native-vulpes';
+import { View } from 'react-native';
+import { Card, Carousel, Colors, H1, SnapCarousel } from 'react-native-vulpes';
+// import { FlatList, ScrollView, RefreshControl,Container } from 'react-native';
 
 const colorList = () => {
   var keys = [];
@@ -35,7 +35,7 @@ export default {
   },
 };
 
-const TemplateGradientView = ({ color = 'cyan', width = 300, ...rest }) => (
+const TemplateCarousel = ({ color = 'cyan', width = 300, ...rest }) => (
   <Carousel width={width} {...rest}>
     <Card color={color}>
       <H1>Teste 1</H1>
@@ -49,18 +49,28 @@ const TemplateGradientView = ({ color = 'cyan', width = 300, ...rest }) => (
   </Carousel>
 );
 
-export const Example = TemplateGradientView.bind({});
-Example.args = {
+export const ExampleCarousel = TemplateCarousel.bind({});
+ExampleCarousel.args = {
   color: 'cyan',
   width: 200,
 };
 
-if (Platform.OS === 'android') {
-  const fillStories = storiesOf('Color', module).addDecorator((Story) => (
-    <View>
-      <Story />
-    </View>
-  ));
+const TemplateSnapCarousel = ({ color = 'cyan', width = 300, ...rest }) => (
+  <SnapCarousel width={width} {...rest}>
+    <Card color={color}>
+      <H1>Teste 1</H1>
+    </Card>
+    <Card color={color}>
+      <H1>Teste 2</H1>
+    </Card>
+    <Card color={color}>
+      <H1>Teste 3</H1>
+    </Card>
+  </SnapCarousel>
+);
 
-  fillStories.add('Carousel', TemplateGradientView, Example.args);
-}
+export const ExampleSnapCarousel = TemplateSnapCarousel.bind({});
+ExampleSnapCarousel.args = {
+  color: 'cyan',
+  width: 200,
+};
