@@ -25,8 +25,8 @@ export const Content = ({ noPadding, style: customStyle, ...props }) => {
   completeStyle = { ...completeStyle, ...customStyle };
   return (
     <ScrollView
+      {...props}
       style={completeStyle}
-      disableScrollViewPanResponder={props.disableScrollViewPanResponder}
       refreshControl={refreshControl()}
     >
       <View style={style.dummyView} />
