@@ -1,7 +1,14 @@
 import React from 'react';
-import { FlatList, ScrollView, View, RefreshControl } from 'react-native';
+import {
+  FlatList,
+  ScrollView,
+  View,
+  RefreshControl,
+  TouchableOpacity,
+} from 'react-native';
 import style from '../styles/content';
 import { H4 } from './typos';
+import { Icon } from './icon';
 
 export const Page = (props) => (
   <View style={style.pageContainer}>{props.children}</View>
@@ -30,7 +37,14 @@ export const Content = ({ noPadding, style: customStyle, ...props }) => {
       refreshControl={refreshControl()}
     >
       <View style={style.dummyView} />
-      {props.title && <H4 style={style.contentTitle}>{props.title}</H4>}
+      <View>
+        {props.title && <H4 style={style.contentTitle}>{props.title}</H4>}
+        {props.onHelper && (
+          <TouchableOpacity style={style.onHelper} onPress={props.onHelper}>
+            <Icon name="help" size={20} />
+          </TouchableOpacity>
+        )}
+      </View>
       {props.children}
     </ScrollView>
   );
