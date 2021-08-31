@@ -248,6 +248,7 @@ export const BannerCard = ({
   source,
   color,
   onPress,
+  onPressLink,
   height,
   style: bStyle,
 }) => {
@@ -280,7 +281,12 @@ export const BannerCard = ({
             </RegularBold>
             <Regular color="white">{description}</Regular>
             {linkText && (
-              <Button color="white" ghost style={style.buttonTextBannerCard}>
+              <Button
+                color="white"
+                ghost
+                style={style.buttonTextBannerCard}
+                onPress={onPressLink}
+              >
                 <Text>{linkText}</Text>
                 <Icon name="long_arrow_right" />
               </Button>

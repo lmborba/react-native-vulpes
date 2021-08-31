@@ -22,7 +22,7 @@ export class Header extends Component {
                 onPress={this.handleBackButton.bind(this)}
                 style={this.backButtonStyle()}
               >
-                <Icon name="long_arrow_left" color="white" size={18} />
+                <Icon name="long_arrow_left" color="white" size={22} />
               </TouchableOpacity>
             )}
             <FillSpace />

@@ -54,7 +54,6 @@ export class SnapCarousel extends Component {
   render() {
     const { containerStyle, firstIndex } = this.props;
 
-    console.log(this.itemWidth);
     const mapped = this.mapChildren();
     const threshold = Math.round(Math.max(this.componentWidth / 2 - 5), 0);
     return (

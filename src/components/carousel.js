@@ -42,9 +42,15 @@ export class Carousel extends Component {
       firstIndex,
       contentContainerStyle,
       contentOffset: offset,
+      autoWidth,
     } = this.props;
 
     const mapped = this.mapChildren();
+    if (autoWidth && mapped.length === 1) {
+      const { width } = Dimensions.get('window');
+      this.itemWidth = width - this.itemSep * 2;
+    }
+
     return (
       <View style={containerStyle}>
         <FlatList
