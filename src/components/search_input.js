@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Platform, TextInput as Input, View } from 'react-native';
+import {
+  Platform,
+  TextInput as Input,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { Colors } from '../colors';
 import { Fonts } from '../fonts';
 import { Icon } from './icon';
-import { Small } from './typos';
+import { Small, SmallBold } from './typos';
 
 export class SearchInput extends Component {
   constructor(props) {
@@ -52,6 +57,7 @@ export class SearchInput extends Component {
       onPress,
       onBlur,
       onFocus,
+      allowSend,
       value,
       ...rest
     } = this.props;
@@ -72,8 +78,16 @@ export class SearchInput extends Component {
           {...rest}
           style={this.completeStyle()}
           value={this.props.value}
+          onSubmitEditing={this.onSend.bind(this)}
           onChangeText={this.handleChange.bind(this)}
         />
+        {allowSend && (
+          <TouchableOpacity onPress={this.onSend.bind(this)}>
+            <SmallBold style={this.okStyle()} color={'cyan'}>
+              OK
+            </SmallBold>
+          </TouchableOpacity>
+        )}
         {error && (
           <Small style={this.errorStyle()} color={'error'}>
             {error}
@@ -81,6 +95,15 @@ export class SearchInput extends Component {
         )}
       </View>
     );
+  }
+
+  onSend() {
+    const { allowSend, onFinish } = this.props;
+    allowSend && onFinish && onFinish();
+  }
+
+  okStyle() {
+    return { marginTop: 2 };
   }
 
   errorStyle() {

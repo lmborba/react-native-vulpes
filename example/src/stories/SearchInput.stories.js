@@ -32,6 +32,10 @@ export default {
       description: 'value for the input text',
       control: 'string',
     },
+    allowSend: {
+      description: 'if it is allowed to send the query',
+      control: 'boolean',
+    },
     onChangeText: {
       description:
         'function that will be called when the field value is changed. It passes the resulting text as a parameter.',
@@ -53,6 +57,7 @@ Example.args = {
   inputStyle: undefined,
   value: undefined,
   onChangeText: undefined,
+  allowSend: undefined,
 };
 
 if (Platform.OS === 'android') {

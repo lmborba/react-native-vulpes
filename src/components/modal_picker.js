@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView, TouchableOpacity, View } from 'react-native';
-import { DEVICE_HEIGHT } from '../../../../js/utils/metrics';
+import { DEVICE_HEIGHT } from '../utils/metrics';
 import { ModalContainer } from './modal_container';
 import { RegularBold } from './typos';
 
@@ -8,11 +8,13 @@ const containerStyle = {
   padding: 8,
   paddingBottom: 16,
 };
+
 const seletorStyle = {
   borderRadius: 8,
   backgroundColor: 'white',
   alignItems: 'center',
 };
+
 const headerContainerStyle = {
   padding: 10,
   width: '100%',
