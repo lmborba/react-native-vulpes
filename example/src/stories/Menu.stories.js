@@ -48,7 +48,7 @@ const TemplateMenuItem = ({
         onPress={() => defineMenuItem('checkin')}
       >
         <Icon name="checkin" />
-        <Text>Checkin</Text>
+        <Text>Check-in</Text>
       </MenuItem>
       <MenuItem
         selected={current === 'explore'}

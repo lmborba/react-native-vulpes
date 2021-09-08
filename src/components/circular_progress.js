@@ -40,7 +40,7 @@ export class CircularProgress extends Component {
 
   get unit() {
     const { unit } = this.props;
-    return unit || 'checkins';
+    return unit || 'check-ins';
   }
 
   render() {
