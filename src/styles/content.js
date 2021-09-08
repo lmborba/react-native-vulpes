@@ -34,4 +34,9 @@ export default {
   contentTitle: {
     marginBottom: 24,
   },
+  onHelper: {
+    position: 'absolute',
+    padding: 3,
+    right: 0,
+  },
 };
