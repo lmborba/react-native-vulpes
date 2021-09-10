@@ -67,18 +67,23 @@ export const ContentList = ({ noPadding, style: customStyle, ...props }) => {
 
   completeStyle = { ...completeStyle, ...customStyle };
 
+  let header = () => {
+    return (
+      <View>
+        {props.title && <H4 style={style.contentTitle}>{props.title}</H4>}
+        {props.ListHeaderComponent}
+      </View>
+    );
+  };
   return (
-    <View>
-      {props.title && <H4 style={style.contentTitle}>{props.title}</H4>}
-
-      <FlatList
-        contentContainerStyle={style.contentContainerList}
-        style={completeStyle}
-        ItemSeparatorComponent={SepItemDefault}
-        {...props}
-      >
-        {props.children}
-      </FlatList>
-    </View>
+    <FlatList
+      contentContainerStyle={style.contentContainerList}
+      style={completeStyle}
+      ItemSeparatorComponent={SepItemDefault}
+      {...props}
+      ListHeaderComponent={header.bind(this)}
+    >
+      {props.children}
+    </FlatList>
   );
 };
