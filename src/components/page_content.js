@@ -14,6 +14,21 @@ export const Page = (props) => (
   <View style={style.pageContainer}>{props.children}</View>
 );
 
+export const ContentView = ({ noPadding, style: customStyle, ...props }) => {
+  let completeStyle = style.contentContainer;
+  if (noPadding) {
+    completeStyle = {
+      ...completeStyle,
+      ...style.noPadding,
+    };
+  }
+  completeStyle = { ...completeStyle, ...customStyle };
+  return (
+    <View {...props} style={completeStyle}>
+      {props.children}
+    </View>
+  );
+};
 export const Content = ({ noPadding, style: customStyle, ...props }) => {
   let completeStyle = style.contentContainer;
   if (noPadding) {
