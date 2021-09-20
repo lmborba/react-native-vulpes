@@ -9,7 +9,11 @@ import { Icon } from './icon';
 class Button extends Component {
   renderField() {
     if (this.props.children) return this.renderChildren();
-    return <RegularBold color={this.textColor()}>Enviar</RegularBold>;
+    return (
+      <RegularBold color={this.textColor()}>
+        {this.props.text || 'Enviar'}
+      </RegularBold>
+    );
   }
 
   renderChildren() {
