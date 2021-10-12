@@ -33,6 +33,7 @@ import {
 import { QRCodeShow } from './components/qr_code';
 import { SearchInput } from './components/search_input';
 import { SelectInput, SelectItem } from './components/select_input';
+import { ActionSheet, openActionSheet } from './components/action_sheet';
 import { Tab, Tabs } from './components/tabs';
 import { Tag } from './components/tag';
 import { Text } from './components/text';
@@ -60,6 +61,8 @@ export {
   Menu,
   MenuItem,
   BannerCard,
+  ActionSheet,
+  openActionSheet,
   Colors,
   Text,
   Fonts,
