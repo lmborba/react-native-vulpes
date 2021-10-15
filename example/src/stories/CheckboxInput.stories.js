@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
-import { TextInput, CheckboxInput } from 'react-native-vulpes';
+import { CheckboxInput } from 'react-native-vulpes';
 import { Regular } from '../../../src/components/typos';
 
 export default {
