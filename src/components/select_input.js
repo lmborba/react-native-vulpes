@@ -140,7 +140,7 @@ export class SelectInput extends Component {
 
     return (
       <View style={style}>
-        <Regular style={labelStyle}>{label}</Regular>
+        {label && <Regular style={labelStyle}>{label}</Regular>}
         <TouchableOpacity
           style={this.inputBorders()}
           onPress={this.loadModalPicker.bind(this)}

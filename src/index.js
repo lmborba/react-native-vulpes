@@ -1,5 +1,6 @@
 import { NativeModules } from 'react-native';
 import { Colors } from './colors';
+import { ActionSheet, openActionSheet } from './components/action_sheet';
 import { Button, ToggleButton } from './components/button';
 import {
   BannerCard,
@@ -12,7 +13,7 @@ import {
   TicketProfileCard,
 } from './components/card';
 import { Carousel } from './components/carousel';
-import { SnapCarousel } from './components/snap_carousel';
+import { CheckboxInput } from './components/checkbox_input';
 import { CircularProgress } from './components/circular_progress';
 import { Divider } from './components/divider';
 import { GradientView } from './components/gradient_view';
@@ -33,7 +34,7 @@ import {
 import { QRCodeShow } from './components/qr_code';
 import { SearchInput } from './components/search_input';
 import { SelectInput, SelectItem } from './components/select_input';
-import { ActionSheet, openActionSheet } from './components/action_sheet';
+import { SnapCarousel } from './components/snap_carousel';
 import { Tab, Tabs } from './components/tabs';
 import { Tag } from './components/tag';
 import { Text } from './components/text';
@@ -91,6 +92,7 @@ export {
   Tabs,
   Tab,
   TextInput,
+  CheckboxInput,
   SelectInput,
   SearchInput,
   SelectItem,

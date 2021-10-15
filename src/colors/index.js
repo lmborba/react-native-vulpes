@@ -12,4 +12,8 @@ const Colors = {
   ...gradient,
 };
 
+Object.keys(Colors).forEach((c) => {
+  Colors[Colors[c]] = Colors[c];
+});
+
 export { Colors };
