@@ -39,6 +39,11 @@ export class TextInput extends Component {
     this.props.onBlur && this.props.onBlur();
   }
 
+  handlePointer() {
+    if (this.props.editable === false) return { pointerEvents: 'none' };
+    return {};
+  }
+
   render() {
     const {
       error,
@@ -56,7 +61,7 @@ export class TextInput extends Component {
       ...rest
     } = this.props;
     return (
-      <View style={style}>
+      <View style={style} {...this.handlePointer()}>
         <Regular style={labelStyle}>{label}</Regular>
         <Input
           ref={this.handleReference.bind(this)}
