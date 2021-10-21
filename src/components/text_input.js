@@ -40,6 +40,7 @@ export class TextInput extends Component {
   }
 
   handlePointer() {
+    if (Platform.OS !== 'ios') return {};
     if (this.props.editable === false) return { pointerEvents: 'none' };
     return {};
   }
