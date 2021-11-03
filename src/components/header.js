@@ -51,7 +51,7 @@ const HeaderSubtitleLine = (props) => {
   );
 };
 
-const mainTitleStyle = { marginTop: 66 };
+const mainTitleStyle = { marginTop: 46 };
 export class Header extends Component {
   render() {
     const { backAction, menuList, advanceAction, advanceText } = this.props;
