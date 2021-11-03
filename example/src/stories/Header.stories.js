@@ -14,15 +14,15 @@ export default {
   },
 };
 
-const backActionExample = () => {
+const actionExample = () => {
   console.warn('BACK ACTION');
 };
 
-const HeaderExample = ({ backAction = backActionExample, ...rest }) => (
+const HeaderExample = ({ backAction = actionExample, ...rest }) => (
   <Header backAction={backAction} {...rest} />
 );
 
-const HeaderExampleTitle = ({ backAction = backActionExample, ...rest }) => (
+const HeaderExampleTitle = ({ backAction = actionExample, ...rest }) => (
   <Header
     backAction={backAction}
     title={'Titulo no header'}
@@ -51,21 +51,28 @@ const list = [
 
 export const Example1 = HeaderExample.bind({});
 Example1.args = {
-  backAction: backActionExample,
+  backAction: actionExample,
 };
 
 export const Example2 = HeaderExample.bind({});
 Example2.args = {
-  backAction: backActionExample,
+  backAction: actionExample,
   title: 'Titulo no header',
   subtitle: 'Escolha ou pesquise um local para fazer check-in',
 };
 
 export const Example3 = HeaderExample.bind({});
 Example3.args = {
-  backAction: backActionExample,
+  backAction: actionExample,
   title: 'Titulo no header',
   menuList: list,
+};
+
+export const Example4 = HeaderExample.bind({});
+Example4.args = {
+  backAction: null,
+  advanceAction: actionExample,
+  advanceText: 'Pular',
 };
 
 if (Platform.OS === 'android') {
