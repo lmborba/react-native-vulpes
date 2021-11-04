@@ -70,7 +70,7 @@ Example3.args = {
 
 export const Example4 = HeaderExample.bind({});
 Example4.args = {
-  backAction: null,
+  backAction: () => null,
   advanceAction: actionExample,
   advanceText: 'Pular',
 };

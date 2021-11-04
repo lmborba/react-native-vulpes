@@ -50,14 +50,35 @@ const HeaderSubtitleLine = (props) => {
   );
 };
 
+const CenterComponent = ({ component }) => {
+  if (!component) return null;
+  const style = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+  return <View style={style}>{component}</View>;
+};
+
 const mainTitleStyle = { marginTop: 46 };
 export class Header extends Component {
   render() {
-    const { backAction, menuList, advanceAction, advanceText } = this.props;
+    const {
+      backAction,
+      menuList,
+      advanceAction,
+      advanceText,
+      centerComponent,
+    } = this.props;
     return (
       <View>
         <ImageBackground source={image} style={this.headerStyle()}>
           <View style={topHeaderContainer}>
+            <CenterComponent component={centerComponent} />
             {backAction && (
               <TouchableOpacity
                 onPress={this.handleBackButton.bind(this)}
