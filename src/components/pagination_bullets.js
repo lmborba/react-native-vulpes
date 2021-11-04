@@ -18,7 +18,6 @@ function bulletStyle(color, selected) {
 }
 
 const Bullet = ({ color, selected }) => {
-  console.log(selected);
   return <View style={bulletStyle(color, selected)} />;
 };
 
