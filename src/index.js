@@ -31,6 +31,7 @@ import {
   ContentView,
   Page,
 } from './components/page_content';
+import { PaginationBullets } from './components/pagination_bullets';
 import { QRCodeShow } from './components/qr_code';
 import { SearchInput } from './components/search_input';
 import { SelectInput, SelectItem } from './components/select_input';
@@ -59,6 +60,7 @@ import { FillSpace, PaddedView } from './components/utils';
 import { Fonts } from './fonts';
 
 export {
+  PaginationBullets,
   Menu,
   MenuItem,
   BannerCard,
