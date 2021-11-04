@@ -16,9 +16,8 @@ const headerSubtitleStyle = { marginBottom: 52, flex: 1 };
 const topHeaderContainer = { flexDirection: 'row' };
 
 const AdvanceActionButton = (props) => {
-  console.log(props);
   return (
-    <Button color="white" ghost>
+    <Button color="white" ghost onPress={props.advanceAction}>
       <Text style={{ ...Fonts.regular, color: Colors.white }}>
         {props.advanceText}
       </Text>
