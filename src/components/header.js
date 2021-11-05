@@ -73,11 +73,16 @@ export class Header extends Component {
       advanceAction,
       advanceText,
       centerComponent,
+      containerStyle,
     } = this.props;
     return (
       <View>
-        <ImageBackground source={image} style={this.headerStyle()}>
-          <View style={topHeaderContainer}>
+        <ImageBackground
+          source={image}
+          resizeMode={'cover'}
+          style={this.headerStyle()}
+        >
+          <View style={[topHeaderContainer, containerStyle]}>
             <CenterComponent component={centerComponent} />
             {backAction && (
               <TouchableOpacity
