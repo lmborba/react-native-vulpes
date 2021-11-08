@@ -14,12 +14,12 @@ import { FillSpace } from './utils';
 const topHeaderContainer = {
   flexDirection: 'row',
   position: 'absolute',
-  marginTop: 24,
   marginLeft: 16,
   marginRight: 16,
-  height: 44,
+  height: 48,
   flex: 1,
-  width: '100%',
+  right: 0,
+  left: 0,
   alignItems: 'center',
 };
 
@@ -62,7 +62,7 @@ const HeaderSubtitleLine = ({ subtitle }) => {
 };
 
 const DummyHeader = () => {
-  const style = { height: 64 };
+  const style = { height: 48 };
   return <View style={style} />;
 };
 
@@ -85,25 +85,29 @@ export class Header extends Component {
     } = this.props;
     return (
       <View>
-        <ImageBackground source={image} style={this.headerStyle()}>
-          <ContentComponent component={contentComponent} />
-          <HeaderTitleLine title={title} />
-          <HeaderSubtitleLine subtitle={subtitle} />
-          <View style={this.styleImage()} />
+        <ImageBackground source={image} style={this.imageStyle()}>
+          <View style={this.headerStyle()}>
+            <ContentComponent component={contentComponent} />
+            <HeaderTitleLine title={title} />
+            <HeaderSubtitleLine subtitle={subtitle} />
+            <View style={this.styleBottom()} />
 
-          <View style={topHeaderContainer}>
-            <BackAction backAction={backAction} />
-            <FillSpace />
-            <NotificationMenu menuList={menuList} />
-            <AdvanceActionButton {...{ advanceAction, advanceText }} />
+            <View style={topHeaderContainer}>
+              <BackAction backAction={backAction} />
+              <FillSpace />
+              <NotificationMenu menuList={menuList} />
+              <AdvanceActionButton {...{ advanceAction, advanceText }} />
+            </View>
           </View>
         </ImageBackground>
       </View>
     );
   }
 
-  styleImage() {
-    return { marginBottom: 64 };
+  styleBottom() {
+    const { title, subtitle } = this.props;
+    if (title || subtitle) return { marginBottom: 42 };
+    return { marginBottom: 32 };
   }
 
   notchDifference() {
@@ -111,15 +115,14 @@ export class Header extends Component {
     return 0;
   }
 
-  titleDiference() {
-    if (!this.props.title && !this.props.advanceAction) return 0;
-    return 16 + 16 + 33;
+  imageStyle() {
+    return {
+      minHeight: 90,
+    };
   }
-
   headerStyle() {
     return {
-      minHeight: 90 + this.notchDifference() + this.titleDiference(),
-      paddingTop: 24 + this.notchDifference(),
+      marginTop: 12 + this.notchDifference(),
       paddingLeft: 16,
       paddingRight: 16,
     };
