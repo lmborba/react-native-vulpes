@@ -11,60 +11,67 @@ import { Text } from './text';
 import { H2, Regular } from './typos';
 import { FillSpace } from './utils';
 
-const headerSubtitleStyle = { marginBottom: 52, flex: 1 };
+const topHeaderContainer = {
+  flexDirection: 'row',
+  position: 'absolute',
+  marginTop: 24,
+  marginLeft: 16,
+  marginRight: 16,
+  height: 44,
+  flex: 1,
+  width: '100%',
+  alignItems: 'center',
+};
 
-const topHeaderContainer = { flexDirection: 'row' };
+const BackAction = ({ backAction }) => {
+  if (!backAction) return null;
 
-const AdvanceActionButton = (props) => {
+  const backButtonStyle = {
+    height: 36,
+    justifyContent: 'center',
+    width: 40,
+  };
   return (
-    <Button color="white" ghost onPress={props.advanceAction}>
+    <TouchableOpacity onPress={() => backAction()} style={backButtonStyle}>
+      <Icon name="long_arrow_left" color="white" size={22} />
+    </TouchableOpacity>
+  );
+};
+
+const AdvanceActionButton = ({ advanceAction, advanceText }) => {
+  if (!advanceAction) return null;
+  return (
+    <Button color="white" ghost onPress={advanceAction}>
       <Text style={{ ...Fonts.regular, color: Colors.white }}>
-        {props.advanceText}
+        {advanceText}
       </Text>
     </Button>
   );
 };
 
-const headerSubtitleContainer = { flexDirection: 'row' };
-const advanceActionButtonStyle = { width: 100 };
-const HeaderSubtitleLine = (props) => {
-  const { subtitle, advanceAction, advanceText } = props;
-  return (
-    <>
-      <View style={headerSubtitleContainer}>
-        {subtitle ? (
-          <Regular color={'white'} style={headerSubtitleStyle}>
-            {subtitle}
-          </Regular>
-        ) : (
-          <FillSpace />
-        )}
-        {advanceAction ? (
-          <AdvanceActionButton
-            style={advanceActionButtonStyle}
-            {...{ advanceAction, advanceText }}
-          />
-        ) : null}
-      </View>
-    </>
-  );
+const HeaderTitleLine = ({ title }) => {
+  if (!title) return null;
+
+  return <H2 color={'white'}>{title}</H2>;
 };
 
-const CenterComponent = ({ component }) => {
-  if (!component) return null;
-  const style = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-  };
-  return <View style={style}>{component}</View>;
+const HeaderSubtitleLine = ({ subtitle }) => {
+  if (!subtitle) return null;
+
+  return <Regular color={'white'}>{subtitle}</Regular>;
 };
 
-const mainTitleStyle = { marginTop: 46 };
+const DummyHeader = () => {
+  const style = { height: 64 };
+  return <View style={style} />;
+};
+
+const ContentComponent = ({ component }) => {
+  if (!component) return <DummyHeader />;
+
+  return <View>{component}</View>;
+};
+
 export class Header extends Component {
   render() {
     const {
@@ -72,61 +79,31 @@ export class Header extends Component {
       menuList,
       advanceAction,
       advanceText,
-      centerComponent,
-      containerStyle,
+      contentComponent,
+      title,
+      subtitle,
     } = this.props;
     return (
       <View>
-        <ImageBackground
-          source={image}
-          resizeMode={'cover'}
-          style={this.headerStyle()}
-        >
-          <View style={[topHeaderContainer, containerStyle]}>
-            <CenterComponent component={centerComponent} />
-            {backAction && (
-              <TouchableOpacity
-                onPress={this.handleBackButton.bind(this)}
-                style={this.backButtonStyle()}
-              >
-                <Icon name="long_arrow_left" color="white" size={22} />
-              </TouchableOpacity>
-            )}
+        <ImageBackground source={image} style={this.headerStyle()}>
+          <ContentComponent component={contentComponent} />
+          <HeaderTitleLine title={title} />
+          <HeaderSubtitleLine subtitle={subtitle} />
+          <View style={this.styleImage()} />
+
+          <View style={topHeaderContainer}>
+            <BackAction backAction={backAction} />
             <FillSpace />
-            {menuList && <NotificationMenu menuList={menuList} />}
+            <NotificationMenu menuList={menuList} />
+            <AdvanceActionButton {...{ advanceAction, advanceText }} />
           </View>
-          {this.mainTitle(this.props.title)}
-          <HeaderSubtitleLine
-            subtitle={this.props.subtitle}
-            {...{ advanceAction, advanceText }}
-          />
         </ImageBackground>
       </View>
     );
   }
 
-  mainTitle(title) {
-    if (!title) {
-      if (this.props.advanceAction) return <View style={mainTitleStyle} />;
-      return null;
-    }
-    const style = { marginTop: 24 };
-    return (
-      <H2 style={style} color={'white'}>
-        {title}
-      </H2>
-    );
-  }
-
-  backButtonStyle() {
-    return {
-      marginTop: -7,
-      marginBottom: -7,
-      height: 36,
-      justifyContent: 'center',
-      paddingLeft: 0,
-      width: 36,
-    };
+  styleImage() {
+    return { marginBottom: 64 };
   }
 
   notchDifference() {
@@ -146,10 +123,6 @@ export class Header extends Component {
       paddingLeft: 16,
       paddingRight: 16,
     };
-  }
-  handleBackButton() {
-    const { backAction } = this.props;
-    backAction && backAction();
   }
 }
 Header.displayName = 'Header';
