@@ -61,8 +61,25 @@ const HeaderSubtitleLine = ({ subtitle }) => {
   return <Regular color={'white'}>{subtitle}</Regular>;
 };
 
+const HeaderTitles = ({ title, subtitle }) => {
+  if (!title && !subtitle) return null;
+
+  const style = { marginTop: 24, marginBottom: 16 };
+  return (
+    <View style={style}>
+      <HeaderTitleLine title={title} />
+      <HeaderSubtitleLine subtitle={subtitle} />
+    </View>
+  );
+};
+
 const DummyHeader = () => {
   const style = { height: 48 };
+  return <View style={style} />;
+};
+
+const DummyBottom = () => {
+  const style = { height: 32 };
   return <View style={style} />;
 };
 
@@ -88,9 +105,8 @@ export class Header extends Component {
         <ImageBackground source={image} style={this.imageStyle()}>
           <View style={this.headerStyle()}>
             <ContentComponent component={contentComponent} />
-            <HeaderTitleLine title={title} />
-            <HeaderSubtitleLine subtitle={subtitle} />
-            <View style={this.styleBottom()} />
+            <HeaderTitles {...{ title, subtitle }} />
+            <DummyBottom />
 
             <View style={topHeaderContainer}>
               <BackAction backAction={backAction} />
@@ -102,12 +118,6 @@ export class Header extends Component {
         </ImageBackground>
       </View>
     );
-  }
-
-  styleBottom() {
-    const { title, subtitle } = this.props;
-    if (title || subtitle) return { marginBottom: 42 };
-    return { marginBottom: 32 };
   }
 
   notchDifference() {
