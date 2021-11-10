@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Header } from 'react-native-vulpes';
+import { Header, H3 } from 'react-native-vulpes';
 
 export default {
   title: 'Example/Header',
@@ -30,6 +30,19 @@ const HeaderExampleTitle = ({ backAction = actionExample, ...rest }) => (
     {...rest}
   />
 );
+
+const ContentComponent = () => {
+  const style = {
+    height: 150,
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+  return (
+    <View style={style}>
+      <H3 color={'white'}>GoGood</H3>
+    </View>
+  );
+};
 
 const list = [
   {
@@ -70,9 +83,31 @@ Example3.args = {
 
 export const Example4 = HeaderExample.bind({});
 Example4.args = {
-  backAction: null,
+  backAction: () => null,
   advanceAction: actionExample,
   advanceText: 'Pular',
+};
+
+export const Example5 = HeaderExample.bind({});
+Example5.args = {
+  backAction: () => null,
+  advanceAction: actionExample,
+  advanceText: 'Pular',
+  title: 'Titulo no header',
+  subtitle: 'Subtítulo no header',
+  menuList: [
+    {
+      icon: 'notification_empty',
+      showMarker: true,
+      action: () => null,
+    },
+    {
+      icon: 'notification_empty',
+      showMarker: false,
+      action: () => null,
+    },
+  ],
+  contentComponent: <ContentComponent />,
 };
 
 if (Platform.OS === 'android') {
