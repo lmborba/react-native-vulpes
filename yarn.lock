@@ -6770,6 +6770,11 @@ react-native-dash@^0.0.11:
     prop-types "^15.5.10"
     react-native-measureme "0.0.2"
 
+react-native-dashed-border@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-dashed-border/-/react-native-dashed-border-2.1.1.tgz#137664080ed41de49a72b81f1ffc8c0c2b496743"
+  integrity sha1-E3ZkCA7UHeSacrgfH/yMDCtJZ0M=
+
 react-native-device-info@^8.0.2:
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-8.0.2.tgz#edefb8538412bf33e12a7ba1b80fbd804f69580b"

@@ -25,7 +25,13 @@ export default {
     source: {
       description: 'image to be shown',
       control: {
-        type: 'iamge',
+        type: 'image',
+      },
+    },
+    empty: {
+      description: 'if the thumbnail is for an empty image',
+      control: {
+        type: 'boolean',
       },
     },
   },
@@ -34,15 +40,17 @@ export default {
 const TemplateThumbnails = ({
   size = 'small',
   source = exampleImage,
+  empty = undefined,
   ...rest
 }) => {
-  return <Thumbnail source={source} size={size} {...rest} />;
+  return <Thumbnail source={source} size={size} empty={empty} {...rest} />;
 };
 
 export const Example = TemplateThumbnails.bind({});
 Example.args = {
   source: exampleImage,
   size: undefined,
+  empty: undefined,
 };
 
 if (Platform.OS === 'android') {
