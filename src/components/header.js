@@ -14,8 +14,8 @@ import { FillSpace } from './utils';
 const topHeaderContainer = {
   flexDirection: 'row',
   position: 'absolute',
-  marginLeft: 16,
-  marginRight: 16,
+  marginLeft: 8,
+  marginRight: 8,
   height: 48,
   flex: 1,
   right: 0,
@@ -30,6 +30,7 @@ const BackAction = ({ backAction }) => {
     height: 36,
     justifyContent: 'center',
     width: 40,
+    paddingLeft: 8,
   };
   return (
     <TouchableOpacity onPress={() => backAction()} style={backButtonStyle}>
