@@ -5,7 +5,7 @@ import json from '../../assets/icons/selection.json';
 import { Colors } from '../colors';
 import { Icon } from './icon';
 
-const Marker = ({ markerSize, borderColor, fillColor, ...rest }) => {
+const Marker = ({ markerSize, borderColor, fillColor, up, ...rest }) => {
   const borderColorVal = borderColor ? Colors[borderColor] : Colors.white;
   const fillColorVal = fillColor ? Colors[fillColor] : Colors.error;
   const markerCompleteStyle = {
@@ -16,7 +16,8 @@ const Marker = ({ markerSize, borderColor, fillColor, ...rest }) => {
     borderColor: borderColorVal,
     backgroundColor: fillColorVal,
     right: 0,
-    bottom: 0,
+    bottom: up ? undefined : 0,
+    top: up ? 0 : undefined,
     position: 'absolute',
   };
   return <View style={markerCompleteStyle} />;
@@ -28,12 +29,15 @@ export const NotificationIcon = ({
   size,
   markerColor,
   showMarker,
+  up,
+  markerBorder,
   ...restProps
 }) => {
   if (!color) color = 'white';
   const sizeVal = size ? size : 20;
   const markerSize = (sizeVal * 4) / 10;
   const notificationIconContainer = { width: sizeVal, height: sizeVal };
+  const borderColor = markerBorder || color;
 
   return (
     <View {...restProps}>
@@ -41,7 +45,8 @@ export const NotificationIcon = ({
         <Icon name={name} color={color} size={size} />
         {showMarker && (
           <Marker
-            borderColor={color}
+            borderColor={borderColor}
+            up={up}
             fillColor={markerColor}
             markerSize={markerSize}
           />

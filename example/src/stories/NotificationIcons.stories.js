@@ -58,6 +58,20 @@ export default {
         options: colorList(),
       },
     },
+    markerBorder: {
+      description: 'color of the border of the notification marker',
+      control: {
+        type: 'select',
+        options: colorList(),
+      },
+    },
+    up: {
+      description:
+        'if the notification marker should be placed on the top of the icon',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 };
 
@@ -94,6 +108,8 @@ Example.args = {
   showMarker: true,
   size: undefined,
   markerColor: undefined,
+  markerBorder: undefined,
+  up: undefined,
 };
 
 if (Platform.OS === 'android') {
