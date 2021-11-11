@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Header, H3 } from 'react-native-vulpes';
+import { H3, Header } from 'react-native-vulpes';
 
 export default {
   title: 'Example/Header',
@@ -72,6 +72,7 @@ Example2.args = {
   backAction: actionExample,
   title: 'Titulo no header',
   subtitle: 'Escolha ou pesquise um local para fazer check-in',
+  helpAction: undefined,
 };
 
 export const Example3 = HeaderExample.bind({});
@@ -108,6 +109,14 @@ Example5.args = {
     },
   ],
   contentComponent: <ContentComponent />,
+};
+
+export const Example6 = HeaderExample.bind({});
+Example6.args = {
+  backAction: actionExample,
+  title: 'Titulo no header',
+  subtitle: 'Escolha ou pesquise um local para fazer check-in',
+  helpAction: () => {},
 };
 
 if (Platform.OS === 'android') {

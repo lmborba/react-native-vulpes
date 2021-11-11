@@ -49,10 +49,20 @@ const AdvanceActionButton = ({ advanceAction, advanceText }) => {
   );
 };
 
-const HeaderTitleLine = ({ title }) => {
+const helpContainer = { marginLeft: 7 };
+const HeaderTitleLine = ({ title, helpAction }) => {
   if (!title) return null;
 
-  return <H2 color={'white'}>{title}</H2>;
+  return (
+    <H2 color={'white'}>
+      {title}
+      {helpAction && (
+        <TouchableOpacity onPress={helpAction} style={helpContainer}>
+          <Icon name={'help'} color="white" />
+        </TouchableOpacity>
+      )}
+    </H2>
+  );
 };
 
 const HeaderSubtitleLine = ({ subtitle }) => {
@@ -61,13 +71,13 @@ const HeaderSubtitleLine = ({ subtitle }) => {
   return <Regular color={'white'}>{subtitle}</Regular>;
 };
 
-const HeaderTitles = ({ title, subtitle }) => {
+const HeaderTitles = ({ title, subtitle, helpAction }) => {
   if (!title && !subtitle) return null;
 
   const style = { marginTop: 24, marginBottom: 16 };
   return (
     <View style={style}>
-      <HeaderTitleLine title={title} />
+      <HeaderTitleLine title={title} helpAction={helpAction} />
       <HeaderSubtitleLine subtitle={subtitle} />
     </View>
   );
@@ -99,13 +109,14 @@ export class Header extends Component {
       contentComponent,
       title,
       subtitle,
+      helpAction,
     } = this.props;
     return (
       <View>
         <ImageBackground source={image} style={this.imageStyle()}>
           <View style={this.headerStyle()}>
             <ContentComponent component={contentComponent} />
-            <HeaderTitles {...{ title, subtitle }} />
+            <HeaderTitles {...{ title, subtitle, helpAction }} />
             <DummyBottom />
 
             <View style={topHeaderContainer}>
