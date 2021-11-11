@@ -49,7 +49,8 @@ const AdvanceActionButton = ({ advanceAction, advanceText }) => {
   );
 };
 
-const helpContainer = { marginLeft: 7 };
+const helpContainer = { paddingLeft: 7 };
+
 const HeaderTitleLine = ({ title, helpAction }) => {
   if (!title) return null;
 
