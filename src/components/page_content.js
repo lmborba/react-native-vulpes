@@ -11,7 +11,9 @@ import { H4 } from './typos';
 import { Icon } from './icon';
 
 export const Page = (props) => (
-  <View style={style.pageContainer}>{props.children}</View>
+  <View style={{ ...style.pageContainer, ...props.style }}>
+    {props.children}
+  </View>
 );
 
 export const ContentView = ({ noPadding, style: customStyle, ...props }) => {

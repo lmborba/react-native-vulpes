@@ -27,6 +27,7 @@ export default {
   pageContainer: {
     height: windowHeight,
     flexDirection: 'column',
+    flex: 1,
   },
   dummyView: {
     height: 32,
