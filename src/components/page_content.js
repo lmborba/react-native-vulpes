@@ -47,8 +47,9 @@ export const Content = ({ noPadding, style: customStyle, ...props }) => {
     );
   };
   completeStyle = { ...completeStyle, ...customStyle };
+  const MainComponent = props.mainComponent || ScrollView;
   return (
-    <ScrollView
+    <MainComponent
       {...props}
       style={completeStyle}
       refreshControl={refreshControl()}
@@ -63,7 +64,7 @@ export const Content = ({ noPadding, style: customStyle, ...props }) => {
         )}
       </View>
       {props.children}
-    </ScrollView>
+    </MainComponent>
   );
 };
 
