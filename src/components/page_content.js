@@ -12,7 +12,9 @@ import { Icon } from './icon';
 import { H4 } from './typos';
 
 export const Page = (props) => (
-  <View style={style.pageContainer}>{props.children}</View>
+  <View style={{ ...style.pageContainer, ...props.style }}>
+    {props.children}
+  </View>
 );
 
 export const ContentView = ({ noPadding, style: customStyle, ...props }) => {
@@ -60,8 +62,9 @@ export const Content = ({
     );
   };
   completeStyle = { ...completeStyle, ...customStyle };
+  const MainComponent = props.mainComponent || ScrollView;
   return (
-    <ScrollView
+    <MainComponent
       {...props}
       style={completeStyle}
       refreshControl={refreshControl()}
@@ -76,7 +79,7 @@ export const Content = ({
         )}
       </View>
       {props.children}
-    </ScrollView>
+    </MainComponent>
   );
 };
 

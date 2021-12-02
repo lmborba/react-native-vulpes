@@ -4,7 +4,7 @@ import { iconList } from 'react-native-icomoon';
 import json from '../../assets/icons/selection.json';
 import { NotificationIcon } from './notification_icon';
 
-const notificationMenuSeparationSpace = { marginLeft: 22 };
+const notificationMenuSeparationSpace = { marginLeft: 8, padding: 8 };
 export const NotificationMenuItem = ({ item, color, markerColor, size }) => {
   return (
     <TouchableOpacity

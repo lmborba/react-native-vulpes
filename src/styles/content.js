@@ -27,6 +27,7 @@ export default {
     height: windowHeight,
     flex: flexHeight,
     flexDirection: 'column',
+    flex: 1,
   },
   dummyView: {
     height: 32,
