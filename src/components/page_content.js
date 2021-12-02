@@ -2,15 +2,17 @@ import React from 'react';
 import {
   FlatList,
   ImageBackground,
+  KeyboardAvoidingView,
+  Platform,
   RefreshControl,
   ScrollView,
   TouchableOpacity,
   View,
 } from 'react-native';
 import style from '../styles/content';
+
 import { Icon } from './icon';
 import { H4 } from './typos';
-
 export const Page = (props) => (
   <View style={{ ...style.pageContainer, ...props.style }}>
     {props.children}
@@ -32,6 +34,31 @@ export const ContentView = ({ noPadding, style: customStyle, ...props }) => {
     </View>
   );
 };
+
+export const ContentKeyboardAvoid = ({
+  noPadding,
+  style: customStyle,
+  ...props
+}) => {
+  let completeStyle = style.contentContainer;
+  let noPaddingStyle = { ...completeStyle, ...style.noPadding };
+
+  let sk = { ...noPaddingStyle, ...props.containerStyle };
+  let ss = { ...completeStyle, marginTop: 0, ...customStyle };
+  if (noPadding) ss = { ...ss, ...style.noPadding };
+
+  return (
+    <KeyboardAvoidingView
+      keyboardShouldPersistTaps="handled"
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      {...props}
+      style={sk}
+    >
+      <ScrollView style={ss}>{props.children}</ScrollView>
+    </KeyboardAvoidingView>
+  );
+};
+
 export const Content = ({
   noPadding,
   style: customStyle,
@@ -62,9 +89,8 @@ export const Content = ({
     );
   };
   completeStyle = { ...completeStyle, ...customStyle };
-  const MainComponent = props.mainComponent || ScrollView;
   return (
-    <MainComponent
+    <ScrollView
       {...props}
       style={completeStyle}
       refreshControl={refreshControl()}
@@ -79,7 +105,7 @@ export const Content = ({
         )}
       </View>
       {props.children}
-    </MainComponent>
+    </ScrollView>
   );
 };
 
@@ -128,7 +154,6 @@ const backgroundImageStyle = {
 };
 
 export const BackgroundPage = (props) => {
-  console.log(props);
   return (
     <View style={style.pageContainer}>
       <ImageBackground
