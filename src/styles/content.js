@@ -1,5 +1,5 @@
 import { Colors } from '../colors';
-import { windowHeight, flexHeight } from './windowHeight';
+import { flexHeight, windowHeight } from './windowHeight';
 
 const styleContent = {
   borderTopLeftRadius: 20,
@@ -27,7 +27,6 @@ export default {
     height: windowHeight,
     flex: flexHeight,
     flexDirection: 'column',
-    flex: 1,
   },
   dummyView: {
     height: 32,

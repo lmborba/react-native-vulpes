@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Dimensions } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import SideSwipe from 'react-native-sideswipe';
 
 export class SnapCarousel extends Component {
@@ -7,7 +7,7 @@ export class SnapCarousel extends Component {
     super(props);
     const { width } = Dimensions.get('window');
 
-    this.itemSep = props.itemSep || 16;
+    this.itemSep = props.itemSep === undefined ? 16 : props.itemSep;
     this.itemWidth = props.width || width - 64;
     this.componentWidth = this.itemWidth + this.itemSep;
     this.carouselWidth = this.componentWidth;
@@ -47,7 +47,6 @@ export class SnapCarousel extends Component {
     const { noOffset, contentOffset } = this.props;
     if (noOffset !== undefined) return -this.itemSep;
     if (contentOffset) return contentOffset - this.itemSep / 2;
-
     return Math.round((this.carouselWidth - this.componentWidth) / 2);
   }
 
