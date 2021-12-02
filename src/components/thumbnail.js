@@ -36,7 +36,29 @@ const transparentStyle = (status) => {
   };
 };
 
-export const Thumbnail = ({ source, size, style, empty, ...restProps }) => {
+function defineStyleFromParams(size, source, style, square) {
+  const completeStyle = {
+    ...sizesStyle[size],
+    ...transparentStyle(source),
+    ...style,
+  };
+  if (square) {
+    completeStyle.borderRadius = 10;
+    completeStyle.width += 2;
+    completeStyle.height += 2;
+    completeStyle.borderWidth = 0;
+  }
+  return completeStyle;
+}
+
+export const Thumbnail = ({
+  square,
+  source,
+  size,
+  style,
+  empty,
+  ...restProps
+}) => {
   if (empty) {
     return (
       <View style={styleForEmptyThumbnail(size)}>
@@ -44,17 +66,10 @@ export const Thumbnail = ({ source, size, style, empty, ...restProps }) => {
       </View>
     );
   }
-  return (
-    <Image
-      source={source}
-      style={{
-        ...sizesStyle[size],
-        ...transparentStyle(source),
-        ...style,
-      }}
-    />
-  );
+  const completeStyle = defineStyleFromParams(size, source, style, square);
+  return <Image source={source} style={completeStyle} />;
 };
+
 function styleForEmptyThumbnail(size) {
   return {
     ...sizesStyle[size],

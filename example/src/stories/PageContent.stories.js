@@ -1,11 +1,26 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Content, ContentList, Header, Page } from 'react-native-vulpes';
-import { Regular } from '../../../src/components/typos';
+import {
+  BackgroundPage,
+  Content,
+  ContentList,
+  H2,
+  Header,
+  Page,
+  Regular,
+  Subtitle,
+} from 'react-native-vulpes';
+import image from '../images/prelogin.png';
+
+const mobileStyleWidget = {
+  width: 320,
+  height: 568,
+};
 
 export default {
   title: 'Example/PageContent',
+  decorators: [(story) => <View style={mobileStyleWidget}>{story()}</View>],
   component: Page,
   argTypes: {
     backAction: {
@@ -56,6 +71,23 @@ Example2.args = {
   renderItem: (item) => {
     return <Regular>{item.item.value}</Regular>;
   },
+};
+
+// example 3
+const TemplatePageBackground = (props) => (
+  <BackgroundPage image={props.image}>
+    <Content>
+      <H2 color="white">{props.title}</H2>
+      <Subtitle color="white">{props.subtitle}</Subtitle>
+    </Content>
+  </BackgroundPage>
+);
+
+export const Example3 = TemplatePageBackground.bind({});
+Example3.args = {
+  title: 'Titulo interno',
+  subtitle: 'Subtítulo para teste disso',
+  image: image,
 };
 
 if (Platform.OS === 'android') {

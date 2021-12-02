@@ -26,6 +26,7 @@ import { ModalContainer } from './components/modal_container';
 import { NotificationIcon } from './components/notification_icon';
 import { NotificationMenu } from './components/notification_menu';
 import {
+  BackgroundPage,
   Content,
   ContentList,
   ContentView,
@@ -55,6 +56,7 @@ import {
   Small,
   Small2,
   SmallBold,
+  Subtitle,
 } from './components/typos';
 import { FillSpace, PaddedView } from './components/utils';
 import { Fonts } from './fonts';
@@ -89,6 +91,7 @@ export {
   SmallBold,
   Icon,
   Button,
+  Subtitle,
   TicketProfileCard,
   NotificationMenu,
   Tabs,
@@ -96,6 +99,7 @@ export {
   TextInput,
   CheckboxInput,
   SelectInput,
+  BackgroundPage,
   SearchInput,
   SelectItem,
   Header,

@@ -16,6 +16,7 @@ import {
   Small,
   Small2,
   SmallBold,
+  Subtitle,
 } from 'react-native-vulpes';
 
 const colorList = () => {
@@ -44,19 +45,20 @@ export default {
 
 const TemplateTypography = ({ color = undefined, ...rest }) => (
   <View>
-    <H1 color={color}>Primary</H1>
-    <H2 color={color}>Cyan</H2>
-    <H3 color={color}>Dark Cyan</H3>
-    <H4 color={color}>Light Cyan</H4>
-    <BodyLarge color={color}>Blue</BodyLarge>
-    <BodyLargeBold color={color}>Dark Blue</BodyLargeBold>
-    <Placeholder color={color}>Light Blue</Placeholder>
-    <PlaceholderBold color={color}>Green</PlaceholderBold>
-    <Regular color={color}>Dark Green</Regular>
-    <RegularBold color={color}>Light Green</RegularBold>
-    <Small color={color}>Orange</Small>
-    <Small2 color={color}>Dark Orange</Small2>
-    <SmallBold color={color}>Light Orange</SmallBold>
+    <H1 color={color}>H1</H1>
+    <H2 color={color}>H2</H2>
+    <H3 color={color}>H3</H3>
+    <H4 color={color}>H4</H4>
+    <BodyLarge color={color}>BodyLarge</BodyLarge>
+    <BodyLargeBold color={color}>BodyLargeBold</BodyLargeBold>
+    <Placeholder color={color}>Placeholder</Placeholder>
+    <PlaceholderBold color={color}>PlaceholderBold</PlaceholderBold>
+    <Regular color={color}>Regular</Regular>
+    <RegularBold color={color}>RegularBold</RegularBold>
+    <Small color={color}>Small</Small>
+    <Small2 color={color}>Small2</Small2>
+    <SmallBold color={color}>SmallBold</SmallBold>
+    <Subtitle color={color}>Subtitle</Subtitle>
   </View>
 );
 

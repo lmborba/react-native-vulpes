@@ -55,6 +55,14 @@ export const Fonts = {
     fontWeight: '700',
     textAlign: 'left',
   },
+  subtitle: {
+    fontSize: 18,
+    color: Colors.dark_gray,
+    letterSpacing: 0,
+    fontFamily: fontFamily('Regular'),
+    fontWeight: '400',
+    textAlign: 'left',
+  },
   menuTextBold: {
     fontSize: 8,
     color: Colors.dark_gray,

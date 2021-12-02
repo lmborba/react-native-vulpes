@@ -34,6 +34,12 @@ export default {
         type: 'boolean',
       },
     },
+    square: {
+      description: 'if the thumbnail should be squared',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 };
 
@@ -41,9 +47,18 @@ const TemplateThumbnails = ({
   size = 'small',
   source = exampleImage,
   empty = undefined,
+  square = undefined,
   ...rest
 }) => {
-  return <Thumbnail source={source} size={size} empty={empty} {...rest} />;
+  return (
+    <Thumbnail
+      source={source}
+      size={size}
+      empty={empty}
+      square={square}
+      {...rest}
+    />
+  );
 };
 
 export const Example = TemplateThumbnails.bind({});
@@ -51,6 +66,7 @@ Example.args = {
   source: exampleImage,
   size: undefined,
   empty: undefined,
+  square: undefined,
 };
 
 if (Platform.OS === 'android') {
