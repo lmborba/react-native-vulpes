@@ -28,9 +28,9 @@ import { NotificationMenu } from './components/notification_menu';
 import {
   BackgroundPage,
   Content,
+  ContentKeyboardAvoid,
   ContentList,
   ContentView,
-  ContentKeyboardAvoid,
   Page,
 } from './components/page_content';
 import { PaginationBullets } from './components/pagination_bullets';
@@ -43,6 +43,7 @@ import { Tag } from './components/tag';
 import { Text } from './components/text';
 import { TextInput } from './components/text_input';
 import { Thumbnail } from './components/thumbnail';
+import { Toast } from './components/toast';
 import {
   BodyLarge,
   BodyLargeBold,
@@ -124,6 +125,7 @@ export {
   List,
   ListItem,
   Tag,
+  Toast,
   ToggleButton,
   CircularProgress,
 };
