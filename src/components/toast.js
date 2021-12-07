@@ -128,10 +128,7 @@ class ToastRoot extends React.Component {
       right: 16,
       top: window.height - position,
       transform: [{ translateY: posAnim }],
-      // marginRight: 16,
-      // marginLeft: 16,
-      // flex: 1,
-      // width: window.width-32,
+      zIndex: 1000,
       ...this.getType(),
     };
   };
@@ -148,7 +145,6 @@ class ToastRoot extends React.Component {
   render() {
     const { visible } = this.state;
     const { title, text } = this.config;
-    console.log('VISIBLESSS:', visible);
     if (!visible) return null;
 
     return (

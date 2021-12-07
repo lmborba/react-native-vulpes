@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View } from 'react-native';
+import { Image, SafeAreaView, View } from 'react-native';
 import { Colors } from '../colors';
 import { Button } from './button';
 import { Icon } from './icon';
@@ -18,7 +18,7 @@ const modalContent = {
   marginLeft: 24,
   marginRight: 24,
   marginTop: 12,
-  marginBottom: 40,
+  marginBottom: 16,
 };
 
 const modalImage = {
@@ -50,26 +50,35 @@ const CloseModal = (props) => {
 export class Modal extends Component {
   populateChildren() {
     const { children } = this.props;
-    return React.Children.map(children, (child, i) => {
+    return React.Children.toArray(children).map((child, i) => {
       return React.cloneElement(child, {
         style: {
-          ...child.style,
+          ...child.props.style,
           marginBottom: 16,
         },
       });
     });
   }
 
+  renderImage() {
+    const { image } = this.props;
+    if (!image) return null;
+    return <Image source={image} style={modalImage} />;
+  }
+
+  renderActions() {
+    const { onGoto, gotoText } = this.props;
+    if (!gotoText) return null;
+
+    return (
+      <Button onPress={onGoto} style={btnStyle}>
+        <Text>{gotoText}</Text>
+      </Button>
+    );
+  }
+
   render() {
-    const {
-      onClose,
-      clearModal,
-      onGoto,
-      children,
-      gotoText,
-      title,
-      image,
-    } = this.props;
+    const { onClose, clearModal, children, title } = this.props;
     return (
       <View style={modalContainer}>
         <CloseModal onClose={onClose} />
@@ -77,12 +86,12 @@ export class Modal extends Component {
           children
         ) : (
           <View style={modalContent}>
-            <H4>{title}</H4>
-            <Image source={image} style={modalImage} />
-            {this.populateChildren()}
-            <Button onPress={onGoto} style={btnStyle}>
-              <Text>{gotoText}</Text>
-            </Button>
+            <SafeAreaView>
+              {title && <H4>{title}</H4>}
+              {this.renderImage()}
+              {this.populateChildren()}
+              {this.renderActions()}
+            </SafeAreaView>
           </View>
         )}
       </View>
