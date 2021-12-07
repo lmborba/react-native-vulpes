@@ -18,7 +18,7 @@ const modalContent = {
   marginLeft: 24,
   marginRight: 24,
   marginTop: 12,
-  marginBottom: 16,
+  marginBottom: 32,
 };
 
 const modalImage = {
