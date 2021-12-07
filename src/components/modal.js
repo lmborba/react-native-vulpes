@@ -53,8 +53,8 @@ export class Modal extends Component {
     return React.Children.toArray(children).map((child, i) => {
       return React.cloneElement(child, {
         style: {
-          ...child.props.style,
           marginBottom: 16,
+          ...child.props.style,
         },
       });
     });
