@@ -38,6 +38,7 @@ import { QRCodeShow } from './components/qr_code';
 import { SearchInput } from './components/search_input';
 import { SelectInput, SelectItem } from './components/select_input';
 import { SnapCarousel } from './components/snap_carousel';
+import { Spinner } from './components/spinner';
 import { Tab, Tabs } from './components/tabs';
 import { Tag } from './components/tag';
 import { Text } from './components/text';
@@ -65,6 +66,7 @@ import { Fonts } from './fonts';
 
 export {
   PaginationBullets,
+  Spinner,
   Menu,
   MenuItem,
   BannerCard,
