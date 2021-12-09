@@ -26,4 +26,6 @@ export default {
   yellow: '#FFC700',
   dark_yellow: '#DD9200',
   light_yellow: '#FFE073',
+
+  transparent: 'transparent',
 };

@@ -14,3 +14,4 @@ export const RegularBold = generateTypography('regularBold');
 export const Small = generateTypography('small');
 export const Small2 = generateTypography('small2');
 export const SmallBold = generateTypography('smallBold');
+export const Subtitle = generateTypography('subtitle');

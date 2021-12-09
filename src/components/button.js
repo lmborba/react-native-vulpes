@@ -4,11 +4,16 @@ import { Colors } from '../colors';
 import { RegularBold } from '../components/typos';
 import { Fonts } from '../fonts';
 import styles from '../styles/buttons';
+import { Icon } from './icon';
 
 class Button extends Component {
   renderField() {
     if (this.props.children) return this.renderChildren();
-    return <RegularBold color={this.textColor()}>Enviar</RegularBold>;
+    return (
+      <RegularBold color={this.textColor()}>
+        {this.props.text || 'Enviar'}
+      </RegularBold>
+    );
   }
 
   renderChildren() {
@@ -17,7 +22,13 @@ class Button extends Component {
         return React.cloneElement(child, {
           color: this.textColor(),
           fontStyle: Fonts.regularBold,
-          style: this.textStyle({ isFirst: i === 0 }),
+          style: {
+            ...this.textStyle({
+              isFirst: i === 0,
+              isIcon: child.type.displayName === 'Icon',
+            }),
+            ...child.props.style,
+          },
         });
       }
       return child;
@@ -26,6 +37,7 @@ class Button extends Component {
 
   primaryColor() {
     if (this.props.color) return this.props.color;
+    if (this.props.disabled) return 'light_gray';
     return 'dark_gray';
   }
 
@@ -36,11 +48,16 @@ class Button extends Component {
     return 'white';
   }
 
-  textStyle({ isFirst }) {
-    return {
+  textStyle({ isFirst, isIcon }) {
+    const ret = {
       ...this.props.textStyle,
       marginLeft: isFirst ? undefined : 8,
     };
+    if (isIcon) {
+      ret.marginTop = 'auto';
+      ret.marginBottom = 'auto';
+    }
+    return ret;
   }
 
   backgroundColor() {
@@ -72,14 +89,46 @@ class Button extends Component {
   }
 
   render() {
-    const { onPress } = this.props;
+    const { onPress, disabled } = this.props;
 
     return (
-      <TouchableOpacity onPress={onPress} style={this.buttonStyle()}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={this.buttonStyle()}
+        disabled={disabled}
+      >
         {this.renderField()}
       </TouchableOpacity>
     );
   }
 }
 
-export { Button };
+class ToggleButton extends Component {
+  handleClick() {
+    return this.props.onPress && this.props.onPress();
+  }
+
+  color() {
+    const { color } = this.props;
+    if (!color) return 'dark_gray';
+    return color;
+  }
+  size() {
+    return this.props.size || 18;
+  }
+
+  render() {
+    const { value, onIcon, offIcon, style } = this.props;
+    return (
+      <TouchableOpacity onPress={this.handleClick.bind(this)} style={style}>
+        {value ? (
+          <Icon name={onIcon} size={this.size()} color={this.color()} />
+        ) : (
+          <Icon name={offIcon} size={this.size()} color={this.color()} />
+        )}
+      </TouchableOpacity>
+    );
+  }
+}
+
+export { Button, ToggleButton };

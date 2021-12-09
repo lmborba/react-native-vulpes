@@ -11,17 +11,20 @@
     "storybook:build": "ln -s ../@storybook/react/bin/build.js storybookweb && mv storybookweb node_modules/.bin && storybookweb --config-dir storybook-web",
     "storybook": "start-storybook -p 6006",
     "start-storybook-web": "./node_modules/@storybook/react/bin/index.js -c .storybook",
-    "build-storybook-web": "./node_modules/@storybook/react/bin/build.js",
+    "build-storybook": "ln -s ../@storybook/react/bin/index.js storybookweb && mv storybookweb node_modules/.bin && storybookweb -p 6006 --config-dir storybook-web",
     "storybook-web": "NODE_PATH=src yarn run start-storybook-web",
     "prestorybook": "rnstl",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages --remote gh --branch main"
   },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.12.17",
+    "@babel/preset-flow": "^7.12.13",
     "core-js": "2.6.5",
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-device-info": "^8.0.2",
     "react-native-linear-gradient": "^2.5.6",
+    "react-native-sideswipe": "^1.5.0",
     "react-native-svg": "^12.1.0",
     "react-native-svg-web": "^1.0.9",
     "react-native-web": "^0.15.0",
@@ -31,6 +34,7 @@
     "@babel/core": "^7.13.1",
     "@babel/plugin-proposal-optional-chaining": "^7.13.0",
     "@babel/preset-env": "^7.13.0",
+    "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.12.5",
     "@babel/runtime-corejs3": "^7.13.3",
     "@storybook/addon-actions": "^6.1.18",
@@ -50,6 +54,8 @@
     "react-dom": "16.13.1",
     "react-native-storybook-loader": "^2.0.2",
     "storybook-addon-jsx": "^7.3.6",
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.2.2",
     "webpack": "^5.24.0"
   },
   "config": {

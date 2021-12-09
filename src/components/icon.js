@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import Icomoon from 'react-native-icomoon';
+import Icomoon, { iconList } from 'react-native-icomoon';
 import json from '../../assets/icons/selection.json';
 import { Colors } from '../colors';
 
@@ -12,4 +12,8 @@ export const Icon = ({ name, color, size, ...restProps }) => {
       <Icomoon iconSet={json} name={name} color={colorVal} size={sizeVal} />
     </View>
   );
+};
+
+export const listOfIcons = () => {
+  return iconList(json);
 };

@@ -2,12 +2,15 @@ import React from 'react';
 import { Text as NativeText } from 'react-native';
 import { Colors } from '../colors';
 
-const Text = ({ style, fontStyle, color, ...props }) => {
-  const colorStyle = { color: Colors[color] };
+const Text = ({ style, title, fontStyle, color, center, ...props }) => {
+  const colorStyle = { color: Colors[color] || color };
+  const titleStyle = title ? { marginBottom: 32 } : {};
   const textStyle = {
     ...fontStyle,
     ...colorStyle,
+    ...titleStyle,
     ...style,
+    ...(center ? { textAlign: 'center' } : {}),
   };
 
   return <NativeText style={textStyle} {...props} />;

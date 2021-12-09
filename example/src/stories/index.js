@@ -1,1 +1,16 @@
-import './Color.stories';
+import './Button.stories';
+import './Card.stories';
+import './Carousel.stories';
+import './CircleProgress.stories';
+import './GradientView.stories';
+import './Header.stories';
+import './Icons.stories';
+import './PageContent.stories';
+import './ProfileCard.stories';
+import './SelectInput.stories';
+import './Tag.stories';
+import './TextColor.stories';
+import './TextInput.stories';
+import './Thumbnail.stories';
+import './TicketCard.stories';
+import './Typography.stories';
