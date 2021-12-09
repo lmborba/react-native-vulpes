@@ -26,6 +26,12 @@ export default {
         options: colorList(),
       },
     },
+    noPadding: {
+      description: 'should have zero padding',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 };
 

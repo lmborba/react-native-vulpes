@@ -4,6 +4,7 @@ const radius = 10;
 const borderTopHeight = 4;
 const remainingBorderHeight = 1;
 const cardPadding = 16;
+const additionalTopBottomPadding = 4;
 
 export default {
   outerCardBorder: {
@@ -64,14 +65,22 @@ export default {
     backgroundColor: Colors.light_gray,
     overflow: 'hidden',
   },
+
+  cardContainerZeroPadding: {
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+
   cardContainer: {
     borderRadius: radius,
     borderColor: Colors.light_gray,
     borderWidth: remainingBorderHeight,
-    paddingTop: 20,
+    paddingTop: additionalTopBottomPadding + cardPadding,
     paddingLeft: cardPadding,
     paddingRight: cardPadding,
-    paddingBottom: 20,
+    paddingBottom: additionalTopBottomPadding + cardPadding,
     backgroundColor: Colors.white,
     overflow: 'hidden',
   },

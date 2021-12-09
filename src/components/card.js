@@ -24,7 +24,14 @@ export class Card extends Component {
     return data;
   }
   render() {
-    let { cardContainer } = style;
+    const zeroPadding = this.props.noPadding
+      ? style.cardContainerZeroPadding
+      : {};
+
+    let cardContainer = {
+      ...style.cardContainer,
+      ...zeroPadding,
+    };
 
     cardContainer = { ...cardContainer, ...this.props.cardContainer };
 
