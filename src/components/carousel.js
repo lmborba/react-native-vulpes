@@ -61,7 +61,7 @@ export class Carousel extends Component {
           initialNumToRender={3}
           getItemLayout={(data, index) => ({
             length: this.componentWidth,
-            offset: this.componentWidth * index + offset,
+            offset: this.componentWidth * index + (offset || 0),
             index,
           })}
           initialScrollIndex={firstIndex}
