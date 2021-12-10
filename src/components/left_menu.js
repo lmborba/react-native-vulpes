@@ -9,6 +9,7 @@ const generalMenuStyle = {
   borderRightWidth: 1,
   backgroundColor: Colors.white,
   borderRightColor: Colors.light_gray,
+  height: '100%',
 };
 
 export const LeftMenu = (props) => {
@@ -24,7 +25,6 @@ export const LeftMenu = (props) => {
 };
 
 const generalMenuItemStyle = {
-  flex: 1,
   padding: 15,
   paddingLeft: 10,
   paddingRight: 10,
