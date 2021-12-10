@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator } from 'react-native-web';
+import { ActivityIndicator } from 'react-native';
 import { Colors } from '../colors';
 
 export const Spinner = ({ color, size, ...restProps }) => {

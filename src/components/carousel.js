@@ -40,8 +40,9 @@ export class Carousel extends Component {
     const {
       containerStyle,
       firstIndex,
+      offset,
       contentContainerStyle,
-      contentOffset: offset,
+      contentOffset,
       autoWidth,
     } = this.props;
 
@@ -60,12 +61,12 @@ export class Carousel extends Component {
           initialNumToRender={3}
           getItemLayout={(data, index) => ({
             length: this.componentWidth,
-            offset: this.componentWidth * index,
+            offset: this.componentWidth * index + (offset || 0),
             index,
           })}
           initialScrollIndex={firstIndex}
           contentContainerStyle={[
-            this.flatContainerStyle(offset),
+            this.flatContainerStyle(contentOffset),
             { ...contentContainerStyle },
           ]}
           horizontal={true}
