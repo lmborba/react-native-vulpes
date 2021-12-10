@@ -19,6 +19,7 @@ import { Divider } from './components/divider';
 import { GradientView } from './components/gradient_view';
 import { Header } from './components/header';
 import { Icon } from './components/icon';
+import { LeftMenu, LeftMenuItem } from './components/left_menu';
 import { List, ListItem } from './components/list';
 import { Menu, MenuItem } from './components/menu';
 import { Modal } from './components/modal';
@@ -69,6 +70,8 @@ export {
   Spinner,
   Menu,
   MenuItem,
+  LeftMenu,
+  LeftMenuItem,
   BannerCard,
   ActionSheet,
   openActionSheet,

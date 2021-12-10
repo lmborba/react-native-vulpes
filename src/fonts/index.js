@@ -79,6 +79,22 @@ export const Fonts = {
     fontFamily: fontFamily('Regular'),
     fontWeight: '400',
   },
+  leftMenuTextBold: {
+    fontSize: 14,
+    color: Colors.dark_gray,
+    letterSpacing: 0,
+    textAlign: 'center',
+    fontFamily: fontFamily('Bold'),
+    fontWeight: '700',
+  },
+  leftMenuText: {
+    fontSize: 14,
+    color: Colors.dark_gray,
+    letterSpacing: 0,
+    textAlign: 'center',
+    fontFamily: fontFamily('Regular'),
+    fontWeight: '400',
+  },
   placeholder: {
     fontSize: 14,
     color: Colors.dark_gray,
