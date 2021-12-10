@@ -32,7 +32,6 @@ const generalMenuItemStyle = {
 };
 
 const adaptToType = (type, justIcons) => {
-  console.log(type);
   if (justIcons) {
     if (type === Text) {
       return {
