@@ -10,8 +10,14 @@ export class TextInput extends Component {
     this.state = {
       placeholder: !props.value || props.value.length === 0,
       focused: false,
+      loading: true,
     };
     this.field = null;
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 10);
   }
 
   focus() {
@@ -61,6 +67,7 @@ export class TextInput extends Component {
       value,
       ...rest
     } = this.props;
+    if (this.state.loading) return null;
     return (
       <View style={style} {...this.handlePointer()}>
         <Regular style={labelStyle}>{label}</Regular>
