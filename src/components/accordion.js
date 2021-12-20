@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { BodyLargeBold, Small } from '..';
+import HTML from 'react-native-render-html';
+import { BodyLargeBold, Colors, Fonts } from '..';
 import {
   listContainer,
   listItem,
@@ -12,6 +13,14 @@ import {
 } from '../styles/list';
 import { Icon } from './icon';
 import { Regular } from './typos';
+
+function accordionStyle() {
+  return {
+    ...Fonts.small,
+    color: Colors.gray,
+    paddingRight: 10,
+  };
+}
 
 const Title = (props) => {
   if (!props.title) return null;
@@ -81,9 +90,13 @@ export const AccordionItem = (props) => {
         <NavIcon showing={showing} />
       </TouchableOpacity>
       {showing ? (
-        <Small color="gray" style={separatorToLong}>
-          {props.long}
-        </Small>
+        <View style={separatorToLong}>
+          <HTML
+            baseStyle={accordionStyle()}
+            source={{ html: props.long }}
+            style={separatorToLong}
+          />
+        </View>
       ) : null}
     </View>
   );
