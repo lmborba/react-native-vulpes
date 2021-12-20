@@ -11,7 +11,7 @@ export default {
 
 const longs = [
   "It's information about the future isn't it. I warned you about this kid. The consequences could be disastrous. Okay, alright, Saturday is good, Saturday's good, I could spend a week in 1955. I could hang out, you could show me around. Hello, hello, anybody home? Think, McFly, think. I gotta have time to get them re-typed. Do you realize what would happen if I hand in my reports in your handwriting. I'll get fired. You wouldn't want that to happen would you? Would you? You cost three-hundred buck damage to my car, you son-of-a-bitch. And I'm gonna take it out of your ass. Hold him. Now, of course not, Biff, now, I wouldn't want that to happen.",
-  "It's cold, damn cold. Ha, ha, ha, Einstein, you little devil. Einstein's clock is exactly one minute behind mine, it's still ticking. That's a great idea. I'd love to park. Yeah, I'm- mayor. Now that's a good idea. I could run for mayor. Yoo. My name's Lorraine, Lorraine Baines.",
+  'A lógica do programa é muito simples:<ol><li>Você escolhe quais hábitos quer monitorar</li><li>Você realiza as atividades desejadas e registra na ferramenta</li><li>Essas atividades começam a <a href="gogood://support">gerar pontos</a> que melhoram sua posição nos rankings</li></ol>',
   "I'm gonna be at the dance. I will. Why do you keep following me around? He's alright. Thank god I still got my hair. What on Earth is that thing I'm wearing?",
   "What, what, ma? Yeah well, you shouldn't drink. No, bastards. Believe me, Marty, you're better off not having to worry about all the aggravation and headaches of playing at that dance. Cause, George, she wants to go to the dance with you, she just doesn't know it yet. That's why we got to show her that you, George McFly, are a fighter. You're somebody who's gonna stand up for yourself, someone who's gonna protect her.",
 ];
@@ -22,7 +22,13 @@ const AccordionList = ({ ...rest }) => (
       <AccordionItem long={longs[0]}>
         Qual é o e-mail devo utilizar para me cadastrar?
       </AccordionItem>
-      <AccordionItem long={longs[1]}>
+      <AccordionItem
+        long={longs[1]}
+        onLink={(data) => {
+          console.log('CALLED');
+          console.log(data);
+        }}
+      >
         Não lembro o meu e-mail. O que devo fazer?
       </AccordionItem>
       <AccordionItem long={longs[2]}>

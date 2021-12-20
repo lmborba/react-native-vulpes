@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { BodyLargeBold, Small } from '..';
+import HTML, {
+  HTMLContentModel,
+  HTMLElementModel,
+} from 'react-native-render-html';
+import { BodyLargeBold, Colors, Fonts } from '..';
 import {
   listContainer,
   listItem,
@@ -12,6 +16,14 @@ import {
 } from '../styles/list';
 import { Icon } from './icon';
 import { Regular } from './typos';
+
+function accordionStyle() {
+  return {
+    ...Fonts.small,
+    color: Colors.gray,
+    paddingRight: 10,
+  };
+}
 
 const Title = (props) => {
   if (!props.title) return null;
@@ -70,6 +82,59 @@ const Children = ({ children }) => {
   return <Regular style={listItemText}>{children}</Regular>;
 };
 
+class ShowHTML extends Component {
+  rendererProps() {
+    const { onLink } = this.props;
+
+    return {
+      a: {
+        onPress: onLink ? (_data, href) => onLink(href) : undefined,
+      },
+    };
+  }
+
+  renderers() {
+    const { onLink } = this.props;
+    return {
+      a: ({ TDefaultRenderer, ...props }) => {
+        return (
+          <TDefaultRenderer
+            {...props}
+            onPress={(_data, href) => onLink && onLink(href)}
+            style={Fonts.smallBold}
+          />
+        );
+      },
+    };
+  }
+
+  customHTMLElementModels() {
+    return {
+      a: HTMLElementModel.fromCustomModel({
+        tagName: 'a',
+        mixedUAStyles: {
+          ...Fonts.smallBold,
+          textDecorationLine: 'underline',
+        },
+        contentModel: HTMLContentModel.textual,
+      }),
+    };
+  }
+
+  render() {
+    const { html } = this.props;
+    return (
+      <HTML
+        baseStyle={accordionStyle()}
+        source={{ html: html }}
+        style={separatorToLong}
+        renderersProps={this.rendererProps()}
+        customHTMLElementModels={this.customHTMLElementModels()}
+      />
+    );
+  }
+}
+
 export const AccordionItem = (props) => {
   const [showing, setShowing] = useState(false);
   const toggleShowing = () => setShowing(!showing);
@@ -81,9 +146,9 @@ export const AccordionItem = (props) => {
         <NavIcon showing={showing} />
       </TouchableOpacity>
       {showing ? (
-        <Small color="gray" style={separatorToLong}>
-          {props.long}
-        </Small>
+        <View style={separatorToLong}>
+          <ShowHTML html={props.long} onLink={props.onLink} />
+        </View>
       ) : null}
     </View>
   );
