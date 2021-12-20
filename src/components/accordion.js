@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import { BodyLargeBold, Small } from '..';
 import {
-  checkedIcon,
-  checkedListItem,
   listContainer,
   listItem,
   listItemText,
   navIconCont,
+  separatorToLong,
   titleStyle,
   touchStyle,
 } from '../styles/list';
 import { Icon } from './icon';
-import { H4, Regular } from './typos';
+import { Regular } from './typos';
 
 const Title = (props) => {
   if (!props.title) return null;
-  return <H4 style={titleStyle}>{props.title}</H4>;
+  return (
+    <BodyLargeBold style={titleStyle} color={'cyan'}>
+      {props.title}
+    </BodyLargeBold>
+  );
 };
 
-export const List = (props) => {
+export const Accordion = (props) => {
   const cItens = React.Children.toArray(props.children).filter(
     (c) => c.props.visible !== false
   );
@@ -30,7 +34,6 @@ export const List = (props) => {
       {cItens.map((child, i) => {
         const last = i === itemCount - 1;
         return React.cloneElement(child, {
-          checked: props.checked,
           last: last,
         });
       })}
@@ -40,33 +43,26 @@ export const List = (props) => {
 
 function listProps(props) {
   let param = { activeOpacity: 1, style: listItem };
-  if (props.checked) {
-    param.style = checkedListItem;
-  }
-  if (props.onPress) {
-    param.activeOpacity = 0.2;
-  }
   if (props.last) {
     param.style = {
       ...param.style,
       borderBottomWidth: 0,
     };
   }
-
+  param.style = {
+    ...param.style,
+    flex: 1,
+    flexDirection: 'column',
+  };
   return param;
 }
 
-const NavIcon = (props) => {
-  if (!props.show) return null;
+const NavIcon = ({ showing }) => {
   return (
     <View style={navIconCont}>
-      <Icon size={12} name={'chevron_right'} />
+      <Icon size={12} name={showing ? 'chevron_down' : 'chevron_right'} />
     </View>
   );
-};
-const CheckedIcon = (props) => {
-  if (!props.show) return null;
-  return <Icon size={12} name={'check'} style={checkedIcon} />;
 };
 
 const Children = ({ children }) => {
@@ -74,28 +70,21 @@ const Children = ({ children }) => {
   return <Regular style={listItemText}>{children}</Regular>;
 };
 
-export const ListItem = (props) => {
+export const AccordionItem = (props) => {
+  const [showing, setShowing] = useState(false);
+  const toggleShowing = () => setShowing(!showing);
   const params = listProps(props);
   return (
     <View style={params.style}>
-      <TouchableOpacity
-        onPress={props.onPress}
-        activeOpacity={params.activeOpacity}
-        style={touchStyle}
-      >
-        <CheckedIcon show={props.checked} />
+      <TouchableOpacity onPress={toggleShowing} style={touchStyle}>
         <Children children={props.children} />
-        <NavIcon show={props.onPress} />
+        <NavIcon showing={showing} />
       </TouchableOpacity>
+      {showing ? (
+        <Small color="gray" style={separatorToLong}>
+          {props.long}
+        </Small>
+      ) : null}
     </View>
-  );
-};
-
-export const ListItemNav = (props) => {
-  return (
-    <TouchableOpacity onPress={props.onPress} style={checkedListItem}>
-      <Icon size={12} name={'check'} style={checkedIcon} />
-      <Regular>{props.children}</Regular>
-    </TouchableOpacity>
   );
 };

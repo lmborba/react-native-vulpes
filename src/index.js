@@ -1,5 +1,6 @@
 import { NativeModules } from 'react-native';
 import { Colors } from './colors';
+import { Accordion, AccordionItem } from './components/accordion';
 import { ActionSheet, openActionSheet } from './components/action_sheet';
 import { Button, ToggleButton } from './components/button';
 import {
@@ -129,6 +130,8 @@ export {
   IllustrationMiniCard,
   List,
   ListItem,
+  Accordion,
+  AccordionItem,
   Tag,
   Toast,
   ToggleButton,
