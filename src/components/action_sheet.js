@@ -56,7 +56,7 @@ export class ActionSheet extends Component {
     };
 
     this.open = this.openModal.bind(this);
-    mainOpenFunctions[props.key || 0] = this.openModal.bind(this);
+    mainOpenFunctions[props.keyReference || 0] = this.openModal.bind(this);
   }
 
   loadItens() {

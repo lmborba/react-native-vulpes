@@ -62,7 +62,6 @@ export class TextInput extends Component {
       inputStyle,
       onPress,
       onBlur,
-      ref,
       onFocus,
       value,
       ...rest
@@ -72,12 +71,12 @@ export class TextInput extends Component {
       <View style={style} {...this.handlePointer()}>
         <Regular style={labelStyle}>{label}</Regular>
         <Input
-          ref={this.handleReference.bind(this)}
           placeholder={placeholder}
           placeholderTextColor={this.fontStyle().color}
           onFocus={this.handleFocus.bind(this)}
           onBlur={this.handleBlur.bind(this)}
           {...rest}
+          ref={this.handleReference.bind(this)}
           style={this.completeStyle()}
           value={this.props.value}
           onChangeText={this.handleChange.bind(this)}

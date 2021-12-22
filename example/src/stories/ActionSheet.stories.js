@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { ActionSheet, SelectItem, Button } from 'react-native-vulpes';
+import { ActionSheet, Button, SelectItem } from 'react-native-vulpes';
 import { openActionSheet } from '../../../src/components/action_sheet';
 
 export default {
@@ -49,6 +49,7 @@ const Template = ({ error, ...rest }) => {
       <Button onPress={() => openActionSheet()} text={'Opções'} />
       <ActionSheet
         ref={(ref) => (this.ref = ref)}
+        keyReference={'myLabel'}
         headerText={'Selecione uma opção'}
       >
         <SelectItem label="Item 1" onSelect={() => console.log('Item 1')} />

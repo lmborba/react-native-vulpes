@@ -55,7 +55,7 @@ export class QRCodeValid extends Component {
 const confirmed = require('../../assets/images/qr_code_used.png');
 
 export const QRCodeShow = ({ color, code, used, ...restProps }) => {
-  if (!code || code === '') return null;
+  if (!code) return null;
   if (used) {
     return <QRCodeValid code={code} color={'light_gray'} image={confirmed} />;
   } else {

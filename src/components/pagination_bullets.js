@@ -29,7 +29,13 @@ const PaginationBullets = ({ total, current, color, style, ...props }) => {
       {Array(total)
         .fill(0)
         .map((_, i) => {
-          return <Bullet color={color} selected={i === current - 1} />;
+          return (
+            <Bullet
+              key={'bullet_' + i}
+              color={color}
+              selected={i === current - 1}
+            />
+          );
         })}
       <FillSpace />
     </View>

@@ -14,9 +14,7 @@ import stories from './stories';
 addDecorator(withKnobs);
 
 // import stories
-configure(() => {
-  stories;
-}, module);
+configure(() => stories, module);
 
 // Refer to https://github.com/storybookjs/storybook/tree/master/app/react-native#start-command-parameters
 // To find allowed options for getStorybookUI

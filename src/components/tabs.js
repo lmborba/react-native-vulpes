@@ -90,7 +90,7 @@ export class Tabs extends Component {
 
     let currentTab = current === undefined ? selected : current;
 
-    if (!children || children.length === 0) return;
+    if (!children || children.length === 0) return null;
     const titles = this.tabTitles(children);
     return (
       <View {...rest}>
