@@ -68,7 +68,7 @@ const TemplateMenuItem = ({
   );
 };
 
-export const Example = TemplateMenuItem.bind({});
+export const Example = TemplateMenuItem;
 Example.argTypes = {
   color: {
     description: 'color for the text',

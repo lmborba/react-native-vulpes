@@ -52,7 +52,7 @@ const TemplateLeftMenuItem = ({ justIcons = false, ...rest }) => {
   );
 };
 
-export const Example = TemplateLeftMenuItem.bind({});
+export const Example = TemplateLeftMenuItem;
 Example.argTypes = {
   justIcons: {
     description: 'just show the icons',

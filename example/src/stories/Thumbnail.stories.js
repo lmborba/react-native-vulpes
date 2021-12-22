@@ -61,7 +61,7 @@ const TemplateThumbnails = ({
   );
 };
 
-export const Example = TemplateThumbnails.bind({});
+export const Example = TemplateThumbnails;
 Example.args = {
   source: exampleImage,
   size: undefined,

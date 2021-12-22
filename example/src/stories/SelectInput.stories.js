@@ -68,7 +68,7 @@ const TemplateSelectInput = ({ error, ...rest }) => (
   </SelectInput>
 );
 
-export const Example = TemplateSelectInput.bind({});
+export const Example = TemplateSelectInput;
 
 Example.args = {
   error: undefined,

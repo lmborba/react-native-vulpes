@@ -48,7 +48,7 @@ class TemplateSpinner extends Component {
 
 const TemplateSpinnerWrap = (props) => <TemplateSpinner {...props} />;
 
-export const Example = TemplateSpinnerWrap.bind({});
+export const Example = TemplateSpinnerWrap;
 Example.argTypes = {
   color: {
     description: 'color for the spinner',

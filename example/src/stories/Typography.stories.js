@@ -62,7 +62,7 @@ const TemplateTypography = ({ color = undefined, ...rest }) => (
   </View>
 );
 
-export const Example = TemplateTypography.bind({});
+export const Example = TemplateTypography;
 Example.argTypes = {
   color: {
     description: 'color for the text',

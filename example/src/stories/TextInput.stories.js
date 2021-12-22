@@ -44,7 +44,7 @@ const TemplateTextInput = ({ ...rest }) => (
   <TextInput label={'Field label'} placeholder={'Placeholder'} {...rest} />
 );
 
-export const Example = TemplateTextInput.bind({});
+export const Example = TemplateTextInput;
 Example.args = {
   error: undefined,
   label: 'Field label',

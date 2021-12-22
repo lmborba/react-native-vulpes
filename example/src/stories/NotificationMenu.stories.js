@@ -69,7 +69,7 @@ const TemplateNotificationMenus = ({ color = undefined, ...rest }) => {
   return <NotificationMenu color={color} menuList={list} {...rest} />;
 };
 
-export const Example = TemplateNotificationMenus.bind({});
+export const Example = TemplateNotificationMenus;
 Example.argTypes = {
   color: {
     description: 'color for the text',

@@ -48,7 +48,7 @@ const TemplateGradientView = ({ color = 'gradient_red', ...rest }) => (
   </GradientView>
 );
 
-export const Example = TemplateGradientView.bind({});
+export const Example = TemplateGradientView;
 Example.argTypes = {
   color: {
     description: 'color for the text',

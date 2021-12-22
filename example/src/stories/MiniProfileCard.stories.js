@@ -54,7 +54,7 @@ const Template = ({ ...rest }) => {
 };
 
 // -- example 1-----
-export const Example = Template.bind({});
+export const Example = Template;
 Example.argTypes = {
   source: {
     description: 'source for profile image',
@@ -70,7 +70,7 @@ Example.args = {
 };
 
 // -- example 2-----
-export const MiniCardWithTag = Template.bind({});
+export const MiniCardWithTag = Template;
 Example.argTypes = {
   source: {
     description: 'source for profile image',

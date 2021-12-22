@@ -61,7 +61,7 @@ const Template = ({ error, ...rest }) => {
   );
 };
 
-export const Example = Template.bind({});
+export const Example = Template;
 
 Example.args = {
   error: undefined,

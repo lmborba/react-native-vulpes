@@ -33,7 +33,7 @@ const TemplateTextColor = ({ color = 'red', ...rest }) => (
   </Text>
 );
 
-export const Example = TemplateTextColor.bind({});
+export const Example = TemplateTextColor;
 Example.argTypes = {
   color: {
     description: 'color for the text',

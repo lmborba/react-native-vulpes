@@ -43,7 +43,7 @@ const TemplatePageContent = (props) => (
     </Content>
   </Page>
 );
-export const Example = TemplatePageContent.bind({});
+export const Example = TemplatePageContent;
 Example.args = {
   title: 'Titulo interno',
 };
@@ -60,7 +60,7 @@ const TemplatePageContentList = (props) => (
   </Page>
 );
 
-export const Example2 = TemplatePageContentList.bind({});
+export const Example2 = TemplatePageContentList;
 Example2.args = {
   title: 'Titulo interno para content com lista',
   data: [
@@ -83,7 +83,7 @@ const TemplatePageBackground = (props) => (
   </BackgroundPage>
 );
 
-export const Example3 = TemplatePageBackground.bind({});
+export const Example3 = TemplatePageBackground;
 Example3.args = {
   title: 'Titulo interno',
   subtitle: 'Subtítulo para teste disso',

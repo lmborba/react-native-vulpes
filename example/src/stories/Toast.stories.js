@@ -37,7 +37,7 @@ const TemplateGradientView = ({ ...rest }) => {
   );
 };
 
-export const Example = TemplateGradientView.bind({});
+export const Example = TemplateGradientView;
 Example.args = {
   type: 'success',
 };

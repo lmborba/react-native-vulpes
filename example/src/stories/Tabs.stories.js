@@ -51,7 +51,7 @@ const TemplateTab = ({
   );
 };
 
-export const Example = TemplateTab.bind({});
+export const Example = TemplateTab;
 Example.argTypes = {
   color: {
     description: 'color for the text',

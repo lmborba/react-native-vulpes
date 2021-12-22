@@ -41,7 +41,7 @@ const AccordionList = ({ ...rest }) => (
   </>
 );
 
-export const Example = AccordionList.bind({});
+export const Example = AccordionList;
 
 if (Platform.OS === 'android') {
   const fillStories = storiesOf('Color', module).addDecorator((Story) => (

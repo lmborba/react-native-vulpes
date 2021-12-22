@@ -53,7 +53,7 @@ const TemplateGradientView = ({ ...rest }) => {
   );
 };
 
-export const Example = TemplateGradientView.bind({});
+export const Example = TemplateGradientView;
 Example.argTypes = {
   source: {
     description: 'source for profile image',

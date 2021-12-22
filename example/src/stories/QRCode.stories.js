@@ -53,7 +53,7 @@ const TemplateQRCodes = ({
   );
 };
 
-export const Example = TemplateQRCodes.bind({});
+export const Example = TemplateQRCodes;
 Example.argTypes = {
   color: {
     description: 'color for the text',

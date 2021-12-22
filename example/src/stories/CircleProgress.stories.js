@@ -14,7 +14,7 @@ const TemplateTag = (props) => (
   </View>
 );
 
-export const Example = TemplateTag.bind({});
+export const Example = TemplateTag;
 
 Example.args = {
   checkins: 9,

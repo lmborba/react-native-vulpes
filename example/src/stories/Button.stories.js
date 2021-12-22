@@ -104,7 +104,7 @@ class TemplateButton extends Component {
 
 const TemplateButtonWrap = (props) => <TemplateButton {...props} />;
 
-export const Example = TemplateButtonWrap.bind({});
+export const Example = TemplateButtonWrap;
 
 export default {
   title: 'Example/Button',

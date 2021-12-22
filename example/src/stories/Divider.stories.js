@@ -12,7 +12,7 @@ const TemplateDivider = ({ ...rest }) => {
   return <Divider />;
 };
 
-export const Example = TemplateDivider.bind({});
+export const Example = TemplateDivider;
 
 if (Platform.OS === 'android') {
   const fillStories = storiesOf('Color', module).addDecorator((Story) => (

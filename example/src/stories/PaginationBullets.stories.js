@@ -23,7 +23,7 @@ const Template = ({ total = 4, current = 2, ...rest }) => {
   return <PaginationBullets total={total} current={current} />;
 };
 
-export const Example = Template.bind({});
+export const Example = Template;
 
 Example.args = {
   total: 4,

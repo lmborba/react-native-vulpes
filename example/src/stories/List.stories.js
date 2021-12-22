@@ -31,7 +31,7 @@ const TemplateList = ({ ...rest }) => (
   </>
 );
 
-export const Example = TemplateList.bind({});
+export const Example = TemplateList;
 
 if (Platform.OS === 'android') {
   const fillStories = storiesOf('Color', module).addDecorator((Story) => (

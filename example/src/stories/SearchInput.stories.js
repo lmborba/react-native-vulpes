@@ -48,7 +48,7 @@ const TemplateSearchInput = ({ ...rest }) => (
   <SearchInput label={'Field label'} placeholder={'Placeholder'} {...rest} />
 );
 
-export const Example = TemplateSearchInput.bind({});
+export const Example = TemplateSearchInput;
 Example.args = {
   error: undefined,
   label: 'Field label',

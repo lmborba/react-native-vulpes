@@ -49,7 +49,7 @@ const TemplateCarousel = ({ color = 'cyan', width = 300, ...rest }) => (
   </Carousel>
 );
 
-export const ExampleCarousel = TemplateCarousel.bind({});
+export const ExampleCarousel = TemplateCarousel;
 ExampleCarousel.args = {
   color: 'cyan',
   width: 200,
@@ -69,7 +69,7 @@ const TemplateSnapCarousel = ({ color = 'cyan', width = 300, ...rest }) => (
   </SnapCarousel>
 );
 
-export const ExampleSnapCarousel = TemplateSnapCarousel.bind({});
+export const ExampleSnapCarousel = TemplateSnapCarousel;
 ExampleSnapCarousel.args = {
   color: 'cyan',
   width: 200,

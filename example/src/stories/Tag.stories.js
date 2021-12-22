@@ -78,7 +78,7 @@ export default {
   },
 };
 
-export const Example = TemplateTag.bind({});
+export const Example = TemplateTag;
 Example.argTypes = {
   color: {
     description: 'color for the text',

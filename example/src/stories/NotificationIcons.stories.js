@@ -91,7 +91,7 @@ const TemplateNotificationIcons = ({
   );
 };
 
-export const Example = TemplateNotificationIcons.bind({});
+export const Example = TemplateNotificationIcons;
 Example.argTypes = {
   color: {
     description: 'color for the text',

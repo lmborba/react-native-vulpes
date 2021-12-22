@@ -45,7 +45,7 @@ const TemplateIcons = ({ color = undefined, icon = 'menu', name, ...rest }) => {
   return <Icon name={icon} color={color} {...rest} />;
 };
 
-export const Example = TemplateIcons.bind({});
+export const Example = TemplateIcons;
 Example.argTypes = {
   color: {
     description: 'color for the text',

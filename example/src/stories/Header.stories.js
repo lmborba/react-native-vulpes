@@ -62,12 +62,12 @@ const list = [
   },
 ];
 
-export const Example1 = HeaderExample.bind({});
+export const Example1 = HeaderExample;
 Example1.args = {
   backAction: actionExample,
 };
 
-export const Example2 = HeaderExample.bind({});
+export const Example2 = HeaderExample;
 Example2.args = {
   backAction: actionExample,
   title: 'Titulo no header',
@@ -75,21 +75,21 @@ Example2.args = {
   helpAction: undefined,
 };
 
-export const Example3 = HeaderExample.bind({});
+export const Example3 = HeaderExample;
 Example3.args = {
   backAction: actionExample,
   title: 'Titulo no header',
   menuList: list,
 };
 
-export const Example4 = HeaderExample.bind({});
+export const Example4 = HeaderExample;
 Example4.args = {
   backAction: () => null,
   advanceAction: actionExample,
   advanceText: 'Pular',
 };
 
-export const Example5 = HeaderExample.bind({});
+export const Example5 = HeaderExample;
 Example5.args = {
   backAction: () => null,
   advanceAction: actionExample,
@@ -111,7 +111,7 @@ Example5.args = {
   contentComponent: <ContentComponent />,
 };
 
-export const Example6 = HeaderExample.bind({});
+export const Example6 = HeaderExample;
 Example6.args = {
   backAction: actionExample,
   title: 'Titulo no header',
