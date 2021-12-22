@@ -20,59 +20,6 @@ const colorList = () => {
   return keys;
 };
 
-export default {
-  title: 'Example/Button',
-  component: Button,
-  argTypes: {
-    color: {
-      description: 'color for the button',
-      control: {
-        type: 'select',
-        options: colorList(),
-      },
-    },
-    outline: {
-      description: 'sets button of type outline',
-      control: {
-        type: 'boolean',
-      },
-    },
-    ghost: {
-      description: 'sets button of type ghost',
-      control: {
-        type: 'boolean',
-      },
-    },
-    disabled: {
-      description: 'disables the button',
-      control: {
-        type: 'boolean',
-      },
-    },
-    icon: {
-      description: 'icon to be used',
-      control: {
-        type: 'select',
-        options: listOfIcons(),
-      },
-    },
-    onIcon: {
-      description: 'icon to be used when toggle button is on',
-      control: {
-        type: 'select',
-        options: listOfIcons(),
-      },
-    },
-    offIcon: {
-      description: 'icon to be used when toggle button is on',
-      control: {
-        type: 'select',
-        options: listOfIcons(),
-      },
-    },
-  },
-};
-
 const buttonContainer = { margin: 10 };
 
 const Button = (props) => {
@@ -158,6 +105,60 @@ class TemplateButton extends Component {
 const TemplateButtonWrap = (props) => <TemplateButton {...props} />;
 
 export const Example = TemplateButtonWrap.bind({});
+
+export default {
+  title: 'Example/Button',
+  component: Button,
+  argTypes: {
+    color: {
+      description: 'color for the button',
+      control: {
+        type: 'select',
+        options: colorList(),
+      },
+    },
+    outline: {
+      description: 'sets button of type outline',
+      control: {
+        type: 'boolean',
+      },
+    },
+    ghost: {
+      description: 'sets button of type ghost',
+      control: {
+        type: 'boolean',
+      },
+    },
+    disabled: {
+      description: 'disables the button',
+      control: {
+        type: 'boolean',
+      },
+    },
+    icon: {
+      description: 'icon to be used',
+      control: {
+        type: 'select',
+        options: listOfIcons(),
+      },
+    },
+    onIcon: {
+      description: 'icon to be used when toggle button is on',
+      control: {
+        type: 'select',
+        options: listOfIcons(),
+      },
+    },
+    offIcon: {
+      description: 'icon to be used when toggle button is on',
+      control: {
+        type: 'select',
+        options: listOfIcons(),
+      },
+    },
+  },
+};
+
 Example.argTypes = {
   color: {
     description: 'color for the text',

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Tag as Tg, Colors, Icon, Text } from 'react-native-vulpes';
+import { Colors, Icon, Tag as Tg, Text } from 'react-native-vulpes';
 import { listOfIcons } from '../../../src/components/icon';
 
 const colorList = () => {
@@ -13,6 +13,37 @@ const colorList = () => {
   }
   return keys;
 };
+
+const buttonContainer = { margin: 10 };
+
+const Tag = (props) => {
+  return <Tg style={buttonContainer} {...props} />;
+};
+
+const TemplateTag = ({
+  color = undefined,
+  outline = undefined,
+  light = undefined,
+  icon = 'like_empty',
+  ...rest
+}) => (
+  <View style={{ backgroundColor: Colors.light_gray }}>
+    <Tag color={color} outline={outline} light={light}>
+      Plano cancelado
+    </Tag>
+    <Tag color={color} outline={outline} light={light}>
+      <Icon name={icon} size={14} />
+      <Text>Plano suspenso</Text>
+    </Tag>
+    <Tag color={color} outline={outline} light={light}>
+      <Text>Plano cancelado</Text>
+      <Icon name={icon} size={14} />
+    </Tag>
+    <Tag color={color} outline={outline} light={light}>
+      <Icon name={icon} size={14} />
+    </Tag>
+  </View>
+);
 
 export default {
   title: 'Example/Tag',
@@ -46,37 +77,6 @@ export default {
     },
   },
 };
-
-const buttonContainer = { margin: 10 };
-
-const Tag = (props) => {
-  return <Tg style={buttonContainer} {...props} />;
-};
-
-const TemplateTag = ({
-  color = undefined,
-  outline = undefined,
-  light = undefined,
-  icon = 'like_empty',
-  ...rest
-}) => (
-  <View style={{ backgroundColor: Colors.light_gray }}>
-    <Tag color={color} outline={outline} light={light}>
-      Plano cancelado
-    </Tag>
-    <Tag color={color} outline={outline} light={light}>
-      <Icon name={icon} size={14} />
-      <Text>Plano suspenso</Text>
-    </Tag>
-    <Tag color={color} outline={outline} light={light}>
-      <Text>Plano cancelado</Text>
-      <Icon name={icon} size={14} />
-    </Tag>
-    <Tag color={color} outline={outline} light={light}>
-      <Icon name={icon} size={14} />
-    </Tag>
-  </View>
-);
 
 export const Example = TemplateTag.bind({});
 Example.argTypes = {
