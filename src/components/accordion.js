@@ -93,21 +93,6 @@ class ShowHTML extends Component {
     };
   }
 
-  renderers() {
-    const { onLink } = this.props;
-    return {
-      a: ({ TDefaultRenderer, ...props }) => {
-        return (
-          <TDefaultRenderer
-            {...props}
-            onPress={(_data, href) => onLink && onLink(href)}
-            style={Fonts.smallBold}
-          />
-        );
-      },
-    };
-  }
-
   customHTMLElementModels() {
     return {
       a: HTMLElementModel.fromCustomModel({
