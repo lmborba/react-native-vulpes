@@ -33,12 +33,12 @@ class TemplateCheckboxInput extends Component {
     };
   }
 
-  onChange = (val) => {
+  onChange(val) {
     console.log(val);
     this.setState({
       value: val,
     });
-  };
+  }
 
   render() {
     return (

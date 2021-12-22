@@ -10,9 +10,9 @@ import {
   View,
 } from 'react-native';
 import style from '../styles/content';
-
 import { Icon } from './icon';
 import { H4 } from './typos';
+
 export const Page = (props) => (
   <View style={{ ...style.pageContainer, ...props.style }}>
     {props.children}
@@ -140,7 +140,7 @@ export const ContentList = ({ noPadding, style: customStyle, ...props }) => {
       style={completeStyle}
       ItemSeparatorComponent={SepItemDefault}
       {...props}
-      ListHeaderComponent={header.bind(this)}
+      ListHeaderComponent={header}
     >
       {props.children}
     </FlatList>
