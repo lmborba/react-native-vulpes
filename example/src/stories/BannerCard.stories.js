@@ -73,7 +73,7 @@ const Template = ({ ...rest }) => {
 };
 
 // exemple1
-export const Example = Template.bind({});
+export const Example = Template;
 Example.argTypes = {
   source: {
     description: 'source for profile image',
@@ -96,7 +96,7 @@ Example.args = {
 };
 
 // exemple2
-export const ExampleNoBottomLink = Template.bind({});
+export const ExampleNoBottomLink = Template;
 ExampleNoBottomLink.argTypes = {
   source: {
     description: 'source for profile image',
