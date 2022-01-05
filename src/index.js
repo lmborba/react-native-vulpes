@@ -11,6 +11,7 @@ import {
   MiniProfileCard,
   ProfileCard,
   TicketCard,
+  TicketCheckinCard,
   TicketProfileCard,
 } from './components/card';
 import { Carousel } from './components/carousel';
@@ -101,6 +102,7 @@ export {
   Button,
   Subtitle,
   TicketProfileCard,
+  TicketCheckinCard,
   NotificationMenu,
   Tabs,
   Tab,

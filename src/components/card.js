@@ -14,6 +14,9 @@ import { FillSpace } from './utils';
 
 const outerMiniCardStyle = { flexDirection: 'row' };
 
+const uncheckedImage = require('../../assets/images/unchecked.png');
+const checkedImage = require('../../assets/images/checked.png');
+
 export class Card extends Component {
   changedColor() {
     const { color } = this.props;
@@ -23,6 +26,7 @@ export class Card extends Component {
     }
     return data;
   }
+
   render() {
     const zeroPadding = this.props.noPadding
       ? style.cardContainerZeroPadding
@@ -75,6 +79,42 @@ export class TicketCard extends Component {
     );
   }
 }
+
+const CheckinImage = (props) => {
+  return (
+    <View style={style.checkinImageOuter}>
+      {props.checked ? (
+        <Image source={checkedImage} style={style.checkinImage} />
+      ) : (
+        <Image source={uncheckedImage} style={style.checkinImage} />
+      )}
+    </View>
+  );
+};
+
+const TicketCheckinCardSeparator = (props) => {
+  return (
+    <View style={style.ticketProfileCardDividerContainer}>
+      <View style={style.profileCardDividerContent}>
+        <View style={style.cardSeparator}>
+          <View style={style.cardSeparatorLeft} />
+          <Dash
+            style={style.dashContainer}
+            dashColor={Colors.lightGray}
+            dashThickness={0}
+            dashGap={7}
+            dashLength={7}
+            dashStyle={style.dashStyle}
+          />
+          <View style={style.cardSeparatorRight} />
+        </View>
+      </View>
+      <View style={style.ticketProfileCardImgContent}>
+        <CheckinImage checked={props.checked} />
+      </View>
+    </View>
+  );
+};
 
 const TicketProfileCardSeparator = (props) => {
   return (
@@ -133,6 +173,25 @@ export class TicketProfileCard extends Component {
     return (
       <Card {...this.props} cardContainer={{ overflow: null }}>
         <TicketProfileCardSeparator source={this.props.source} />
+        {this.props.children}
+      </Card>
+    );
+  }
+}
+
+export class TicketCheckinCard extends Component {
+  changedColor() {
+    const { color } = this.props;
+    const data = {};
+    if (color) {
+      data.backgroundColor = Colors[color];
+    }
+    return data;
+  }
+  render() {
+    return (
+      <Card {...this.props} cardContainer={{ overflow: null }}>
+        <TicketCheckinCardSeparator checked={this.props.checked} />
         {this.props.children}
       </Card>
     );

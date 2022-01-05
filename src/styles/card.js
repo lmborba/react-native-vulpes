@@ -14,6 +14,8 @@ export default {
     left: 0,
     right: 0,
   },
+  checkinImageOuter: { marginTop: 11, marginBottom: 11 },
+  checkinImage: { width: 40, height: 42 },
   cardTopBorder: {
     borderTopLeftRadius: radius,
     borderTopRightRadius: radius,
