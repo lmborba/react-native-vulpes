@@ -31,7 +31,6 @@ import { NotificationMenu } from './components/notification_menu';
 import {
   BackgroundPage,
   Content,
-  ContentKeyboardAvoid,
   ContentList,
   ContentView,
   Page,
@@ -118,7 +117,6 @@ export {
   MiniProfileCard,
   ContentList,
   ContentView,
-  ContentKeyboardAvoid,
   Card,
   CardActions,
   Thumbnail,

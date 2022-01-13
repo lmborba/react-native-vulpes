@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import style from '../styles/content';
+import { ContentMessage } from './content_message';
 import { Icon } from './icon';
 import { H4 } from './typos';
 
@@ -18,113 +19,110 @@ export const Page = (props) => (
     {props.children}
   </View>
 );
-
-export const ContentView = ({ noPadding, style: customStyle, ...props }) => {
-  let completeStyle = style.contentContainer;
-  if (noPadding) {
-    completeStyle = {
-      ...completeStyle,
-      ...style.noPadding,
-    };
-  }
-  completeStyle = { ...completeStyle, ...customStyle };
+export const BackgroundPage = (props) => {
+  console.log(props.image);
   return (
-    <View {...props} style={completeStyle}>
-      {props.children}
+    <View style={style.pageContainer}>
+      <ImageBackground
+        source={props.image}
+        resizeMode="cover"
+        style={style.backgroundImageStyle}
+      >
+        {React.Children.toArray(props.children).map((child, i) => {
+          return React.cloneElement(child, {
+            isBackground: true,
+          });
+        })}
+      </ImageBackground>
     </View>
   );
 };
 
-export const ContentKeyboardAvoid = ({
-  noPadding,
-  style: customStyle,
-  ...props
-}) => {
-  let completeStyle = style.contentContainer;
-  let noPaddingStyle = { ...completeStyle, ...style.noPadding };
+const containerStyle = ({ containerStyle: cStyle, isBackground }) => {
+  const s = [style.contentContainer];
+  if (isBackground) s.push({ backgroundColor: 'transparent' });
+  if (cStyle) s.push(cStyle);
 
-  let sk = { ...noPaddingStyle, ...props.containerStyle };
-  let ss = { ...completeStyle, marginTop: 0, ...customStyle };
-  if (noPadding) ss = { ...ss, ...style.noPadding };
+  return s;
+};
 
+const contentStyle = ({ style: cStyle, noPadding, isBackground }) => {
+  const s = [style.regularPadding];
+  if (noPadding) s.push(style.noPadding);
+  if (isBackground) s.push(style.backgroundContent);
+  if (containerStyle) s.push(cStyle);
+
+  return s;
+};
+
+const refreshControl = ({ onRefresh, refreshing }) => {
+  if (!onRefresh) return null;
+  return (
+    <RefreshControl refreshing={refreshing || false} onRefresh={onRefresh} />
+  );
+};
+
+const HelperBtn = ({ onHelper }) => {
+  if (!onHelper) return null;
+  return (
+    <TouchableOpacity style={style.onHelper} onPress={onHelper}>
+      <Icon name="help" size={20} />
+    </TouchableOpacity>
+  );
+};
+
+const Title = ({ title }) => {
+  if (!title) return null;
+  return <H4 style={style.contentTitle}>{title}</H4>;
+};
+
+const MainContent = (props) => {
   return (
     <KeyboardAvoidingView
       keyboardShouldPersistTaps="handled"
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      {...props}
-      style={sk}
+      style={containerStyle(props)}
     >
-      <ScrollView style={ss}>{props.children}</ScrollView>
+      {props.children}
     </KeyboardAvoidingView>
   );
 };
 
-export const Content = ({
-  noPadding,
-  style: customStyle,
-  isBackground,
-  ...props
-}) => {
-  let completeStyle = style.contentContainer;
-  if (noPadding) {
-    completeStyle = {
-      ...completeStyle,
-      ...style.noPadding,
-    };
-  }
-  if (isBackground) {
-    completeStyle = {
-      ...completeStyle,
-      backgroundColor: 'transparent',
-      paddingLeft: 32,
-      paddingRight: 32,
-      paddingTop: 39,
-    };
-  }
-  let refreshControl = () => {
-    let { onRefresh, refreshing } = props;
-    if (!onRefresh) return null;
-    return (
-      <RefreshControl refreshing={refreshing || false} onRefresh={onRefresh} />
-    );
-  };
-  completeStyle = { ...completeStyle, ...customStyle };
+export const ContentView = (props) => {
   return (
-    <ScrollView
-      {...props}
-      style={completeStyle}
-      refreshControl={refreshControl()}
-    >
-      <View style={style.dummyView} />
-      <View>
-        {props.title && <H4 style={style.contentTitle}>{props.title}</H4>}
-        {props.onHelper && (
-          <TouchableOpacity style={style.onHelper} onPress={props.onHelper}>
-            <Icon name="help" size={20} />
-          </TouchableOpacity>
-        )}
+    <MainContent {...props}>
+      <View {...props} style={contentStyle(props)}>
+        {props.children}
       </View>
-      {props.children}
-    </ScrollView>
+    </MainContent>
   );
 };
 
-const SepItemDefault = () => {
-  const sepStyle = { height: 16 };
-  return <View style={sepStyle} />;
+export const Content = (props) => {
+  return (
+    <MainContent {...props}>
+      <ScrollView
+        refreshControl={refreshControl(props)}
+        {...props}
+        style={contentStyle(props)}
+      >
+        <ContentMessage data={props.message} />
+        <View style={style.dummyView} />
+        <View>
+          <Title title={props.title} />
+          <HelperBtn onHelper={props.onHelper} />
+        </View>
+        {props.children}
+      </ScrollView>
+    </MainContent>
+  );
 };
 
 export const ContentList = ({ noPadding, style: customStyle, ...props }) => {
-  let completeStyle = style.contentContainer;
-
-  if (noPadding) {
-    completeStyle = {
-      ...completeStyle,
-      ...style.noPadding,
-    };
-  }
-
-  completeStyle = { ...completeStyle, ...customStyle };
+  const SepItemDefault = () => {
+    const sepStyle = { height: 16 };
+    return <View style={sepStyle} />;
+  };
 
   let header = () => {
     return (
@@ -135,38 +133,16 @@ export const ContentList = ({ noPadding, style: customStyle, ...props }) => {
     );
   };
   return (
-    <FlatList
-      contentContainerStyle={style.contentContainerList}
-      style={completeStyle}
-      ItemSeparatorComponent={SepItemDefault}
-      {...props}
-      ListHeaderComponent={header}
-    >
-      {props.children}
-    </FlatList>
-  );
-};
-
-const backgroundImageStyle = {
-  flex: 1,
-  justifyContent: 'center',
-  flexLayout: 'column',
-};
-
-export const BackgroundPage = (props) => {
-  return (
-    <View style={style.pageContainer}>
-      <ImageBackground
-        source={props.image}
-        resizeMode="cover"
-        style={backgroundImageStyle}
+    <MainContent {...props}>
+      <FlatList
+        contentContainerStyle={style.contentContainerList}
+        ItemSeparatorComponent={SepItemDefault}
+        ListHeaderComponent={header}
+        {...props}
+        style={contentStyle(props)}
       >
-        {React.Children.toArray(props.children).map((child, i) => {
-          return React.cloneElement(child, {
-            isBackground: true,
-          });
-        })}
-      </ImageBackground>
-    </View>
+        {props.children}
+      </FlatList>
+    </MainContent>
   );
 };
