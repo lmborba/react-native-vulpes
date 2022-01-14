@@ -20,7 +20,6 @@ export const Page = (props) => (
   </View>
 );
 export const BackgroundPage = (props) => {
-  console.log(props.image);
   return (
     <View style={style.pageContainer}>
       <ImageBackground
