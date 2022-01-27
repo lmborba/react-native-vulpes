@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Keyboard } from 'react-native';
 import { Colors } from '../colors';
 import { RegularBold } from '../components/typos';
 import { Fonts } from '../fonts';
@@ -88,12 +88,18 @@ class Button extends Component {
     };
   }
 
+  onPress() {
+    const { onPress } = this.props;
+    Keyboard.dismiss();
+    onPress();
+  }
+
   render() {
-    const { onPress, disabled } = this.props;
+    const { disabled } = this.props;
 
     return (
       <TouchableOpacity
-        onPress={onPress}
+        onPress={this.onPress.bind(this)}
         style={this.buttonStyle()}
         disabled={disabled}
       >
