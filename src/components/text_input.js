@@ -30,7 +30,7 @@ export class TextInput extends Component {
 
   handleChange(text) {
     this.setState({
-      placeholder: text.length === 0,
+      placeholder: !text || text.length === 0,
     });
     this.props.onChangeText && this.props.onChangeText(text);
   }
@@ -121,6 +121,7 @@ export class TextInput extends Component {
     let font = Fonts.regularBold;
     if (this.state.placeholder && !this.props.value)
       font = Fonts.placeholderBold;
+    if (this.props.editable === false) font = { ...font, color: Colors.gray };
     if (this.props.error) font = { ...font, color: Colors.error };
     return font;
   }

@@ -46,7 +46,7 @@ const containerStyle = ({ containerStyle: cStyle, isBackground }) => {
 };
 
 const contentStyle = ({ style: cStyle, noPadding, isBackground }) => {
-  const s = [style.regularPadding];
+  const s = [style.regularPadding, { flex: 1 }];
   if (noPadding) s.push(style.noPadding);
   if (isBackground) s.push(style.backgroundContent);
   if (containerStyle) s.push(cStyle);
@@ -78,7 +78,6 @@ const Title = ({ title }) => {
 const MainContent = (props) => {
   return (
     <KeyboardAvoidingView
-      keyboardShouldPersistTaps="handled"
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       style={containerStyle(props)}
     >
@@ -101,6 +100,7 @@ export const Content = (props) => {
   return (
     <MainContent {...props}>
       <ScrollView
+        keyboardShouldPersistTaps={'handled'}
         refreshControl={refreshControl(props)}
         {...props}
         style={contentStyle(props)}
