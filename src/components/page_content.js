@@ -136,8 +136,8 @@ export const ContentList = ({ noPadding, style: customStyle, ...props }) => {
       <FlatList
         contentContainerStyle={style.contentContainerList}
         ItemSeparatorComponent={SepItemDefault}
-        ListHeaderComponent={header}
         {...props}
+        ListHeaderComponent={header}
         style={contentStyle(props)}
       >
         {props.children}
