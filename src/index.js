@@ -47,6 +47,7 @@ import { Text } from './components/text';
 import { TextInput } from './components/text_input';
 import { Thumbnail } from './components/thumbnail';
 import { Toast } from './components/toast';
+import { Table, Row } from './components/table';
 import {
   BodyLarge,
   BodyLargeBold,
@@ -136,6 +137,8 @@ export {
   Toast,
   ToggleButton,
   CircularProgress,
+  Table,
+  Row,
 };
 
 const { Vulpes } = NativeModules;

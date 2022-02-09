@@ -13,6 +13,7 @@ import style from '../styles/content';
 import { ContentMessage } from './content_message';
 import { Icon } from './icon';
 import { H4 } from './typos';
+import { Spinner } from './spinner';
 
 export const Page = (props) => (
   <View style={{ ...style.pageContainer, ...props.style }}>
@@ -75,13 +76,19 @@ const Title = ({ title }) => {
   return <H4 style={style.contentTitle}>{title}</H4>;
 };
 
+const Loading = () => {
+  const s = { padding: 20 };
+  return <Spinner style={s} />;
+};
+
 const MainContent = (props) => {
+  const content = props.loading ? <Loading /> : props.children;
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       style={containerStyle(props)}
     >
-      {props.children}
+      {content}
     </KeyboardAvoidingView>
   );
 };
