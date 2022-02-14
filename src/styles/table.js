@@ -1,6 +1,10 @@
 import { Colors } from '../colors';
 
-export const listContainer = { marginTop: 8, marginBottom: 16 };
+export const listContainer = {
+  marginTop: 8,
+  marginBottom: 16,
+  minWidth: '100%',
+};
 export const listItem = {
   paddingTop: 4,
   paddingBottom: 4,
@@ -34,9 +38,12 @@ export const navIconCont = {
   paddingLeft: 5,
 };
 export const titleStyle = {
-  marginBottom: 8,
+  marginTop: 16,
+  marginBottom: 16,
 };
-export const listItemText = {
+export const cellStyle = {
   flex: 1,
+  paddingLeft: 5,
+  paddingRight: 5,
 };
 export const separatorToLong = { marginTop: 8 };

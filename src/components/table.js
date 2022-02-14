@@ -1,20 +1,22 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, View } from 'react-native';
+import { Button } from 'react-native-vulpes';
 import {
+  cellStyle,
   listContainer,
   listItem,
-  listItemText,
   titleStyle,
 } from '../styles/table';
-import { H4, Regular, RegularBold } from './typos';
+import { H3, Regular, RegularBold } from './typos';
 
 const Title = (props) => {
   if (!props.title) return null;
-  return <H4 style={titleStyle}>{props.title}</H4>;
+  return <H3 style={titleStyle}>{props.title}</H3>;
 };
 
 function parseData(data) {
   if (Array.isArray(data)) return data;
+
   if (typeof data === 'object') return Object.values(data);
   return [];
 }
@@ -33,11 +35,15 @@ const rowsFromData = ({ data, ...rest }) => {
 
 const Header = (props) => {
   const r = (d) => {
-    const params = { header: true, ...props, data: [d] };
+    const params = { head: true, ...props, data: [d] };
     return rowsFromData(params);
   };
 
-  if (props.header) return r(props.header);
+  if (props.header) {
+    const { data } = props;
+    if (!data || data.length === 0) return null;
+    return r(props.header);
+  }
 
   const { data } = props;
   if (!data) return null;
@@ -50,26 +56,75 @@ const Header = (props) => {
   return null;
 };
 
-export const Table = (props) => {
+const EmptyState = ({ emptyState, data }) => {
+  if (!emptyState) return null;
+  if (data && data.length > 0) return null;
+  return emptyState;
+};
+
+const Pagination = ({ onChangePage, data }) => {
+  const [currentPage, setPage] = useState(0);
+
+  if (!onChangePage) return null;
+  if (!data || (data.length === 0 && currentPage === 0)) return null;
+
+  const change = (v) => {
+    const next = currentPage + v;
+    setPage(next);
+    onChangePage(next);
+  };
+  const up = () => change(1);
+  const down = () => change(-1);
+
+  const sm = {
+    flex: 1,
+    marginTop: 16,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+  const sb = { marginLeft: 5, marginRight: 5 };
+
+  return (
+    <View style={sm}>
+      {currentPage > 0 && (
+        <Button onPress={down} text={'Página anterior'} style={sb} />
+      )}
+      {<Button onPress={up} text={'Próxima página'} style={sb} />}
+    </View>
+  );
+};
+
+export const Table = ({ style, ...props }) => {
   const cItens = [
     rowsFromData(props),
     React.Children.toArray(props.children),
   ].flat();
 
   const itemCount = cItens.length;
+
+  const contStyle = { flexGrow: 1 };
   return (
-    <View style={[listContainer, props.style]}>
-      <Title title={props.title} />
-      <Header {...props} />
-      {cItens.map((child, i) => {
-        const last = i === itemCount - 1;
-        if (!child) return child;
-        return React.cloneElement(child, {
-          last: last,
-          key: 'c' + i,
-        });
-      })}
-    </View>
+    <ScrollView
+      horizontal={true}
+      disableScrollViewPanResponder={true}
+      contentContainerStyle={contStyle}
+    >
+      <View style={[listContainer, style]}>
+        <Title title={props.title} />
+        <EmptyState {...props} />
+        <Header {...props} />
+        {cItens.map((child, i) => {
+          const last = i === itemCount - 1;
+          if (!child) return child;
+          return React.cloneElement(child, {
+            last: last,
+            key: 'c' + i,
+          });
+        })}
+        <Pagination {...props} />
+      </View>
+    </ScrollView>
   );
 };
 
@@ -91,7 +146,7 @@ export const Row = (props) => {
 
   const data = [React.Children.toArray(props.children), props.data].flat();
 
-  const { columnWidth } = props;
+  const columnWidth = props.columnWidth || {};
 
   const cells = data.map((c, i) => {
     const width = columnWidth[i] || null;
@@ -106,27 +161,23 @@ export const Row = (props) => {
 };
 
 const CellContent = (props) => {
-  const { children, header } = props;
+  const { children, head, dictionary } = props;
   if (React.isValidElement(children)) return children;
-  const val =
+
+  let val =
     children === null || children === undefined ? '' : children.toString();
-  if (header) return <RegularBold>{val}</RegularBold>;
+  if (dictionary) val = dictionary[val] || val;
+
+  if (head) return <RegularBold>{val}</RegularBold>;
   return <Regular>{val}</Regular>;
 };
 
 const Cell = (props) => {
   const { width } = props;
-  console.log('W', width);
   const widthStyle = width ? { width: width, flex: undefined } : {};
-  const cellStyle = {
-    ...listItemText,
-    ...props.cellStyle,
-    borderWidth: 0,
-    ...widthStyle,
-  };
 
   return (
-    <View style={cellStyle}>
+    <View style={{ ...cellStyle, ...props.cellStyle, ...widthStyle }}>
       <CellContent {...props} />
     </View>
   );
