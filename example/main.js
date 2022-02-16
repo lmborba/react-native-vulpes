@@ -8,7 +8,7 @@ module.exports = {
       'react-native-svg$': 'react-native-svg-web',
       '@storybook/react-native': '@storybook/react',
     };
-    config.resolve.extensions = ['.web.js', '.js', '.json'];
+    config.resolve.extensions = ['.web.js', '.js', '.json', '.ts', '.tsx'];
     // mutate babel-loader
     config.module.rules[0].use[0].options.plugins.push(['react-native-web', { commonjs: true }]);
     return config;

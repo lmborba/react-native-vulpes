@@ -15,6 +15,7 @@ import {
   TicketProfileCard,
 } from './components/card';
 import { Carousel } from './components/carousel';
+import { BarChart } from './components/charts';
 import { CheckboxInput } from './components/checkbox_input';
 import { CircularProgress } from './components/circular_progress';
 import { Divider } from './components/divider';
@@ -41,13 +42,13 @@ import { SearchInput } from './components/search_input';
 import { SelectInput, SelectItem } from './components/select_input';
 import { SnapCarousel } from './components/snap_carousel';
 import { Spinner } from './components/spinner';
+import { Row, Table } from './components/table';
 import { Tab, Tabs } from './components/tabs';
 import { Tag } from './components/tag';
 import { Text } from './components/text';
 import { TextInput } from './components/text_input';
 import { Thumbnail } from './components/thumbnail';
 import { Toast } from './components/toast';
-import { Table, Row } from './components/table';
 import {
   BodyLarge,
   BodyLargeBold,
@@ -123,6 +124,7 @@ export {
   Thumbnail,
   NotificationIcon,
   TicketCard,
+  BarChart,
   ProfileCard,
   Carousel,
   SnapCarousel,
