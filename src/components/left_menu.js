@@ -14,7 +14,7 @@ const generalMenuStyle = {
 
 export const LeftMenu = (props) => {
   return (
-    <View style={generalMenuStyle}>
+    <View style={[generalMenuStyle, props.style]}>
       {React.Children.map(props.children, (child, i) => {
         return React.cloneElement(child, {
           justIcons: props.justIcons,
@@ -52,13 +52,19 @@ const adaptToType = (type, justIcons) => {
   }
 };
 
-export const LeftMenuItem = ({ children, selected, onPress, justIcons }) => {
+export const LeftMenuItem = ({
+  children,
+  selected,
+  onPress,
+  justIcons,
+  style,
+}) => {
   return (
-    <TouchableOpacity style={generalMenuItemStyle} onPress={onPress}>
+    <TouchableOpacity style={[generalMenuItemStyle, style]} onPress={onPress}>
       {React.Children.map(children, (child, i) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
-            color: selected ? 'black' : 'gray',
+            color: selected ? 'black' : 'dark_gray',
             fontStyle: selected ? Fonts.leftMenuTextBold : Fonts.leftMenuText,
             size: 18,
             style: {

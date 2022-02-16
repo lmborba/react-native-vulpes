@@ -113,10 +113,15 @@ export class Header extends Component {
       title,
       subtitle,
       helpAction,
+      imageStyle,
     } = this.props;
     return (
       <View>
-        <ImageBackground source={image} style={this.imageStyle()}>
+        <ImageBackground
+          source={image}
+          style={this.imageStyle()}
+          imageStyle={imageStyle}
+        >
           <View style={this.headerStyle()}>
             <ContentComponent component={contentComponent} />
             <HeaderTitles {...{ title, subtitle, helpAction }} />

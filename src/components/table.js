@@ -22,6 +22,7 @@ function parseData(data) {
 }
 
 const rowsFromData = ({ data, ...rest }) => {
+  if (!data) return null;
   const aData = [data].flat();
 
   if (aData.length === 0) return null;

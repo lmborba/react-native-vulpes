@@ -25,10 +25,14 @@ const TemplateList = ({ ...rest }) => (
   <>
     <Table title={'Tabela com dados JSON'} data={jsonData} />
 
-    <Table title={'Table com dados de array'} data={data} />
+    <Table
+      title={'Table com dados de array'}
+      header={['a', 'b', 'c']}
+      data={data}
+    />
 
-    <Table checked title={'Titulo 2'}>
-      <Row data={['a', 'b', 'c', 'd', 'e']} />
+    <Table title={'Titulo 3'} header={['Coluna']}>
+      <Row>Item 1</Row>
       <Row>Item 2</Row>
       <Row>Item 3</Row>
       <Row>Item 4</Row>
