@@ -19,27 +19,11 @@ const BarChart = (props) => {
   return <C style={buttonContainer} {...props} />;
 };
 class TemplateButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: false,
-    };
-  }
-
-  handlePress() {
-    console.log('pressed', this.state);
-    this.setState({
-      value: !this.state.value,
-    });
-  }
-
   render() {
     const {
       color = undefined,
       data = [{ value: 50 }, { value: 80 }, { value: 90 }, { value: 70 }],
     } = this.props;
-
-    const { value } = this.state;
 
     return <BarChart color={color} data={data} />;
   }
