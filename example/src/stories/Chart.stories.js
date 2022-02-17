@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
-import { BarChart as C, Colors } from 'react-native-vulpes';
+import { BarChart as C, PieChart as P, Colors } from 'react-native-vulpes';
 
 const colorList = () => {
   var keys = [undefined];
@@ -18,14 +18,37 @@ const buttonContainer = { margin: 10 };
 const BarChart = (props) => {
   return <C style={buttonContainer} {...props} />;
 };
+const PieChart = (props) => {
+  return <P style={buttonContainer} {...props} />;
+};
 class TemplateButton extends Component {
   render() {
-    const {
-      color = undefined,
-      data = [{ value: 50 }, { value: 80 }, { value: 90 }, { value: 70 }],
-    } = this.props;
+    const dataB = {
+      title: 'Titulo do gráfico de barras',
+      data: [
+        { label: 'Jan', value: 50 },
+        { label: 'Fev', value: 80 },
+        { label: 'Mar', value: 90 },
+        { label: 'Abr', value: 70 },
+      ],
+    };
+    const dataP = {
+      title: 'Titulo do gráfico de pizza 2',
+      data: [
+        { label: 'Janeiro de 2021 - 30%', value: 20 },
+        { label: 'Fev', value: 50 },
+        { label: 'Mar', value: 30 },
+        { label: 'Abr', value: 70 },
+      ],
+    };
 
-    return <BarChart color={color} data={data} />;
+    const s = { flexDirection: 'row' };
+    return (
+      <View style={s}>
+        <BarChart data={dataB} />
+        <PieChart data={dataP} />
+      </View>
+    );
   }
 }
 

@@ -164,6 +164,7 @@
   "dependencies": {
     "core-js": "^3.9.0",
     "cz-conventional-changelog": "^3.3.0",
+    "d3-shape": "^3.1.0",
     "gradient-parser": "^1.0.0",
     "patch-package": "^6.1.0-0",
     "react-native-dash": "^0.0.11",
@@ -176,6 +177,7 @@
     "react-native-render-html": "^6.3.1",
     "react-native-sideswipe": "^1.5.0",
     "react-native-svg": "^12.1.1",
+    "react-native-svg-charts": "^5.4.0",
     "react-native-svg-web": "^1.0.9",
     "react-native-web": "~0.17.0",
     "react-native-web-linear-gradient": "^1.1.1"
