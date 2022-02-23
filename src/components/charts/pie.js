@@ -134,7 +134,7 @@ export class PieChart extends PureComponent {
       slices,
     };
 
-    const box = `-${width / 2} -${height / 2} ${width} ${height}`;
+    const box = `0 0 ${width} ${height}`;
     const flx = { flex: 1 };
     return (
       <View pointerEvents={'box-none'} style={style}>

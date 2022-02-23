@@ -7123,10 +7123,9 @@ react-native-device-info@^8.0.2:
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-8.4.9.tgz#3089ea0bf9c9a28327d3ba683469a32b093172dd"
   integrity sha512-EEdeoaBhaLTOZmCy5xtfepVAfvodteiDHoIxBPUgnNe5p0JLv90BLKtVytbJhlllWScUO48+2u9S7M6WNYsXDQ==
 
-react-native-gifted-charts@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-gifted-charts/-/react-native-gifted-charts-1.0.3.tgz#ea0783648782b9fdb8243d09025a86647efd4e31"
-  integrity sha512-mrONmJGLnFLfNQeRXCsycAnLOr4ZiUS9SWOn5pPErpkk29l0dl5wweKKDSEaYujTU1zo8/o7NyWlnoK9QC0YBg==
+"react-native-gifted-charts@github:fstefanello/react-native-gifted-charts":
+  version "1.0.4"
+  resolved "https://codeload.github.com/fstefanello/react-native-gifted-charts/tar.gz/019898aa3377f4f8c99dee72662104613065bb1a"
   dependencies:
     "@types/jest" "^26.0.23"
     "@types/node" "^15.0.2"

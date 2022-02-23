@@ -15,7 +15,7 @@ import {
   TicketProfileCard,
 } from './components/card';
 import { Carousel } from './components/carousel';
-import { BarChart, PieChart } from './components/charts';
+import { BarChart, PieChart, StackChart } from './components/charts';
 import { CheckboxInput } from './components/checkbox_input';
 import { CircularProgress } from './components/circular_progress';
 import { Divider } from './components/divider';
@@ -126,6 +126,7 @@ export {
   TicketCard,
   BarChart,
   PieChart,
+  StackChart,
   ProfileCard,
   Carousel,
   SnapCarousel,

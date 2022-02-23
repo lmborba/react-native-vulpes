@@ -99,7 +99,7 @@ const DummyBottom = () => {
 const ContentComponent = ({ component }) => {
   if (!component) return <DummyHeader />;
 
-  return <View>{component}</View>;
+  return component;
 };
 
 export class Header extends Component {

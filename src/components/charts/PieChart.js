@@ -2,24 +2,9 @@ import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
 import { G, Text as SText } from 'react-native-svg';
 import { Colors } from '../../colors';
-import { Card } from './../card';
-import { H4, Small, SmallBold } from './../typos';
+import { SmallBold } from './../typos';
 import { PieChart as PChart } from './pie';
 
-const containerStyle = {
-  minWidth: 300,
-  flex: 1,
-  marginBottom: 16,
-  marginLeft: 8,
-  marginRight: 8,
-};
-const bodyStyle = {
-  flex: 1,
-  height: 200,
-  overflow: 'hidden',
-  alignItems: 'center',
-  flexDirection: 'row',
-};
 const colors = [
   'dark_cyan',
   'gray',
@@ -53,41 +38,12 @@ const colors = [
 export class PieChart extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      with: null,
-    };
-
-    this.nItems = 0;
-    const { data } = props;
-    if (data && data.data && data.data.length > 0) {
-      this.nItems = data.data.length;
-    }
-  }
-
-  topLabel(value) {
-    return <Small>{value}</Small>;
-  }
-
-  xLabelStyle() {
-    return {
-      fontSize: 10,
-    };
-  }
-
-  onLayout({ nativeEvent }) {
-    const { width } = nativeEvent.layout;
-
-    const itens = this.nItems;
-    const wa = width - 35 - 12 - 12;
-
-    this.spacing = (wa * 0.2) / (itens - 1);
-    this.barWidth = (wa * 0.8) / itens;
-
-    this.setState({ width: width });
   }
 
   dataFormatter(data) {
+    if (!data || !data.data || !data.data.length === 0) return [];
     let pieData = data.data.filter((d, i) => d.value > 0);
+    if (pieData.length === 0) return [];
 
     let total = pieData
       .map((item) => item.value)
@@ -106,24 +62,16 @@ export class PieChart extends Component {
     return pieData;
   }
 
-  renderGraph(data) {}
-
   render() {
     const { data } = this.props;
     if (!data || !data.length === 0) return null;
-    const headerStyle = { marginBottom: 16 };
     const pieData = this.dataFormatter(data);
-    return (
-      <Card style={containerStyle} cardContainer={{ flex: 1 }}>
-        <H4 numberOfLines={1} style={headerStyle}>
-          {data.title}
-        </H4>
 
-        <View style={[bodyStyle]} onLayout={this.onLayout.bind(this)}>
-          <Graph data={pieData} />
-          <Caption data={pieData} />
-        </View>
-      </Card>
+    return (
+      <>
+        <Graph data={pieData} />
+        <Caption data={pieData} />
+      </>
     );
   }
 }
@@ -132,7 +80,8 @@ const Graph = ({ data }) => {
   const gStyle = {
     maxHeight: 250,
     minWidth: 220,
-    height: 350,
+    // height: 320,
+    height: '100%',
     flex: 1,
   };
 
@@ -141,8 +90,8 @@ const Graph = ({ data }) => {
       style={gStyle}
       data={data}
       innerRadius={'0%'}
-      outerRadius={'85%'}
-      labelRadius={75}
+      outerRadius={'100%'}
+      labelRadius={40}
       sort={(a, b) => true}
     >
       <Labels />
@@ -170,7 +119,7 @@ const dotStyle = {
 };
 const contStyle = {
   maxWidth: '33%',
-  minWidth: 130,
+  minWidth: 80,
   justifyContent: 'center',
 };
 
@@ -178,7 +127,7 @@ const Caption = ({ data }) => {
   const itens = data.map((d, i) => {
     const color = { backgroundColor: Colors[colors[i]] };
     return (
-      <View style={cptStyle}>
+      <View key={'c' + i} style={cptStyle}>
         <View style={{ ...dotStyle, ...color }} />
         <SmallBold>{d.label}</SmallBold>
       </View>
@@ -191,6 +140,7 @@ const Caption = ({ data }) => {
 const Labels = ({ slices, height, width }) => {
   return slices.map((slice, index) => {
     const { labelCentroid, pieCentroid, data } = slice;
+    const val = data.percent + '%';
     return (
       <G key={index} x={pieCentroid[0]} y={pieCentroid[1]}>
         <SText
@@ -204,7 +154,7 @@ const Labels = ({ slices, height, width }) => {
           fontWeight="600"
           fontFamily={Platform.OS === 'web' ? 'Open Sans' : 'OpenSans-Bold'}
         >
-          {data.percent}%
+          {val}
         </SText>
       </G>
     );
