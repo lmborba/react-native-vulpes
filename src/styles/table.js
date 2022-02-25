@@ -17,9 +17,10 @@ export const listItem = {
   paddingLeft: 0,
   paddingRight: 0,
   borderBottomColor: Colors.light_gray,
-  borderBottomWidth: 1,
+  borderBottomWidth: 0,
   flexDirection: 'row',
   alignItems: 'center',
+  height: 40,
 };
 
 export const titleStyle = {

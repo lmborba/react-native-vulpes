@@ -1,13 +1,14 @@
 import React, { Component, useState } from 'react';
 import { ScrollView, View } from 'react-native';
-import { Button } from 'react-native-vulpes';
+import { Button, Colors } from 'react-native-vulpes';
+import { Small } from '..';
 import {
   cellStyle,
   listContainer,
   listItem,
   titleStyle,
 } from '../styles/table';
-import { H3, Regular, RegularBold } from './typos';
+import { H3, RegularBold } from './typos';
 
 const Title = (props) => {
   if (!props.title) return null;
@@ -28,7 +29,7 @@ const rowsFromData = ({ data, ...rest }) => {
   if (aData.length === 0) return null;
   return aData.map((rd, i) => {
     const ad = parseData(rd);
-    return <Row key={'r' + i} {...rest} data={ad} />;
+    return <Row key={'r' + i} {...rest} data={ad} line={i} />;
   });
 };
 
@@ -165,7 +166,6 @@ export class Table extends Component {
       <View style={containerStyle}>
         <Title title={props.title} />
         <ScrollView
-          horizontal={true}
           disableScrollViewPanResponder={true}
           contentContainerStyle={contScrollStyle}
         >
@@ -194,11 +194,16 @@ export class Table extends Component {
 function listProps(props) {
   const style = { ...listItem, ...props.style };
   let param = { activeOpacity: 1, style: style };
-  if (props.last) {
-    param.style = {
-      ...param.style,
-      borderBottomWidth: 0,
-    };
+  if (props.head) {
+    param.style.backgroundColor = Colors[props.color || 'cyan'];
+    param.style.borderTopLeftRadius = 10;
+    param.style.borderTopRightRadius = 10;
+  } else {
+    if (props.line % 2 === 0) {
+      param.style.backgroundColor = Colors[props.color || 'cyan'] + '77';
+    } else {
+      param.style.backgroundColor = Colors[props.color || 'cyan'] + '44';
+    }
   }
 
   return param;
@@ -206,6 +211,8 @@ function listProps(props) {
 
 export const Row = (props) => {
   const params = listProps(props);
+
+  console.log(props);
 
   const data = [React.Children.toArray(props.children), props.data].flat();
   const columnWidth = props.columnWidth || {};
@@ -238,8 +245,8 @@ const CellContent = (props) => {
     children === null || children === undefined ? '' : children.toString();
   if (dictionary) val = dictionary[val] || val;
 
-  if (head) return <RegularBold>{val}</RegularBold>;
-  return <Regular>{val}</Regular>;
+  if (head) return <RegularBold color="white">{val}</RegularBold>;
+  return <Small numberOfLines={1}>{val}</Small>;
 };
 
 const Cell = (props) => {

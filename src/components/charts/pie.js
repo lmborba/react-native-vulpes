@@ -113,6 +113,7 @@ export class PieChart extends PureComponent {
           .arc()
           .outerRadius(_labelRadius)
           .innerRadius(_labelRadius)
+          .cornerRadius(cornerRadius)
           .padAngle(padAngle);
       }
       return arcs[index];
@@ -138,7 +139,6 @@ export class PieChart extends PureComponent {
       slices,
     };
 
-    console.log(width, height);
 
     const box = `0 0 ${width} ${height}`;
     const flx = { flex: 1 };

@@ -32,7 +32,7 @@ export class BarChart extends Component {
     if (!this.props.width) return null;
 
     const itens = this.nItems;
-    const wa = this.props.width - 35 - 12 - 12;
+    const wa = this.props.width - 12 - 12;
 
     this.spacing = (wa * 0.2) / (itens - 1);
     this.barWidth = (wa * 0.8) / itens;
@@ -43,20 +43,22 @@ export class BarChart extends Component {
       d.onPress = () => console.log(d.value);
       d.labelTextStyle = this.xLabelStyle();
     }
-    const sGraph = { flex: 1, paddingBottom: 16 };
+    const sGraph = { flex: 1, paddingBottom: 16, marginLeft: -35 };
     return (
       <View style={sGraph}>
         <BChart
           data={data.data}
-          width={this.props.width - 35}
+          width={this.props.width}
           barWidth={this.barWidth}
           spacing={this.spacing}
           initialSpacing={12}
           noOfSections={4}
-          showYAxisIndices
+          yAxisThickness={0}
           isAnimated
-          cappedBars
-          capThickness={1}
+          yAxisLabelWidth={0}
+          hideYAxisText
+          cappedBars={false}
+          capThickness={0}
           capColor={Colors.dark_gray}
           showGradient
           gradientColor={Colors['dark_' + data.color]}

@@ -2,20 +2,19 @@ import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
 import { G, Text as SText } from 'react-native-svg';
 import { Colors } from '../../colors';
-import { SmallBold } from './../typos';
+import { Small } from './../typos';
 import { PieChart as PChart } from './pie';
 
 const colors = [
   'cyan',
   'blue',
-  'orange',
   'purple',
   'green',
+  'orange',
   'red',
   'yellow',
   'pink',
   'gray',
-  'orange',
   'dark_cyan',
   'dark_red',
   'dark_purple',
@@ -92,7 +91,7 @@ const Graph = ({ data }) => {
       data={data}
       innerRadius={'20%'}
       outerRadius={'100%'}
-      labelRadius={'50%'}
+      labelRadius={5}
       sort={(a, b) => true}
     >
       <Labels />
@@ -107,6 +106,7 @@ const cptStyle = {
   paddingBottom: 5,
   alignItems: 'center',
   paddingLeft: 8,
+  width: 200
 };
 
 const dotStyle = {
@@ -130,7 +130,7 @@ const Caption = ({ data }) => {
     return (
       <View key={'c' + i} style={cptStyle}>
         <View style={{ ...dotStyle, ...color }} />
-        <SmallBold>{d.label}</SmallBold>
+        <Small numberOfLines={1}>{d.label}</Small>
       </View>
     );
   });
@@ -142,6 +142,7 @@ const Labels = ({ slices, height, width }) => {
   return slices.map((slice, index) => {
     const { labelCentroid, pieCentroid, data } = slice;
     const val = data.percent + '%';
+    if (data.percent < 6) return null;
     return (
       <G key={index} x={pieCentroid[0]} y={pieCentroid[1]}>
         <SText
@@ -152,8 +153,8 @@ const Labels = ({ slices, height, width }) => {
           textAnchor={'middle'}
           alignmentBaseline={'middle'}
           fontSize={12}
-          fontWeight="600"
-          fontFamily={Platform.OS === 'web' ? 'Open Sans' : 'OpenSans-Bold'}
+          fontWeight="300"
+          fontFamily={Platform.OS === 'web' ? 'Open Sans' : 'OpenSans-Light'}
         >
           {val}
         </SText>
