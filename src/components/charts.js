@@ -9,22 +9,6 @@ import { Modal } from './modal';
 import { ModalContainer } from './modal_container';
 import { H4, Regular } from './typos';
 
-export const BarChart = (props) => (
-  <CardChart {...props}>
-    <BChart />
-  </CardChart>
-);
-export const PieChart = (props) => (
-  <CardChart {...props}>
-    <PChart />
-  </CardChart>
-);
-export const StackChart = (props) => (
-  <CardChart {...props}>
-    <SChart />
-  </CardChart>
-);
-
 const containerStyle = {
   width: 'auto',
   minWidth: 350,
@@ -105,7 +89,11 @@ class CardChart extends Component {
     };
 
     return (
-      <Card style={containerStyle} cardContainer={{ flex: 1 }}>
+      <Card
+        style={containerStyle}
+        cardContainer={{ flex: 1 }}
+        color={data.color}
+      >
         <View style={headerStyle}>
           <H4 numberOfLines={1}>{data.title}</H4>
           {this.renderHelper()}
@@ -122,3 +110,19 @@ class CardChart extends Component {
     );
   }
 }
+
+export const BarChart = (props) => (
+  <CardChart {...props}>
+    <BChart />
+  </CardChart>
+);
+export const PieChart = (props) => (
+  <CardChart {...props}>
+    <PChart />
+  </CardChart>
+);
+export const StackChart = (props) => (
+  <CardChart {...props}>
+    <SChart />
+  </CardChart>
+);

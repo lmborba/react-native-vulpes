@@ -1,16 +1,21 @@
 import { storiesOf } from '@storybook/react-native';
 import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
-import { BarChart as C, PieChart as P, Colors } from 'react-native-vulpes';
+import { BarChart as C, PieChart as P } from 'react-native-vulpes';
 
 const colorList = () => {
-  var keys = [undefined];
-  for (var k in Colors) {
-    if (k.substring(0, 8) !== 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
+  return [
+    'cyan',
+    'blue',
+    'green',
+    'orange',
+    'purple',
+    'pink',
+    'red',
+    'yellow',
+    'gray',
+    undefined,
+  ];
 };
 
 const buttonContainer = { margin: 10 };
@@ -25,6 +30,7 @@ class TemplateButton extends Component {
   render() {
     const dataB = {
       title: 'Titulo do gráfico de barras',
+      color: this.props.color,
       data: [
         { label: 'Jan', value: 50 },
         { label: 'Fev', value: 80 },
@@ -34,6 +40,7 @@ class TemplateButton extends Component {
     };
     const dataP = {
       title: 'Titulo do gráfico de pizza 2',
+      color: this.props.color,
       data: [
         { label: 'Janeiro de 2021 - 30%', value: 20 },
         { label: 'Fev', value: 50 },
@@ -61,7 +68,7 @@ export default {
   component: BarChart,
   argTypes: {
     color: {
-      description: 'color for the button',
+      description: 'color for the chart',
       control: {
         type: 'select',
         options: colorList(),

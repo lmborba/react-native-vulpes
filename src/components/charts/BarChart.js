@@ -59,8 +59,8 @@ export class BarChart extends Component {
           capThickness={1}
           capColor={Colors.dark_gray}
           showGradient
-          gradientColor={Colors.dark_cyan}
-          frontColor={Colors.light_cyan}
+          gradientColor={Colors['dark_' + data.color]}
+          frontColor={Colors['light_' + data.color]}
         />
       </View>
     );
