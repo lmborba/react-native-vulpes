@@ -52,8 +52,8 @@ class TemplateButton extends Component {
     const s = { flexDirection: 'row' };
     return (
       <View style={s}>
-        <BarChart data={dataB} />
         <PieChart data={dataP} />
+        <BarChart data={dataB} />
       </View>
     );
   }

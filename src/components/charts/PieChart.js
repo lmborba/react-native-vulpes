@@ -6,22 +6,23 @@ import { SmallBold } from './../typos';
 import { PieChart as PChart } from './pie';
 
 const colors = [
-  'dark_cyan',
-  'gray',
+  'cyan',
+  'blue',
+  'orange',
+  'purple',
   'green',
+  'red',
   'yellow',
   'pink',
+  'gray',
+  'orange',
+  'dark_cyan',
   'dark_red',
   'dark_purple',
   'dark_orange',
   'light_blue',
-  'orange',
-  'cyan',
   'dark_gray',
   'light_pink',
-  'blue',
-  'red',
-  'purple',
   'light_red',
   'light_cyan',
   'light_yellow',
@@ -89,9 +90,9 @@ const Graph = ({ data }) => {
     <PChart
       style={gStyle}
       data={data}
-      innerRadius={'0%'}
+      innerRadius={'20%'}
       outerRadius={'100%'}
-      labelRadius={40}
+      labelRadius={'50%'}
       sort={(a, b) => true}
     >
       <Labels />

@@ -35,6 +35,7 @@ export class PieChart extends PureComponent {
       data,
       dataPoints,
       innerRadius,
+      cornerRadius,
       outerRadius,
       labelRadius,
       padAngle,
@@ -47,6 +48,8 @@ export class PieChart extends PureComponent {
       startAngle,
       endAngle,
     } = this.props;
+
+    console.log(data);
 
     const { height, width } = this.state;
 
@@ -87,6 +90,7 @@ export class PieChart extends PureComponent {
         .arc()
         .outerRadius(_outerRadius)
         .innerRadius(_innerRadius)
+        .cornerRadius(cornerRadius)
         .padAngle(padAngle); // Angle between sections
 
       item.arc &&
@@ -134,6 +138,8 @@ export class PieChart extends PureComponent {
       slices,
     };
 
+    console.log(width, height);
+
     const box = `0 0 ${width} ${height}`;
     const flx = { flex: 1 };
     return (
@@ -151,7 +157,6 @@ export class PieChart extends PureComponent {
               pointerEvents={Platform.OS === 'android' && 'box-none'}
               style={{ height, width }}
             >
-              {/* center the progress circle*/}
               <G x={width / 2} y={height / 2}>
                 {React.Children.map(children, (child) => {
                   if (child && child.props.belowChart) {
@@ -199,6 +204,7 @@ PieChart.propTypes = {
   innerRadius: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   outerRadius: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   labelRadius: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  cornerRadius: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   padAngle: PropTypes.number,
   animate: PropTypes.bool,
   animationDuration: PropTypes.number,
@@ -210,7 +216,9 @@ PieChart.propTypes = {
 PieChart.defaultProps = {
   width: 100,
   height: 100,
+  animate: true,
   padAngle: 0.05,
+  cornerRadius: 6,
   startAngle: 0,
   endAngle: Math.PI * 2,
   valueAccessor: ({ item }) => item.value,
