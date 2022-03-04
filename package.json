@@ -167,10 +167,12 @@
     "d3-shape": "^3.1.0",
     "gradient-parser": "^1.0.0",
     "patch-package": "^6.1.0-0",
+    "react-native-canvas": "^0.1.38",
+    "react-native-chart-kit": "^6.12.0",
     "react-native-dash": "^0.0.11",
     "react-native-dashed-border": "^2.1.1",
     "react-native-device-info": "^8.0.2",
-    "react-native-gifted-charts": "^1.0.3",
+    "react-native-gifted-charts": "^1.0.5",
     "react-native-icomoon": "^0.1.1",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-qrcode-svg": "^6.1.1",
@@ -180,7 +182,8 @@
     "react-native-svg-charts": "^5.4.0",
     "react-native-svg-web": "^1.0.9",
     "react-native-web": "~0.17.0",
-    "react-native-web-linear-gradient": "^1.1.1"
+    "react-native-web-linear-gradient": "^1.1.1",
+    "react-native-webview": "^11.17.2"
   },
   "config": {
     "commitizen": {
