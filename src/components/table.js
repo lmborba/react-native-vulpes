@@ -212,6 +212,7 @@ function listProps(props) {
 export const Row = (props) => {
   const params = listProps(props);
 
+  console.log('props', props);
   const data = [React.Children.toArray(props.children), props.data].flat();
   const columnWidth = props.columnWidth || {};
   const nCellI = data.length - 1;

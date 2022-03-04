@@ -49,6 +49,8 @@ export class PieChart extends PureComponent {
       endAngle,
     } = this.props;
 
+    console.log('data:', data);
+
     const { height, width } = this.state;
 
     if (!data && dataPoints) {
