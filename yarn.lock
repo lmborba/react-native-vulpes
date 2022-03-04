@@ -7137,14 +7137,15 @@ react-native-dashed-border@^2.1.1:
   resolved "https://registry.yarnpkg.com/react-native-dashed-border/-/react-native-dashed-border-2.1.1.tgz#137664080ed41de49a72b81f1ffc8c0c2b496743"
   integrity sha1-E3ZkCA7UHeSacrgfH/yMDCtJZ0M=
 
-react-native-device-info@^8.0.2:
+react-native-device-info@^8.4.9:
   version "8.4.9"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-8.4.9.tgz#3089ea0bf9c9a28327d3ba683469a32b093172dd"
   integrity sha512-EEdeoaBhaLTOZmCy5xtfepVAfvodteiDHoIxBPUgnNe5p0JLv90BLKtVytbJhlllWScUO48+2u9S7M6WNYsXDQ==
 
-"react-native-gifted-charts@github:fstefanello/react-native-gifted-charts":
-  version "1.0.4"
-  resolved "https://codeload.github.com/fstefanello/react-native-gifted-charts/tar.gz/019898aa3377f4f8c99dee72662104613065bb1a"
+react-native-gifted-charts@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-gifted-charts/-/react-native-gifted-charts-1.0.5.tgz#5b15888178a8869375a6e94b10526d2e945cbd87"
+  integrity sha512-wfUwfdrawIBIHJJBaoY3f8fu+yektVBZquhb+p/5Ol1dOwX2/QlmXIhfByxJKmPuvlBNAHLDQ37K4FnyTMfgyg==
   dependencies:
     "@types/jest" "^26.0.23"
     "@types/node" "^15.0.2"

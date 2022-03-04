@@ -106,9 +106,8 @@ const cptStyle = {
   paddingBottom: 5,
   alignItems: 'center',
   paddingLeft: 8,
-  width: 200
+  width: 200,
 };
-
 const dotStyle = {
   width: 16,
   height: 16,

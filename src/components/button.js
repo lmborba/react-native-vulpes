@@ -8,7 +8,7 @@ import { Icon } from './icon';
 
 class Button extends Component {
   renderField() {
-    const { children, text, leftIcon, rightIcon } = this.props;
+    const { children, text, leftIcon, rightIcon, iconSize } = this.props;
     if (children) return this.renderChildren();
 
     const tx = text === undefined ? 'Enviar' : text;
@@ -19,10 +19,20 @@ class Button extends Component {
       </RegularBold>
     );
     const l = leftIcon && (
-      <Icon key={'l'} name={leftIcon} color={this.textColor()} />
+      <Icon
+        key={'l'}
+        name={leftIcon}
+        color={this.textColor()}
+        size={iconSize}
+      />
     );
     const r = rightIcon && (
-      <Icon key={'r'} name={rightIcon} color={this.textColor()} />
+      <Icon
+        key={'r'}
+        name={rightIcon}
+        color={this.textColor()}
+        size={iconSize}
+      />
     );
 
     const els = [l, t, r].filter((i) => i);
@@ -117,7 +127,6 @@ class Button extends Component {
     Keyboard.dismiss();
     onPress();
   }
-
   render() {
     const { disabled } = this.props;
 

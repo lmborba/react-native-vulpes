@@ -49,7 +49,7 @@ export class PieChart extends PureComponent {
       endAngle,
     } = this.props;
 
-    console.log(data);
+    console.log('data:', data);
 
     const { height, width } = this.state;
 
@@ -138,7 +138,6 @@ export class PieChart extends PureComponent {
       data,
       slices,
     };
-
 
     const box = `0 0 ${width} ${height}`;
     const flx = { flex: 1 };
