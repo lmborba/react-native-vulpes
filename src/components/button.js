@@ -19,10 +19,20 @@ class Button extends Component {
       </RegularBold>
     );
     const l = leftIcon && (
-      <Icon key={'l'} name={leftIcon} color={this.textColor()} size={iconSize}/>
+      <Icon
+        key={'l'}
+        name={leftIcon}
+        color={this.textColor()}
+        size={iconSize}
+      />
     );
     const r = rightIcon && (
-      <Icon key={'r'} name={rightIcon} color={this.textColor()} size={iconSize}/>
+      <Icon
+        key={'r'}
+        name={rightIcon}
+        color={this.textColor()}
+        size={iconSize}
+      />
     );
 
     const els = [l, t, r].filter((i) => i);
