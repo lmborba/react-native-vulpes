@@ -13,6 +13,7 @@ const colorList = () => {
   }
   return keys;
 };
+
 export default {
   title: 'Example/Table',
   component: Table,
