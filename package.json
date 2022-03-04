@@ -1,6 +1,6 @@
 {
   "name": "react-native-vulpes",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "React Native implementation of the Vulpes design system",
   "main": "src/index",
   "module": "lib/module/index",

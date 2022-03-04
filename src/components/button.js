@@ -127,7 +127,6 @@ class Button extends Component {
     Keyboard.dismiss();
     onPress();
   }
-
   render() {
     const { disabled } = this.props;
 

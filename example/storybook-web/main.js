@@ -24,7 +24,7 @@ module.exports = {
     config.module.rules[0].include.push(path.resolve('../src/'));
     config.module.rules[1].test = /\.(mjs|tsx?|jsx?)$/;
     config.module.rules[1].include =
-      /[\\/]node_modules[\\/](@storybook\/node-logger|react-native-dash|react-native-sideswipe|react-native-qrcode-svg|are-you-es5|better-opn|boxen|chalk|commander|find-cache-dir|find-up|fs-extra|json5|node-fetch|pkg-dir|resolve-from|semver|react-native-gifted-charts|react-native-webview)/;
+      /[\\/]node_modules[\\/](@storybook\/node-logger|react-native-dash|react-native-sideswipe|react-native-qrcode-svg|are-you-es5|better-opn|boxen|chalk|commander|find-cache-dir|find-up|fs-extra|json5|node-fetch|pkg-dir|resolve-from|semver|react-native-gifted-charts|react-native-webview|react-native-chart-kit)/;
 
     return config;
   },

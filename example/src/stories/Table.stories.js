@@ -1,13 +1,30 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Table, Row } from 'react-native-vulpes';
+import { Colors, Row, Table } from 'react-native-vulpes';
 import { Spinner } from '../../../src';
 
+const colorList = () => {
+  var keys = [undefined];
+  for (var k in Colors) {
+    if (k.substring(0, 8) !== 'gradient') {
+      keys.push(k);
+    }
+  }
+  return keys;
+};
 export default {
   title: 'Example/Table',
   component: Table,
-  argTypes: {},
+  argTypes: {
+    color: {
+      description: 'color for the button',
+      control: {
+        type: 'select',
+        options: colorList(),
+      },
+    },
+  },
 };
 
 const data = [
@@ -23,15 +40,16 @@ const jsonData = [
 
 const TemplateList = ({ ...rest }) => (
   <>
-    <Table title={'Tabela com dados JSON'} data={jsonData} />
+    <Table {...rest} title={'Tabela com dados JSON'} data={jsonData} />
 
     <Table
+      {...rest}
       title={'Table com dados de array'}
       header={['a', 'b', 'c']}
       data={data}
     />
 
-    <Table title={'Titulo 3'} header={['Coluna']}>
+    <Table {...rest} title={'Titulo 3'} header={['Coluna']}>
       <Row>Item 1</Row>
       <Row>Item 2</Row>
       <Row>Item 3</Row>

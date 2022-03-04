@@ -10,7 +10,10 @@ module.exports = {
     };
     config.resolve.extensions = ['.web.js', '.js', '.json', '.ts', '.tsx'];
     // mutate babel-loader
-    config.module.rules[0].use[0].options.plugins.push(['react-native-web', { commonjs: true }]);
+    config.module.rules[0].use[0].options.plugins.push([
+      'react-native-web',
+      { commonjs: true },
+    ]);
     return config;
   },
 };
