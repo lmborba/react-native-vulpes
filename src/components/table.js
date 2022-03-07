@@ -166,6 +166,7 @@ export class Table extends Component {
       <View style={containerStyle}>
         <Title title={props.title} />
         <ScrollView
+          horizontal={true}
           disableScrollViewPanResponder={true}
           contentContainerStyle={contScrollStyle}
         >
@@ -196,8 +197,6 @@ function listProps(props) {
   let param = { activeOpacity: 1, style: style };
   if (props.head) {
     param.style.backgroundColor = Colors[props.color || 'cyan'];
-    param.style.borderTopLeftRadius = 10;
-    param.style.borderTopRightRadius = 10;
   } else {
     if (props.line % 2 === 0) {
       param.style.backgroundColor = Colors[props.color || 'cyan'] + '77';

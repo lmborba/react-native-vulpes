@@ -2,14 +2,11 @@ import { Colors } from '../colors';
 
 export const listContainer = {
   marginTop: 8,
-  marginBottom: 16,
+  marginBottom: 8,
   minWidth: '100%',
   flex: 1,
-  // paddingLeft: 16,
-  // paddingRight: 16
-  // width: 800,
-  // width: '100%',
-  // borderWidth:1
+  borderRadius: 10,
+  overflow: 'hidden',
 };
 export const listItem = {
   paddingTop: 4,
@@ -28,10 +25,7 @@ export const titleStyle = {
   marginBottom: 8,
 };
 export const cellStyle = {
-  // flex: 1,
-  // alignItems: 'flex-start',
   paddingLeft: 8,
   paddingRight: 8,
   minWidth: 2,
-  // borderWidth:1
 };
