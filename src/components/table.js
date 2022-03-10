@@ -77,7 +77,6 @@ const Pagination = ({ onChangePage, data, pageSize }) => {
   const down = () => change(-1);
 
   const sm = {
-    flex: 1,
     marginTop: 16,
     flexDirection: 'row',
     justifyContent: 'center',

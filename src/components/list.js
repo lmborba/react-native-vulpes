@@ -39,7 +39,7 @@ export const List = (props) => {
 };
 
 function listProps(props) {
-  let param = { activeOpacity: 1, style: listItem };
+  let param = { activeOpacity: 1, style: {...listItem,...props.style} };
   if (props.checked) {
     param.style = checkedListItem;
   }
