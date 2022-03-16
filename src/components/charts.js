@@ -9,7 +9,7 @@ import { H4 } from './typos';
 
 const containerStyle = {
   width: 'auto',
-  minWidth: 350,
+  minWidth: 400,
   flex: 1,
   marginBottom: 16,
   marginLeft: 8,

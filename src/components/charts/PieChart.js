@@ -79,7 +79,7 @@ export class PieChart extends Component {
 const Graph = ({ data }) => {
   const gStyle = {
     maxHeight: 250,
-    minWidth: 220,
+    minWidth: 200,
     // height: 320,
     height: '100%',
     flex: 1,
@@ -106,7 +106,7 @@ const cptStyle = {
   paddingBottom: 5,
   alignItems: 'center',
   paddingLeft: 8,
-  width: 200,
+  // width: 200,
 };
 const dotStyle = {
   width: 16,
@@ -118,7 +118,7 @@ const dotStyle = {
   borderTopRightRadius: 20,
 };
 const contStyle = {
-  maxWidth: '33%',
+  maxWidth: '40%',
   minWidth: 80,
   justifyContent: 'center',
 };
@@ -137,7 +137,7 @@ const Caption = ({ data }) => {
   return <View style={contStyle}>{itens}</View>;
 };
 
-const Labels = ({ slices, height, width }) => {
+const Labels = ({ slices }) => {
   return slices.map((slice, index) => {
     const { labelCentroid, pieCentroid, data } = slice;
     const val = data.percent + '%';
@@ -152,7 +152,7 @@ const Labels = ({ slices, height, width }) => {
           textAnchor={'middle'}
           alignmentBaseline={'middle'}
           fontSize={12}
-          fontWeight="300"
+          fontWeight="600"
           fontFamily={Platform.OS === 'web' ? 'Open Sans' : 'OpenSans-Light'}
         >
           {val}

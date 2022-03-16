@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { BarChart as BChart } from 'react-native-gifted-charts';
 import { Colors } from '../../colors';
-import { Small } from './../typos';
+import { SmallBold } from './../typos';
 
 export class BarChart extends Component {
   constructor(props) {
@@ -19,12 +19,13 @@ export class BarChart extends Component {
   }
 
   topLabel(value) {
-    return <Small>{value}</Small>;
+    return <SmallBold>{value}</SmallBold>;
   }
 
   xLabelStyle() {
     return {
-      fontSize: 10,
+      fontSize: 11,
+      textAlign: 'center',
     };
   }
 

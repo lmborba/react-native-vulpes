@@ -24,7 +24,7 @@ export class StackChart extends Component {
 
   xLabelStyle() {
     return {
-      fontSize: 10,
+      fontSize: 11,
       textAlign: 'center',
     };
   }
@@ -41,7 +41,7 @@ export class StackChart extends Component {
     const style = { flex: 1, justifyContent: 'center', alignItems: 'center' };
     return (
       <View style={style}>
-        <Small>{value}</Small>
+        <SmallBold>{value}</SmallBold>
       </View>
     );
   }
