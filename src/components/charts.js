@@ -5,7 +5,7 @@ import { BarChart as BChart } from './charts/BarChart';
 import { PieChart as PChart } from './charts/PieChart';
 import { StackChart as SChart } from './charts/StackChart';
 import { ModalHelper } from './modal_helper';
-import { H4 } from './typos';
+import { H4, Regular } from './typos';
 
 const containerStyle = {
   width: 'auto',
@@ -39,8 +39,20 @@ class CardChart extends Component {
     this.setState({ width: width });
   }
 
-  render() {
+  renderContent() {
     const { data, children } = this.props;
+    if (data.emptyText) {
+      const s = { padding: 16 };
+      return <Regular style={s}>{data.emptyText}</Regular>;
+    }
+
+    return React.cloneElement(children, {
+      width: this.state.width,
+      data: data,
+    });
+  }
+  render() {
+    const { data } = this.props;
     if (!data || !data.length === 0) return null;
     const headerStyle = {
       marginBottom: 24,
@@ -64,10 +76,7 @@ class CardChart extends Component {
         </View>
 
         <View style={bodyStyle} onLayout={this.onLayout.bind(this)}>
-          {React.cloneElement(children, {
-            width: this.state.width,
-            data: data,
-          })}
+          {this.renderContent()}
         </View>
       </Card>
     );
