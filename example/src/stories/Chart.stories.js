@@ -40,6 +40,7 @@ class TemplateButton extends Component {
     };
     const dataP = {
       title: 'Titulo do gráfico de pizza 2',
+      helper: 'Mensagem de ajuda',
       color: this.props.color,
       data: [
         { label: 'Janeiro de 2021 - 30%', value: 20 },

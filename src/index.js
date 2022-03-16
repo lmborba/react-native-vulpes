@@ -26,6 +26,7 @@ import { LeftMenu, LeftMenuItem } from './components/left_menu';
 import { List, ListItem } from './components/list';
 import { Menu, MenuItem } from './components/menu';
 import { Modal } from './components/modal';
+import { ModalHelper } from './components/modal_helper';
 import { ModalContainer } from './components/modal_container';
 import { NotificationIcon } from './components/notification_icon';
 import { NotificationMenu } from './components/notification_menu';
@@ -131,6 +132,7 @@ export {
   Carousel,
   SnapCarousel,
   Modal,
+  ModalHelper,
   ModalContainer,
   IllustrationMiniCard,
   List,

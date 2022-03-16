@@ -8,11 +8,18 @@ import {
   listItem,
   titleStyle,
 } from '../styles/table';
+import { ModalHelper } from './modal_helper';
 import { H3, RegularBold } from './typos';
 
 const Title = (props) => {
-  if (!props.title) return null;
-  return <H3 style={titleStyle}>{props.title}</H3>;
+  const { title, helper } = props;
+  if (!title) return null;
+  return (
+    <H3 style={titleStyle}>
+      {title}
+      <ModalHelper title={title} helper={helper} show={!!helper} />
+    </H3>
+  );
 };
 
 function parseData(data) {
@@ -163,7 +170,7 @@ export class Table extends Component {
 
     return (
       <View style={containerStyle}>
-        <Title title={props.title} />
+        <Title title={props.title} helper={props.helper} />
         <ScrollView
           horizontal={true}
           disableScrollViewPanResponder={true}

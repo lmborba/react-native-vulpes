@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import { Card } from './card';
 import { BarChart as BChart } from './charts/BarChart';
 import { PieChart as PChart } from './charts/PieChart';
 import { StackChart as SChart } from './charts/StackChart';
-import { Icon } from './icon';
-import { Modal } from './modal';
-import { ModalContainer } from './modal_container';
-import { H4, Regular } from './typos';
+import { ModalHelper } from './modal_helper';
+import { H4 } from './typos';
 
 const containerStyle = {
   width: 'auto',
@@ -33,50 +31,12 @@ class CardChart extends Component {
     super(props);
     this.state = {
       with: null,
-      visible: false,
     };
   }
 
   onLayout({ nativeEvent }) {
     const { width } = nativeEvent.layout;
     this.setState({ width: width });
-  }
-
-  renderHelper() {
-    const { data } = this.props;
-
-    if (!data.helper) return null;
-
-    const ss = { padding: 8 };
-    return (
-      <TouchableOpacity
-        style={ss}
-        onPress={() => this.setState({ visible: true })}
-      >
-        <Icon name="help" size="16" />
-      </TouchableOpacity>
-    );
-  }
-
-  renderModal(data) {
-    if (!data.helper) return null;
-
-    const ss = { marginTop: 16, marginBottom: 16 };
-    return (
-      <ModalContainer
-        visible={this.state.visible}
-        onClose={() => this.setState({ visible: false })}
-      >
-        <Modal
-          title="Informações adicionais"
-          onClose={() => this.setState({ visible: false })}
-          onGoto={() => this.setState({ visible: false })}
-          gotoText="Fechar"
-        >
-          <Regular style={ss}>{data.helper}</Regular>
-        </Modal>
-      </ModalContainer>
-    );
   }
 
   render() {
@@ -96,7 +56,11 @@ class CardChart extends Component {
       >
         <View style={headerStyle}>
           <H4 numberOfLines={1}>{data.title}</H4>
-          {this.renderHelper()}
+          <ModalHelper
+            title={data.title}
+            helper={data.helper}
+            show={!!data.helper}
+          />
         </View>
 
         <View style={bodyStyle} onLayout={this.onLayout.bind(this)}>
@@ -104,7 +68,6 @@ class CardChart extends Component {
             width: this.state.width,
             data: data,
           })}
-          {this.renderModal(data)}
         </View>
       </Card>
     );
