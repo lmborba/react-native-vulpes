@@ -3,7 +3,7 @@ import { Text as NativeText } from 'react-native';
 import { Colors } from '../colors';
 
 const Text = ({ style, title, fontStyle, color, center, ...props }) => {
-  const colorStyle = { color: Colors[color] || color };
+  const colorStyle = { color: Colors[color] || color || Colors.dark_gray };
   const titleStyle = title ? { marginBottom: 32 } : {};
   const textStyle = {
     ...fontStyle,
