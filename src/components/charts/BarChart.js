@@ -29,7 +29,8 @@ export class BarChart extends Component {
     };
   }
 
-  renderGraph(data) {
+  renderGraph() {
+    const { data, color } = this.props;
     if (!this.props.width) return null;
 
     const itens = this.nItems;
@@ -62,8 +63,8 @@ export class BarChart extends Component {
           capThickness={0}
           capColor={Colors.dark_gray}
           showGradient
-          gradientColor={Colors['dark_' + data.color]}
-          frontColor={Colors['light_' + data.color]}
+          gradientColor={Colors['dark_' + color]}
+          frontColor={Colors['light_' + color]}
         />
       </View>
     );
@@ -72,6 +73,6 @@ export class BarChart extends Component {
   render() {
     const { data } = this.props;
     if (!data || !data.length === 0) return null;
-    return this.renderGraph(data);
+    return this.renderGraph();
   }
 }

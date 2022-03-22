@@ -52,7 +52,7 @@ class CardChart extends Component {
     });
   }
   render() {
-    const { data } = this.props;
+    const { data, color } = this.props;
     if (!data || !data.length === 0) return null;
     const headerStyle = {
       marginBottom: 24,
@@ -61,11 +61,7 @@ class CardChart extends Component {
     };
 
     return (
-      <Card
-        style={containerStyle}
-        cardContainer={{ flex: 1 }}
-        color={data.color}
-      >
+      <Card style={containerStyle} cardContainer={{ flex: 1 }} color={color}>
         <View style={headerStyle}>
           <H4 numberOfLines={1}>{data.title}</H4>
           <ModalHelper
