@@ -81,16 +81,16 @@ class CardChart extends Component {
 
 export const BarChart = (props) => (
   <CardChart {...props}>
-    <BChart />
+    <BChart {...props}/>
   </CardChart>
 );
 export const PieChart = (props) => (
   <CardChart {...props}>
-    <PChart />
+    <PChart {...props}/>
   </CardChart>
 );
 export const StackChart = (props) => (
   <CardChart {...props}>
-    <SChart />
+    <SChart {...props}/>
   </CardChart>
 );
