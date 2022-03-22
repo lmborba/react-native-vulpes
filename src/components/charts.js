@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 import { Card } from './card';
 import { BarChart as BChart } from './charts/BarChart';
 import { PieChart as PChart } from './charts/PieChart';
 import { StackChart as SChart } from './charts/StackChart';
 import { ModalHelper } from './modal_helper';
-import { H4, Regular } from './typos';
+import { Text } from './text';
+import { H4 } from './typos';
+
+const emptyChartWrapper = {
+  textAlign: 'center',
+  alignSelf: 'center',
+  flex: 1,
+};
 
 const containerStyle = {
   width: 'auto',
@@ -41,10 +48,6 @@ class CardChart extends Component {
 
   renderContent() {
     const { data, children } = this.props;
-    if (data.emptyText) {
-      const s = { padding: 16 };
-      return <Regular style={s}>{data.emptyText}</Regular>;
-    }
 
     return React.cloneElement(children, {
       width: this.state.width,
@@ -52,8 +55,7 @@ class CardChart extends Component {
     });
   }
   render() {
-    const { data, color } = this.props;
-    if (!data || !data.length === 0) return null;
+    const { title, helper, color } = this.props;
     const headerStyle = {
       marginBottom: 24,
       flexDirection: 'row',
@@ -63,12 +65,8 @@ class CardChart extends Component {
     return (
       <Card style={containerStyle} cardContainer={{ flex: 1 }} color={color}>
         <View style={headerStyle}>
-          <H4 numberOfLines={1}>{data.title}</H4>
-          <ModalHelper
-            title={data.title}
-            helper={data.helper}
-            show={!!data.helper}
-          />
+          <H4 numberOfLines={1}>{title}</H4>
+          <ModalHelper title={title} helper={helper} show={!!helper} />
         </View>
 
         <View style={bodyStyle} onLayout={this.onLayout.bind(this)}>
@@ -79,18 +77,36 @@ class CardChart extends Component {
   }
 }
 
+const cardImage = {
+  marginTop: 27,
+  marginBottom: 25,
+  height: 120,
+  width: '100%',
+  alignSelf: 'center',
+  resizeMode: 'contain',
+};
+
 export const BarChart = (props) => (
   <CardChart {...props}>
-    <BChart {...props}/>
+    <BChart {...props} />
   </CardChart>
 );
 export const PieChart = (props) => (
   <CardChart {...props}>
-    <PChart {...props}/>
+    <PChart {...props} />
   </CardChart>
 );
 export const StackChart = (props) => (
   <CardChart {...props}>
-    <SChart {...props}/>
+    <SChart {...props} />
+  </CardChart>
+);
+
+export const EmptyChart = (props) => (
+  <CardChart {...props}>
+    <View style={emptyChartWrapper}>
+      <Image source={props.image} style={cardImage} />;
+      <Text color="gray">{props.emptyText}</Text>
+    </View>
   </CardChart>
 );
