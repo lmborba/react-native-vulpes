@@ -15,7 +15,12 @@ import {
   TicketProfileCard,
 } from './components/card';
 import { Carousel } from './components/carousel';
-import { BarChart, PieChart, StackChart } from './components/charts';
+import {
+  BarChart,
+  EmptyChart,
+  PieChart,
+  StackChart,
+} from './components/charts';
 import { CheckboxInput } from './components/checkbox_input';
 import { CircularProgress } from './components/circular_progress';
 import { Divider } from './components/divider';
@@ -144,6 +149,7 @@ export {
   ToggleButton,
   CircularProgress,
   Table,
+  EmptyChart,
   Row,
 };
 
