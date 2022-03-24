@@ -105,7 +105,7 @@ export const StackChart = (props) => (
 export const EmptyChart = (props) => (
   <CardChart {...props}>
     <View style={emptyChartWrapper}>
-      <Image source={props.image} style={cardImage} />;
+      <Image source={props.image} style={cardImage} />
       <Text color="gray">{props.emptyText}</Text>
     </View>
   </CardChart>
