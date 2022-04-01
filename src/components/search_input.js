@@ -140,7 +140,7 @@ export class SearchInput extends Component {
       paddingTop: 10,
       paddingBottom: 10,
       flexDirection: 'row',
-      style,
+      ...style,
     };
   }
 
