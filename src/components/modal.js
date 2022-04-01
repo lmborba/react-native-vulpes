@@ -12,7 +12,7 @@ const modalContainer = {
   borderTopLeftRadius: 20,
   borderTopRightRadius: 20,
   backgroundColor: Colors.white,
-  maxHeight:'100%'
+  maxHeight: '100%',
 };
 
 const modalContent = {
