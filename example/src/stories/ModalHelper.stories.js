@@ -31,7 +31,11 @@ export default {
 
 const TemplateGradientView = ({ ...rest }) => {
   return (
-    <ModalHelper title="Informações adicionais" message={'Mensagem de ajuda'}>
+    <ModalHelper
+      title="Informações adicionais"
+      message={'Mensagem de ajuda'}
+      show={true}
+    >
       <Regular>
         A GoGood está verificando a autorização de desconto em folha com sua
         empresa. Seu acesso às academias deve ser liberado em até 2 dias úteis.

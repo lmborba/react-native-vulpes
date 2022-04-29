@@ -19,7 +19,7 @@ const modalContent = {
   marginLeft: 24,
   marginRight: 24,
   marginTop: 12,
-  marginBottom: 32,
+  marginBottom: 24,
 };
 
 const modalImage = {
@@ -81,21 +81,19 @@ export class Modal extends Component {
   render() {
     const { onClose, clearModal, children, title } = this.props;
     return (
-      <View style={modalContainer}>
+      <SafeAreaView style={modalContainer}>
         <CloseModal onClose={onClose} />
         {clearModal ? (
           children
         ) : (
           <View style={modalContent}>
-            <SafeAreaView>
-              {title && <H4>{title}</H4>}
-              {this.renderImage()}
-              {this.populateChildren()}
-              {this.renderActions()}
-            </SafeAreaView>
+            {title && <H4>{title}</H4>}
+            {this.renderImage()}
+            {this.populateChildren()}
+            {this.renderActions()}
           </View>
         )}
-      </View>
+      </SafeAreaView>
     );
   }
 }
