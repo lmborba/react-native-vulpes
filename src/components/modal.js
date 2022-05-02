@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
-import { Image, SafeAreaView, View } from 'react-native';
+import {
+  Image,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
 import { Colors } from '../colors';
 import { Button } from './button';
 import { Icon } from './icon';
 import { Text } from './text';
 import { H4 } from './typos';
+import DeviceInfo from 'react-native-device-info';
+
+const modalHeight = () => {
+  const notch = DeviceInfo.hasNotch() ? 40 : 10;
+  return Dimensions.get('window').height - notch;
+};
+
+const isIOS = Platform.OS === 'ios';
 
 const modalContainer = {
   borderWidth: 1,
+  borderBottomWidth: 0,
   borderColor: Colors.light_gray,
   borderTopLeftRadius: 20,
   borderTopRightRadius: 20,
   backgroundColor: Colors.white,
-  maxHeight: '100%',
+  maxHeight: modalHeight(),
+  bottom: 0,
+};
+
+const scrollContainer = {
+  paddingBottom: isIOS ? 32 : 0,
 };
 
 const modalContent = {
@@ -79,21 +100,27 @@ export class Modal extends Component {
   }
 
   render() {
-    const { onClose, clearModal, children, title } = this.props;
+    const { onClose, clearModal, children, title, scrollEnabled } = this.props;
     return (
-      <SafeAreaView style={modalContainer}>
-        <CloseModal onClose={onClose} />
-        {clearModal ? (
-          children
-        ) : (
-          <View style={modalContent}>
-            {title && <H4>{title}</H4>}
-            {this.renderImage()}
-            {this.populateChildren()}
-            {this.renderActions()}
-          </View>
-        )}
-      </SafeAreaView>
+      <KeyboardAvoidingView behavior={isIOS ? 'padding' : undefined}>
+        <View style={modalContainer}>
+          <CloseModal onClose={onClose} />
+          <ScrollView scrollEnabled={scrollEnabled || false}>
+            <View style={scrollContainer}>
+              {clearModal ? (
+                children
+              ) : (
+                <View style={modalContent}>
+                  {title && <H4>{title}</H4>}
+                  {this.renderImage()}
+                  {this.populateChildren()}
+                  {this.renderActions()}
+                </View>
+              )}
+            </View>
+          </ScrollView>
+        </View>
+      </KeyboardAvoidingView>
     );
   }
 }
