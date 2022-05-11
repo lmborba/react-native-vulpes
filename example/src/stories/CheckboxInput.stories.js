@@ -39,15 +39,36 @@ class TemplateCheckboxInput extends Component {
       value: val,
     });
   }
+  separator() {
+    const s = { height: 16 };
+    return <View style={s} />;
+  }
 
   render() {
     return (
       <View>
         <CheckboxInput
-          {...this.props}
           label={'CheckBox input'}
           onChange={this.onChange.bind(this)}
           value={this.state.value}
+          {...this.props}
+        />
+
+        {this.separator()}
+        <CheckboxInput
+          clean
+          onChange={this.onChange.bind(this)}
+          value={this.state.value}
+          {...this.props}
+        />
+
+        {this.separator()}
+        <CheckboxInput
+          clean
+          checkType
+          onChange={this.onChange.bind(this)}
+          value={this.state.value}
+          {...this.props}
         />
         <Regular>{this.state.value}</Regular>
       </View>

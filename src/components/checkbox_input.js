@@ -22,6 +22,14 @@ export class CheckboxInput extends Component {
     this.props.onChange && this.props.onChange(!this.props.value);
   }
 
+  renderChecked() {
+    const { value, checkType } = this.props;
+    if (!value) return null;
+    if (checkType)
+      return <Icon size={10} name="check" color={this.colorRegular()} />;
+    return <View style={this.checkInnerCircle()} />;
+  }
+
   render() {
     const { error, style, label, text, labelStyle, value } = this.props;
     return (
@@ -32,11 +40,7 @@ export class CheckboxInput extends Component {
           style={this.completeStyle()}
         >
           <View style={this.bodyStyle()}>
-            <View style={this.checkCircleStyle()}>
-              {value && (
-                <Icon size={10} name="check" color={this.colorRegular()} />
-              )}
-            </View>
+            <View style={this.checkCircleStyle()}>{this.renderChecked()}</View>
             <Regular style={this.fontStyle()}>{text}</Regular>
           </View>
         </TouchableOpacity>
@@ -66,10 +70,19 @@ export class CheckboxInput extends Component {
       marginTop: 2,
       flexDirection: 'row',
       alignItems: 'center',
+      ...this.cleanStyle(),
       ...inputStyle,
     };
   }
 
+  cleanStyle() {
+    if (!this.props.clean) return {};
+    return {
+      borderBottomColor: this.colorOutline(),
+      borderBottomWidth: 0,
+      height: 12,
+    };
+  }
   bodyStyle() {
     return {
       alignItems: 'center',
@@ -86,6 +99,18 @@ export class CheckboxInput extends Component {
       justifyContent: 'center',
       borderColor: this.colorRegular(),
       marginRight: 8,
+    };
+  }
+
+  checkInnerCircle() {
+    return {
+      borderRadius: 100,
+      height: 8,
+      width: 8,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderColor: this.colorRegular(),
+      backgroundColor: this.colorRegular(),
     };
   }
 
