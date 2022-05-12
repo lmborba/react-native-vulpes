@@ -7,11 +7,11 @@ import HTML, {
 import { BodyLargeBold, Colors, Fonts } from '..';
 import { separatorToLong, titleStyle } from '../styles/list';
 import { Icon } from './icon';
-import { Regular } from './typos';
+import { RegularBold } from './typos';
 
 function accordionStyle() {
   return {
-    ...Fonts.small,
+    ...Fonts.regular,
     color: Colors.gray,
     paddingRight: 10,
   };
@@ -63,7 +63,11 @@ const NavIcon = ({ showing }) => {
 
 const Children = ({ children }) => {
   let item =
-    typeof children === 'string' ? <Regular>{children}</Regular> : children;
+    typeof children === 'string' ? (
+      <RegularBold>{children}</RegularBold>
+    ) : (
+      children
+    );
   const style = { flex: 1, minHeight: 24, justifyContent: 'center' };
   return <View style={style}>{item}</View>;
 };
