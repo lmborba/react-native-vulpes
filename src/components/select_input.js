@@ -18,8 +18,8 @@ const itemStyleContainer = {
 
 const itemStyle = {
   flex: 1,
-  height:40, 
-  lineHeight:40,
+  height: 40,
+  lineHeight: 40,
   textAlign: 'center',
 };
 
