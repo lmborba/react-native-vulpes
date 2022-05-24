@@ -1,28 +1,35 @@
 import React from 'react';
 import { Image, View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
 import { Icon } from './icon';
+import useVulpes from '../hooks/useVulpes';
 
 const smallSize = 48;
 const mediumSize = 64;
 const largeSize = 80;
 
-const convertToStyle = (size) => {
+const convertToStyle = (theme, size) => {
+  const colors = getColors(theme);
   return {
     width: size,
     height: size,
     borderRadius: size / 2,
     borderWidth: 1,
-    borderColor: Colors.light_gray,
-    backgroundColor: Colors.white,
+    borderColor: colors.light_gray,
+    backgroundColor: colors.white,
     padding: size / 2 - 11,
   };
 };
 
-const sizesStyle = {
-  small: convertToStyle(smallSize),
-  medium: convertToStyle(mediumSize),
-  large: convertToStyle(largeSize),
+const sizesStyle = (theme, size) => {
+  switch (size) {
+    case 'small':
+      return convertToStyle(theme, smallSize);
+    case 'medium':
+      return convertToStyle(theme, mediumSize);
+    case 'large':
+      return convertToStyle(theme, largeSize);
+  }
 };
 
 const transparentFullStyle = {
@@ -36,9 +43,9 @@ const transparentStyle = (status) => {
   };
 };
 
-function defineStyleFromParams(size, source, style, square) {
+function defineStyleFromParams(theme, size, source, style, square) {
   const completeStyle = {
-    ...sizesStyle[size],
+    ...sizesStyle(theme, size),
     ...transparentStyle(source),
     ...style,
   };
@@ -59,20 +66,27 @@ export const Thumbnail = ({
   empty,
   ...restProps
 }) => {
+  const { theme } = useVulpes();
   if (empty) {
     return (
-      <View style={styleForEmptyThumbnail(size)}>
+      <View style={styleForEmptyThumbnail(theme, size)}>
         <Icon name={'plus'} />
       </View>
     );
   }
-  const completeStyle = defineStyleFromParams(size, source, style, square);
+  const completeStyle = defineStyleFromParams(
+    theme,
+    size,
+    source,
+    style,
+    square
+  );
   return <Image source={source} style={completeStyle} />;
 };
 
-function styleForEmptyThumbnail(size) {
+function styleForEmptyThumbnail(theme, size) {
   return {
-    ...sizesStyle[size],
+    ...sizesStyle(theme, size),
     ...transparentFullStyle,
     borderWidth: 1,
     borderStyle: 'dashed',

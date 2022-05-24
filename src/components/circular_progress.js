@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
 import AnimatedCircularProgress from './progress/AnimatedCircularProgress';
 import { H1, Regular } from './typos';
 
@@ -45,7 +46,8 @@ export class CircularProgress extends Component {
 
   render() {
     const { checkins } = this.props;
-
+    const { theme } = this.context;
+    const colors = getColors(theme);
     return (
       <AnimatedCircularProgress
         fill={this.percentage}
@@ -57,7 +59,7 @@ export class CircularProgress extends Component {
         backgroundWidth={4}
         arcSweepAngle={180}
         lineCap={'round'}
-        backgroundColor={Colors.light_gray}
+        backgroundColor={colors.light_gray}
         childrenContainerStyle={childrenContainerStyle}
         {...this.props}
       >
@@ -77,3 +79,5 @@ export class CircularProgress extends Component {
     };
   }
 }
+
+CircularProgress.contextType = VulpesContext;

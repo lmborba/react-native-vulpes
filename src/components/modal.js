@@ -7,12 +7,13 @@ import {
   ScrollView,
   Dimensions,
 } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
 import { Button } from './button';
 import { Icon } from './icon';
 import { Text } from './text';
 import { H4 } from './typos';
 import DeviceInfo from 'react-native-device-info';
+import VulpesContext from '../contexts/VulpesContext';
 
 const modalHeight = () => {
   const notch = DeviceInfo.hasNotch() ? 40 : 10;
@@ -21,15 +22,18 @@ const modalHeight = () => {
 
 const isIOS = Platform.OS === 'ios';
 
-const modalContainer = {
-  borderWidth: 1,
-  borderBottomWidth: 0,
-  borderColor: Colors.light_gray,
-  borderTopLeftRadius: 20,
-  borderTopRightRadius: 20,
-  backgroundColor: Colors.white,
-  maxHeight: modalHeight(),
-  bottom: 0,
+const modalContainer = (theme) => {
+  const colors = getColors(theme);
+  return {
+    borderWidth: 1,
+    borderBottomWidth: 0,
+    borderColor: colors.light_gray,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    backgroundColor: colors.white,
+    maxHeight: modalHeight(),
+    bottom: 0,
+  };
 };
 
 const scrollContainer = {
@@ -101,9 +105,10 @@ export class Modal extends Component {
 
   render() {
     const { onClose, clearModal, children, title, scrollEnabled } = this.props;
+    const { theme } = this.context;
     return (
       <KeyboardAvoidingView behavior={isIOS ? 'padding' : undefined}>
-        <View style={modalContainer}>
+        <View style={modalContainer(theme)}>
           <CloseModal onClose={onClose} />
           <ScrollView scrollEnabled={scrollEnabled || false}>
             <View style={scrollContainer}>
@@ -124,3 +129,5 @@ export class Modal extends Component {
     );
   }
 }
+
+Modal.contextType = VulpesContext;

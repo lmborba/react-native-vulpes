@@ -1,24 +1,35 @@
 import React from 'react';
 import { Animated, Dimensions, TouchableOpacity } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
 import { Regular, RegularBold } from '../index';
 
-const typeMode = {
-  default: {
-    backgroundColor: Colors.gray,
-  },
-  success: {
-    backgroundColor: Colors.success,
-  },
-  error: {
-    backgroundColor: Colors.error,
-  },
-  warning: {
-    backgroundColor: Colors.alert,
-  },
-  alert: {
-    backgroundColor: Colors.alert,
-  },
+const typeMode = (type, theme) => {
+  const colors = getColors(theme);
+  switch (type) {
+    case 'default':
+      return {
+        backgroundColor: colors.gray,
+      };
+    case 'success':
+      return {
+        backgroundColor: colors.success,
+      };
+    case 'error':
+      return {
+        backgroundColor: colors.error,
+      };
+    case 'warning':
+      return {
+        backgroundColor: colors.alert,
+      };
+    case 'alert':
+      return {
+        backgroundColor: colors.alert,
+      };
+    default:
+      return {};
+  }
 };
 
 const defaultConfig = {
@@ -107,7 +118,8 @@ class ToastRoot extends React.Component {
 
   getType() {
     try {
-      return typeMode[this.config.type] || {};
+      const { theme } = this.context;
+      return typeMode(this.config.type, theme);
     } catch (error) {
       return {};
     }
@@ -116,12 +128,14 @@ class ToastRoot extends React.Component {
   viewStyle = () => {
     const { fadeAnim, posAnim } = this.state;
     const { position } = this.config;
+    const { theme } = this.context;
+    const colors = getColors(theme);
     const window = Dimensions.get('window');
 
     return {
       opacity: fadeAnim,
       position: 'absolute',
-      backgroundColor: Colors.light_gray,
+      backgroundColor: colors.light_gray,
       minHeight: 64,
       borderRadius: 8,
       left: 16,
@@ -160,6 +174,8 @@ class ToastRoot extends React.Component {
     );
   }
 }
+
+ToastRoot.contextType = VulpesContext;
 
 const toastRef = React.createRef();
 

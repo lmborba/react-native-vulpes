@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Image, ImageBackground, TouchableOpacity, View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
+import useVulpes from '../hooks/useVulpes';
 import style from '../styles/card';
 import { Button } from './button';
 import { Dash } from './dash';
@@ -22,18 +24,21 @@ export class Card extends Component {
     const { color } = this.props;
     const data = {};
     if (color) {
-      data.backgroundColor = Colors[color];
+      const { theme } = this.context;
+      const colors = getColors(theme);
+      data.backgroundColor = colors[color];
     }
     return data;
   }
 
   render() {
+    const { theme } = this.context;
     const zeroPadding = this.props.noPadding
       ? style.cardContainerZeroPadding
       : {};
 
     let cardContainer = {
-      ...style.cardContainer,
+      ...style(theme).cardContainer,
       ...zeroPadding,
     };
 
@@ -44,21 +49,26 @@ export class Card extends Component {
     return (
       <MainComponent onPress={this.props.onPress} style={this.props.style}>
         <View style={cardContainer}>{this.props.children}</View>
-        <View style={style.outerCardBorder}>
-          <View style={{ ...style.cardTopBorder, ...this.changedColor() }} />
+        <View style={style(theme).outerCardBorder}>
+          <View
+            style={{ ...style(theme).cardTopBorder, ...this.changedColor() }}
+          />
         </View>
       </MainComponent>
     );
   }
 }
+Card.contextType = VulpesContext;
 
 const TicketCardSeparator = (props) => {
+  const { theme } = useVulpes();
+  const colors = getColors(theme);
   return (
     <View style={style.cardSeparator}>
       <View style={style.cardSeparatorLeft} />
       <Dash
         style={style.dashContainer}
-        dashColor={Colors.lightGray}
+        dashColor={colors.lightGray}
         dashThickness={0}
         dashGap={7}
         dashLength={7}
@@ -93,6 +103,8 @@ const CheckinImage = (props) => {
 };
 
 const TicketCheckinCardSeparator = (props) => {
+  const { theme } = useVulpes();
+  const colors = getColors(theme);
   return (
     <View style={style.ticketProfileCardDividerContainer}>
       <View style={style.profileCardDividerContent}>
@@ -100,7 +112,7 @@ const TicketCheckinCardSeparator = (props) => {
           <View style={style.cardSeparatorLeft} />
           <Dash
             style={style.dashContainer}
-            dashColor={Colors.lightGray}
+            dashColor={colors.lightGray}
             dashThickness={0}
             dashGap={7}
             dashLength={7}
@@ -117,23 +129,26 @@ const TicketCheckinCardSeparator = (props) => {
 };
 
 const TicketProfileCardSeparator = (props) => {
+  const { theme } = useVulpes();
+  const _style = style(theme);
+  const colors = getColors(theme);
   return (
-    <View style={style.ticketProfileCardDividerContainer}>
-      <View style={style.profileCardDividerContent}>
-        <View style={style.cardSeparator}>
-          <View style={style.cardSeparatorLeft} />
+    <View style={_style.ticketProfileCardDividerContainer}>
+      <View style={_style.profileCardDividerContent}>
+        <View style={_style.cardSeparator}>
+          <View style={_style.cardSeparatorLeft} />
           <Dash
-            style={style.dashContainer}
-            dashColor={Colors.lightGray}
+            style={_style.dashContainer}
+            dashColor={colors.lightGray}
             dashThickness={0}
             dashGap={7}
             dashLength={7}
-            dashStyle={style.dashStyle}
+            dashStyle={_style.dashStyle}
           />
-          <View style={style.cardSeparatorRight} />
+          <View style={_style.cardSeparatorRight} />
         </View>
       </View>
-      <View style={style.ticketProfileCardImgContent}>
+      <View style={_style.ticketProfileCardImgContent}>
         <Thumbnail size="medium" source={props.source} />
       </View>
     </View>
@@ -141,19 +156,21 @@ const TicketProfileCardSeparator = (props) => {
 };
 
 const ProfileCardSeparator = (props) => {
+  const { theme } = useVulpes();
+  const _style = style(theme);
   if (!props.source) {
     const sMargin = { marginBottom: 16 };
     return (
-      <View style={[style.profileCardDividerContainer, sMargin]}>
-        <View style={style.profileCardDivider} />
+      <View style={[_style.profileCardDividerContainer, sMargin]}>
+        <View style={_style.profileCardDivider} />
       </View>
     );
   }
 
   return (
-    <View style={style.profileCardDividerContainer}>
-      <View style={style.profileCardDivider} />
-      <View style={style.profileCardImgContent}>
+    <View style={_style.profileCardDividerContainer}>
+      <View style={_style.profileCardDivider} />
+      <View style={_style.profileCardImgContent}>
         <Thumbnail size="medium" source={props.source} />
       </View>
     </View>
@@ -165,7 +182,9 @@ export class TicketProfileCard extends Component {
     const { color } = this.props;
     const data = {};
     if (color) {
-      data.backgroundColor = Colors[color];
+      const { theme } = this.context;
+      const colors = getColors(theme);
+      data.backgroundColor = colors[color];
     }
     return data;
   }
@@ -178,13 +197,16 @@ export class TicketProfileCard extends Component {
     );
   }
 }
+TicketProfileCard.contextType = VulpesContext;
 
 export class TicketCheckinCard extends Component {
   changedColor() {
     const { color } = this.props;
     const data = {};
     if (color) {
-      data.backgroundColor = Colors[color];
+      const { theme } = this.context;
+      const colors = getColors(theme);
+      data.backgroundColor = colors[color];
     }
     return data;
   }
@@ -197,6 +219,7 @@ export class TicketCheckinCard extends Component {
     );
   }
 }
+TicketCheckinCard.contextType = VulpesContext;
 
 const CardTag = ({ icon, color, text, textColor, marginBottom }) => {
   const mgBottom = marginBottom ? { marginBottom: 8 } : {};
@@ -213,16 +236,18 @@ const CardTag = ({ icon, color, text, textColor, marginBottom }) => {
 };
 
 const CardCover = ({ tagText, tagIcon, tagColor, tagTextColor, source }) => {
+  const { theme } = useVulpes();
   if (!source) {
     const dummyStyle = { height: 32 };
     return <View style={dummyStyle} />;
   }
+  const _style = style(theme);
   return (
-    <View style={style.cardCoverContainer}>
+    <View style={_style.cardCoverContainer}>
       <ImageBackground
         source={source}
-        style={style.cardContainerCoverBackground}
-        imageStyle={style.cardContainerCoverImage}
+        style={_style.cardContainerCoverBackground}
+        imageStyle={_style.cardContainerCoverImage}
       >
         {(tagText || tagIcon) && (
           <CardTag
@@ -258,14 +283,18 @@ export class MiniProfileCard extends Component {
     const { color } = this.props;
     const data = {};
     if (color) {
-      data.backgroundColor = Colors[color];
+      const { theme } = this.context;
+      const colors = getColors(theme);
+      data.backgroundColor = colors[color];
     }
     return data;
   }
   render() {
     const { tagTextColor, tagColor, tagText, tagIcon } = this.props;
+    const { theme } = this.context;
+    const _style = style(theme);
     return (
-      <Card cardContainer={style.miniCardContainer} {...this.props}>
+      <Card cardContainer={_style.miniCardContainer} {...this.props}>
         {(tagText || tagIcon) && (
           <CardTag
             textColor={tagTextColor}
@@ -277,28 +306,33 @@ export class MiniProfileCard extends Component {
         )}
         <View style={outerMiniCardStyle}>
           <Thumbnail source={this.props.source} size={'small'} />
-          <View style={style.miniCardContentStyle}>{this.props.children}</View>
+          <View style={_style.miniCardContentStyle}>{this.props.children}</View>
         </View>
       </Card>
     );
   }
 }
+MiniProfileCard.contextType = VulpesContext;
 
 const IllustrationOnCard = (props) => {
-  return <Image source={props.source} style={style.illustrationOnCard} />;
+  const { theme } = useVulpes();
+  const _style = style(theme);
+  return <Image source={props.source} style={_style.illustrationOnCard} />;
 };
 
 export class IllustrationMiniCard extends Component {
   render() {
+    const { theme } = this.context;
+    const _style = style(theme);
     return (
       <Card
-        cardContainer={style.illustrationCardContainer}
+        cardContainer={_style.illustrationCardContainer}
         color={'transparent'}
         {...this.props}
       >
         <View style={outerMiniCardStyle}>
           <IllustrationOnCard source={this.props.source} />
-          <View style={style.illustrationCardOuterStyle}>
+          <View style={_style.illustrationCardOuterStyle}>
             {this.props.children}
           </View>
         </View>
@@ -306,6 +340,7 @@ export class IllustrationMiniCard extends Component {
     );
   }
 }
+IllustrationMiniCard.contextType = VulpesContext;
 
 export const BannerCard = ({
   title,
@@ -318,6 +353,8 @@ export const BannerCard = ({
   height,
   style: bStyle,
 }) => {
+  const { theme } = useVulpes();
+  const _style = style(theme);
   const OuterComp = onPress ? TouchableOpacity : View;
 
   const cardHeight = height || 162;
@@ -334,15 +371,15 @@ export const BannerCard = ({
     <OuterComp onPress={onPress} style={bStyle}>
       <GradientView
         color={color}
-        style={[style.bannerCardGradient, { height: cardHeight }]}
+        style={[_style.bannerCardGradient, { height: cardHeight }]}
       >
-        <View style={style.outerViewBannerCard}>
-          <View style={style.imageInBannerCard}>
+        <View style={_style.outerViewBannerCard}>
+          <View style={_style.imageInBannerCard}>
             <Image source={source} style={imageStyle} />
           </View>
 
-          <View style={style.textsViewBannerCard}>
-            <RegularBold color="white" style={style.titleTextBannerCard}>
+          <View style={_style.textsViewBannerCard}>
+            <RegularBold color="white" style={_style.titleTextBannerCard}>
               {title}
             </RegularBold>
             <Regular color="white">{description}</Regular>
@@ -350,7 +387,7 @@ export const BannerCard = ({
               <Button
                 color="white"
                 ghost
-                style={style.buttonTextBannerCard}
+                style={_style.buttonTextBannerCard}
                 onPress={onPressLink}
               >
                 <Text>{linkText}</Text>
@@ -365,8 +402,10 @@ export const BannerCard = ({
 };
 
 export const CardActions = ({ children, style: pStyle }) => {
+  const { theme } = useVulpes();
+  const _style = style(theme);
   return (
-    <View style={[style.cardActionsContainer, pStyle]}>
+    <View style={[_style.cardActionsContainer, pStyle]}>
       <FillSpace />
       <View>{children}</View>
     </View>

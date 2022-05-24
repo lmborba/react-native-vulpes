@@ -4,18 +4,21 @@ import HTML, {
   HTMLContentModel,
   HTMLElementModel,
 } from 'react-native-render-html';
-import { BodyLargeBold, Colors, Fonts } from '..';
+import { BodyLargeBold, Fonts } from '..';
+import { getColors } from '../colors';
 import { separatorToLong, titleStyle } from '../styles/list';
 import { Icon } from './icon';
 import { Regular } from './typos';
+import useVulpes from '../hooks/useVulpes';
 
-function accordionStyle() {
+const accordionStyle = (theme) => {
+  const colors = getColors(theme);
   return {
     ...Fonts.small,
-    color: Colors.gray,
+    color: colors.gray,
     paddingRight: 10,
   };
-}
+};
 
 const Title = (props) => {
   if (!props.title) return null;
@@ -105,13 +108,15 @@ class ShowHTML extends Component {
     );
   }
 }
-function itemStyle(props) {
+
+function itemStyle(props, theme) {
+  const colors = getColors(theme);
   let style = {
     paddingTop: 16,
     paddingBottom: 16,
     paddingLeft: 0,
     paddingRight: 0,
-    borderBottomColor: Colors.light_gray,
+    borderBottomColor: colors.light_gray,
     borderBottomWidth: 1,
     flexDirection: 'column',
     ...props.style,
@@ -125,9 +130,9 @@ export const AccordionItem = (props) => {
   const [showing, setShowing] = useState(props.showing || false);
   const toggleShowing = () => setShowing(!showing);
   const touchStyle = { flexDirection: 'row', alignItems: 'center' };
-
+  const { theme } = useVulpes();
   return (
-    <View style={itemStyle(props)}>
+    <View style={itemStyle(props, theme)}>
       <TouchableOpacity onPress={toggleShowing} style={touchStyle}>
         <Children children={props.children} />
         <NavIcon showing={showing} />

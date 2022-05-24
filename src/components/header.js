@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import image from '../../assets/images/header.png';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
 import { Fonts } from '../fonts';
+import useVulpes from '../hooks/useVulpes';
 import { Button } from './button';
 import { Icon } from './icon';
 import { NotificationMenu } from './notification_menu';
@@ -40,10 +41,12 @@ const BackAction = ({ backAction }) => {
 };
 
 const AdvanceActionButton = ({ advanceAction, advanceText }) => {
+  const { theme } = useVulpes();
+  const colors = getColors(theme);
   if (!advanceAction) return null;
   return (
     <Button color="white" ghost onPress={advanceAction}>
-      <Text style={{ ...Fonts.regular, color: Colors.white }}>
+      <Text style={{ ...Fonts.regular, color: colors.white }}>
         {advanceText}
       </Text>
     </Button>

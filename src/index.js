@@ -74,6 +74,10 @@ import {
 import { FillSpace, PaddedView } from './components/utils';
 import { Fonts } from './fonts';
 
+import VulpesContext from './contexts/VulpesContext';
+import VulpesProvider from './providers/VulpesProvider';
+import useVulpes from './hooks/useVulpes';
+
 export {
   PaginationBullets,
   Spinner,
@@ -151,6 +155,9 @@ export {
   CircularProgress,
   Table,
   Row,
+  VulpesContext,
+  VulpesProvider,
+  useVulpes,
 };
 
 const { Vulpes } = NativeModules;

@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import useVulpes from '../hooks/useVulpes';
 import { Regular, RegularBold } from './typos';
 
-const tabsDefaultStyle = {
-  paddingBottom: 10,
-  paddingTop: 10,
-  marginRight: 32,
-  borderBottomWidth: 0,
-  borderBottomColor: Colors.dark_gray,
-  marginBottom: -1,
+const tabsDefaultStyle = (theme) => {
+  const colors = getColors(theme);
+  return {
+    paddingBottom: 10,
+    paddingTop: 10,
+    marginRight: 32,
+    borderBottomWidth: 0,
+    borderBottomColor: colors.dark_gray,
+    marginBottom: -1,
+  };
 };
-
 const TabButton = ({ focus, title, onSelect }) => {
+  const { theme } = useVulpes();
   let TextComponent = Regular;
-  let tabsStyle = { ...tabsDefaultStyle };
+  let tabsStyle = { ...tabsDefaultStyle(theme) };
   if (focus) {
     TextComponent = RegularBold;
     tabsStyle.borderBottomWidth = 2;
@@ -27,15 +31,20 @@ const TabButton = ({ focus, title, onSelect }) => {
   );
 };
 
-const tabsContainerStyle = {
-  marginRight: 5,
-  borderBottomWidth: 1,
-  borderBottomColor: Colors.light_gray,
-  flexDirection: 'row',
+const tabsContainerStyle = (theme) => {
+  const colors = getColors(theme);
+  return {
+    marginRight: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.light_gray,
+    flexDirection: 'row',
+  };
 };
+
 const ListOfTabs = ({ titles, selected, onChange }) => {
+  const { theme } = useVulpes();
   return (
-    <View style={tabsContainerStyle}>
+    <View style={tabsContainerStyle(theme)}>
       {titles.map((title, i) => {
         if (!title) return;
         return (
