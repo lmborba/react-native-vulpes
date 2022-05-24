@@ -85,7 +85,7 @@ export class SearchInput extends Component {
         {allowSend && (
           <TouchableOpacity onPress={this.onSend.bind(this)}>
             <SmallBold style={this.okStyle()} color={'cyan'}>
-              OK
+              IR
             </SmallBold>
           </TouchableOpacity>
         )}

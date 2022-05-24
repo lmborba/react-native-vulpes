@@ -106,7 +106,7 @@ export const Fonts = {
   },
   placeholderBold: {
     fontSize: 14,
-    color: Colors.light_gray,
+    color: Colors.gray,
     letterSpacing: 0,
     fontStyle: 'italic',
     fontFamily: fontFamily('Bold'),

@@ -19,12 +19,13 @@ const itemStyleContainer = {
 
 const itemStyle = {
   flex: 1,
+  height: 40,
+  lineHeight: 40,
   textAlign: 'center',
 };
 
 const itemTouchStyle = {
   flex: 1,
-  padding: 8,
   width: '100%',
   alignContent: 'center',
 };

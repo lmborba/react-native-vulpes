@@ -8,13 +8,13 @@ import { BodyLargeBold, Fonts } from '..';
 import { getColors } from '../colors';
 import { separatorToLong, titleStyle } from '../styles/list';
 import { Icon } from './icon';
-import { Regular } from './typos';
 import useVulpes from '../hooks/useVulpes';
+import { RegularBold } from './typos';
 
 const accordionStyle = (theme) => {
   const colors = getColors(theme);
   return {
-    ...Fonts.small,
+    ...Fonts.regular,
     color: colors.gray,
     paddingRight: 10,
   };
@@ -66,7 +66,11 @@ const NavIcon = ({ showing }) => {
 
 const Children = ({ children }) => {
   let item =
-    typeof children === 'string' ? <Regular>{children}</Regular> : children;
+    typeof children === 'string' ? (
+      <RegularBold>{children}</RegularBold>
+    ) : (
+      children
+    );
   const style = { flex: 1, minHeight: 24, justifyContent: 'center' };
   return <View style={style}>{item}</View>;
 };

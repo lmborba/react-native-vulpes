@@ -37,15 +37,15 @@ export class ModalHelper extends Component {
   }
 
   render() {
-    const { style, show } = this.props;
+    const { style, show, icon } = this.props;
     const ss = { padding: 8 };
     if (!show) return null;
     return (
       <TouchableOpacity
-        style={[ss, style]}
+        style={{ ...ss, ...style }}
         onPress={() => this.setState({ visible: true })}
       >
-        <Icon name="help" size="16" />
+        <Icon name={icon || 'help'} size="16" />
         {this.renderModal()}
       </TouchableOpacity>
     );
