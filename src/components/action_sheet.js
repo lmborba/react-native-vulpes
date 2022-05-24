@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
 import { Fonts } from '../fonts';
 import { ModalPicker } from './modal_picker';
 import { Regular, RegularBold } from './typos';
@@ -134,16 +135,22 @@ export class ActionSheet extends Component {
   }
 
   fontStyle() {
+    const { theme } = this.context;
+    const colors = getColors(theme);
     let font = Fonts.regularBold;
     if (this.state.placeholder && !this.props.value)
       font = Fonts.placeholderBold;
-    if (this.props.error) font = { ...font, color: Colors.error };
+    if (this.props.error) font = { ...font, color: colors.error };
     return font;
   }
 
   colorOutline() {
-    if (this.props.error) return Colors.error;
-    if (this.state.focused) return Colors.cyan;
-    return Colors.light_gray;
+    const { theme } = this.context;
+    const colors = getColors(theme);
+    if (this.props.error) return colors.error;
+    if (this.state.focused) return colors.cyan;
+    return colors.light_gray;
   }
 }
+
+ActionSheet.contextType = VulpesContext;

@@ -1,9 +1,14 @@
 import React from 'react';
 import { Text as NativeText } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import useVulpes from '../hooks/useVulpes';
 
 const Text = ({ style, title, fontStyle, color, center, strike, ...props }) => {
-  const colorStyle = { color: Colors[color] || color || Colors.dark_gray };
+  const { theme } = useVulpes();
+  const colors = getColors(theme);
+  const colorStyle = {
+    color: colors[color] || color || colors.dark_gray,
+  };
   const titleStyle = title ? { marginBottom: 32 } : {};
   const textStyle = {
     ...fontStyle,

@@ -1,20 +1,25 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
 import { Fonts } from '../fonts';
+import useVulpes from '../hooks/useVulpes';
 import { Text } from './text';
 
-const generalMenuStyle = {
-  flexDirection: 'column',
-  borderRightWidth: 1,
-  backgroundColor: Colors.white,
-  borderRightColor: Colors.light_gray,
-  height: '100%',
+const generalMenuStyle = (theme) => {
+  const colors = getColors(theme);
+  return {
+    flexDirection: 'column',
+    borderRightWidth: 1,
+    backgroundColor: colors.white,
+    borderRightColor: colors.light_gray,
+    height: '100%',
+  };
 };
 
 export const LeftMenu = (props) => {
+  const { theme } = useVulpes();
   return (
-    <View style={[generalMenuStyle, props.style]}>
+    <View style={[generalMenuStyle(theme), props.style]}>
       {React.Children.map(props.children, (child, i) => {
         return React.cloneElement(child, {
           justIcons: props.justIcons,

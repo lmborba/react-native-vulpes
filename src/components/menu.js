@@ -1,16 +1,21 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
 import { Fonts } from '../fonts';
+import useVulpes from '../hooks/useVulpes';
 
-const generalMenuStyle = {
-  flexDirection: 'row',
-  borderTopWidth: 1,
-  backgroundColor: Colors.white,
-  borderTopColor: Colors.light_gray,
+const generalMenuStyle = (theme) => {
+  const colors = getColors(theme);
+  return {
+    flexDirection: 'row',
+    borderTopWidth: 1,
+    backgroundColor: colors.white,
+    borderTopColor: colors.light_gray,
+  };
 };
 export const Menu = (props) => {
-  return <View style={generalMenuStyle}>{props.children}</View>;
+  const { theme } = useVulpes();
+  return <View style={generalMenuStyle(theme)}>{props.children}</View>;
 };
 
 const generalMenuItemStyle = {

@@ -1,9 +1,12 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import useVulpes from '../hooks/useVulpes';
 
 export const Spinner = ({ color, size, ...restProps }) => {
-  const colorVal = color ? Colors[color] : Colors.cyan;
+  const { theme } = useVulpes();
+  const colors = getColors(theme);
+  const colorVal = color ? colors[color] : colors.cyan;
   return (
     <ActivityIndicator size={size || 'small'} color={colorVal} {...restProps} />
   );

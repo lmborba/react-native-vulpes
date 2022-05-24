@@ -16,4 +16,25 @@ Object.keys(Colors).forEach((c) => {
   Colors[Colors[c]] = Colors[c];
 });
 
-export { Colors };
+const ThematicColors = {
+  gogood: {
+    ...primary,
+    ...secondary,
+    ...neutral,
+    ...functional,
+    ...gradient,
+  },
+  dasa: {
+    ...primary,
+    ...secondary,
+    ...neutral,
+    ...functional,
+    ...gradient,
+  },
+};
+
+const getColors = (theme) => {
+  return ThematicColors[theme || 'gogood'];
+};
+
+export { Colors, getColors };

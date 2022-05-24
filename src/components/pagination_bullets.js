@@ -1,10 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import useVulpes from '../hooks/useVulpes';
 import { FillSpace } from './utils';
 
-function bulletStyle(color, selected) {
-  const colorRGB = Colors[color] || color || Colors.dark_gray;
+function bulletStyle({ theme, color, selected }) {
+  const colors = getColors(theme);
+  const colorRGB = colors[color] || color || colors.dark_gray;
   return {
     width: 8,
     height: 8,
@@ -18,7 +20,8 @@ function bulletStyle(color, selected) {
 }
 
 const Bullet = ({ color, selected }) => {
-  return <View style={bulletStyle(color, selected)} />;
+  const { theme } = useVulpes();
+  return <View style={bulletStyle({ theme, color, selected })} />;
 };
 
 const paginationBulletsContainer = { flexDirection: 'row' };

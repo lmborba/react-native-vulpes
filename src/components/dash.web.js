@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
 
 class Dash extends Component {
   dashedColor() {
-    const color = Colors.light_gray;
+    const { theme } = this.context;
+    const colors = getColors(theme);
+    const color = colors.light_gray;
     return color.substring(1);
   }
 
@@ -21,5 +24,7 @@ class Dash extends Component {
     return <div style={{ ...this.props.style, ...this.style() }} />;
   }
 }
+
+Dash.contextType = VulpesContext;
 
 export { Dash };

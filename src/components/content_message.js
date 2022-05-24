@@ -1,33 +1,46 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
 import { Regular, RegularBold } from '../index';
 import { Icon } from './icon';
-const typeMode = {
-  default: {
-    backgroundColor: Colors.gray,
-  },
-  success: {
-    backgroundColor: Colors.success,
-  },
-  error: {
-    backgroundColor: Colors.error,
-  },
-  warning: {
-    backgroundColor: Colors.alert,
-  },
-  alert: {
-    backgroundColor: Colors.alert,
-  },
+
+const typeMode = (type, theme) => {
+  const colors = getColors(theme);
+  switch (type) {
+    case 'default':
+      return {
+        backgroundColor: colors.gray,
+      };
+    case 'success':
+      return {
+        backgroundColor: colors.success,
+      };
+    case 'error':
+      return {
+        backgroundColor: colors.error,
+      };
+    case 'warning':
+      return {
+        backgroundColor: colors.alert,
+      };
+    case 'alert':
+      return {
+        backgroundColor: colors.alert,
+      };
+    default:
+      return {};
+  }
 };
 
 export class ContentMessage extends React.Component {
   getType() {
+    const { theme } = this.context;
     try {
       const { type } = this.props.data;
-      return typeMode[type] || {};
+      return typeMode(type, theme);
     } catch (error) {
-      return typeMode.default;
+      return getColors(theme).gray;
     }
   }
 
@@ -48,7 +61,8 @@ export class ContentMessage extends React.Component {
     const { data } = this.props;
     if (!data) return null;
     const { title, text, action } = data;
-
+    const { theme } = this.context;
+    const colors = getColors(theme);
     const opacity = action ? 0.2 : 1;
     const viewStyle = { flex: 1 };
     return (
@@ -56,7 +70,7 @@ export class ContentMessage extends React.Component {
         style={this.viewStyle()}
         onPress={() => action && action()}
         activeOpacity={opacity}
-        underlayColor={Colors.gray}
+        underlayColor={colors.gray}
       >
         <View style={viewStyle}>
           {title && <RegularBold>{title}</RegularBold>}
@@ -67,3 +81,5 @@ export class ContentMessage extends React.Component {
     );
   }
 }
+
+ContentMessage.contextType = VulpesContext;

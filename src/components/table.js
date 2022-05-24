@@ -1,7 +1,9 @@
 import React, { Component, useState } from 'react';
 import { ScrollView, View } from 'react-native';
-import { Button, Colors } from 'react-native-vulpes';
+import { Button } from 'react-native-vulpes';
 import { Small } from '..';
+import useVulpes from '../hooks/useVulpes';
+import { getColors } from '../colors';
 import {
   cellStyle,
   listContainer,
@@ -198,16 +200,17 @@ export class Table extends Component {
   }
 }
 
-function listProps(props) {
+function listProps(props, theme) {
+  const colors = getColors(theme);
   const style = { ...listItem, ...props.style };
   let param = { activeOpacity: 1, style: style };
   if (props.head) {
-    param.style.backgroundColor = Colors[props.color || 'cyan'];
+    param.style.backgroundColor = colors[props.color || 'cyan'];
   } else {
     if (props.line % 2 === 0) {
-      param.style.backgroundColor = Colors[props.color || 'cyan'] + '77';
+      param.style.backgroundColor = colors[props.color || 'cyan'] + '77';
     } else {
-      param.style.backgroundColor = Colors[props.color || 'cyan'] + '44';
+      param.style.backgroundColor = colors[props.color || 'cyan'] + '44';
     }
   }
 
@@ -215,7 +218,8 @@ function listProps(props) {
 }
 
 export const Row = (props) => {
-  const params = listProps(props);
+  const { theme } = useVulpes();
+  const params = listProps(props, theme);
 
   const data = [React.Children.toArray(props.children), props.data].flat();
   const columnWidth = props.columnWidth || {};

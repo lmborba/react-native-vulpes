@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, TextInput as Input, View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
 import { Fonts } from '../fonts';
 import { Regular, Small } from './typos';
 
@@ -118,17 +119,23 @@ export class TextInput extends Component {
   }
 
   fontStyle() {
+    const { theme } = this.context;
+    const colors = getColors(theme);
     let font = Fonts.regularBold;
     if (this.state.placeholder && !this.props.value)
       font = Fonts.placeholderBold;
-    if (this.props.editable === false) font = { ...font, color: Colors.gray };
-    if (this.props.error) font = { ...font, color: Colors.error };
+    if (this.props.editable === false) font = { ...font, color: colors.gray };
+    if (this.props.error) font = { ...font, color: colors.error };
     return font;
   }
 
   colorOutline() {
-    if (this.props.error) return Colors.error;
-    if (this.state.focused) return Colors.cyan;
-    return Colors.light_gray;
+    const { theme } = this.context;
+    const colors = getColors(theme);
+    if (this.props.error) return colors.error;
+    if (this.state.focused) return colors.cyan;
+    return colors.light_gray;
   }
 }
+
+TextInput.contextType = VulpesContext;

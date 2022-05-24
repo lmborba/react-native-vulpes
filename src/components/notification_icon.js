@@ -2,12 +2,15 @@ import React from 'react';
 import { View } from 'react-native';
 import { iconList } from 'react-native-icomoon';
 import json from '../../assets/icons/selection.json';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import useVulpes from '../hooks/useVulpes';
 import { Icon } from './icon';
 
 const Marker = ({ markerSize, borderColor, fillColor, up, ...rest }) => {
-  const borderColorVal = borderColor ? Colors[borderColor] : Colors.white;
-  const fillColorVal = fillColor ? Colors[fillColor] : Colors.error;
+  const { theme } = useVulpes();
+  const colors = getColors(theme);
+  const borderColorVal = borderColor ? colors[borderColor] : colors.white;
+  const fillColorVal = fillColor ? colors[fillColor] : colors.error;
   const markerCompleteStyle = {
     width: markerSize,
     height: markerSize,

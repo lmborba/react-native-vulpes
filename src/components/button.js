@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Keyboard } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
 import { RegularBold } from '../components/typos';
 import { Fonts } from '../fonts';
 import styles from '../styles/buttons';
 import { Icon } from './icon';
+import VulpesContext from '../contexts/VulpesContext';
 
 class Button extends Component {
   renderField() {
@@ -96,13 +97,17 @@ class Button extends Component {
 
   backgroundColor() {
     const { outline, ghost } = this.props;
+    const { theme } = this.context;
+    const colors = getColors(theme);
     if (outline || ghost) return null;
-    return Colors[this.primaryColor()];
+    return colors[this.primaryColor()];
   }
 
   borderColor() {
     const { outline } = this.props;
-    if (outline) return Colors[this.primaryColor()];
+    const { theme } = this.context;
+    const colors = getColors(theme);
+    if (outline) return colors[this.primaryColor()];
     return null;
   }
 
@@ -141,6 +146,7 @@ class Button extends Component {
     );
   }
 }
+Button.contextType = VulpesContext;
 
 class ToggleButton extends Component {
   handleClick() {

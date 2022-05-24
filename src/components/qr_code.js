@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Image, View } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
 
 const qrCodeContainer = { flexDirection: 'column', flex: 1 };
 const qrCodeInnerContainer = { flex: 1, flexDirection: 'row' };
@@ -17,7 +18,8 @@ export class QRCodeValid extends Component {
   render() {
     const { image, code, color } = this.props;
     const { width, height } = this.state;
-
+    const { theme } = this.context;
+    const colors = getColors(theme);
     const defSize = Math.min(width, height);
 
     return (
@@ -26,7 +28,7 @@ export class QRCodeValid extends Component {
           style={qrCodeInnerContainer}
           onLayout={this.layoutHandler.bind(this)}
         >
-          <QRCode value={code} color={Colors[color]} size={defSize} />
+          <QRCode value={code} color={colors[color]} size={defSize} />
         </View>
         {image && (
           <Image source={image} style={this.qrCodeUsedImage(defSize)} />
@@ -51,6 +53,8 @@ export class QRCodeValid extends Component {
     this.setState({ width: width, height: height });
   }
 }
+
+QRCodeValid.contextType = VulpesContext;
 
 const confirmed = require('../../assets/images/qr_code_used.png');
 

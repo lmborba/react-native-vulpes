@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
 import { Text } from '../components/text';
 import { RegularBold } from '../components/typos';
+import VulpesContext from '../contexts/VulpesContext';
 import { Fonts } from '../fonts';
 import styles from '../styles/tags';
 
@@ -68,13 +69,17 @@ class Tag extends Component {
   backgroundColor() {
     const { outline } = this.props;
     if (outline) return null;
-    return Colors[this.primaryColor()];
+    const { theme } = this.context;
+    const colors = getColors(theme);
+    return colors[this.primaryColor()];
   }
 
   borderColor() {
     const { outline } = this.props;
-    if (outline) return Colors[this.primaryColor()];
-    return null;
+    if (!outline) return null;
+    const { theme } = this.context;
+    const colors = getColors(theme);
+    return colors[this.primaryColor()];
   }
 
   completeStyle() {
@@ -99,5 +104,7 @@ class Tag extends Component {
     return <View style={this.tagStyle()}>{this.renderField()}</View>;
   }
 }
+
+Tag.contextType = VulpesContext;
 
 export { Tag };
