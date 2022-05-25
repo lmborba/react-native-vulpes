@@ -6,6 +6,8 @@ import {
   getStorybookUI,
 } from '@storybook/react-native';
 import { AppRegistry } from 'react-native';
+import React from 'react';
+import { VulpesProvider } from '../../src';
 import { name as appName } from '../app.json';
 import './rn-addons';
 import stories from './stories';
@@ -22,6 +24,13 @@ const StorybookUIRoot = getStorybookUI({});
 
 // If you are using React Native vanilla and after installation you don't see your app name here, write it manually.
 // If you use Expo you should remove this line.
-AppRegistry.registerComponent(appName, () => StorybookUIRoot);
 
-export default StorybookUIRoot;
+const StorybookVulpesUIRoot = () => (
+  <VulpesProvider theme={'gogood'}>
+    <StorybookUIRoot />
+  </VulpesProvider>
+);
+
+AppRegistry.registerComponent(appName, () => StorybookVulpesUIRoot);
+
+export default StorybookVulpesUIRoot;
