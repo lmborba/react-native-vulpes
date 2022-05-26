@@ -63,18 +63,19 @@ Card.contextType = VulpesContext;
 const TicketCardSeparator = (props) => {
   const { theme } = useVulpes();
   const colors = getColors(theme);
+  const _style = style(theme);
   return (
-    <View style={style.cardSeparator}>
-      <View style={style.cardSeparatorLeft} />
+    <View style={_style.cardSeparator}>
+      <View style={_style.cardSeparatorLeft} />
       <Dash
-        style={style.dashContainer}
+        style={_style.dashContainer}
         dashColor={colors.lightGray}
         dashThickness={0}
         dashGap={7}
         dashLength={7}
-        dashStyle={style.dashStyle}
+        dashStyle={_style.dashStyle}
       />
-      <View style={style.cardSeparatorRight} />
+      <View style={_style.cardSeparatorRight} />
     </View>
   );
 };
@@ -91,12 +92,14 @@ export class TicketCard extends Component {
 }
 
 const CheckinImage = (props) => {
+  const { theme } = useVulpes();
+  const _style = style(theme);
   return (
-    <View style={style.checkinImageOuter}>
+    <View style={_style.checkinImageOuter}>
       {props.checked ? (
-        <Image source={checkedImage} style={style.checkinImage} />
+        <Image source={checkedImage} style={_style.checkinImage} />
       ) : (
-        <Image source={uncheckedImage} style={style.checkinImage} />
+        <Image source={uncheckedImage} style={_style.checkinImage} />
       )}
     </View>
   );
@@ -105,23 +108,25 @@ const CheckinImage = (props) => {
 const TicketCheckinCardSeparator = (props) => {
   const { theme } = useVulpes();
   const colors = getColors(theme);
+  const _style = style(theme);
+
   return (
-    <View style={style.ticketProfileCardDividerContainer}>
-      <View style={style.profileCardDividerContent}>
-        <View style={style.cardSeparator}>
-          <View style={style.cardSeparatorLeft} />
+    <View style={_style.ticketProfileCardDividerContainer}>
+      <View style={_style.profileCardDividerContent}>
+        <View style={_style.cardSeparator}>
+          <View style={_style.cardSeparatorLeft} />
           <Dash
-            style={style.dashContainer}
+            style={_style.dashContainer}
             dashColor={colors.lightGray}
             dashThickness={0}
             dashGap={7}
             dashLength={7}
-            dashStyle={style.dashStyle}
+            dashStyle={_style.dashStyle}
           />
-          <View style={style.cardSeparatorRight} />
+          <View style={_style.cardSeparatorRight} />
         </View>
       </View>
-      <View style={style.ticketProfileCardImgContent}>
+      <View style={_style.ticketProfileCardImgContent}>
         <CheckinImage checked={props.checked} />
       </View>
     </View>
