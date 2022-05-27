@@ -30,11 +30,16 @@ export class CheckboxInput extends Component {
     return <View style={this.checkInnerCircle()} />;
   }
 
+  renderLabel() {
+    const { label, labelStyle } = this.props;
+    if (!label) return null;
+    return <Regular style={labelStyle}>{label}</Regular>;
+  }
   render() {
-    const { error, style, label, text, labelStyle, value } = this.props;
+    const { error, style, text, value } = this.props;
     return (
       <View style={style}>
-        <Regular style={labelStyle}>{label}</Regular>
+        {this.renderLabel()}
         <TouchableOpacity
           onPress={() => this.handleChange(!(value || false))}
           style={this.completeStyle()}
@@ -80,7 +85,7 @@ export class CheckboxInput extends Component {
     return {
       borderBottomColor: this.colorOutline(),
       borderBottomWidth: 0,
-      height: 12,
+      height: 32,
     };
   }
   bodyStyle() {
