@@ -39,6 +39,11 @@ export class BarChart extends Component {
     this.spacing = (wa * 0.2) / (itens - 1);
     this.barWidth = (wa * 0.8) / itens;
 
+    if (!data || !data.data || data.data.length === 0) {
+      console.error('BarChart:: No data defined');
+      return null;
+    }
+
     for (const d of data.data) {
       d.topLabelComponent = () => this.topLabel(d.value);
       d.topLabelContainerStyle = { width: this.barWidth };

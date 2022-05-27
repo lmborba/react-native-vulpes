@@ -1,5 +1,5 @@
 import React from 'react';
-import useVulpes from 'react-native-vulpes/src/hooks/useVulpes';
+import useVulpes from '../hooks/useVulpes';
 import { Text } from '../components/text';
 import { getFonts } from '../fonts';
 

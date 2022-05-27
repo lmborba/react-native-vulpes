@@ -327,7 +327,7 @@ export const getFonts = (theme) => {
 
 export const Fonts = {
   bodyLarge: {
-    fontSize: 90,
+    fontSize: 16,
     color: Colors.dark_gray,
     letterSpacing: 0,
     fontFamily: fontFamily('Regular'),

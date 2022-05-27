@@ -55,6 +55,11 @@ export class StackChart extends Component {
     this.spacing = (wa * 0.2) / (itens - 1);
     this.barWidth = (wa * 0.8) / itens;
 
+    if (!data || !data.data || data.data.length === 0) {
+      console.error('StackChart:: No data defined');
+      return null;
+    }
+
     for (const line of data.data) {
       line.labelTextStyle = this.xLabelStyle();
       for (const d of line.stacks) {
