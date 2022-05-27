@@ -24,7 +24,7 @@ export const getFonts = (theme) => {
   const fonts = {
     gogood: {
       bodyLarge: {
-        fontSize: 88,
+        fontSize: 16,
         color: colors.dark_gray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
@@ -173,7 +173,7 @@ export const getFonts = (theme) => {
     },
     dasa: {
       bodyLarge: {
-        fontSize: 88,
+        fontSize: 16,
         color: colors.dark_gray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
