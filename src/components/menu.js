@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { getColors } from '../colors';
-import { Fonts } from '../fonts';
+import { getFonts } from '../fonts';
 import useVulpes from '../hooks/useVulpes';
 
 const generalMenuStyle = (theme) => {
@@ -26,13 +26,15 @@ const generalMenuItemStyle = {
 };
 
 export const MenuItem = ({ children, selected, onPress }) => {
+  const { theme } = useVulpes();
+  const fonts = getFonts(theme);
   return (
     <TouchableOpacity style={generalMenuItemStyle} onPress={onPress}>
       {React.Children.map(children, (child, i) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
             color: selected ? 'black' : 'gray',
-            fontStyle: selected ? Fonts.menuTextBold : Fonts.menuText,
+            fontStyle: selected ? fonts.menuTextBold : fonts.menuText,
             size: 18,
             style: {
               alignSelf: 'center',

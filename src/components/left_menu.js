@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { getColors } from '../colors';
-import { Fonts } from '../fonts';
+import { getFonts } from '../fonts';
 import useVulpes from '../hooks/useVulpes';
 import { Text } from './text';
 
@@ -64,13 +64,15 @@ export const LeftMenuItem = ({
   justIcons,
   style,
 }) => {
+  const { theme } = useVulpes();
+  const fonts = getFonts(theme);
   return (
     <TouchableOpacity style={[generalMenuItemStyle, style]} onPress={onPress}>
       {React.Children.map(children, (child, i) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
             color: selected ? 'black' : 'dark_gray',
-            fontStyle: selected ? Fonts.leftMenuTextBold : Fonts.leftMenuText,
+            fontStyle: selected ? fonts.leftMenuTextBold : fonts.leftMenuText,
             size: 18,
             style: {
               alignSelf: 'center',

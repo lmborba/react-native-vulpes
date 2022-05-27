@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, TextInput as Input, View } from 'react-native';
 import { getColors } from '../colors';
 import VulpesContext from '../contexts/VulpesContext';
-import { Fonts } from '../fonts';
+import { getFonts } from '../fonts';
 import { Regular, Small } from './typos';
 
 export class TextInput extends Component {
@@ -121,9 +121,10 @@ export class TextInput extends Component {
   fontStyle() {
     const { theme } = this.context;
     const colors = getColors(theme);
-    let font = Fonts.regularBold;
+    const fonts = getFonts(theme);
+    let font = fonts.regularBold;
     if (this.state.placeholder && !this.props.value)
-      font = Fonts.placeholderBold;
+      font = fonts.placeholderBold;
     if (this.props.editable === false) font = { ...font, color: colors.gray };
     if (this.props.error) font = { ...font, color: colors.error };
     return font;

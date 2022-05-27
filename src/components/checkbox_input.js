@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { Colors } from '../colors';
-import { Fonts } from '../fonts';
+import { getFonts } from '../fonts';
 import { Icon } from './icon';
 import { Regular, Small } from './typos';
 
@@ -120,7 +120,9 @@ export class CheckboxInput extends Component {
   }
 
   fontStyle() {
-    let font = Fonts.regular;
+    const { theme } = this.context;
+    const fonts = getFonts(theme);
+    let font = fonts.regular;
     if (this.props.error) font = { ...font, color: Colors.error };
     return font;
   }

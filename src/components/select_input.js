@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { getColors } from '../colors';
 import VulpesContext from '../contexts/VulpesContext';
-import { Fonts } from '../fonts';
+import { getFonts } from '../fonts';
 import { Icon } from './icon';
 import { ModalPicker } from './modal_picker';
 import { Text } from './text';
@@ -219,9 +219,10 @@ export class SelectInput extends Component {
   fontStyle() {
     const { theme } = this.context;
     const colors = getColors(theme);
-    let font = Fonts.regularBold;
+    const fonts = getFonts(theme);
+    let font = fonts.regularBold;
     if (this.state.placeholder && !this.props.value)
-      font = Fonts.placeholderBold;
+      font = fonts.placeholderBold;
     if (this.props.error) font = { ...font, color: colors.error };
     return font;
   }
