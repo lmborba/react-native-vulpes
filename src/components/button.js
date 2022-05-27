@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Keyboard } from 'react-native';
 import { getColors } from '../colors';
 import { RegularBold } from '../components/typos';
-import { Fonts } from '../fonts';
+import { getFonts } from '../fonts';
 import styles from '../styles/buttons';
 import { Icon } from './icon';
 import VulpesContext from '../contexts/VulpesContext';
@@ -52,11 +52,13 @@ class Button extends Component {
   }
 
   renderChildren() {
+    const { theme } = this.context;
+    const fonts = getFonts(theme);
     return React.Children.map(this.props.children, (child, i) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
           color: this.textColor(),
-          fontStyle: Fonts.regularBold,
+          fontStyle: fonts.regularBold,
           style: {
             ...this.textStyle({
               isFirst: i === 0,

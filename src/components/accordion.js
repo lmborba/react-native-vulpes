@@ -4,17 +4,20 @@ import HTML, {
   HTMLContentModel,
   HTMLElementModel,
 } from 'react-native-render-html';
-import { BodyLargeBold, Fonts } from '..';
+import { BodyLargeBold } from '..';
 import { getColors } from '../colors';
 import { separatorToLong, titleStyle } from '../styles/list';
 import { Icon } from './icon';
 import useVulpes from '../hooks/useVulpes';
 import { RegularBold } from './typos';
+import { getFonts } from '../fonts';
+import VulpesContext from '../contexts/VulpesContext';
 
 const accordionStyle = (theme) => {
   const colors = getColors(theme);
+  const fonts = getFonts(theme);
   return {
-    ...Fonts.regular,
+    ...fonts.regular,
     color: colors.gray,
     paddingRight: 10,
   };
@@ -30,6 +33,7 @@ const Title = (props) => {
 };
 
 export const Accordion = (props) => {
+  console.log('FONTS:', accordionStyle('dasa'));
   const cItens = React.Children.toArray(props.children).filter(
     (c) => c.props.visible !== false
   );
@@ -87,11 +91,13 @@ class ShowHTML extends Component {
   }
 
   customHTMLElementModels() {
+    const { theme } = this.context;
+    const fonts = getFonts(theme);
     return {
       a: HTMLElementModel.fromCustomModel({
         tagName: 'a',
         mixedUAStyles: {
-          ...Fonts.smallBold,
+          ...fonts.smallBold,
           textDecorationLine: 'underline',
         },
         contentModel: HTMLContentModel.textual,
@@ -101,9 +107,10 @@ class ShowHTML extends Component {
 
   render() {
     const { html } = this.props;
+    const { theme } = this.context;
     return (
       <HTML
-        baseStyle={accordionStyle()}
+        baseStyle={accordionStyle(theme)}
         source={{ html: html }}
         style={separatorToLong}
         renderersProps={this.rendererProps()}
@@ -112,6 +119,7 @@ class ShowHTML extends Component {
     );
   }
 }
+ShowHTML.contextType = VulpesContext;
 
 function itemStyle(props, theme) {
   const colors = getColors(theme);

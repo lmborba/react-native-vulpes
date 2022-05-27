@@ -1,21 +1,23 @@
 import React from 'react';
+import useVulpes from 'react-native-vulpes/src/hooks/useVulpes';
 import { Text } from '../components/text';
-import { Fonts } from '../fonts';
+import { getFonts } from '../fonts';
 
 function capitalize(s) {
   return s && s[0].toUpperCase() + s.slice(1);
 }
 
 export const generateTypography = function (definedStyle) {
-  const fontStyle = Fonts[definedStyle];
-
-  let component = ({ style, children, color, ...props }) => {
+  let Component = ({ style, children, color, ...props }) => {
+    const { theme } = useVulpes();
+    const fonts = getFonts(theme);
+    const fontStyle = fonts[definedStyle];
     return (
       <Text color={color} fontStyle={fontStyle} style={style} {...props}>
         {children}
       </Text>
     );
   };
-  component.displayName = capitalize(definedStyle);
-  return component;
+  Component.displayName = capitalize(definedStyle);
+  return Component;
 };

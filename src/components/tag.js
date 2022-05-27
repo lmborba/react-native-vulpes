@@ -4,7 +4,7 @@ import { getColors } from '../colors';
 import { Text } from '../components/text';
 import { RegularBold } from '../components/typos';
 import VulpesContext from '../contexts/VulpesContext';
-import { Fonts } from '../fonts';
+import { getFonts } from '../fonts';
 import styles from '../styles/tags';
 
 class Tag extends Component {
@@ -14,11 +14,13 @@ class Tag extends Component {
   }
 
   renderChildren() {
+    const { theme } = this.context;
+    const fonts = getFonts(theme);
     return React.Children.toArray(this.props.children).map((child, i) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
           color: this.textColor(),
-          fontStyle: Fonts.smallBold,
+          fontStyle: fonts.smallBold,
           style: this.textStyle({
             isFirst: i === 0,
             isIcon: child.type.displayName === 'Icon',
@@ -31,7 +33,7 @@ class Tag extends Component {
           <Text
             key={'.' + i}
             color={this.textColor()}
-            fontStyle={Fonts.smallBold}
+            fontStyle={fonts.smallBold}
           >
             {child}
           </Text>
