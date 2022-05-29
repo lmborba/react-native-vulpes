@@ -1,7 +1,7 @@
 import React from 'react';
-import useVulpes from '../hooks/useVulpes';
 import { Text } from '../components/text';
 import { getFonts } from '../fonts';
+import useVulpes from '../hooks/useVulpes';
 
 function capitalize(s) {
   return s && s[0].toUpperCase() + s.slice(1);

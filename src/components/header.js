@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
-import image from '../../assets/images/header.png';
 import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
 import { getFonts } from '../fonts';
 import useVulpes from '../hooks/useVulpes';
 import { Button } from './button';
@@ -11,6 +11,11 @@ import { NotificationMenu } from './notification_menu';
 import { Text } from './text';
 import { H2, Regular } from './typos';
 import { FillSpace } from './utils';
+
+const headers = {
+  gogood: require('../../assets/images/header.png'),
+  dasa: require('../../assets/images/header_dasa.png'),
+};
 
 const topHeaderContainer = {
   flexDirection: 'row',
@@ -107,6 +112,12 @@ const ContentComponent = ({ component }) => {
 };
 
 export class Header extends Component {
+  imageBackground() {
+    let { theme } = this.context;
+    if (!theme || !headers[theme]) theme = 'gogood';
+    return headers[theme];
+  }
+
   render() {
     const {
       backAction,
@@ -122,7 +133,7 @@ export class Header extends Component {
     return (
       <View>
         <ImageBackground
-          source={image}
+          source={this.imageBackground()}
           style={this.imageStyle()}
           imageStyle={imageStyle}
         >
@@ -162,3 +173,4 @@ export class Header extends Component {
   }
 }
 Header.displayName = 'Header';
+Header.contextType = VulpesContext;

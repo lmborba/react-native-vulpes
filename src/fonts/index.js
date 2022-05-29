@@ -52,7 +52,7 @@ export const getFonts = (theme) => {
         color: colors.dark_gray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
         textAlign: 'left',
       },
       h3: {
@@ -185,7 +185,7 @@ export const getFonts = (theme) => {
         color: colors.dark_gray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
         textAlign: 'left',
       },
       h1: {
@@ -193,7 +193,7 @@ export const getFonts = (theme) => {
         color: colors.dark_gray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
         textAlign: 'left',
       },
       h2: {
@@ -201,7 +201,7 @@ export const getFonts = (theme) => {
         color: colors.dark_gray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
         textAlign: 'left',
       },
       h3: {
@@ -209,7 +209,7 @@ export const getFonts = (theme) => {
         color: colors.dark_gray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
         textAlign: 'left',
       },
       h4: {
@@ -217,7 +217,7 @@ export const getFonts = (theme) => {
         color: colors.dark_gray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
         textAlign: 'left',
       },
       subtitle: {
@@ -234,7 +234,7 @@ export const getFonts = (theme) => {
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
       },
       menuText: {
         fontSize: 8,
@@ -250,7 +250,7 @@ export const getFonts = (theme) => {
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
       },
       leftMenuText: {
         fontSize: 14,
@@ -275,7 +275,7 @@ export const getFonts = (theme) => {
         letterSpacing: 0,
         fontStyle: 'italic',
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
         textAlign: 'left',
       },
       regular: {
@@ -291,7 +291,7 @@ export const getFonts = (theme) => {
         color: colors.dark_gray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
         textAlign: 'left',
         fontStyle: 'normal',
       },
@@ -309,14 +309,14 @@ export const getFonts = (theme) => {
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
       },
       smallBold: {
         fontSize: 12,
         color: colors.dark_gray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontWeight: '400',
         textAlign: 'left',
       },
     },

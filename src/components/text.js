@@ -19,6 +19,9 @@ const Text = ({ style, title, fontStyle, color, center, strike, ...props }) => {
     ...(strike ? { textDecorationLine: 'line-through' } : {}),
   };
 
+  if (props.testin) {
+    console.log(textStyle);
+  }
   return <NativeText style={textStyle} {...props} />;
 };
 
