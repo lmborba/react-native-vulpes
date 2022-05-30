@@ -111,10 +111,11 @@ const ContentComponent = ({ component }) => {
   return component;
 };
 
-export class Header extends Component {
+class HeaderComplete extends Component {
   imageBackground() {
-    let { theme } = this.context;
+    let { theme } = this.props;
     if (!theme || !headers[theme]) theme = 'gogood';
+    console.log(theme);
     return headers[theme];
   }
 
@@ -172,5 +173,11 @@ export class Header extends Component {
     };
   }
 }
+
+export const Header = (props) => {
+  const { theme } = useVulpes();
+  return <HeaderComplete {...props} theme={theme} />;
+};
+
 Header.displayName = 'Header';
 Header.contextType = VulpesContext;

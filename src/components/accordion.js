@@ -1,17 +1,18 @@
 import React, { Component, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import HTML, {
+  defaultSystemFonts,
   HTMLContentModel,
   HTMLElementModel,
 } from 'react-native-render-html';
 import { BodyLargeBold } from '..';
 import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
+import { getFonts } from '../fonts';
+import useVulpes from '../hooks/useVulpes';
 import { separatorToLong, titleStyle } from '../styles/list';
 import { Icon } from './icon';
-import useVulpes from '../hooks/useVulpes';
 import { RegularBold } from './typos';
-import { getFonts } from '../fonts';
-import VulpesContext from '../contexts/VulpesContext';
 
 const accordionStyle = (theme) => {
   const colors = getColors(theme);
@@ -33,7 +34,6 @@ const Title = (props) => {
 };
 
 export const Accordion = (props) => {
-  console.log('FONTS:', accordionStyle('dasa'));
   const cItens = React.Children.toArray(props.children).filter(
     (c) => c.props.visible !== false
   );
@@ -93,15 +93,27 @@ class ShowHTML extends Component {
   customHTMLElementModels() {
     const { theme } = this.context;
     const fonts = getFonts(theme);
+    const colors = getColors(theme);
+    const strongModel = HTMLElementModel.fromCustomModel({
+      tagName: 'b',
+      mixedUAStyles: {
+        ...fonts.regularBold,
+        color: colors.gray,
+        paddingRight: 10,
+      },
+      contentModel: HTMLContentModel.textual,
+    });
     return {
       a: HTMLElementModel.fromCustomModel({
         tagName: 'a',
         mixedUAStyles: {
-          ...fonts.smallBold,
+          ...fonts.regularBold,
           textDecorationLine: 'underline',
         },
         contentModel: HTMLContentModel.textual,
       }),
+      b: strongModel,
+      strong: strongModel,
     };
   }
 
@@ -111,6 +123,11 @@ class ShowHTML extends Component {
     return (
       <HTML
         baseStyle={accordionStyle(theme)}
+        systemFonts={[
+          'DasaSans-Regular',
+          'DasaSans-Bold',
+          ...defaultSystemFonts,
+        ]}
         source={{ html: html }}
         style={separatorToLong}
         renderersProps={this.rendererProps()}
