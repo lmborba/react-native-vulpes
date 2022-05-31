@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { getColors } from '../colors';
-import VulpesContext from '../contexts/VulpesContext';
 import { getFonts } from '../fonts';
 import useVulpes from '../hooks/useVulpes';
 import { Button } from './button';
