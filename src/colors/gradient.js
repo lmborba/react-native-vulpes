@@ -7,3 +7,13 @@ export default {
   gradient_purple: 'linear-gradient(46deg, #9965FF 0%, #0078B2 100%)',
   gradient_red: 'linear-gradient(45deg, #E02323 0%, #FA7373 100%)',
 };
+
+export const gradientDasa = {
+  gradient_blue: 'linear-gradient(45deg, #000F40 0%, #0037FF 100%)',
+  gradient_cyan: 'linear-gradient(45deg, #ABE6FF 0%, #0037FF 100%)',
+  gradient_green: 'linear-gradient(46deg, #00C7A2 0%, #01A3B9 100%)',
+  gradient_orange: 'linear-gradient(45deg, #FF7716 0%, #D13D6B 100%)',
+  gradient_pink: 'linear-gradient(46deg, #EE7973 0%, #FF4F33 100%)',
+  gradient_purple: 'linear-gradient(46deg, #9965FF 0%, #0078B2 100%)',
+  gradient_red: 'linear-gradient(45deg, #E02323 0%, #FA7373 100%)',
+};

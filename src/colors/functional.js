@@ -1,4 +1,4 @@
-import secondary from './secondary';
+import secondary, { secondaryDasa } from './secondary';
 
 const functional = (from, toType, toColor) => ({
   [from]: toType[toColor],
@@ -10,4 +10,10 @@ export default {
   ...functional('success', secondary, 'green'),
   ...functional('error', secondary, 'red'),
   ...functional('alert', secondary, 'yellow'),
+};
+
+export const functionalDasa = {
+  ...functional('success', secondaryDasa, 'green'),
+  ...functional('error', secondaryDasa, 'red'),
+  ...functional('alert', secondaryDasa, 'yellow'),
 };

@@ -1,8 +1,8 @@
-import functional from './functional';
+import functional, { functionalDasa } from './functional';
 import gradient from './gradient';
-import neutral from './neutral';
-import primary from './primary';
-import secondary from './secondary';
+import neutral, { neutralDasa } from './neutral';
+import primary, { primaryDasa } from './primary';
+import secondary, { secondaryDasa } from './secondary';
 
 const Colors = {
   ...primary,
@@ -25,10 +25,10 @@ const ThematicColors = {
     ...gradient,
   },
   dasa: {
-    ...primary,
-    ...secondary,
-    ...neutral,
-    ...functional,
+    ...primaryDasa,
+    ...secondaryDasa,
+    ...neutralDasa,
+    ...functionalDasa,
     ...gradient,
   },
 };
