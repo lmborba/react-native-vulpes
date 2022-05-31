@@ -180,4 +180,3 @@ export const Header = (props) => {
 };
 
 Header.displayName = 'Header';
-Header.contextType = VulpesContext;
