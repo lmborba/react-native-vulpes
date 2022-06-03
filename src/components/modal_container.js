@@ -54,7 +54,7 @@ export class ModalContainer extends Component {
   }
 
   render() {
-    const { children, onClose } = this.props;
+    const { children, onClose, style, dismissStyle } = this.props;
     return (
       <Modal
         animationType="slide"
@@ -64,8 +64,8 @@ export class ModalContainer extends Component {
       >
         <Animated.View
           style={[
-            this.props.style,
             containerStyle,
+            style,
             {
               backgroundColor: this.state.transparency.interpolate({
                 inputRange: [0, 1],
@@ -75,7 +75,7 @@ export class ModalContainer extends Component {
           ]}
         >
           <TouchableOpacity
-            style={modalDismissStyle}
+            style={{ ...modalDismissStyle, ...dismissStyle }}
             onPress={onClose}
             activeOpacity={1}
           />
