@@ -39,7 +39,7 @@ const BackAction = ({ backAction }) => {
   };
   return (
     <TouchableOpacity onPress={() => backAction()} style={backButtonStyle}>
-      <Icon name="long_arrow_left" color="white" size={22} />
+      <Icon name="long_arrow_left" color="singleton.white" size={22} />
     </TouchableOpacity>
   );
 };
@@ -50,8 +50,8 @@ const AdvanceActionButton = ({ advanceAction, advanceText }) => {
   const fonts = getFonts(theme);
   if (!advanceAction) return null;
   return (
-    <Button color="white" ghost onPress={advanceAction}>
-      <Text style={{ ...fonts.regular, color: colors.white }}>
+    <Button color={'singleton.white'} ghost onPress={advanceAction}>
+      <Text style={{ ...fonts.regular, color: colors('singleton.white') }}>
         {advanceText}
       </Text>
     </Button>
@@ -66,10 +66,10 @@ const HeaderTitleLine = ({ title, helpAction }) => {
 
   return (
     <View style={titleLine}>
-      <H2 color={'white'}>{title}</H2>
+      <H2 color={'singleton.white'}>{title}</H2>
       {helpAction && (
         <TouchableOpacity onPress={helpAction} style={helpContainer}>
-          <Icon name={'help'} color="white" />
+          <Icon name={'help'} color={'singleton.white'} />
         </TouchableOpacity>
       )}
     </View>
@@ -79,7 +79,7 @@ const HeaderTitleLine = ({ title, helpAction }) => {
 const HeaderSubtitleLine = ({ subtitle }) => {
   if (!subtitle) return null;
 
-  return <Regular color={'white'}>{subtitle}</Regular>;
+  return <Regular color={'singleton.white'}>{subtitle}</Regular>;
 };
 
 const HeaderTitles = ({ title, subtitle, helpAction }) => {

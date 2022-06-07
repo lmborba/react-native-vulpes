@@ -26,7 +26,7 @@ export class Card extends Component {
     if (color) {
       const { theme } = this.context;
       const colors = getColors(theme);
-      data.backgroundColor = colors[color];
+      data.backgroundColor = colors(color);
     }
     return data;
   }
@@ -69,7 +69,7 @@ const TicketCardSeparator = (props) => {
       <View style={_style.cardSeparatorLeft} />
       <Dash
         style={_style.dashContainer}
-        dashColor={colors.lightGray}
+        dashColor={colors('gray.40')}
         dashThickness={0}
         dashGap={7}
         dashLength={7}
@@ -117,7 +117,7 @@ const TicketCheckinCardSeparator = (props) => {
           <View style={_style.cardSeparatorLeft} />
           <Dash
             style={_style.dashContainer}
-            dashColor={colors.lightGray}
+            dashColor={colors('gray.40')}
             dashThickness={0}
             dashGap={7}
             dashLength={7}
@@ -144,7 +144,7 @@ const TicketProfileCardSeparator = (props) => {
           <View style={_style.cardSeparatorLeft} />
           <Dash
             style={_style.dashContainer}
-            dashColor={colors.lightGray}
+            dashColor={colors('gray.40')}
             dashThickness={0}
             dashGap={7}
             dashLength={7}
@@ -189,7 +189,7 @@ export class TicketProfileCard extends Component {
     if (color) {
       const { theme } = this.context;
       const colors = getColors(theme);
-      data.backgroundColor = colors[color];
+      data.backgroundColor = colors(color);
     }
     return data;
   }
@@ -211,7 +211,7 @@ export class TicketCheckinCard extends Component {
     if (color) {
       const { theme } = this.context;
       const colors = getColors(theme);
-      data.backgroundColor = colors[color];
+      data.backgroundColor = colors(color);
     }
     return data;
   }
@@ -230,8 +230,8 @@ const CardTag = ({ icon, color, text, textColor, marginBottom }) => {
   const mgBottom = marginBottom ? { marginBottom: 8 } : {};
   return (
     <Tag
-      textColor={textColor || 'white'}
-      color={color || 'dark_gray'}
+      textColor={textColor || 'singleton.white'}
+      color={color || 'gray.100'}
       style={mgBottom}
     >
       {icon && <Icon name={icon} size={12} />}
@@ -272,7 +272,7 @@ export class ProfileCard extends Component {
     const { cover, color, source, children, ...rest } = this.props;
 
     return (
-      <Card {...this.props} color={cover ? 'transparent' : color}>
+      <Card {...this.props} color={cover ? 'singleton.transparent' : color}>
         <CardCover source={cover} {...rest} />
         <View>
           <ProfileCardSeparator source={source} />
@@ -290,7 +290,7 @@ export class MiniProfileCard extends Component {
     if (color) {
       const { theme } = this.context;
       const colors = getColors(theme);
-      data.backgroundColor = colors[color];
+      data.backgroundColor = colors(color);
     }
     return data;
   }
@@ -332,7 +332,7 @@ export class IllustrationMiniCard extends Component {
     return (
       <Card
         cardContainer={_style.illustrationCardContainer}
-        color={'transparent'}
+        color={'singleton.transparent'}
         {...this.props}
       >
         <View style={outerMiniCardStyle}>
@@ -384,13 +384,16 @@ export const BannerCard = ({
           </View>
 
           <View style={_style.textsViewBannerCard}>
-            <RegularBold color="white" style={_style.titleTextBannerCard}>
+            <RegularBold
+              color="singleton.white"
+              style={_style.titleTextBannerCard}
+            >
               {title}
             </RegularBold>
-            <Regular color="white">{description}</Regular>
+            <Regular color="singleton.white">{description}</Regular>
             {linkText && (
               <Button
-                color="white"
+                color="singleton.white"
                 ghost
                 style={_style.buttonTextBannerCard}
                 onPress={onPressLink}

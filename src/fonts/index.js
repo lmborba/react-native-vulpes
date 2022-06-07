@@ -22,12 +22,12 @@ const dasaWeight = (weight) => {};
 
 export const getFonts = (theme) => {
   const colors = getColors(theme);
-
+  const darkGray = colors('gray.100');
   const fonts = {
     gogood: {
       bodyLarge: {
         fontSize: 16,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
         fontWeight: '400',
@@ -35,7 +35,7 @@ export const getFonts = (theme) => {
       },
       bodyLargeBold: {
         fontSize: 16,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: '700',
@@ -43,7 +43,7 @@ export const getFonts = (theme) => {
       },
       h1: {
         fontSize: 32,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: '700',
@@ -51,7 +51,7 @@ export const getFonts = (theme) => {
       },
       h2: {
         fontSize: 24,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: '400',
@@ -59,7 +59,7 @@ export const getFonts = (theme) => {
       },
       h3: {
         fontSize: 20,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: '700',
@@ -67,7 +67,7 @@ export const getFonts = (theme) => {
       },
       h4: {
         fontSize: 18,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: '700',
@@ -75,7 +75,7 @@ export const getFonts = (theme) => {
       },
       subtitle: {
         fontSize: 18,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
         fontWeight: '400',
@@ -83,7 +83,7 @@ export const getFonts = (theme) => {
       },
       menuTextBold: {
         fontSize: 8,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Bold', theme),
@@ -91,7 +91,7 @@ export const getFonts = (theme) => {
       },
       menuText: {
         fontSize: 8,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Regular', theme),
@@ -99,7 +99,7 @@ export const getFonts = (theme) => {
       },
       leftMenuTextBold: {
         fontSize: 14,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Bold', theme),
@@ -107,7 +107,7 @@ export const getFonts = (theme) => {
       },
       leftMenuText: {
         fontSize: 14,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Regular', theme),
@@ -115,7 +115,7 @@ export const getFonts = (theme) => {
       },
       placeholder: {
         fontSize: 14,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontStyle: 'italic',
         fontFamily: _fontFamily('Regular', theme),
@@ -124,7 +124,7 @@ export const getFonts = (theme) => {
       },
       placeholderBold: {
         fontSize: 14,
-        color: colors.gray,
+        color: colors('gray.80'),
         letterSpacing: 0,
         fontStyle: 'italic',
         fontFamily: _fontFamily('Bold', theme),
@@ -133,7 +133,7 @@ export const getFonts = (theme) => {
       },
       regular: {
         fontSize: 14,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
         fontWeight: '400',
@@ -141,7 +141,7 @@ export const getFonts = (theme) => {
       },
       regularBold: {
         fontSize: 14,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: '700',
@@ -150,7 +150,7 @@ export const getFonts = (theme) => {
       },
       small: {
         fontSize: 12,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
         fontWeight: '400',
@@ -158,7 +158,7 @@ export const getFonts = (theme) => {
       },
       small2: {
         fontSize: 10,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Bold', theme),
@@ -166,7 +166,7 @@ export const getFonts = (theme) => {
       },
       smallBold: {
         fontSize: 12,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: '700',
@@ -176,7 +176,7 @@ export const getFonts = (theme) => {
     dasa: {
       bodyLarge: {
         fontSize: 16,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
         fontWeight: dasaWeight('400'),
@@ -184,7 +184,7 @@ export const getFonts = (theme) => {
       },
       bodyLargeBold: {
         fontSize: 16,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: dasaWeight('700'),
@@ -192,7 +192,7 @@ export const getFonts = (theme) => {
       },
       h1: {
         fontSize: 32,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: dasaWeight('700'),
@@ -200,7 +200,7 @@ export const getFonts = (theme) => {
       },
       h2: {
         fontSize: 24,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: dasaWeight('700'),
@@ -208,7 +208,7 @@ export const getFonts = (theme) => {
       },
       h3: {
         fontSize: 20,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: dasaWeight('700'),
@@ -216,7 +216,7 @@ export const getFonts = (theme) => {
       },
       h4: {
         fontSize: 18,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: dasaWeight('700'),
@@ -224,7 +224,7 @@ export const getFonts = (theme) => {
       },
       subtitle: {
         fontSize: 18,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
         fontWeight: dasaWeight('400'),
@@ -232,7 +232,7 @@ export const getFonts = (theme) => {
       },
       menuTextBold: {
         fontSize: 8,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Bold', theme),
@@ -240,7 +240,7 @@ export const getFonts = (theme) => {
       },
       menuText: {
         fontSize: 8,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Regular', theme),
@@ -248,7 +248,7 @@ export const getFonts = (theme) => {
       },
       leftMenuTextBold: {
         fontSize: 14,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Bold', theme),
@@ -256,7 +256,7 @@ export const getFonts = (theme) => {
       },
       leftMenuText: {
         fontSize: 14,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Regular', theme),
@@ -264,7 +264,7 @@ export const getFonts = (theme) => {
       },
       placeholder: {
         fontSize: 14,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontStyle: 'italic',
         fontFamily: _fontFamily('Regular', theme),
@@ -273,7 +273,7 @@ export const getFonts = (theme) => {
       },
       placeholderBold: {
         fontSize: 14,
-        color: colors.gray,
+        color: colors('gray.80'),
         letterSpacing: 0,
         fontStyle: 'italic',
         fontFamily: _fontFamily('Bold', theme),
@@ -282,7 +282,7 @@ export const getFonts = (theme) => {
       },
       regular: {
         fontSize: 14,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
         fontWeight: dasaWeight('400'),
@@ -290,7 +290,7 @@ export const getFonts = (theme) => {
       },
       regularBold: {
         fontSize: 14,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: dasaWeight('700'),
@@ -299,7 +299,7 @@ export const getFonts = (theme) => {
       },
       small: {
         fontSize: 12,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
         fontWeight: dasaWeight('400'),
@@ -307,7 +307,7 @@ export const getFonts = (theme) => {
       },
       small2: {
         fontSize: 10,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         textAlign: 'center',
         fontFamily: _fontFamily('Bold', theme),
@@ -315,7 +315,7 @@ export const getFonts = (theme) => {
       },
       smallBold: {
         fontSize: 12,
-        color: colors.dark_gray,
+        color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: dasaWeight('700'),

@@ -6,7 +6,7 @@ import { FillSpace } from './utils';
 
 function bulletStyle({ theme, color, selected }) {
   const colors = getColors(theme);
-  const colorRGB = colors[color] || color || colors.dark_gray;
+  const colorRGB = colors(color) || color || colors('gray.100');
   return {
     width: 8,
     height: 8,

@@ -83,7 +83,7 @@ export class TextInput extends Component {
           onChangeText={this.handleChange.bind(this)}
         />
         {error && (
-          <Small style={this.errorStyle()} color={'error'}>
+          <Small style={this.errorStyle()} color={'error.100'}>
             {error}
           </Small>
         )}
@@ -125,17 +125,18 @@ export class TextInput extends Component {
     let font = fonts.regularBold;
     if (this.state.placeholder && !this.props.value)
       font = fonts.placeholderBold;
-    if (this.props.editable === false) font = { ...font, color: colors.gray };
-    if (this.props.error) font = { ...font, color: colors.error };
+    if (this.props.editable === false)
+      font = { ...font, color: colors('gray.80') };
+    if (this.props.error) font = { ...font, color: colors('error.100') };
     return font;
   }
 
   colorOutline() {
     const { theme } = this.context;
     const colors = getColors(theme);
-    if (this.props.error) return colors.error;
-    if (this.state.focused) return colors.cyan;
-    return colors.light_gray;
+    if (this.props.error) return colors('error.100');
+    if (this.state.focused) return colors('primary.80');
+    return colors('gray.40');
   }
 }
 

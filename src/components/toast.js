@@ -9,23 +9,23 @@ const typeMode = (type, theme) => {
   switch (type) {
     case 'default':
       return {
-        backgroundColor: colors.gray,
+        backgroundColor: colors('gray.80'),
       };
     case 'success':
       return {
-        backgroundColor: colors.success,
+        backgroundColor: colors('success.100'),
       };
     case 'error':
       return {
-        backgroundColor: colors.error,
+        backgroundColor: colors('error.100'),
       };
     case 'warning':
       return {
-        backgroundColor: colors.alert,
+        backgroundColor: colors('alert.100'),
       };
     case 'alert':
       return {
-        backgroundColor: colors.alert,
+        backgroundColor: colors('alert.100'),
       };
     default:
       return {};
@@ -135,7 +135,7 @@ class ToastRoot extends React.Component {
     return {
       opacity: fadeAnim,
       position: 'absolute',
-      backgroundColor: colors.light_gray,
+      backgroundColor: colors('gray.40'),
       minHeight: 64,
       borderRadius: 8,
       left: 16,
@@ -167,8 +167,10 @@ class ToastRoot extends React.Component {
           style={this.touchStyle()}
           onPress={() => this.config.onPress()}
         >
-          {title && <RegularBold color={'white'}>{title}</RegularBold>}
-          {text && <Regular color={'white'}>{text}</Regular>}
+          {title && (
+            <RegularBold color={'singleton.white'}>{title}</RegularBold>
+          )}
+          {text && <Regular color={'singleton.white'}>{text}</Regular>}
         </TouchableOpacity>
       </Animated.View>
     );

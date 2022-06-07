@@ -5,7 +5,7 @@ export default (theme) => {
   return {
     divider: {
       borderBottomWidth: 1,
-      borderBottomColor: colors.light_gray,
+      borderBottomColor: colors('gray.40'),
       marginTop: 16,
       marginBottom: 16,
     },

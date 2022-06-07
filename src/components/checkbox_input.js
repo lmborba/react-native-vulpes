@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
 import { getFonts } from '../fonts';
 import { Icon } from './icon';
 import { Regular, Small } from './typos';
@@ -50,7 +50,7 @@ export class CheckboxInput extends Component {
           </View>
         </TouchableOpacity>
         {error && (
-          <Small style={this.errorStyle()} color={'error'}>
+          <Small style={this.errorStyle()} color={'error.100'}>
             {error}
           </Small>
         )}
@@ -122,18 +122,23 @@ export class CheckboxInput extends Component {
   fontStyle() {
     const { theme } = this.context;
     const fonts = getFonts(theme);
+    const colors = getColors(theme);
     let font = fonts.regular;
-    if (this.props.error) font = { ...font, color: Colors.error };
+    if (this.props.error) font = { ...font, color: colors('error.100') };
     return font;
   }
 
   colorRegular() {
-    if (this.props.error) return Colors.error;
-    return Colors.gray;
+    const { theme } = this.context;
+    const colors = getColors(theme);
+    if (this.props.error) return colors('error.100');
+    return colors('gray.80');
   }
 
   colorOutline() {
-    if (this.props.error) return Colors.error;
-    return Colors.light_gray;
+    const { theme } = this.context;
+    const colors = getColors(theme);
+    if (this.props.error) return colors('error.100');
+    return colors('gray.40');
   }
 }
