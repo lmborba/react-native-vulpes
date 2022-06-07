@@ -4,7 +4,7 @@ import { Platform, View } from 'react-native';
 import {
   BodyLarge,
   BodyLargeBold,
-  Colors,
+  colorList,
   H1,
   H2,
   H3,
@@ -18,16 +18,6 @@ import {
   SmallBold,
   Subtitle,
 } from 'react-native-vulpes';
-
-const colorList = () => {
-  var keys = [];
-  for (var k in Colors) {
-    if (k.substring(0, 8) !== 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
-};
 
 export default {
   title: 'Example/Typography',

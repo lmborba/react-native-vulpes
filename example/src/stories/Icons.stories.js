@@ -1,18 +1,8 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Colors, Icon } from 'react-native-vulpes';
+import { colorList, Icon } from 'react-native-vulpes';
 import { listOfIcons } from '../../../src/components/icon';
-
-const colorList = () => {
-  var keys = [];
-  for (var k in Colors) {
-    if (k.substring(0, 8) !== 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
-};
 
 export default {
   title: 'Example/Icons',

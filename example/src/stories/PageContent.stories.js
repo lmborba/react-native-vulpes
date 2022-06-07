@@ -77,8 +77,8 @@ Example2.args = {
 const TemplatePageBackground = (props) => (
   <BackgroundPage image={props.image}>
     <Content>
-      <H2 color="white">{props.title}</H2>
-      <Subtitle color="white">{props.subtitle}</Subtitle>
+      <H2 color="singleton.white">{props.title}</H2>
+      <Subtitle color="singleton.white">{props.subtitle}</Subtitle>
     </Content>
   </BackgroundPage>
 );

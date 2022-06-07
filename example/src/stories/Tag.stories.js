@@ -1,18 +1,8 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Colors, Icon, Tag as Tg, Text } from 'react-native-vulpes';
+import { Colors, colorList, Icon, Tag as Tg, Text } from 'react-native-vulpes';
 import { listOfIcons } from '../../../src/components/icon';
-
-const colorList = () => {
-  var keys = [undefined];
-  for (var k in Colors) {
-    if (k.substring(0, 8) !== 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
-};
 
 const buttonContainer = { margin: 10 };
 

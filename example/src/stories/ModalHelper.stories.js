@@ -50,7 +50,7 @@ const TemplateGradientView = ({ ...rest }) => {
 
 export const Example = TemplateGradientView;
 Example.args = {
-  color: 'cyan',
+  color: 'primary.80',
 };
 
 if (Platform.OS === 'android') {

@@ -54,9 +54,9 @@ export default (props) => {
     <View style={flexedDiv}>
       <ScrollView>
         <H1>Primary</H1>
-        <H2 color="cyan">Cyan</H2>
-        <H3 color="dark_cyan">Dark Cyan</H3>
-        <H4 color="light_cyan">Light Cyan</H4>
+        <H2 color="primary.80">Cyan</H2>
+        <H3 color="primary.110">Dark Cyan</H3>
+        <H4 color="primary.40">Light Cyan</H4>
 
         <H1>Secondary</H1>
         <BodyLarge color="blue">Blue</BodyLarge>
@@ -89,11 +89,11 @@ export default (props) => {
 
         <H1>Neutral</H1>
         <Text color="black">Black</Text>
-        <Text color="white">White</Text>
+        <Text color="singleton.white">White</Text>
 
-        <Text color="gray">Gray</Text>
-        <Text color="dark_gray">Dark Gray</Text>
-        <Text color="light_gray">Light Gray</Text>
+        <Text color="gray.80">Gray</Text>
+        <Text color="gray.100">Dark Gray</Text>
+        <Text color="gray.40">Light Gray</Text>
 
         <H1>Functional</H1>
         <Text color="success">Success</Text>
@@ -110,43 +110,43 @@ export default (props) => {
 
         <H1>Gradients</H1>
         <View style={gradientsContainer}>
-          <GradientView color="gradient_blue" style={gradientBox}>
-            <Text color="white" style={gradientText}>
+          <GradientView color="gradient.blue" style={gradientBox}>
+            <Text color="singleton.white" style={gradientText}>
               Gradient Blue
             </Text>
           </GradientView>
-          <GradientView color="gradient_cyan" style={gradientBox}>
-            <Text color="white" style={gradientText}>
+          <GradientView color="gradient.cyan" style={gradientBox}>
+            <Text color="singleton.white" style={gradientText}>
               Gradient cyan
             </Text>
           </GradientView>
-          <GradientView color="gradient_green" style={gradientBox}>
-            <Text color="white" style={gradientText}>
+          <GradientView color="gradient.green" style={gradientBox}>
+            <Text color="singleton.white" style={gradientText}>
               Gradient green
             </Text>
           </GradientView>
         </View>
         <View style={gradientsContainer}>
-          <GradientView color="gradient_orange" style={gradientBox}>
-            <Text color="white" style={gradientText}>
+          <GradientView color="gradient.orange" style={gradientBox}>
+            <Text color="singleton.white" style={gradientText}>
               Gradient orange
             </Text>
           </GradientView>
-          <GradientView color="gradient_pink" style={gradientBox}>
-            <Text color="white" style={gradientText}>
+          <GradientView color="gradient.pink" style={gradientBox}>
+            <Text color="singleton.white" style={gradientText}>
               Gradient pink
             </Text>
           </GradientView>
-          <GradientView color="gradient_purple" style={gradientBox}>
-            <Text color="white" style={gradientText}>
+          <GradientView color="gradient.purple" style={gradientBox}>
+            <Text color="singleton.white" style={gradientText}>
               Gradient purple
             </Text>
           </GradientView>
         </View>
 
         <View style={gradientsContainer}>
-          <GradientView color="gradient_red" style={gradientBox}>
-            <Text color="white" style={gradientText}>
+          <GradientView color="gradient.red" style={gradientBox}>
+            <Text color="singleton.white" style={gradientText}>
               Gradient red
             </Text>
           </GradientView>
@@ -295,7 +295,7 @@ export default (props) => {
           </Button>
         </View>
         <View style={buttonsContainer}>
-          <Button outline color="light_gray">
+          <Button outline color="gray.40">
             <Text>Primary button</Text>
             <Icon name="like_empty" />
           </Button>

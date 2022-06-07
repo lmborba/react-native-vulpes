@@ -1,17 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { BannerCard, Colors } from 'react-native-vulpes';
-
-const colorList = () => {
-  var keys = [];
-  for (var k in Colors) {
-    if (k.substring(0, 8) === 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
-};
+import { BannerCard, colorList } from 'react-native-vulpes';
 
 const imageList = () => {
   return [
@@ -84,7 +74,7 @@ Example.argTypes = {
   },
 };
 Example.args = {
-  color: 'gradient_pink',
+  color: 'gradient.pink',
   source: imageList()[0],
   title: 'Treino sem limites',
   description:
@@ -107,7 +97,7 @@ ExampleNoBottomLink.argTypes = {
   },
 };
 ExampleNoBottomLink.args = {
-  color: 'gradient_green',
+  color: 'gradient.green',
   source: imageList()[1],
   title: 'Treino sem limites',
   description:

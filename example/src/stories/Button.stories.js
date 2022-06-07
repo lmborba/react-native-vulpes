@@ -3,22 +3,12 @@ import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
 import {
   Button as B,
-  Colors,
+  colorList,
   Icon,
   Text,
   ToggleButton,
 } from 'react-native-vulpes';
 import { listOfIcons } from '../../../src/components/icon';
-
-const colorList = () => {
-  var keys = [undefined];
-  for (var k in Colors) {
-    if (k.substring(0, 8) !== 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
-};
 
 const buttonContainer = { margin: 10 };
 
@@ -42,18 +32,17 @@ class TemplateButton extends Component {
 
   render() {
     const {
-      color = undefined,
-      outline = undefined,
-      ghost = undefined,
-      disabled = undefined,
-      icon = 'like_empty',
-      onIcon = 'like',
-      offIcon = 'like_empty',
+      color = undefined, // string
+      outline = undefined, // boolean
+      ghost = undefined, // boolean
+      disabled = undefined, // boolean
+      icon = 'like_empty', // string
+      onIcon = 'like', // string
+      offIcon = 'like_empty', // string
     } = this.props;
 
     const { value } = this.state;
-
-    console.log(value);
+    // console.log('COLOR LIST ',  colorList());
     return (
       <>
         <Button
