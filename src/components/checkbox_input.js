@@ -114,7 +114,7 @@ export class CheckboxInput extends Component {
       width: 8,
       alignItems: 'center',
       justifyContent: 'center',
-      borderColor: this.colorRegular(),
+      borderColor: this.colorOutline(),
       backgroundColor: this.colorRegular(),
     };
   }
@@ -129,11 +129,11 @@ export class CheckboxInput extends Component {
 
   colorRegular() {
     if (this.props.error) return Colors.error;
-    return Colors.gray;
+    return Colors.dark_gray;
   }
 
   colorOutline() {
     if (this.props.error) return Colors.error;
-    return Colors.light_gray;
+    return Colors.dark_gray;
   }
 }
