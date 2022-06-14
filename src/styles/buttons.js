@@ -3,7 +3,7 @@ import { Colors } from '../colors';
 
 const buttonHeight = 44;
 const paddingHorizontal = 16;
-const paddingVertical = 12;
+const paddingVertical = Platform.OS === 'android' ? 10 : 12;
 
 const buttonStyle = {
   borderRadius: buttonHeight / 2,
