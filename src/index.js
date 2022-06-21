@@ -1,5 +1,5 @@
 import { NativeModules } from 'react-native';
-import { Colors } from './colors';
+import { Colors, colorList, getColors } from './colors';
 import { Accordion, AccordionItem } from './components/accordion';
 import { ActionSheet, openActionSheet } from './components/action_sheet';
 import { Button, ToggleButton } from './components/button';
@@ -89,6 +89,8 @@ export {
   ActionSheet,
   openActionSheet,
   Colors,
+  colorList,
+  getColors,
   Text,
   Fonts,
   GradientView,

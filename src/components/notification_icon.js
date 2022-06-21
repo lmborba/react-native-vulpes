@@ -9,8 +9,10 @@ import { Icon } from './icon';
 const Marker = ({ markerSize, borderColor, fillColor, up, ...rest }) => {
   const { theme } = useVulpes();
   const colors = getColors(theme);
-  const borderColorVal = borderColor ? colors[borderColor] : colors.white;
-  const fillColorVal = fillColor ? colors[fillColor] : colors.error;
+  const borderColorVal = borderColor
+    ? colors(borderColor)
+    : colors('singleton.white');
+  const fillColorVal = fillColor ? colors(fillColor) : colors('error.100');
   const markerCompleteStyle = {
     width: markerSize,
     height: markerSize,
@@ -36,7 +38,7 @@ export const NotificationIcon = ({
   markerBorder,
   ...restProps
 }) => {
-  if (!color) color = 'white';
+  if (!color) color = 'singleton.white';
   const sizeVal = size ? size : 20;
   const markerSize = (sizeVal * 4) / 10;
   const notificationIconContainer = { width: sizeVal, height: sizeVal };

@@ -1,17 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React, { useState } from 'react';
 import { Platform, TouchableOpacity, View } from 'react-native';
-import { Colors, H1, Tab, Tabs } from 'react-native-vulpes';
-
-const colorList = () => {
-  var keys = [undefined];
-  for (var k in Colors) {
-    if (k.substring(0, 8) !== 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
-};
+import { colorList, H1, Tab, Tabs } from 'react-native-vulpes';
 
 export default {
   title: 'Example/Tab',

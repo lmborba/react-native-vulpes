@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { BarChart as BChart } from 'react-native-gifted-charts';
-import { Colors } from '../../colors';
+import { Colors, getColors } from '../../colors';
+import VulpesContext from '../../contexts/VulpesContext';
 import { SmallBold } from './../typos';
 
 export class BarChart extends Component {
@@ -51,6 +52,8 @@ export class BarChart extends Component {
       d.labelTextStyle = this.xLabelStyle();
     }
     const sGraph = { flex: 1, paddingBottom: 16, marginLeft: -35 };
+    const { theme } = this.context;
+    const colors = getColors(theme);
     return (
       <View style={sGraph}>
         <BChart
@@ -66,7 +69,7 @@ export class BarChart extends Component {
           hideYAxisText
           cappedBars={false}
           capThickness={0}
-          capColor={Colors.dark_gray}
+          capColor={colors('gray.100')}
           showGradient
           gradientColor={Colors['dark_' + color]}
           frontColor={Colors['light_' + color]}
@@ -81,3 +84,5 @@ export class BarChart extends Component {
     return this.renderGraph();
   }
 }
+
+BarChart.contextType = VulpesContext;

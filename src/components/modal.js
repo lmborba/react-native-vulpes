@@ -27,10 +27,10 @@ const modalContainer = (theme) => {
   return {
     borderWidth: 1,
     borderBottomWidth: 0,
-    borderColor: colors.light_gray,
+    borderColor: colors('gray.40'),
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    backgroundColor: colors.white,
+    backgroundColor: colors('singleton.white'),
     maxHeight: modalHeight(),
     bottom: 0,
   };

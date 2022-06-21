@@ -45,15 +45,15 @@ class Tag extends Component {
 
   primaryColor() {
     if (this.props.color) return this.props.color;
-    return 'dark_gray';
+    return 'gray.100';
   }
 
   textColor() {
     const { outline, light, textColor } = this.props;
     if (textColor) return textColor;
-    if (light) return 'black';
-    if (outline) return 'black';
-    return 'white';
+    if (light) return 'singleton.black';
+    if (outline) return 'singleton.black';
+    return 'singleton.white';
   }
 
   textStyle({ isFirst, isIcon }) {
@@ -73,7 +73,7 @@ class Tag extends Component {
     if (outline) return null;
     const { theme } = this.context;
     const colors = getColors(theme);
-    return colors[this.primaryColor()];
+    return colors(this.primaryColor());
   }
 
   borderColor() {
@@ -81,16 +81,18 @@ class Tag extends Component {
     if (!outline) return null;
     const { theme } = this.context;
     const colors = getColors(theme);
-    return colors[this.primaryColor()];
+    return colors(this.primaryColor());
   }
 
   completeStyle() {
     const { ghost, outline, size } = this.props;
+    const { theme } = this.context;
+    const _styles = styles(theme);
     let toRet = {};
-    if (size === 'medium') toRet = styles.mediumMargin;
-    if (outline) return { ...styles.outlineStyle, ...toRet };
-    if (ghost) return { ...styles.ghostStyle, ...toRet };
-    return { ...styles.defaultStyle, ...toRet };
+    if (size === 'medium') toRet = _styles.mediumMargin;
+    if (outline) return { ..._styles.outlineStyle, ...toRet };
+    if (ghost) return { ..._styles.ghostStyle, ...toRet };
+    return { ..._styles.defaultStyle, ...toRet };
   }
 
   tagStyle() {

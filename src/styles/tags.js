@@ -1,5 +1,5 @@
 import { Platform } from 'react-native';
-import { Colors } from '../colors';
+import { getColors } from '../colors';
 
 const tagHeight = 24;
 const tagMediumHeight = 32;
@@ -21,27 +21,30 @@ const tagStyle = {
   flexDirection: 'row',
 };
 
-export default {
-  defaultStyle: {
-    ...tagStyle,
-    backgroundColor: Colors.dark_gray,
-    borderColor: null,
-    borderWidth: 0,
-  },
-  mediumMargin: {
-    paddingTop: paddingMediumVertical,
-    paddingBottom: paddingMediumVertical,
-    height: tagMediumHeight,
-  },
-  outlineStyle: {
-    ...tagStyle,
-    borderColor: Colors.dark_gray,
-    borderWidth: 1,
-  },
-  ghostStyle: {
-    ...tagStyle,
-    backgroundColor: null,
-    borderColor: null,
-    borderWidth: 0,
-  },
+export default (theme) => {
+  const colors = getColors(theme);
+  return {
+    defaultStyle: {
+      ...tagStyle,
+      backgroundColor: colors('gray.100'),
+      borderColor: null,
+      borderWidth: 0,
+    },
+    mediumMargin: {
+      paddingTop: paddingMediumVertical,
+      paddingBottom: paddingMediumVertical,
+      height: tagMediumHeight,
+    },
+    outlineStyle: {
+      ...tagStyle,
+      borderColor: colors('gray.100'),
+      borderWidth: 1,
+    },
+    ghostStyle: {
+      ...tagStyle,
+      backgroundColor: null,
+      borderColor: null,
+      borderWidth: 0,
+    },
+  };
 };

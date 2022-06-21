@@ -3,7 +3,7 @@ export default {
   white: '#FFFFFF',
 
   gray: '#919191',
-  light_gray: '#DCDCDC',
+  light_gray: '#D9D9D9',
   dark_gray: '#383838',
 };
 

@@ -15,8 +15,8 @@ const convertToStyle = (theme, size) => {
     height: size,
     borderRadius: size / 2,
     borderWidth: 1,
-    borderColor: colors.light_gray,
-    backgroundColor: colors.white,
+    borderColor: colors('gray.40'),
+    backgroundColor: colors('singleton.white'),
     padding: size / 2 - 11,
   };
 };

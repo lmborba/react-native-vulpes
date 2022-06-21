@@ -10,23 +10,23 @@ const typeMode = (type, theme) => {
   switch (type) {
     case 'default':
       return {
-        backgroundColor: colors.gray,
+        backgroundColor: colors('gray.80'),
       };
     case 'success':
       return {
-        backgroundColor: colors.success,
+        backgroundColor: colors('success.100'),
       };
     case 'error':
       return {
-        backgroundColor: colors.error,
+        backgroundColor: colors('red.100'),
       };
     case 'warning':
       return {
-        backgroundColor: colors.alert,
+        backgroundColor: colors('alert.100'),
       };
     case 'alert':
       return {
-        backgroundColor: colors.alert,
+        backgroundColor: colors('alert.100'),
       };
     default:
       return {};
@@ -70,7 +70,7 @@ export class ContentMessage extends React.Component {
         style={this.viewStyle()}
         onPress={() => action && action()}
         activeOpacity={opacity}
-        underlayColor={colors.gray}
+        underlayColor={colors('gray.80')}
       >
         <View style={viewStyle}>
           {title && <RegularBold>{title}</RegularBold>}

@@ -39,7 +39,7 @@ const ContentComponent = () => {
   };
   return (
     <View style={style}>
-      <H3 color={'white'}>GoGood</H3>
+      <H3 color={'singleton.white'}>GoGood</H3>
     </View>
   );
 };

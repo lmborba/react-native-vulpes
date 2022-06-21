@@ -205,12 +205,12 @@ function listProps(props, theme) {
   const style = { ...listItem, ...props.style };
   let param = { activeOpacity: 1, style: style };
   if (props.head) {
-    param.style.backgroundColor = colors[props.color || 'cyan'];
+    param.style.backgroundColor = colors(props.color || 'primary.80');
   } else {
     if (props.line % 2 === 0) {
-      param.style.backgroundColor = colors[props.color || 'cyan'] + '77';
+      param.style.backgroundColor = colors(props.color || 'primary.80') + '77';
     } else {
-      param.style.backgroundColor = colors[props.color || 'cyan'] + '44';
+      param.style.backgroundColor = colors(props.color || 'primary.80') + '44';
     }
   }
 
@@ -252,7 +252,7 @@ const CellContent = (props) => {
     children === null || children === undefined ? '' : children.toString();
   if (dictionary) val = dictionary[val] || val;
 
-  if (head) return <RegularBold color="white">{val}</RegularBold>;
+  if (head) return <RegularBold color="singleton.white">{val}</RegularBold>;
   return <Small numberOfLines={1}>{val}</Small>;
 };
 

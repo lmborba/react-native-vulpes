@@ -7,6 +7,8 @@ const cardPadding = 16;
 const additionalTopBottomPadding = 4;
 export default (theme) => {
   const colors = getColors(theme);
+  const gray = colors('gray.40');
+  const white = colors('singleton.white');
   return {
     outerCardBorder: {
       position: 'absolute',
@@ -20,7 +22,7 @@ export default (theme) => {
     cardTopBorder: {
       borderTopLeftRadius: radius,
       borderTopRightRadius: radius,
-      backgroundColor: colors.cyan,
+      backgroundColor: colors('primary.80'),
       height: radius,
     },
     cardSeparator: {
@@ -35,37 +37,37 @@ export default (theme) => {
       marginTop: 12,
     },
     cardSeparatorLeft: {
-      borderRightColor: colors.light_gray,
+      borderRightColor: gray,
       borderRightWidth: 1,
-      borderTopColor: colors.light_gray,
+      borderTopColor: gray,
       borderTopWidth: 1,
-      borderBottomColor: colors.light_gray,
+      borderBottomColor: gray,
       borderBottomWidth: 1,
       marginLeft: -17,
       height: 24, // change these values according to your requirement.
       width: 16,
       borderTopRightRadius: 12,
       borderBottomRightRadius: 12,
-      backgroundColor: colors.white,
+      backgroundColor: white,
     },
     cardSeparatorRight: {
-      borderLeftColor: colors.light_gray,
+      borderLeftColor: gray,
       borderLeftWidth: 1,
-      borderTopColor: colors.light_gray,
+      borderTopColor: gray,
       borderTopWidth: 1,
-      borderBottomColor: colors.light_gray,
+      borderBottomColor: gray,
       borderBottomWidth: 1,
       marginRight: -17,
       height: 24, // change these values according to your requirement.
       width: 16,
       borderTopLeftRadius: 12,
       borderBottomLeftRadius: 12,
-      backgroundColor: colors.white,
+      backgroundColor: white,
     },
     dashStyle: {
       borderWidth: 0,
       height: 1,
-      backgroundColor: colors.light_gray,
+      backgroundColor: gray,
       overflow: 'hidden',
     },
 
@@ -78,13 +80,13 @@ export default (theme) => {
 
     cardContainer: {
       borderRadius: radius,
-      borderColor: colors.light_gray,
+      borderColor: gray,
       borderWidth: remainingBorderHeight,
       paddingTop: additionalTopBottomPadding + cardPadding,
       paddingLeft: cardPadding,
       paddingRight: cardPadding,
       paddingBottom: additionalTopBottomPadding + cardPadding,
-      backgroundColor: colors.white,
+      backgroundColor: white,
       overflow: 'hidden',
     },
 
@@ -115,7 +117,7 @@ export default (theme) => {
 
     profileCardDivider: {
       borderBottomWidth: 1,
-      borderBottomColor: colors.light_gray,
+      borderBottomColor: gray,
     },
     profileCardDividerContainer: {
       marginLeft: -cardPadding,
