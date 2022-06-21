@@ -6,7 +6,7 @@ class Dash extends Component {
   dashedColor() {
     const { theme } = this.context;
     const colors = getColors(theme);
-    const color = colors.light_gray;
+    const color = colors('gray.80');
     return color.substring(1);
   }
 

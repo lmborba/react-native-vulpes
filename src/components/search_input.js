@@ -84,13 +84,13 @@ export class SearchInput extends Component {
         />
         {allowSend && (
           <TouchableOpacity onPress={this.onSend.bind(this)}>
-            <SmallBold style={this.okStyle()} color={'cyan'}>
+            <SmallBold style={this.okStyle()} color={'primary.80'}>
               IR
             </SmallBold>
           </TouchableOpacity>
         )}
         {error && (
-          <Small style={this.errorStyle()} color={'error'}>
+          <Small style={this.errorStyle()} color={'error.100'}>
             {error}
           </Small>
         )}
@@ -162,17 +162,17 @@ export class SearchInput extends Component {
     const fonts = getFonts(theme);
     let font = fonts.regularBold;
     if (this.state.placeholder && !this.props.value) font = fonts.regular;
-    if (this.props.error) font = { ...font, color: colors.error };
-    if (this.props.noResult) font = { ...font, color: colors.error };
+    if (this.props.error) font = { ...font, color: colors('error.100') };
+    if (this.props.noResult) font = { ...font, color: colors('error.100') };
     return font;
   }
 
   colorOutline() {
     const { theme } = this.context;
     const colors = getColors(theme);
-    if (this.props.error) return colors.error;
-    if (this.state.focused) return colors.dark_gray;
-    return colors.dark_gray;
+    if (this.props.error) return colors('error.100');
+    if (this.state.focused) return colors('gray.100');
+    return colors('gray.100');
   }
 
   widthOutline() {

@@ -9,8 +9,8 @@ const generalMenuStyle = (theme) => {
   return {
     flexDirection: 'row',
     borderTopWidth: 1,
-    backgroundColor: colors.white,
-    borderTopColor: colors.light_gray,
+    backgroundColor: colors('singleton.white'),
+    borderTopColor: colors('gray.40'),
   };
 };
 export const Menu = (props) => {
@@ -33,7 +33,7 @@ export const MenuItem = ({ children, selected, onPress }) => {
       {React.Children.map(children, (child, i) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
-            color: selected ? 'black' : 'gray',
+            color: selected ? 'singleton.black' : 'gray.60',
             fontStyle: selected ? fonts.menuTextBold : fonts.menuText,
             size: 18,
             style: {

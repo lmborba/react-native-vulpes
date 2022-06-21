@@ -73,16 +73,17 @@ class Button extends Component {
   }
 
   primaryColor() {
-    if (this.props.color) return this.props.color;
-    if (this.props.disabled) return 'light_gray';
-    return 'dark_gray';
+    const { color, disabled } = this.props;
+    if (color) return color;
+    if (disabled) return 'gray.40';
+    return 'gray.100';
   }
 
   textColor() {
     const { outline, ghost, textColor } = this.props;
     if (textColor) return textColor;
     if (outline || ghost) return this.primaryColor();
-    return 'white';
+    return 'singleton.white';
   }
 
   textStyle({ isFirst, isIcon }) {
@@ -100,16 +101,16 @@ class Button extends Component {
   backgroundColor() {
     const { outline, ghost } = this.props;
     const { theme } = this.context;
-    const colors = getColors(theme);
     if (outline || ghost) return null;
-    return colors[this.primaryColor()];
+    const colors = getColors(theme);
+    return colors(this.primaryColor());
   }
 
   borderColor() {
     const { outline } = this.props;
     const { theme } = this.context;
     const colors = getColors(theme);
-    if (outline) return colors[this.primaryColor()];
+    if (outline) return colors(this.primaryColor());
     return null;
   }
 
@@ -136,7 +137,7 @@ class Button extends Component {
   }
   render() {
     const { disabled } = this.props;
-
+    console.log(this.textColor());
     return (
       <TouchableOpacity
         onPress={this.onPress.bind(this)}
@@ -157,7 +158,7 @@ class ToggleButton extends Component {
 
   color() {
     const { color } = this.props;
-    if (!color) return 'dark_gray';
+    if (!color) return 'gray.100';
     return color;
   }
   size() {

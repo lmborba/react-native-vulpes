@@ -19,7 +19,7 @@ const accordionStyle = (theme) => {
   const fonts = getFonts(theme);
   return {
     ...fonts.regular,
-    color: colors.gray,
+    color: colors('gray.80'),
     paddingRight: 10,
   };
 };
@@ -27,7 +27,7 @@ const accordionStyle = (theme) => {
 const Title = (props) => {
   if (!props.title) return null;
   return (
-    <BodyLargeBold style={titleStyle} color={'cyan'}>
+    <BodyLargeBold style={titleStyle} color={'primary.80'}>
       {props.title}
     </BodyLargeBold>
   );
@@ -98,7 +98,7 @@ class ShowHTML extends Component {
       tagName: 'b',
       mixedUAStyles: {
         ...fonts.regularBold,
-        color: colors.gray,
+        color: colors('gray.80'),
         paddingRight: 10,
       },
       contentModel: HTMLContentModel.textual,
@@ -145,7 +145,7 @@ function itemStyle(props, theme) {
     paddingBottom: 16,
     paddingLeft: 0,
     paddingRight: 0,
-    borderBottomColor: colors.light_gray,
+    borderBottomColor: colors('gray.40'),
     borderBottomWidth: 1,
     flexDirection: 'column',
     ...props.style,

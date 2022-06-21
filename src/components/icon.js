@@ -19,7 +19,7 @@ export const Icon = ({ name, color, size, ...restProps }) => {
   const { theme } = useVulpes();
   const colors = getColors(theme);
   const iconSet = getIconSet(theme);
-  const colorVal = color ? colors[color] : colors.dark_gray;
+  const colorVal = color ? colors(color) : colors('gray.100');
   const sizeVal = size ? size : 20;
   return (
     <View {...restProps}>

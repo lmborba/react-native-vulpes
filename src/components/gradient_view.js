@@ -45,7 +45,7 @@ const calcEnd = (data) => {
 const GradientView = ({ children, ...props }) => {
   const { theme } = useVulpes();
   const colors = getColors(theme);
-  const grad = colors[props.color];
+  const grad = colors(props.color);
   const parsed = GradientParse(grad)[0];
   let positions = parsed.colorStops.map(stopToPosition);
   positions = positions.filter((it) => it != null);

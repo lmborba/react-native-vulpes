@@ -28,7 +28,7 @@ export class QRCodeValid extends Component {
           style={qrCodeInnerContainer}
           onLayout={this.layoutHandler.bind(this)}
         >
-          <QRCode value={code} color={colors[color]} size={defSize} />
+          <QRCode value={code} color={colors(color)} size={defSize} />
         </View>
         {image && (
           <Image source={image} style={this.qrCodeUsedImage(defSize)} />
@@ -61,7 +61,7 @@ const confirmed = require('../../assets/images/qr_code_used.png');
 export const QRCodeShow = ({ color, code, used, ...restProps }) => {
   if (!code) return null;
   if (used) {
-    return <QRCodeValid code={code} color={'light_gray'} image={confirmed} />;
+    return <QRCodeValid code={code} color={'gray.40'} image={confirmed} />;
   } else {
     return <QRCodeValid code={code} color={color} />;
   }

@@ -10,8 +10,8 @@ const generalMenuStyle = (theme) => {
   return {
     flexDirection: 'column',
     borderRightWidth: 1,
-    backgroundColor: colors.white,
-    borderRightColor: colors.light_gray,
+    backgroundColor: colors('singleton.white'),
+    borderRightColor: colors('gray.40'),
     height: '100%',
   };
 };
@@ -71,7 +71,7 @@ export const LeftMenuItem = ({
       {React.Children.map(children, (child, i) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
-            color: selected ? 'black' : 'dark_gray',
+            color: selected ? 'singleton.black' : 'gray.100',
             fontStyle: selected ? fonts.leftMenuTextBold : fonts.leftMenuText,
             size: 18,
             style: {

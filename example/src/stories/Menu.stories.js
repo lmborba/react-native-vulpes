@@ -1,17 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React, { useState } from 'react';
 import { Platform, View } from 'react-native';
-import { Colors, Icon, Menu, MenuItem, Text } from 'react-native-vulpes';
-
-const colorList = () => {
-  var keys = [undefined];
-  for (var k in Colors) {
-    if (k.substring(0, 8) !== 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
-};
+import { colorList, Icon, Menu, MenuItem, Text } from 'react-native-vulpes';
 
 export default {
   title: 'Example/MenuItem',

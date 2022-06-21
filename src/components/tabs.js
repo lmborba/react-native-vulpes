@@ -11,7 +11,7 @@ const tabsDefaultStyle = (theme) => {
     paddingTop: 10,
     marginRight: 32,
     borderBottomWidth: 0,
-    borderBottomColor: colors.dark_gray,
+    borderBottomColor: colors('gray.100'),
     marginBottom: -1,
   };
 };
@@ -36,7 +36,7 @@ const tabsContainerStyle = (theme) => {
   return {
     marginRight: 5,
     borderBottomWidth: 1,
-    borderBottomColor: colors.light_gray,
+    borderBottomColor: colors('gray.40'),
     flexDirection: 'row',
   };
 };

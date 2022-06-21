@@ -1,17 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Card, Colors, H4, Text } from 'react-native-vulpes';
-
-const colorList = () => {
-  var keys = [];
-  for (var k in Colors) {
-    if (k.substring(0, 8) !== 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
-};
+import { Card, colorList, H4, Text } from 'react-native-vulpes';
 
 const mobileStyleWidget = { maxWidth: 320 };
 export default {
@@ -46,7 +36,7 @@ const TemplateGradientView = ({ ...rest }) => {
 
 export const Example = TemplateGradientView;
 Example.args = {
-  color: 'cyan',
+  color: 'primary.80',
 };
 
 if (Platform.OS === 'android') {

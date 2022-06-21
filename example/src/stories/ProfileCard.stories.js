@@ -122,7 +122,7 @@ Example.argTypes = {
   },
 };
 Example.args = {
-  color: 'cyan',
+  color: 'primary.80',
   source: imageList()[0],
   cover: undefined,
   tagIcon: 'unlock',

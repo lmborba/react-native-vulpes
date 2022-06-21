@@ -59,7 +59,7 @@ export class CircularProgress extends Component {
         backgroundWidth={4}
         arcSweepAngle={180}
         lineCap={'round'}
-        backgroundColor={colors.light_gray}
+        backgroundColor={colors('gray.40')}
         childrenContainerStyle={childrenContainerStyle}
         {...this.props}
       >

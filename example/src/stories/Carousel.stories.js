@@ -1,17 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Card, Carousel, Colors, H1, SnapCarousel } from 'react-native-vulpes';
+import {
+  Card,
+  Carousel,
+  H1,
+  SnapCarousel,
+  colorList,
+} from 'react-native-vulpes';
 // import { FlatList, ScrollView, RefreshControl,Container } from 'react-native';
-
-const colorList = () => {
-  var keys = [];
-  for (var k in Colors) {
-    if (k.substring(0, 8) !== 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
-};
 
 const mobileStyleWidget = { maxWidth: 320, width: 320, height: 320 };
 export default {
@@ -51,7 +47,7 @@ const TemplateCarousel = ({ color = 'cyan', width = 300, ...rest }) => (
 
 export const ExampleCarousel = TemplateCarousel;
 ExampleCarousel.args = {
-  color: 'cyan',
+  color: 'primary.80',
   width: 200,
 };
 
@@ -71,6 +67,6 @@ const TemplateSnapCarousel = ({ color = 'cyan', width = 300, ...rest }) => (
 
 export const ExampleSnapCarousel = TemplateSnapCarousel;
 ExampleSnapCarousel.args = {
-  color: 'cyan',
+  color: 'primary.80',
   width: 200,
 };

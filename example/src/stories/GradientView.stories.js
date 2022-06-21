@@ -1,16 +1,10 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { Colors, GradientView as GV, Text as T } from 'react-native-vulpes';
+import { colorList, GradientView as GV, Text as T } from 'react-native-vulpes';
 
-const colorList = () => {
-  var keys = [];
-  for (var k in Colors) {
-    if (k.substring(0, 8) === 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
+const _colorList = () => {
+  return colorList().filter((c) => c.includes('gradient'));
 };
 
 export default {
@@ -21,7 +15,7 @@ export default {
       description: 'color for the text',
       control: {
         type: 'select',
-        options: colorList(),
+        options: _colorList(),
       },
     },
   },
@@ -42,7 +36,7 @@ const gradientText = {
 const GradientView = (props) => <GV {...props} style={gradientBox} />;
 const Text = (props) => <T {...props} style={gradientText} />;
 
-const TemplateGradientView = ({ color = 'gradient_red', ...rest }) => (
+const TemplateGradientView = ({ color = 'gradient.red', ...rest }) => (
   <GradientView {...rest} color={color}>
     <Text color="white">{color}</Text>
   </GradientView>
@@ -54,12 +48,12 @@ Example.argTypes = {
     description: 'color for the text',
     control: {
       type: 'select',
-      options: colorList(),
+      options: _colorList(),
     },
   },
 };
 Example.args = {
-  color: 'gradient_blue',
+  color: 'gradient.blue',
 };
 
 if (Platform.OS === 'android') {
