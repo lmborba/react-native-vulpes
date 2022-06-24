@@ -3,7 +3,16 @@ import { Text as NativeText } from 'react-native';
 import { getColors } from '../colors';
 import useVulpes from '../hooks/useVulpes';
 
-const Text = ({ style, title, fontStyle, color, center, strike, ...props }) => {
+const Text = ({
+  style,
+  title,
+  fontStyle,
+  color,
+  center,
+  strike,
+  underline,
+  ...props
+}) => {
   const { theme } = useVulpes();
   const colors = getColors(theme);
   const colorStyle = {
@@ -17,6 +26,7 @@ const Text = ({ style, title, fontStyle, color, center, strike, ...props }) => {
     ...style,
     ...(center ? { textAlign: 'center' } : {}),
     ...(strike ? { textDecorationLine: 'line-through' } : {}),
+    ...(underline ? { textDecorationLine: 'underline' } : {}),
   };
 
   if (props.testin) {
