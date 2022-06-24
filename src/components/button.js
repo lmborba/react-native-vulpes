@@ -137,7 +137,6 @@ class Button extends Component {
   }
   render() {
     const { disabled } = this.props;
-    console.log(this.textColor());
     return (
       <TouchableOpacity
         onPress={this.onPress.bind(this)}
