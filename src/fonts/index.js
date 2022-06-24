@@ -54,7 +54,7 @@ export const getFonts = (theme) => {
         color: darkGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '400',
+        fontWeight: '700',
         textAlign: 'left',
       },
       h3: {

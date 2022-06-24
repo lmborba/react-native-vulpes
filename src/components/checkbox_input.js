@@ -114,7 +114,7 @@ export class CheckboxInput extends Component {
       width: 8,
       alignItems: 'center',
       justifyContent: 'center',
-      borderColor: this.colorRegular(),
+      borderColor: this.colorOutline(),
       backgroundColor: this.colorRegular(),
     };
   }
