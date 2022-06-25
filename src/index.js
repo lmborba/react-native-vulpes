@@ -22,6 +22,7 @@ import {
   StackChart,
 } from './components/charts';
 import { CheckboxInput } from './components/checkbox_input';
+import { Checkbox } from './components/checkbox';
 import { CircularProgress } from './components/circular_progress';
 import { Divider } from './components/divider';
 import { GradientView } from './components/gradient_view';
@@ -121,6 +122,7 @@ export {
   Tab,
   TextInput,
   CheckboxInput,
+  Checkbox,
   SelectInput,
   BackgroundPage,
   SearchInput,
