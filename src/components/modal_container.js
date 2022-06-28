@@ -53,8 +53,20 @@ export class ModalContainer extends Component {
     });
   }
 
+  renderDismiss() {
+    const { onClose, noClose, dismissStyle } = this.props;
+    const onPress = noClose ? undefined : onClose;
+    return (
+      <TouchableOpacity
+        style={{ ...modalDismissStyle, ...dismissStyle }}
+        onPress={onPress}
+        activeOpacity={1}
+      />
+    );
+  }
+
   render() {
-    const { children, onClose, style, dismissStyle } = this.props;
+    const { children, onClose, style } = this.props;
     return (
       <Modal
         animationType="slide"
@@ -74,11 +86,7 @@ export class ModalContainer extends Component {
             },
           ]}
         >
-          <TouchableOpacity
-            style={{ ...modalDismissStyle, ...dismissStyle }}
-            onPress={onClose}
-            activeOpacity={1}
-          />
+          {this.renderDismiss()}
           {children}
         </Animated.View>
       </Modal>
