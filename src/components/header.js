@@ -114,7 +114,6 @@ class HeaderComplete extends Component {
   imageBackground() {
     let { theme } = this.props;
     if (!theme || !headers[theme]) theme = 'gogood';
-    console.log(theme);
     return headers[theme];
   }
 

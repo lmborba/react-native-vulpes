@@ -3,7 +3,7 @@ import { Colors } from '../colors';
 
 const buttonHeight = 44;
 const paddingHorizontal = 16;
-const paddingVertical = 12;
+const paddingVertical = 8;
 
 const buttonStyle = {
   borderRadius: buttonHeight / 2,
@@ -11,6 +11,7 @@ const buttonStyle = {
   paddingBottom: paddingVertical,
   paddingLeft: paddingHorizontal,
   paddingRight: paddingHorizontal,
+  alignItems: 'center',
   height: buttonHeight,
   flex: null,
   width: Platform.OS === 'web' ? 'fit-content' : null,

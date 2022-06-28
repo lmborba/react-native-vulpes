@@ -71,6 +71,7 @@ export class SearchInput extends Component {
           style={this.iconStyle()}
         />
         <Input
+          allowFontScaling={false}
           ref={this.handleReference.bind(this)}
           placeholder={placeholder}
           placeholderTextColor={this.fontStyle().color}

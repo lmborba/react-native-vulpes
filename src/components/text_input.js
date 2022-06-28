@@ -72,6 +72,7 @@ export class TextInput extends Component {
       <View style={style} {...this.handlePointer()}>
         <Regular style={labelStyle}>{label}</Regular>
         <Input
+          allowFontScaling={false}
           placeholder={placeholder}
           placeholderTextColor={this.fontStyle().color}
           onFocus={this.handleFocus.bind(this)}
