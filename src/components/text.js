@@ -3,6 +3,10 @@ import { Text as NativeText } from 'react-native';
 import { getColors } from '../colors';
 import useVulpes from '../hooks/useVulpes';
 
+const defaultProps = {
+  allowFontScaling: false,
+};
+
 const Text = ({
   style,
   title,
@@ -32,7 +36,7 @@ const Text = ({
   if (props.testin) {
     console.log(textStyle);
   }
-  return <NativeText style={textStyle} {...props} />;
+  return <NativeText {...defaultProps} style={textStyle} {...props} />;
 };
 
 export { Text };
