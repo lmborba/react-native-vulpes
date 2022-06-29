@@ -64,6 +64,11 @@ const btnStyle = {
   alignSelf: 'center',
 };
 
+const titleStyle = {
+  marginBottom: 16,
+  textAlign: 'center',
+};
+
 const CloseModal = (props) => {
   return (
     <Button ghost onPress={props.onClose}>
@@ -80,6 +85,7 @@ export class Modal extends Component {
       return React.cloneElement(child, {
         style: {
           marginBottom: 16,
+          textAlign: 'center',
           ...child.props.style,
         },
       });
@@ -103,21 +109,27 @@ export class Modal extends Component {
     );
   }
 
+  renderCloseButton() {
+    const { onClose, noClose } = this.props;
+    if (noClose) return null;
+    return <CloseModal onClose={onClose} />;
+  }
+
   render() {
-    const { onClose, clearModal, children, title, scrollEnabled } = this.props;
+    const { clearModal, children, title, scrollEnabled } = this.props;
     const { theme } = this.context;
     return (
       <KeyboardAvoidingView behavior={isIOS ? 'padding' : undefined}>
         <View style={modalContainer(theme)}>
-          <CloseModal onClose={onClose} />
+          {this.renderCloseButton()}
           <ScrollView scrollEnabled={scrollEnabled || false}>
             <View style={scrollContainer}>
               {clearModal ? (
                 children
               ) : (
                 <View style={modalContent}>
-                  {title && <H4>{title}</H4>}
                   {this.renderImage()}
+                  {title && <H4 style={titleStyle}>{title}</H4>}
                   {this.populateChildren()}
                   {this.renderActions()}
                 </View>
