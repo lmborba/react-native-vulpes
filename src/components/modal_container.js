@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, Modal, TouchableOpacity } from 'react-native';
+import { Animated, Modal, TouchableOpacity, BackHandler } from 'react-native';
 
 const containerStyle = {
   flex: 1,
@@ -18,6 +18,17 @@ export class ModalContainer extends Component {
     };
     this.fIn = this.fadeIn();
     this.fOut = this.fadeOut();
+    this.backHandler = null;
+  }
+  componentWillUnmount() {
+    this.backHandler && this.backHandler.remove();
+  }
+
+  componentDidMount() {
+    this.backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      this.onModalClose.bind(this)
+    );
   }
 
   componentDidUpdate(prevProps) {
@@ -65,14 +76,20 @@ export class ModalContainer extends Component {
     );
   }
 
+  onModalClose() {
+    const { onClose, noClose } = this.props;
+    if (noClose) return BackHandler.exitApp();
+    if (onClose) onClose();
+  }
+
   render() {
-    const { children, onClose, style } = this.props;
+    const { children, style } = this.props;
     return (
       <Modal
         animationType="slide"
         transparent={true}
         visible={this.visible}
-        onRequestClose={onClose}
+        onRequestClose={this.onModalClose.bind(this)}
       >
         <Animated.View
           style={[
