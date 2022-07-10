@@ -26,7 +26,7 @@ const TabButton = ({ focus, title, onSelect }) => {
 
   return (
     <TouchableOpacity onPress={onSelect} style={tabsStyle}>
-      <TextComponent color="dark_gray">{title}</TextComponent>
+      <TextComponent color={'gray.100'}>{title}</TextComponent>
     </TouchableOpacity>
   );
 };
