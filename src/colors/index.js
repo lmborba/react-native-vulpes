@@ -22,6 +22,7 @@ const mappedColors = {
       black: '#000000',
       white: '#FFFFFF',
       transparent: 'transparent',
+      default: '#383838', // dark_gray
     },
     primary: {
       20: '#CCF4F9',
@@ -121,6 +122,7 @@ const mappedColors = {
       black: '#000000',
       white: '#FFFFFF',
       transparent: 'transparent',
+      default: '#383838', // dark_gray
     },
     // dasa blue
     primary: {
@@ -216,6 +218,199 @@ const mappedColors = {
       purple: 'linear-gradient(90.9deg, #A93BDF 0%, #0078B2 100%);',
     },
   },
+  // todo: sesi color scheme
+  sesi: {
+    singleton: {
+      black: '#000000',
+      white: '#FFFFFF',
+      transparent: 'transparent',
+      default: '#0000ff',
+    },
+    purple: {
+      20: '#E2D6F4',
+      40: '#CCB3EE', // light_gray (dev defined)
+      60: '#B591E9',
+      80: '#884BDE', // gray (dev defined)
+      100: '#5A3192', // dark_gray
+      110: '#321C52',
+    },
+    blue: {
+      20: '#D1E7F1',
+      40: '#A9D5EA',
+      60: '#82C3E2',
+      80: '#329FD3',
+      100: '#1669AB',
+      110: '#0E416B',
+    },
+    green: {
+      20: '#DDF0D4',
+      40: '#C0E6AE',
+      60: '#A4DD89',
+      80: '#6ECF40',
+      100: '#39B540',
+      110: '#247528',
+    },
+    pink: {
+      20: '#EAD9EE',
+      40: '#DBBAE4',
+      60: '#CC9AD9',
+      80: '#AE5AC3',
+      100: '#73428D',
+      110: '#3E244D',
+    },
+    primary: {
+      20: '#CCF4F9',
+      40: '#67DDED',
+      60: '#34D1E7',
+      80: '#01C6E1', // cyan
+      100: '#01C6E1',
+      110: '#01A3B9', // dark_cyan
+    },
+    secondary: {
+      20: '#CCE9F7',
+      40: '#99D3F0',
+      60: '#66BEE8',
+      80: '#33A8E1',
+      100: '#0092D9', // blue
+      110: '#0078B2', // dark_blue
+    },
+    // orange
+    comp1: {
+      20: '#FFE4D0',
+      40: '#FFC9A2',
+      60: '#FFAD73',
+      80: '#FF9245',
+      100: '#FF7716', // orange
+      110: '#D16213', // dark_orange
+    },
+    // purple
+    comp2: {
+      20: '#EBE0FF',
+      40: '#D6C1FF',
+      60: '#C2A3FF',
+      80: '#AD84FF',
+      100: '#9965FF', // purple
+      110: '#7E53D1', // dark_purple
+    },
+    // marinho
+    comp3: {
+      20: '#CCD7E5',
+      40: '#99AECB',
+      60: '#6686B0',
+      80: '#335D96',
+      100: '#00357C',
+      110: '#002C66',
+    },
+    // pink
+    comp4: {
+      20: '#FFDBE6',
+      40: '#FFB7CD',
+      60: '#FF92B4',
+      80: '#FF6E9B',
+      100: '#FF4A82', // pink
+      110: '#D13D6B', // dark_pink
+    },
+    success: {
+      20: '#DDF0D4',
+      40: '#C0E6AE',
+      60: '#A4DD89',
+      80: '#6ECF40',
+      100: '#39B540',
+      110: '#247528',
+    },
+    error: {
+      20: '#FFDBDB',
+      40: '#FFB6B6',
+      60: '#FF9292',
+      80: '#FF6D6D',
+      100: '#FF4949', // red
+      110: '#E02323', // dark_red
+    },
+    alert: {
+      20: '#FFF4CC',
+      40: '#FFE999',
+      60: '#FFDD66',
+      80: '#FFD233',
+      100: '#FFC700', // yellow
+      110: '#DD9200', // dark_yellow
+    },
+    gray: {
+      3: '#F9F9F9',
+      20: '#E8E8E8',
+      40: '#D9D9D9', // light_gray (dev defined)
+      60: '#878787',
+      80: '#606060', // gray (dev defined)
+      100: '#383838', // dark_gray
+      110: '#232323',
+    },
+    gradient: {
+      cyan: 'linear-gradient(90.9deg, #1669AB 0%, #73428D 100%)',
+      blue: 'linear-gradient(90.9deg, #1669AB 0%, #73428D 100%)',
+      green: 'linear-gradient(90.9deg, #1669AB 0%, #73428D 100%)',
+      pink: 'linear-gradient(90.9deg, #1669AB 0%, #73428D 100%)',
+      purple: 'linear-gradient(90.9deg, #1669AB 0%, #73428D 100%)',
+    },
+  },
+};
+
+const semanticTokens = {
+  gogood: {
+    btn: {
+      regular: 'gray.100',
+      disabled: 'gray.40',
+    },
+    text: {
+      regular: 'gray.100',
+    },
+    tabBottom: {
+      active: 'singleton.black',
+      inactive: 'gray.60',
+    },
+    tag: {
+      locked: 'gray.40',
+      unlocked: 'primary.80',
+      lockedText: 'gray.100',
+      unlockedText: 'singleton.white',
+    },
+  },
+  dasa: {
+    btn: {
+      regular: 'gray.100',
+      disabled: 'gray.40',
+    },
+    text: {
+      regular: 'gray.100',
+    },
+    tabBottom: {
+      active: 'singleton.black',
+      inactive: 'gray.60',
+    },
+    tag: {
+      locked: 'gray.40',
+      unlocked: 'primary.80',
+      lockedText: 'gray.100',
+      unlockedText: 'singleton.white',
+    },
+  },
+  sesi: {
+    btn: {
+      regular: 'purple.80',
+      disabled: 'alert.80',
+    },
+    text: {
+      regular: 'gray.100',
+    },
+    tabBottom: {
+      active: 'purple.80',
+      inactive: 'gray.60',
+    },
+    tag: {
+      locked: 'gray.100',
+      unlocked: 'purple.80',
+      lockedText: 'singleton.white',
+      unlockedText: 'singleton.white',
+    },
+  },
 };
 
 const colorList = (theme) => {
@@ -228,13 +423,23 @@ const colorList = (theme) => {
 };
 
 const getColors = (theme) => {
-  return (token = 'gray.100') => {
+  return (token) => {
     const colors = mappedColors[theme || 'gogood'];
-    const defaultColor = colors.gray['100'] || '#323232';
+    const defaultColor = colors.singleton.default;
+
     if (!token) return defaultColor;
-    const [color, grade] = token.split('.');
-    if (!color || !grade) return defaultColor;
-    return colors[color][grade];
+    const [family, grade] = token.split('.');
+    if (!family || !grade) return defaultColor;
+
+    try {
+      const color = colors[family][grade];
+      return color;
+    } catch {
+      const semanticToken = semanticTokens[theme || 'gogood'][family][grade];
+      const [mappedFamily, mappedGrade] = semanticToken.split('.');
+      const color = colors[mappedFamily][mappedGrade];
+      return color || defaultColor;
+    }
   };
 };
 
