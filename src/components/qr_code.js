@@ -16,11 +16,12 @@ export class QRCodeValid extends Component {
   }
 
   render() {
-    const { image, code, color, used } = this.props;
+    const { logo, image, code, color } = this.props;
     const { width, height } = this.state;
     const { theme } = this.context;
     const colors = getColors(theme);
     const defSize = Math.min(width, height);
+    console.log('image', image);
     return (
       <View style={qrCodeContainer}>
         <View
@@ -32,13 +33,15 @@ export class QRCodeValid extends Component {
             color={colors(color)}
             size={defSize}
             logoMargin={2}
-            logo={image}
+            logo={logo}
             logoSize={80}
             logoBackgroundColor="white"
             logoBorderRadius={100}
           />
         </View>
-        {used && <Image source={image} style={this.qrCodeUsedImage(defSize)} />}
+        {image && (
+          <Image source={image} style={this.qrCodeUsedImage(defSize)} />
+        )}
       </View>
     );
   }
@@ -67,15 +70,8 @@ const confirmed = require('../../assets/images/qr_code_used.png');
 export const QRCodeShow = ({ logo, color, code, used, ...restProps }) => {
   if (!code) return null;
   if (used) {
-    return (
-      <QRCodeValid
-        code={code}
-        color={'gray.40'}
-        image={confirmed}
-        used={used}
-      />
-    );
+    return <QRCodeValid code={code} color={'gray.40'} image={confirmed} />;
   } else {
-    return <QRCodeValid code={code} color={color} image={logo} used={used} />;
+    return <QRCodeValid code={code} color={color} logo={logo} />;
   }
 };
