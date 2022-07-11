@@ -9,6 +9,7 @@ import dasaIcons from '../../assets/icons/dasa_selection.json';
 const IconSet = {
   gogood: gogoodIcons,
   dasa: dasaIcons,
+  sesi: gogoodIcons,
 };
 
 export const getIconSet = (theme) => {

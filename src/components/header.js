@@ -14,6 +14,7 @@ import { FillSpace } from './utils';
 const headers = {
   gogood: require('../../assets/images/header.png'),
   dasa: require('../../assets/images/header_dasa.png'),
+  sesi: require('../../assets/images/header_sesi.png'),
 };
 
 const topHeaderContainer = {

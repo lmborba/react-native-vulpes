@@ -33,7 +33,7 @@ export const MenuItem = ({ children, selected, onPress }) => {
       {React.Children.map(children, (child, i) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
-            color: selected ? 'singleton.black' : 'gray.60',
+            color: selected ? 'tabBottom.active' : 'tabBottom.inactive',
             fontStyle: selected ? fonts.menuTextBold : fonts.menuText,
             size: 18,
             style: {

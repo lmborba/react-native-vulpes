@@ -20,7 +20,7 @@ const Text = ({
   const { theme } = useVulpes();
   const colors = getColors(theme);
   const colorStyle = {
-    color: colors(color) || color || colors('gray.100'),
+    color: color ? colors(color) : colors('text.regular'),
   };
   const titleStyle = title ? { marginBottom: 32 } : {};
   const textStyle = {

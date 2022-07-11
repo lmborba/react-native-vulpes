@@ -75,8 +75,8 @@ class Button extends Component {
   primaryColor() {
     const { color, disabled } = this.props;
     if (color) return color;
-    if (disabled) return 'gray.40';
-    return 'gray.100';
+    if (disabled) return 'btn.disabled';
+    return 'btn.regular';
   }
 
   textColor() {
