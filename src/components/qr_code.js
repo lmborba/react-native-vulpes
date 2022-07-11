@@ -21,7 +21,6 @@ export class QRCodeValid extends Component {
     const { theme } = this.context;
     const colors = getColors(theme);
     const defSize = Math.min(width, height);
-    console.log('image', image);
     return (
       <View style={qrCodeContainer}>
         <View
