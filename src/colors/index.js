@@ -361,6 +361,7 @@ const semanticTokens = {
     },
     text: {
       regular: 'gray.100',
+      subtitle: 'gray.100',
     },
     tabBottom: {
       active: 'singleton.black',
@@ -380,6 +381,7 @@ const semanticTokens = {
     },
     text: {
       regular: 'gray.100',
+      subtitle: 'gray.100',
     },
     tabBottom: {
       active: 'singleton.black',
@@ -395,10 +397,11 @@ const semanticTokens = {
   sesi: {
     btn: {
       regular: 'purple.80',
-      disabled: 'alert.80',
+      disabled: 'gray.20',
     },
     text: {
       regular: 'gray.100',
+      subtitle: 'gray.60',
     },
     tabBottom: {
       active: 'purple.80',

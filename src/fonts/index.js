@@ -13,6 +13,8 @@ const _fontFamily = (type, theme) => {
       return 'OpenSans-' + type;
     case 'dasa':
       return 'DasaSans-' + type;
+    case 'sesi':
+      return 'Lato-' + type;
     default:
       return 'OpenSans-' + type;
   }
@@ -23,6 +25,8 @@ const dasaWeight = (weight) => {};
 export const getFonts = (theme) => {
   const colors = getColors(theme);
   const darkGray = colors('gray.100');
+  const white = colors('singleton.white');
+  const sesiLightGray = colors('gray.60');
   const fonts = {
     gogood: {
       bodyLarge: {
@@ -325,7 +329,7 @@ export const getFonts = (theme) => {
     sesi: {
       bodyLarge: {
         fontSize: 16,
-        color: darkGray,
+        color: white,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
         fontWeight: '400',
@@ -333,7 +337,7 @@ export const getFonts = (theme) => {
       },
       bodyLargeBold: {
         fontSize: 16,
-        color: darkGray,
+        color: white,
         letterSpacing: 0,
         fontFamily: _fontFamily('Bold', theme),
         fontWeight: '700',
@@ -343,32 +347,30 @@ export const getFonts = (theme) => {
         fontSize: 32,
         color: darkGray,
         letterSpacing: 0,
-        fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontFamily: 'Aleo-Bold',
         textAlign: 'left',
       },
       h2: {
-        fontSize: 24,
+        fontSize: 23,
         color: darkGray,
         letterSpacing: 0,
-        fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontFamily: 'Aleo-Bold',
         textAlign: 'left',
       },
       h3: {
         fontSize: 20,
         color: darkGray,
         letterSpacing: 0,
-        fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        fontFamily: 'Aleo-Bold',
         textAlign: 'left',
       },
       h4: {
         fontSize: 18,
         color: darkGray,
         letterSpacing: 0,
-        fontFamily: _fontFamily('Bold', theme),
-        fontWeight: '700',
+        // fontFamily: _fontFamily('Bold', theme),
+        fontFamily: 'Aleo-Bold',
+        fontWeight: '400',
         textAlign: 'left',
       },
       subtitle: {
@@ -431,7 +433,7 @@ export const getFonts = (theme) => {
       },
       regular: {
         fontSize: 14,
-        color: darkGray,
+        color: sesiLightGray,
         letterSpacing: 0,
         fontFamily: _fontFamily('Regular', theme),
         fontWeight: '400',
