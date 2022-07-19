@@ -31,11 +31,10 @@ export class QRCodeValid extends Component {
             value={code}
             color={colors(color)}
             size={defSize}
-            logoMargin={2}
             logo={logo}
             logoSize={80}
             logoBackgroundColor="white"
-            logoBorderRadius={100}
+            logoBorderRadius={40}
           />
         </View>
         {image && (
