@@ -359,6 +359,12 @@ const semanticTokens = {
       regular: 'gray.100',
       disabled: 'gray.40',
     },
+    bullet: {
+      regular: 'primary.80',
+    },
+    btnRefer: {
+      regular: 'gray.100',
+    },
     text: {
       regular: 'gray.100',
       subtitle: 'gray.100',
@@ -376,8 +382,14 @@ const semanticTokens = {
   },
   dasa: {
     btn: {
-      regular: 'gray.100',
+      regular: 'primary.60',
       disabled: 'gray.40',
+    },
+    bullet: {
+      regular: 'primary.60',
+    },
+    btnRefer: {
+      regular: 'singleton.white',
     },
     text: {
       regular: 'gray.100',
@@ -398,6 +410,12 @@ const semanticTokens = {
     btn: {
       regular: 'purple.80',
       disabled: 'gray.20',
+    },
+    bullet: {
+      regular: 'purple.80',
+    },
+    btnRefer: {
+      regular: 'singleton.white',
     },
     text: {
       regular: 'gray.100',

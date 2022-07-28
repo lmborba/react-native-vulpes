@@ -115,10 +115,12 @@ class Button extends Component {
   }
 
   completeStyle() {
+    const { theme } = this.context;
+    const style = styles(theme);
     const { ghost, outline } = this.props;
-    if (outline) return styles.outlineStyle;
-    if (ghost) return styles.ghostStyle;
-    return styles.defaultStyle;
+    if (outline) return style.outlineStyle;
+    if (ghost) return style.ghostStyle;
+    return style.defaultStyle;
   }
 
   buttonStyle() {
