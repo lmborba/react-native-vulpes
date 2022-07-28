@@ -16,19 +16,27 @@ export class QRCodeValid extends Component {
   }
 
   render() {
-    const { image, code, color } = this.props;
+    const { logo, image, code, color } = this.props;
     const { width, height } = this.state;
     const { theme } = this.context;
     const colors = getColors(theme);
     const defSize = Math.min(width, height);
-
     return (
       <View style={qrCodeContainer}>
         <View
           style={qrCodeInnerContainer}
           onLayout={this.layoutHandler.bind(this)}
         >
-          <QRCode value={code} color={colors(color)} size={defSize} />
+          <QRCode
+            value={code}
+            color={colors(color)}
+            size={defSize}
+            logoMargin={2}
+            logo={logo}
+            logoSize={80}
+            logoBackgroundColor="white"
+            logoBorderRadius={100}
+          />
         </View>
         {image && (
           <Image source={image} style={this.qrCodeUsedImage(defSize)} />
@@ -58,11 +66,11 @@ QRCodeValid.contextType = VulpesContext;
 
 const confirmed = require('../../assets/images/qr_code_used.png');
 
-export const QRCodeShow = ({ color, code, used, ...restProps }) => {
+export const QRCodeShow = ({ logo, color, code, used, ...restProps }) => {
   if (!code) return null;
   if (used) {
     return <QRCodeValid code={code} color={'gray.40'} image={confirmed} />;
   } else {
-    return <QRCodeValid code={code} color={color} />;
+    return <QRCodeValid code={code} color={color} logo={logo} />;
   }
 };
