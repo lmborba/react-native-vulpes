@@ -21,6 +21,7 @@ export class QRCodeValid extends Component {
     const { theme } = this.context;
     const colors = getColors(theme);
     const defSize = Math.min(width, height);
+    console.log('QRCodeValid render', width, height, defSize);
     return (
       <View style={qrCodeContainer}>
         <View
@@ -33,7 +34,7 @@ export class QRCodeValid extends Component {
             size={defSize}
             logoMargin={2}
             logo={logo}
-            logoSize={80}
+            logoSize={defSize * 0.3}
             logoBackgroundColor="white"
             logoBorderRadius={100}
           />
