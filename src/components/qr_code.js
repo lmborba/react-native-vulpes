@@ -30,10 +30,10 @@ export class QRCodeValid extends Component {
           <QRCode
             value={code}
             color={colors(color)}
+            ecl={'H'}
             size={defSize}
-            logoMargin={2}
             logo={logo}
-            logoSize={80}
+            logoSize={defSize * 0.3}
             logoBackgroundColor="white"
             logoBorderRadius={100}
           />

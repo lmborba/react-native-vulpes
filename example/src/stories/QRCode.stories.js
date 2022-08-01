@@ -2,7 +2,6 @@ import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
 import { Colors, QRCodeShow } from 'react-native-vulpes';
-
 const exampleImage = require('../images/transparentLogo.png');
 
 const imageList = () => {
@@ -23,7 +22,6 @@ const colorList = () => {
   }
   return keys;
 };
-
 export default {
   title: 'Example/QRCodes',
   component: QRCodeShow,
@@ -56,7 +54,6 @@ export default {
     },
   },
 };
-
 const qrCodeSize = { width: 400, height: 400 };
 const TemplateQRCodes = ({
   color = undefined,
@@ -77,7 +74,6 @@ const TemplateQRCodes = ({
     </View>
   );
 };
-
 export const Example = TemplateQRCodes;
 Example.argTypes = {
   color: {
@@ -88,20 +84,17 @@ Example.argTypes = {
     },
   },
 };
-
 Example.args = {
   color: undefined,
   code: 'menu',
   used: false,
   source: 'static/media/thumb.5ebfbd91.png',
 };
-
 if (Platform.OS === 'android') {
   const fillStories = storiesOf('Color', module).addDecorator((Story) => (
     <View>
       <Story />
     </View>
   ));
-
   fillStories.add('QRCode', Example);
 }
