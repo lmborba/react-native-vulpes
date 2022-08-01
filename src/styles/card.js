@@ -98,6 +98,47 @@ export default (theme) => {
       borderBottomLeftRadius: radius,
     },
 
+    // Upload card
+    uploadCardContainer: {
+      paddingTop: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingRight: 0,
+      height: 51,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+
+    uploadCardIconContainer: {
+      width: 80,
+      height: 91,
+
+      margin: -1,
+      borderTopLeftRadius: radius,
+      borderBottomLeftRadius: radius,
+      backgroundColor: colors('primary.100'),
+    },
+
+    uploadCardIcon: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    uploadCardContentContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      flexGrow: 1,
+    },
+
+    uploadCardLabelContainer: {
+      flex: 1,
+      marginLeft: 16,
+    },
+
+    // IllustrationCard
     illustrationCardContainer: {
       paddingTop: 0,
       paddingBottom: 0,
