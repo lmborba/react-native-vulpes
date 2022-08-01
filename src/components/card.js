@@ -347,6 +347,44 @@ export class IllustrationMiniCard extends Component {
 }
 IllustrationMiniCard.contextType = VulpesContext;
 
+export class UploadCard extends Component {
+  handlePress() {
+    const { onClose } = this.props;
+    onClose && onClose();
+  }
+
+  render() {
+    const { theme } = this.context;
+    const { filename } = this.props;
+    const _style = style(theme);
+    return (
+      <Card
+        cardContainer={_style.uploadCardContainer}
+        color={'singleton.transparent'}
+        {...this.props}
+      >
+        <View style={_style.uploadCardIconContainer}>
+          <Icon
+            style={_style.uploadCardIcon}
+            name={'file'}
+            size={24}
+            color={'singleton.white'}
+          />
+        </View>
+        <View style={_style.uploadCardContentContainer}>
+          <View style={_style.uploadCardLabelContainer}>
+            <Regular numberOfLines={1}>{filename}</Regular>
+          </View>
+          <Button onPress={this.handlePress.bind(this)} ghost>
+            <Icon color={'primary.100'} size={16} name={'close'} />
+          </Button>
+        </View>
+      </Card>
+    );
+  }
+}
+UploadCard.contextType = VulpesContext;
+
 export const BannerCard = ({
   title,
   description,

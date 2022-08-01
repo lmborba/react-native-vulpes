@@ -3,6 +3,7 @@ import React from 'react';
 import { Platform, View } from 'react-native';
 import { Colors, QRCodeShow } from 'react-native-vulpes';
 const exampleImage = require('../images/transparentLogo.png');
+
 const imageList = () => {
   return [
     exampleImage,
@@ -11,6 +12,7 @@ const imageList = () => {
     undefined,
   ];
 };
+
 const colorList = () => {
   var keys = [];
   for (var k in Colors) {
