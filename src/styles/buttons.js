@@ -69,5 +69,12 @@ export default (theme) => {
       borderColor: null,
       borderWidth: 0,
     },
+    blockOuter: {
+      flex: 1,
+      alignItems: 'center',
+    },
+    blockInner: {
+      flexDirection: 'row',
+    },
   };
 };

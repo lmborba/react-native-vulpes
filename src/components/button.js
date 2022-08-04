@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Keyboard } from 'react-native';
+import { Keyboard, TouchableOpacity, View } from 'react-native';
 import { getColors } from '../colors';
 import { RegularBold } from '../components/typos';
+import VulpesContext from '../contexts/VulpesContext';
 import { getFonts } from '../fonts';
 import styles from '../styles/buttons';
 import { Icon } from './icon';
-import VulpesContext from '../contexts/VulpesContext';
 
 class Button extends Component {
   renderField() {
@@ -53,8 +53,9 @@ class Button extends Component {
 
   renderChildren() {
     const { theme } = this.context;
+    const style = styles(theme);
     const fonts = getFonts(theme);
-    return React.Children.map(this.props.children, (child, i) => {
+    const items = React.Children.map(this.props.children, (child, i) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
           color: this.textColor(),
@@ -70,6 +71,12 @@ class Button extends Component {
       }
       return child;
     });
+    if (!this.props.block) return items;
+    return (
+      <View style={style.blockOuter}>
+        <View style={style.blockInner}>{items}</View>
+      </View>
+    );
   }
 
   primaryColor() {
@@ -126,6 +133,7 @@ class Button extends Component {
   buttonStyle() {
     return {
       ...this.completeStyle(),
+      ...(this.props.block ? { width: '100%' } : {}),
       ...this.props.style,
       backgroundColor: this.backgroundColor(),
       borderColor: this.borderColor(),
@@ -139,6 +147,7 @@ class Button extends Component {
   }
   render() {
     const { disabled } = this.props;
+
     return (
       <TouchableOpacity
         onPress={this.onPress.bind(this)}
