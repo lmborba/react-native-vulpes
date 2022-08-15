@@ -55,7 +55,9 @@ class Button extends Component {
     const { theme } = this.context;
     const style = styles(theme);
     const fonts = getFonts(theme);
-    const items = React.Children.map(this.props.children, (child, i) => {
+
+    const list = React.Children.toArray(this.props.children).filter((c) => !!c);
+    const items = list.map((child, i) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
           color: this.textColor(),
