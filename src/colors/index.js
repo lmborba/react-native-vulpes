@@ -214,8 +214,8 @@ const mappedColors = {
       cyan: 'linear-gradient(90.9deg, #ABE6FF 0%, #0037FF 100%)',
       blue: 'linear-gradient(270.9deg, #0028B8 0%, #0037FF 100%)',
       green: 'linear-gradient(90.9deg, #00C7A2 0%, #01A3B9 100%)',
-      pink: 'linear-gradient(90.9deg, #EE7973 0%, #FF4F33 100%);',
-      purple: 'linear-gradient(90.9deg, #A93BDF 0%, #0078B2 100%);',
+      pink: 'linear-gradient(90.9deg, #EE7973 0%, #FF4F33 100%)',
+      purple: 'linear-gradient(90.9deg, #A93BDF 0%, #0078B2 100%)',
     },
   },
   // todo: sesi color scheme
@@ -379,6 +379,15 @@ const semanticTokens = {
       lockedText: 'singleton.white',
       unlockedText: 'singleton.white',
     },
+    rh: {
+      financials: 'success.100',
+      checkins: 'comp1.100',
+      users: 'secondary.100',
+      gyms: 'primary.80',
+      payments: 'comp2.100',
+      content: 'error.100',
+      label: 'secondary.100',
+    },
   },
   dasa: {
     btn: {
@@ -405,6 +414,15 @@ const semanticTokens = {
       lockedText: 'singleton.white',
       unlockedText: 'singleton.white',
     },
+    rh: {
+      financials: 'success.100',
+      checkins: 'comp1.100',
+      users: 'secondary.100',
+      gyms: 'primary.60',
+      payments: 'comp2.100',
+      content: 'error.100',
+      label: 'secondary.100',
+    },
   },
   sesi: {
     btn: {
@@ -430,6 +448,15 @@ const semanticTokens = {
       unlocked: 'purple.80',
       lockedText: 'singleton.white',
       unlockedText: 'singleton.white',
+    },
+    rh: {
+      financials: 'success.100',
+      checkins: 'comp1.100',
+      users: 'purple.100',
+      gyms: 'purple.60',
+      payments: 'comp2.100',
+      content: 'error.100',
+      label: 'purple.100',
     },
   },
 };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { BarChart as BChart } from 'react-native-gifted-charts';
-import { Colors, getColors } from '../../colors';
+import { getColors } from '../../colors';
 import VulpesContext from '../../contexts/VulpesContext';
 import { SmallBold } from './../typos';
 
@@ -71,8 +71,8 @@ export class BarChart extends Component {
           capThickness={0}
           capColor={colors('gray.100')}
           showGradient
-          gradientColor={Colors['dark_' + color]}
-          frontColor={Colors['light_' + color]}
+          gradientColor={colors(color)}
+          frontColor={colors(color)}
         />
       </View>
     );

@@ -106,7 +106,7 @@ export const EmptyChart = (props) => (
   <CardChart {...props}>
     <View style={emptyChartWrapper}>
       <Image source={props.image} style={cardImage} />
-      <Text color="gray">{props.emptyText}</Text>
+      <Text color={'gray.100'}>{props.emptyText}</Text>
     </View>
   </CardChart>
 );
