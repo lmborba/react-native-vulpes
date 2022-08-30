@@ -60,7 +60,6 @@ const Header = (props) => {
   if (!first) return null;
 
   if (Array.isArray(first)) return null;
-
   if (typeof data === 'object') return r(Object.keys(first));
   return null;
 };

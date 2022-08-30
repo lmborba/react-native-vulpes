@@ -1,22 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
-import { BarChart as C, PieChart as P } from 'react-native-vulpes';
-
-const colorList = () => {
-  return [
-    'cyan',
-    'blue',
-    'green',
-    'orange',
-    'purple',
-    'pink',
-    'red',
-    'yellow',
-    'gray',
-    undefined,
-  ];
-};
+import { BarChart as C, PieChart as P, colorList } from 'react-native-vulpes';
 
 const buttonContainer = { margin: 10 };
 
@@ -30,7 +15,6 @@ class TemplateButton extends Component {
   render() {
     const dataB = {
       title: 'Titulo do gráfico de barras',
-      color: this.props.color,
       data: [
         { label: 'Jan', value: 50 },
         { label: 'Fev', value: 80 },
@@ -41,7 +25,6 @@ class TemplateButton extends Component {
     const dataP = {
       title: 'Titulo do gráfico de pizza 2',
       helper: 'Mensagem de ajuda',
-      color: this.props.color,
       data: [
         { label: 'Janeiro de 2021 - 30%', value: 20 },
         { label: 'Fev', value: 50 },
@@ -53,8 +36,8 @@ class TemplateButton extends Component {
     const s = { flexDirection: 'row' };
     return (
       <View style={s}>
-        <PieChart data={dataP} />
-        <BarChart data={dataB} />
+        <PieChart data={dataP} color={this.props.color} />
+        <BarChart data={dataB} color={this.props.color} />
       </View>
     );
   }
@@ -89,7 +72,7 @@ Example.argTypes = {
     description: 'color for the text',
     control: {
       type: 'select',
-      options: colorList(),
+      options: colorList().filter((color) => !color.includes('gradient')),
     },
   },
   data: {
