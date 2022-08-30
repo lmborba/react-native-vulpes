@@ -29,9 +29,22 @@ export class BarChart extends Component {
       textAlign: 'center',
     };
   }
+  // todo: resolver inversão de cores
+  parseGraphGradient() {
+    const { color } = this.props;
+    if (!color) return { gradientColor: '#000000', frontColor: '#000333' };
+    const [family, grade] = color.split('.');
+    const colors = getColors(theme);
+    const { theme } = this.context;
+    const gradientColor = colors(color);
+    const frontColor = isNaN(grade)
+      ? colors(`${color}_dark`)
+      : colors(`${family}.110`);
+    return { gradientColor, frontColor };
+  }
 
   renderGraph() {
-    const { data, color } = this.props;
+    const { data } = this.props;
     if (!this.props.width) return null;
 
     const itens = this.nItems;
@@ -54,6 +67,8 @@ export class BarChart extends Component {
     const sGraph = { flex: 1, paddingBottom: 16, marginLeft: -35 };
     const { theme } = this.context;
     const colors = getColors(theme);
+    const { gradientColor, frontColor } = this.parseGraphGradient();
+
     return (
       <View style={sGraph}>
         <BChart
@@ -71,8 +86,8 @@ export class BarChart extends Component {
           capThickness={0}
           capColor={colors('gray.100')}
           showGradient
-          gradientColor={colors(color)}
-          frontColor={colors(color)}
+          gradientColor={gradientColor}
+          frontColor={frontColor}
         />
       </View>
     );
