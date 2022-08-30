@@ -33,9 +33,9 @@ export class BarChart extends Component {
   parseGraphGradient() {
     const { color } = this.props;
     if (!color) return { gradientColor: '#000000', frontColor: '#000333' };
+    const { theme } = this.context;
     const [family, grade] = color.split('.');
     const colors = getColors(theme);
-    const { theme } = this.context;
     const gradientColor = colors(color);
     const frontColor = isNaN(grade)
       ? colors(`${color}_dark`)
