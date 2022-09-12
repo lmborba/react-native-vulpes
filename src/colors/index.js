@@ -224,7 +224,7 @@ const mappedColors = {
       black: '#000000',
       white: '#FFFFFF',
       transparent: 'transparent',
-      default: '#0000ff',
+      default: '#383838',
     },
     purple: {
       20: '#E2D6F4',
