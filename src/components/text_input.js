@@ -136,7 +136,7 @@ export class TextInput extends Component {
     const { theme } = this.context;
     const colors = getColors(theme);
     if (this.props.error) return colors('error.100');
-    if (this.state.focused) return colors('primary.80');
+    if (this.state.focused) return colors('textInput.outline');
     return colors('gray.40');
   }
 }

@@ -3,7 +3,7 @@ import { Image, ImageBackground, TouchableOpacity, View } from 'react-native';
 import { getColors } from '../colors';
 import VulpesContext from '../contexts/VulpesContext';
 import useVulpes from '../hooks/useVulpes';
-import style from '../styles/card';
+import getStyle from '../styles/card';
 import { Button } from './button';
 import { Dash } from './dash';
 import { GradientView } from './gradient_view';
@@ -33,12 +33,13 @@ export class Card extends Component {
 
   render() {
     const { theme } = this.context;
+    const style = getStyle(theme);
     const zeroPadding = this.props.noPadding
       ? style.cardContainerZeroPadding
       : {};
 
     let cardContainer = {
-      ...style(theme).cardContainer,
+      ...getStyle(theme).cardContainer,
       ...zeroPadding,
     };
 
@@ -49,9 +50,9 @@ export class Card extends Component {
     return (
       <MainComponent onPress={this.props.onPress} style={this.props.style}>
         <View style={cardContainer}>{this.props.children}</View>
-        <View style={style(theme).outerCardBorder}>
+        <View style={getStyle(theme).outerCardBorder}>
           <View
-            style={{ ...style(theme).cardTopBorder, ...this.changedColor() }}
+            style={{ ...getStyle(theme).cardTopBorder, ...this.changedColor() }}
           />
         </View>
       </MainComponent>
@@ -60,22 +61,20 @@ export class Card extends Component {
 }
 Card.contextType = VulpesContext;
 
+const CardSeparator = () => {
+  const { theme } = useVulpes();
+  const style = getStyle(theme);
+  return <View style={style._cardSeparator} />;
+};
+
 const TicketCardSeparator = (props) => {
   const { theme } = useVulpes();
-  const colors = getColors(theme);
-  const _style = style(theme);
+  const style = getStyle(theme);
   return (
-    <View style={_style.cardSeparator}>
-      <View style={_style.cardSeparatorLeft} />
-      <Dash
-        style={_style.dashContainer}
-        dashColor={colors('gray.40')}
-        dashThickness={0}
-        dashGap={7}
-        dashLength={7}
-        dashStyle={_style.dashStyle}
-      />
-      <View style={_style.cardSeparatorRight} />
+    <View style={style.cardSeparator}>
+      <View style={style.cardSeparatorLeft} />
+      <CardSeparator />
+      <View style={style.cardSeparatorRight} />
     </View>
   );
 };
@@ -93,13 +92,13 @@ export class TicketCard extends Component {
 
 const CheckinImage = (props) => {
   const { theme } = useVulpes();
-  const _style = style(theme);
+  const style = getStyle(theme);
   return (
-    <View style={_style.checkinImageOuter}>
+    <View style={style.checkinImageOuter}>
       {props.checked ? (
-        <Image source={checkedImage} style={_style.checkinImage} />
+        <Image source={checkedImage} style={style.checkinImage} />
       ) : (
-        <Image source={uncheckedImage} style={_style.checkinImage} />
+        <Image source={uncheckedImage} style={style.checkinImage} />
       )}
     </View>
   );
@@ -107,26 +106,18 @@ const CheckinImage = (props) => {
 
 const TicketCheckinCardSeparator = (props) => {
   const { theme } = useVulpes();
-  const colors = getColors(theme);
-  const _style = style(theme);
+  const style = getStyle(theme);
 
   return (
-    <View style={_style.ticketProfileCardDividerContainer}>
-      <View style={_style.profileCardDividerContent}>
-        <View style={_style.cardSeparator}>
-          <View style={_style.cardSeparatorLeft} />
-          <Dash
-            style={_style.dashContainer}
-            dashColor={colors('gray.40')}
-            dashThickness={0}
-            dashGap={7}
-            dashLength={7}
-            dashStyle={_style.dashStyle}
-          />
-          <View style={_style.cardSeparatorRight} />
+    <View style={style.ticketProfileCardDividerContainer}>
+      <View style={style.profileCardDividerContent}>
+        <View style={style.cardSeparator}>
+          <View style={style.cardSeparatorLeft} />
+          <CardSeparator />
+          <View style={style.cardSeparatorRight} />
         </View>
       </View>
-      <View style={_style.ticketProfileCardImgContent}>
+      <View style={style.ticketProfileCardImgContent}>
         <CheckinImage checked={props.checked} />
       </View>
     </View>
@@ -135,25 +126,18 @@ const TicketCheckinCardSeparator = (props) => {
 
 const TicketProfileCardSeparator = (props) => {
   const { theme } = useVulpes();
-  const _style = style(theme);
+  const style = getStyle(theme);
   const colors = getColors(theme);
   return (
-    <View style={_style.ticketProfileCardDividerContainer}>
-      <View style={_style.profileCardDividerContent}>
-        <View style={_style.cardSeparator}>
-          <View style={_style.cardSeparatorLeft} />
-          <Dash
-            style={_style.dashContainer}
-            dashColor={colors('gray.40')}
-            dashThickness={0}
-            dashGap={7}
-            dashLength={7}
-            dashStyle={_style.dashStyle}
-          />
-          <View style={_style.cardSeparatorRight} />
+    <View style={style.ticketProfileCardDividerContainer}>
+      <View style={style.profileCardDividerContent}>
+        <View style={style.cardSeparator}>
+          <View style={style.cardSeparatorLeft} />
+          <CardSeparator />
+          <View style={style.cardSeparatorRight} />
         </View>
       </View>
-      <View style={_style.ticketProfileCardImgContent}>
+      <View style={style.ticketProfileCardImgContent}>
         <Thumbnail size="medium" source={props.source} />
       </View>
     </View>
@@ -162,20 +146,20 @@ const TicketProfileCardSeparator = (props) => {
 
 const ProfileCardSeparator = (props) => {
   const { theme } = useVulpes();
-  const _style = style(theme);
+  const style = getStyle(theme);
   if (!props.source) {
     const sMargin = { marginBottom: 16 };
     return (
-      <View style={[_style.profileCardDividerContainer, sMargin]}>
-        <View style={_style.profileCardDivider} />
+      <View style={[style.profileCardDividerContainer, sMargin]}>
+        <View style={style.profileCardDivider} />
       </View>
     );
   }
 
   return (
-    <View style={_style.profileCardDividerContainer}>
-      <View style={_style.profileCardDivider} />
-      <View style={_style.profileCardImgContent}>
+    <View style={style.profileCardDividerContainer}>
+      <View style={style.profileCardDivider} />
+      <View style={style.profileCardImgContent}>
         <Thumbnail size="medium" source={props.source} />
       </View>
     </View>
@@ -246,13 +230,13 @@ const CardCover = ({ tagText, tagIcon, tagColor, tagTextColor, source }) => {
     const dummyStyle = { height: 32 };
     return <View style={dummyStyle} />;
   }
-  const _style = style(theme);
+  const style = getStyle(theme);
   return (
-    <View style={_style.cardCoverContainer}>
+    <View style={style.cardCoverContainer}>
       <ImageBackground
         source={source}
-        style={_style.cardContainerCoverBackground}
-        imageStyle={_style.cardContainerCoverImage}
+        style={style.cardContainerCoverBackground}
+        imageStyle={style.cardContainerCoverImage}
       >
         {(tagText || tagIcon) && (
           <CardTag
@@ -297,9 +281,9 @@ export class MiniProfileCard extends Component {
   render() {
     const { tagTextColor, tagColor, tagText, tagIcon } = this.props;
     const { theme } = this.context;
-    const _style = style(theme);
+    const style = getStyle(theme);
     return (
-      <Card cardContainer={_style.miniCardContainer} {...this.props}>
+      <Card cardContainer={style.miniCardContainer} {...this.props}>
         {(tagText || tagIcon) && (
           <CardTag
             textColor={tagTextColor}
@@ -311,7 +295,7 @@ export class MiniProfileCard extends Component {
         )}
         <View style={outerMiniCardStyle}>
           <Thumbnail source={this.props.source} size={'small'} />
-          <View style={_style.miniCardContentStyle}>{this.props.children}</View>
+          <View style={style.miniCardContentStyle}>{this.props.children}</View>
         </View>
       </Card>
     );
@@ -321,23 +305,23 @@ MiniProfileCard.contextType = VulpesContext;
 
 const IllustrationOnCard = (props) => {
   const { theme } = useVulpes();
-  const _style = style(theme);
-  return <Image source={props.source} style={_style.illustrationOnCard} />;
+  const style = getStyle(theme);
+  return <Image source={props.source} style={style.illustrationOnCard} />;
 };
 
 export class IllustrationMiniCard extends Component {
   render() {
     const { theme } = this.context;
-    const _style = style(theme);
+    const style = getStyle(theme);
     return (
       <Card
-        cardContainer={_style.illustrationCardContainer}
+        cardContainer={style.illustrationCardContainer}
         color={'singleton.transparent'}
         {...this.props}
       >
         <View style={outerMiniCardStyle}>
           <IllustrationOnCard source={this.props.source} />
-          <View style={_style.illustrationCardOuterStyle}>
+          <View style={style.illustrationCardOuterStyle}>
             {this.props.children}
           </View>
         </View>
@@ -356,27 +340,31 @@ export class UploadCard extends Component {
   render() {
     const { theme } = this.context;
     const { filename } = this.props;
-    const _style = style(theme);
+    const style = getStyle(theme);
     return (
       <Card
-        cardContainer={_style.uploadCardContainer}
+        cardContainer={style.uploadCardContainer}
         color={'singleton.transparent'}
         {...this.props}
       >
-        <View style={_style.uploadCardIconContainer}>
+        <View style={style.uploadCardIconContainer}>
           <Icon
-            style={_style.uploadCardIcon}
+            style={style.uploadCardIcon}
             name={'file'}
             size={24}
             color={'singleton.white'}
           />
         </View>
-        <View style={_style.uploadCardContentContainer}>
-          <View style={_style.uploadCardLabelContainer}>
+        <View style={style.uploadCardContentContainer}>
+          <View style={style.uploadCardLabelContainer}>
             <Regular numberOfLines={1}>{filename}</Regular>
           </View>
-          <Button onPress={this.handlePress.bind(this)} ghost>
-            <Icon color={'primary.100'} size={16} name={'close'} />
+          <Button
+            color={'gray.100'}
+            onPress={this.handlePress.bind(this)}
+            ghost
+          >
+            <Icon size={16} name={'close'} />
           </Button>
         </View>
       </Card>
@@ -397,7 +385,7 @@ export const BannerCard = ({
   style: bStyle,
 }) => {
   const { theme } = useVulpes();
-  const _style = style(theme);
+  const style = getStyle(theme);
   const OuterComp = onPress ? TouchableOpacity : View;
 
   const cardHeight = height || 162;
@@ -414,17 +402,17 @@ export const BannerCard = ({
     <OuterComp onPress={onPress} style={bStyle}>
       <GradientView
         color={color}
-        style={[_style.bannerCardGradient, { height: cardHeight }]}
+        style={[style.bannerCardGradient, { height: cardHeight }]}
       >
-        <View style={_style.outerViewBannerCard}>
-          <View style={_style.imageInBannerCard}>
+        <View style={style.outerViewBannerCard}>
+          <View style={style.imageInBannerCard}>
             <Image source={source} style={imageStyle} />
           </View>
 
-          <View style={_style.textsViewBannerCard}>
+          <View style={style.textsViewBannerCard}>
             <RegularBold
               color="singleton.white"
-              style={_style.titleTextBannerCard}
+              style={style.titleTextBannerCard}
             >
               {title}
             </RegularBold>
@@ -433,7 +421,7 @@ export const BannerCard = ({
               <Button
                 color="singleton.white"
                 ghost
-                style={_style.buttonTextBannerCard}
+                style={style.buttonTextBannerCard}
                 onPress={onPressLink}
               >
                 <Text>{linkText}</Text>
@@ -449,9 +437,9 @@ export const BannerCard = ({
 
 export const CardActions = ({ children, style: pStyle }) => {
   const { theme } = useVulpes();
-  const _style = style(theme);
+  const style = getStyle(theme);
   return (
-    <View style={[_style.cardActionsContainer, pStyle]}>
+    <View style={[style.cardActionsContainer, pStyle]}>
       <FillSpace />
       <View>{children}</View>
     </View>

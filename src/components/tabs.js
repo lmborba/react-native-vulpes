@@ -4,29 +4,24 @@ import { getColors } from '../colors';
 import useVulpes from '../hooks/useVulpes';
 import { Regular, RegularBold } from './typos';
 
-const tabsDefaultStyle = (theme) => {
+const TabButton = ({ focus, title, onSelect }) => {
+  const { theme } = useVulpes();
   const colors = getColors(theme);
-  return {
+  const TextComponent = focus ? RegularBold : Regular;
+  const tabsStyle = {
     paddingBottom: 10,
     paddingTop: 10,
     marginRight: 32,
-    borderBottomWidth: 0,
-    borderBottomColor: colors('gray.100'),
+    borderBottomWidth: 4,
+    borderBottomColor: focus ? colors('tab.underline') : colors('gray.40'),
     marginBottom: -1,
   };
-};
-const TabButton = ({ focus, title, onSelect }) => {
-  const { theme } = useVulpes();
-  let TextComponent = Regular;
-  let tabsStyle = { ...tabsDefaultStyle(theme) };
-  if (focus) {
-    TextComponent = RegularBold;
-    tabsStyle.borderBottomWidth = 2;
-  }
 
   return (
     <TouchableOpacity onPress={onSelect} style={tabsStyle}>
-      <TextComponent color={'gray.100'}>{title}</TextComponent>
+      <TextComponent color={focus ? 'tab.activeText' : 'tab.inactiveText'}>
+        {title}
+      </TextComponent>
     </TouchableOpacity>
   );
 };
