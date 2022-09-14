@@ -8,21 +8,6 @@ export default {
   title: 'Example/UploadCard',
   component: UploadCard,
   decorators: [(story) => <View style={mobileStyleWidget}>{story()}</View>],
-  argTypes: {
-    color: {
-      description: 'color for the button',
-      control: {
-        type: 'select',
-        options: colorList(),
-      },
-    },
-    noPadding: {
-      description: 'should have zero padding',
-      control: {
-        type: 'boolean',
-      },
-    },
-  },
 };
 
 const TemplateGradientView = ({ ...rest }) => {

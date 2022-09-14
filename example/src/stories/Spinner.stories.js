@@ -1,17 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
-import { Colors, Spinner } from 'react-native-vulpes';
-
-const colorList = () => {
-  var keys = [undefined];
-  for (var k in Colors) {
-    if (k.substring(0, 8) !== 'gradient') {
-      keys.push(k);
-    }
-  }
-  return keys;
-};
+import { Spinner, colorList } from 'react-native-vulpes';
 
 export default {
   title: 'Example/Spinner',
