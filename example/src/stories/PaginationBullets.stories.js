@@ -20,7 +20,13 @@ export default {
 
 const Template = ({ total = 4, current = 2, ...rest }) => {
   this.ref = null;
-  return <PaginationBullets total={total} current={current} />;
+  return (
+    <PaginationBullets
+      color={'bullet.regular'}
+      total={total}
+      current={current}
+    />
+  );
 };
 
 export const Example = Template;

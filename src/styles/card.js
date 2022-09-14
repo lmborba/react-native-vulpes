@@ -31,10 +31,13 @@ export default (theme) => {
       flexDirection: 'row',
       height: 24,
     },
-    dashContainer: {
+    _cardSeparator: {
       flex: 1,
       height: 1,
       marginTop: 12,
+      borderWidth: 0,
+      overflow: 'hidden',
+      backgroundColor: gray,
     },
     cardSeparatorLeft: {
       borderRightColor: gray,
@@ -64,13 +67,6 @@ export default (theme) => {
       borderBottomLeftRadius: 12,
       backgroundColor: white,
     },
-    dashStyle: {
-      borderWidth: 0,
-      height: 1,
-      backgroundColor: gray,
-      overflow: 'hidden',
-    },
-
     cardContainerZeroPadding: {
       paddingTop: 0,
       paddingBottom: 0,
@@ -116,7 +112,7 @@ export default (theme) => {
       margin: -1,
       borderTopLeftRadius: radius,
       borderBottomLeftRadius: radius,
-      backgroundColor: colors('primary.100'),
+      backgroundColor: colors('uploadCard.background'),
     },
 
     uploadCardIcon: {

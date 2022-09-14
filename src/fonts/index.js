@@ -20,7 +20,10 @@ const _fontFamily = (type, theme) => {
   }
 };
 
-const dasaWeight = (weight) => {};
+const dasaWeight = (weight) => {
+  if (Platform.OS === 'web') return weight;
+  return undefined;
+};
 
 export const getFonts = (theme) => {
   const colors = getColors(theme);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
 import { getFonts } from '../fonts';
 import { Icon } from './icon';
 import { Regular, Small } from './typos';
@@ -84,7 +85,7 @@ export class Checkbox extends Component {
       width: 20,
       alignItems: 'center',
       justifyContent: 'center',
-      borderColor: this.colorRegular(),
+      borderColor: this.colorOutline(),
       marginRight: 8,
     };
   }
@@ -96,7 +97,7 @@ export class Checkbox extends Component {
       width: 20,
       alignItems: 'center',
       justifyContent: 'center',
-      borderColor: this.colorRegular(),
+      borderColor: this.colorOutline(),
       backgroundColor: this.colorRegular(),
     };
   }
@@ -113,8 +114,9 @@ export class Checkbox extends Component {
   colorRegular() {
     const { theme } = this.context;
     const colors = getColors(theme);
+    console.log('theme: ', theme);
     if (this.props.error) return colors('error.100');
-    return colors('gray.100');
+    return colors('checkbox.checked');
   }
 
   colorOutline() {
@@ -124,3 +126,4 @@ export class Checkbox extends Component {
     return colors('gray.100');
   }
 }
+Checkbox.contextType = VulpesContext;

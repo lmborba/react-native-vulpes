@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { getColors } from '../colors';
+import VulpesContext from '../contexts/VulpesContext';
 import { getFonts } from '../fonts';
 import { Icon } from './icon';
 import { Regular, Small } from './typos';
@@ -102,7 +103,7 @@ export class CheckboxInput extends Component {
       width: 16,
       alignItems: 'center',
       justifyContent: 'center',
-      borderColor: this.colorRegular(),
+      borderColor: this.colorOutline(),
       marginRight: 8,
     };
   }
@@ -123,22 +124,24 @@ export class CheckboxInput extends Component {
     const { theme } = this.context;
     const fonts = getFonts(theme);
     const colors = getColors(theme);
-    let font = fonts.regular;
-    if (this.props.error) font = { ...font, color: colors('error.100') };
-    return font;
+    if (this.props.error) {
+      return { ...fonts.regular, color: colors('error.100') };
+    }
+    return { ...fonts.regular, color: colors('gray.100') };
   }
 
   colorRegular() {
     const { theme } = this.context;
     const colors = getColors(theme);
     if (this.props.error) return colors('error.100');
-    return colors('gray.80');
+    return colors('radio.active');
   }
 
   colorOutline() {
     const { theme } = this.context;
     const colors = getColors(theme);
     if (this.props.error) return colors('error.100');
-    return colors('gray.40');
+    return colors('gray.100');
   }
 }
+CheckboxInput.contextType = VulpesContext;

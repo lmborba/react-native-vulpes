@@ -6,7 +6,7 @@ import useVulpes from '../hooks/useVulpes';
 export const Spinner = ({ color, size, ...restProps }) => {
   const { theme } = useVulpes();
   const colors = getColors(theme);
-  const colorVal = color ? colors(color) : colors('primary.80');
+  const colorVal = color ? colors(color) : colors('spinner.regular');
   return (
     <ActivityIndicator size={size || 'small'} color={colorVal} {...restProps} />
   );

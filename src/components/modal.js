@@ -11,7 +11,7 @@ import { getColors } from '../colors';
 import { Button } from './button';
 import { Icon } from './icon';
 import { Text } from './text';
-import { H4 } from './typos';
+import { H4, RegularBold } from './typos';
 import DeviceInfo from 'react-native-device-info';
 import VulpesContext from '../contexts/VulpesContext';
 
@@ -56,10 +56,6 @@ const modalImage = {
   resizeMode: 'contain',
 };
 
-const closeModalIcon = {
-  marginTop: 4,
-};
-
 const btnStyle = {
   alignSelf: 'center',
 };
@@ -72,8 +68,8 @@ const titleStyle = {
 const CloseModal = (props) => {
   return (
     <Button ghost onPress={props.onClose}>
-      <Icon size={12} name="close" style={closeModalIcon} />
-      <Text>Fechar</Text>
+      <Icon size={12} name={'close'} />
+      <RegularBold>Fechar</RegularBold>
     </Button>
   );
 };

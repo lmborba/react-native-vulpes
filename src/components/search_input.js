@@ -66,7 +66,7 @@ export class SearchInput extends Component {
       <View style={this.completeOuterStyle()}>
         <Icon
           name="search"
-          color={this.colorOutline()}
+          color={'searchInput.text'}
           size={16}
           style={this.iconStyle()}
         />
@@ -162,18 +162,19 @@ export class SearchInput extends Component {
     const colors = getColors(theme);
     const fonts = getFonts(theme);
     let font = fonts.regularBold;
+
     if (this.state.placeholder && !this.props.value) font = fonts.regular;
     if (this.props.error) font = { ...font, color: colors('error.100') };
     if (this.props.noResult) font = { ...font, color: colors('error.100') };
-    return font;
+    return { ...font, fontWeight: 'bold', color: colors('searchInput.text') };
   }
 
   colorOutline() {
     const { theme } = this.context;
     const colors = getColors(theme);
     if (this.props.error) return colors('error.100');
-    if (this.state.focused) return colors('gray.100');
-    return colors('gray.100');
+    if (this.state.focused) return colors('searchInput.outline');
+    return colors('searchInput.outline');
   }
 
   widthOutline() {

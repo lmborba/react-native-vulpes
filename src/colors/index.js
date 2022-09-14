@@ -228,10 +228,10 @@ const mappedColors = {
     },
     purple: {
       20: '#E2D6F4',
-      40: '#CCB3EE', // light_gray (dev defined)
+      40: '#CCB3EE',
       60: '#B591E9',
-      80: '#884BDE', // gray (dev defined)
-      100: '#5A3192', // dark_gray
+      80: '#884BDE',
+      100: '#5A3192',
       110: '#321C52',
     },
     blue: {
@@ -355,6 +355,9 @@ const mappedColors = {
 
 const semanticTokens = {
   gogood: {
+    main: {
+      regular: 'primary.80',
+    },
     btn: {
       regular: 'gray.100',
       disabled: 'gray.40',
@@ -373,11 +376,48 @@ const semanticTokens = {
       active: 'singleton.black',
       inactive: 'gray.60',
     },
+    tab: {
+      activeText: 'gray.100',
+      inactiveText: 'gray.100',
+      underline: 'primary.60',
+    },
     tag: {
       locked: 'gray.60',
       unlocked: 'gray.100',
       lockedText: 'singleton.white',
       unlockedText: 'singleton.white',
+    },
+    uploadCard: {
+      background: 'primary.100',
+    },
+    checkbox: {
+      checked: 'gray.100',
+    },
+    spinner: {
+      regular: 'primary.80',
+    },
+    textInput: {
+      outline: 'primary.80',
+    },
+    searchInput: {
+      outline: 'gray.100',
+      text: 'gray.100',
+    },
+    filterTag: {
+      regular: 'primary.110',
+    },
+    radio: {
+      active: 'gray.100',
+    },
+    creditCard: {
+      active: 'gray.100',
+      inactive: 'singleton.white',
+    },
+    planCard: {
+      regular: 'primary.80',
+    },
+    progress: {
+      regular: 'primary.80',
     },
     rh: {
       financials: 'success.100',
@@ -397,6 +437,9 @@ const semanticTokens = {
     },
   },
   dasa: {
+    main: {
+      regular: 'primary.80',
+    },
     btn: {
       regular: 'primary.60',
       disabled: 'gray.40',
@@ -412,14 +455,51 @@ const semanticTokens = {
       subtitle: 'gray.100',
     },
     tabBottom: {
-      active: 'singleton.black',
+      active: 'primary.60',
       inactive: 'gray.60',
+    },
+    tab: {
+      activeText: 'primary.60',
+      inactiveText: 'gray.110',
+      underline: 'primary.60',
     },
     tag: {
       locked: 'gray.80',
       unlocked: 'gray.100',
       lockedText: 'singleton.white',
       unlockedText: 'singleton.white',
+    },
+    uploadCard: {
+      background: 'primary.100',
+    },
+    checkbox: {
+      checked: 'primary.60',
+    },
+    spinner: {
+      regular: 'primary.80',
+    },
+    textInput: {
+      outline: 'primary.80',
+    },
+    searchInput: {
+      outline: 'gray.100',
+      text: 'gray.100',
+    },
+    filterTag: {
+      regular: 'primary.110',
+    },
+    radio: {
+      active: 'gray.100',
+    },
+    creditCard: {
+      active: 'gray.100',
+      inactive: 'singleton.white',
+    },
+    planCard: {
+      regular: 'primary.80',
+    },
+    progress: {
+      regular: 'primary.100',
     },
     rh: {
       financials: 'success.100',
@@ -439,6 +519,9 @@ const semanticTokens = {
     },
   },
   sesi: {
+    main: {
+      regular: 'purple.80',
+    },
     btn: {
       regular: 'purple.80',
       disabled: 'gray.20',
@@ -457,11 +540,51 @@ const semanticTokens = {
       active: 'purple.80',
       inactive: 'gray.60',
     },
+    tab: {
+      activeText: 'gray.100',
+      inactiveText: 'gray.100',
+      underline: 'purple.80',
+    },
     tag: {
-      locked: 'gray.100',
-      unlocked: 'purple.80',
-      lockedText: 'singleton.white',
-      unlockedText: 'singleton.white',
+      locked: 'purple.80',
+      unlocked: 'purple.20',
+      lockedText: 'purple.20',
+      unlockedText: 'purple.80',
+    },
+    uploadCard: {
+      background: 'purple.80',
+    },
+    checkbox: {
+      checked: 'success.100',
+    },
+    spinner: {
+      regular: 'purple.80',
+    },
+    textInput: {
+      outline: 'purple.80',
+    },
+    searchInput: {
+      outline: 'purple.80',
+      text: 'purple.80',
+    },
+    filterTag: {
+      regular: 'purple.80',
+    },
+    radio: {
+      active: 'success.100',
+    },
+    creditCard: {
+      active: 'purple.80',
+      inactive: 'singleton.white',
+    },
+    planCard: {
+      regular: 'purple.80',
+    },
+    progress: {
+      regular: 'purple.80',
+
+      // <Stop offset="0%" stopColor="#01C6E1" />
+      // <Stop offset="100%" stopColor="#0092D9" />
     },
     rh: {
       financials: 'success.100',

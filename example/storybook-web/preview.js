@@ -10,7 +10,7 @@ export const globalTypes = {
     defaultValue: 'gogood',
     toolbar: {
       icon: 'circlehollow',
-      items: ['gogood', 'dasa'],
+      items: ['gogood', 'dasa', 'sesi'],
       showName: true,
       dynamicTitle: true,
     },
