@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Platform, View } from 'react-native';
-import { UploadCard, colorList } from 'react-native-vulpes';
+import { UploadCard } from 'react-native-vulpes';
 
 const mobileStyleWidget = { maxWidth: 320 };
 export default {

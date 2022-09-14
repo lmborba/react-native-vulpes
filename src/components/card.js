@@ -5,7 +5,6 @@ import VulpesContext from '../contexts/VulpesContext';
 import useVulpes from '../hooks/useVulpes';
 import getStyle from '../styles/card';
 import { Button } from './button';
-import { Dash } from './dash';
 import { GradientView } from './gradient_view';
 import { Icon } from './icon';
 import { Tag } from './tag';
@@ -127,7 +126,6 @@ const TicketCheckinCardSeparator = (props) => {
 const TicketProfileCardSeparator = (props) => {
   const { theme } = useVulpes();
   const style = getStyle(theme);
-  const colors = getColors(theme);
   return (
     <View style={style.ticketProfileCardDividerContainer}>
       <View style={style.profileCardDividerContent}>
